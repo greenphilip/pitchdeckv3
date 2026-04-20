@@ -51,12 +51,13 @@ export default function Slide3() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-start",
+          alignItems: "center",
           width: "100%",
           height: "100%",
         }}
       >
         {/* HEADER */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div style={{ display: "flex", flexDirection: "column", width: "100%", maxWidth: "min(1400px, 100%)" }}>
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
