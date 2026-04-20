@@ -120,7 +120,7 @@ export default function Slide3() {
             maxWidth: "min(1400px, 100%)",
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "repeat(3, minmax(0, 1fr))",
-            gap: isMobile ? "clamp(12px, 2vh, 20px)" : "clamp(16px, 2vw, 32px)",
+            gap: isMobile ? "clamp(12px, 2vh, 20px)" : "clamp(24px, 3vw, 48px)",
             ...(isMobile
               ? { maxHeight: "50vh", overflowY: "auto", paddingRight: 4 }
               : {}),
