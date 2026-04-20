@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { SlideFrame } from "@/components/SlideFrame";
+import { GlacierMark } from "@/components/GlacierMark";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
 const LIGHT = "#F1F1F1";
+const EXPO_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export default function Slide1() {
   const isMobile = useIsMobile();
@@ -23,19 +25,49 @@ export default function Slide1() {
           textAlign: "center",
         }}
       >
-        {/* Top anchor: wordmark */}
+        {/* Top anchor: wordmark + glyph + tagline */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: EXPO_OUT }}
           style={{
-            fontSize: "clamp(20px, 2.2vw, 32px)",
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            color: MINT,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "clamp(6px, 0.8vh, 10px)",
           }}
         >
-          Glacier
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "clamp(8px, 0.9vw, 12px)",
+            }}
+          >
+            <GlacierMark size={Math.round(isMobile ? 22 : 28)} color={MINT} strokeWidth={1.5} />
+            <span
+              style={{
+                fontSize: "clamp(20px, 2.2vw, 32px)",
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+                color: MINT,
+              }}
+            >
+              Glacier
+            </span>
+          </div>
+          <div
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: "clamp(9px, 0.75vw, 11px)",
+              color: LIGHT,
+              opacity: 0.5,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+            }}
+          >
+            ESG Reporting — Fast, Defensible
+          </div>
         </motion.div>
 
         {/* Center: headline block */}
@@ -54,48 +86,82 @@ export default function Slide1() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.4, ease: EXPO_OUT }}
             style={{
-              fontSize: "clamp(28px, 4.5vw, 64px)",
+              fontSize: "clamp(32px, 5.5vw, 76px)",
               fontWeight: 700,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.15,
+              letterSpacing: "-0.025em",
+              lineHeight: 1.1,
               color: LIGHT,
               margin: 0,
             }}
           >
             Between regulatory{" "}
             <span style={{ color: BLUE }}>chaos</span> and relentless{" "}
-            <span style={{ color: MINT }}>pressure</span>.
+            <span style={{ color: MINT, position: "relative", display: "inline-block" }}>
+              pressure
+              <motion.span
+                aria-hidden
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.6, delay: 1.0, ease: EXPO_OUT }}
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  bottom: "-0.08em",
+                  height: 1,
+                  background: MINT,
+                  transformOrigin: "left",
+                  display: "block",
+                }}
+              />
+            </span>
+            .
           </motion.h1>
+
+          {/* Vertical accent line — signature motion */}
+          <motion.div
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1 }}
+            transition={{ duration: 0.6, delay: 0.85, ease: EXPO_OUT }}
+            style={{
+              width: 1,
+              height: "clamp(28px, 4vh, 44px)",
+              background: MINT,
+              opacity: 0.35,
+              transformOrigin: "top",
+            }}
+          />
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.9, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 1.0, ease: EXPO_OUT }}
             style={{
-              fontSize: "clamp(16px, 2vw, 28px)",
+              fontSize: "clamp(15px, 1.6vw, 22px)",
               fontWeight: 400,
-              lineHeight: 1.5,
+              lineHeight: 1.55,
               color: LIGHT,
-              opacity: 0.85,
+              opacity: 0.7,
               margin: 0,
+              maxWidth: "min(820px, 80vw)",
             }}
           >
             Glacier helps companies get ESG reporting done —{" "}
-            <span style={{ color: MINT, fontWeight: 500 }}>faster</span>, with{" "}
-            <span style={{ color: MINT, fontWeight: 500 }}>
+            <span style={{ color: MINT, fontWeight: 500, opacity: 1 / 0.7 }}>faster</span>, with{" "}
+            <span style={{ color: MINT, fontWeight: 500, opacity: 1 / 0.7 }}>
               quality they can defend
             </span>
             .
           </motion.p>
         </div>
 
-        {/* Bottom anchor: meta */}
+        {/* Bottom anchor: meta with status dot */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 1.4, ease: "easeOut" }}
+          transition={{ duration: 0.4, delay: 1.5, ease: EXPO_OUT }}
           style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: "clamp(11px, 1vw, 14px)",
@@ -104,29 +170,42 @@ export default function Slide1() {
             letterSpacing: "0.02em",
             display: "flex",
             flexDirection: isMobile ? "column" : "row",
-            gap: isMobile ? "4px" : "0",
+            alignItems: "center",
+            gap: isMobile ? "6px" : "10px",
             textAlign: "center",
             lineHeight: 1.6,
           }}
         >
-          {isMobile ? (
-            <>
-              <div>
-                <span style={{ color: MINT, fontWeight: 600, opacity: 1 / 0.55 }}>
-                  Glacier
-                </span>{" "}
-                • April 2026
-              </div>
-              <div>Bridge round • €250k → unlocks €425k</div>
-            </>
-          ) : (
-            <div>
-              <span style={{ color: MINT, fontWeight: 600, opacity: 1 / 0.55 }}>
-                Glacier
-              </span>
-              {"  •  April 2026  •  Bridge round  •  €250k → unlocks €425k"}
-            </div>
-          )}
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span
+              style={{
+                position: "relative",
+                display: "inline-block",
+                width: 6,
+                height: 6,
+                borderRadius: "50%",
+                background: MINT,
+              }}
+            >
+              <motion.span
+                aria-hidden
+                animate={{ scale: [1, 2.4, 2.4], opacity: [0.6, 0, 0] }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut" }}
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  borderRadius: "50%",
+                  background: MINT,
+                }}
+              />
+            </span>
+            <span>
+              <span style={{ color: MINT, fontWeight: 600, opacity: 1 / 0.55 }}>Glacier</span>
+              {" • April 2026"}
+            </span>
+          </div>
+          {!isMobile && <span style={{ opacity: 0.5 }}>•</span>}
+          <span>Bridge round • €250k → unlocks €425k</span>
         </motion.div>
       </div>
     </SlideFrame>
