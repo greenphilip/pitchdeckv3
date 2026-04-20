@@ -57,7 +57,7 @@ export default function Slide3() {
         }}
       >
         {/* HEADER */}
-        <div style={{ display: "flex", flexDirection: "column", width: "100%", maxWidth: "min(1400px, 100%)" }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", maxWidth: "min(1400px, 100%)", textAlign: "center" }}>
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -68,6 +68,7 @@ export default function Slide3() {
               color: MINT,
               textTransform: "uppercase",
               letterSpacing: "0.12em",
+              textAlign: "center",
             }}
           >
             THE MARKET TODAY
@@ -86,7 +87,7 @@ export default function Slide3() {
               letterSpacing: "-0.02em",
               lineHeight: 1.15,
               margin: 0,
-              textAlign: "left",
+              textAlign: "center",
             }}
           >
             The tools they have don't solve this.
@@ -104,7 +105,8 @@ export default function Slide3() {
               opacity: 0.7,
               lineHeight: 1.5,
               maxWidth: 900,
-              margin: 0,
+              margin: "0 auto",
+              textAlign: "center",
             }}
           >
             Three categories. None were built for a customer in a squeeze.
@@ -141,7 +143,7 @@ export default function Slide3() {
                   borderRadius: 6,
                   display: "flex",
                   flexDirection: "column",
-                  gap: "clamp(10px, 1.5vh, 16px)",
+                  gap: "clamp(14px, 2vh, 20px)",
                 }}
               >
                 <motion.div
@@ -150,7 +152,8 @@ export default function Slide3() {
                   transition={{ duration: 0.3, delay: cardDelay + 0.08, ease: EXPO_OUT }}
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "clamp(10px, 0.9vw, 11px)",
+                    fontSize: "clamp(12px, 1.1vw, 16px)",
+                    fontWeight: 600,
                     color: MINT,
                     textTransform: "uppercase",
                     letterSpacing: "0.1em",
@@ -208,7 +211,7 @@ export default function Slide3() {
                     color: BLUE,
                     opacity: 0.7,
                     letterSpacing: "0.04em",
-                    paddingTop: "clamp(6px, 1vh, 10px)",
+                    paddingTop: "clamp(14px, 2vh, 22px)",
                     borderTop: `1px solid ${BLUE}26`,
                   }}
                 >
@@ -231,6 +234,8 @@ export default function Slide3() {
             alignItems: "stretch",
             gap: "clamp(16px, 2vw, 24px)",
             maxWidth: "min(1400px, 100%)",
+            marginLeft: "auto",
+            marginRight: "auto",
           }}
         >
           <div
