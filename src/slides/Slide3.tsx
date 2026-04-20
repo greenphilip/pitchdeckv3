@@ -73,7 +73,7 @@ export default function Slide3() {
             THE MARKET TODAY
           </motion.div>
 
-          <div style={{ height: "clamp(8px, 1vh, 16px)" }} />
+          <div style={{ height: "clamp(12px, 2vh, 24px)" }} />
 
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
@@ -92,7 +92,7 @@ export default function Slide3() {
             The tools they have don't solve this.
           </motion.h1>
 
-          <div style={{ height: "clamp(12px, 2vh, 24px)" }} />
+          <div style={{ height: "clamp(18px, 3vh, 32px)" }} />
 
           <motion.p
             initial={{ opacity: 0, y: 8 }}
@@ -112,7 +112,7 @@ export default function Slide3() {
         </div>
 
         {/* GRID */}
-        <div style={{ height: "clamp(24px, 4vh, 56px)" }} />
+        <div style={{ height: "clamp(36px, 6vh, 80px)" }} />
 
         <div
           style={{
