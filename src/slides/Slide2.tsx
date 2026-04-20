@@ -6,9 +6,6 @@ import {
   Handshake,
   Landmark,
   ShieldAlert,
-  Users,
-  ChevronDown,
-  ChevronUp,
 } from "lucide-react";
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
@@ -16,6 +13,7 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
 const LIGHT = "#F1F1F1";
+const EXPO_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const uncertaintyItems = [
   { Icon: HelpCircle, text: "ESG is new, complex, changing" },
@@ -28,6 +26,10 @@ const pressureItems = [
   { Icon: Landmark, text: "Banks and investors demanding" },
   { Icon: ShieldAlert, text: "Regulators not waiting" },
 ];
+
+// Unified stagger order: L0, R0, L1, R1, L2, R2 — one coordinated sequence.
+const ITEM_BASE_DELAY = 0.7;
+const ITEM_STEP = 0.06;
 
 export default function Slide2() {
   const isMobile = useIsMobile();
@@ -49,6 +51,18 @@ export default function Slide2() {
 
   const iconSize = "clamp(16px, 1.6vw, 20px)";
 
+  // Row with bottom divider, full width
+  const rowStyle = (align: "left" | "right"): React.CSSProperties => ({
+    display: "flex",
+    flexDirection: align === "right" && !isMobile ? "row-reverse" : "row",
+    alignItems: "center",
+    gap: "clamp(8px, 1vw, 12px)",
+    textAlign: align === "right" && !isMobile ? "right" : "left",
+    width: "100%",
+    paddingBottom: "clamp(8px, 1vh, 12px)",
+    borderBottom: `1px solid ${BLUE}26`,
+  });
+
   return (
     <SlideFrame variant="minimal" slideNumber={2} totalSlides={10}>
       <div
@@ -66,7 +80,7 @@ export default function Slide2() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: EXPO_OUT }}
           style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: "clamp(10px, 1vw, 12px)",
@@ -84,7 +98,7 @@ export default function Slide2() {
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.6, delay: 0.2, ease: EXPO_OUT }}
           style={{
             fontSize: "clamp(22px, 3.5vw, 52px)",
             fontWeight: 700,
@@ -98,7 +112,26 @@ export default function Slide2() {
         >
           Caught between what they{" "}
           <span style={{ color: BLUE }}>don't know</span> and what{" "}
-          <span style={{ color: MINT }}>can't wait</span>.
+          <span style={{ color: MINT, position: "relative", display: "inline-block" }}>
+            can't wait
+            <motion.span
+              aria-hidden
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.6, delay: 0.95, ease: EXPO_OUT }}
+              style={{
+                position: "absolute",
+                left: 0,
+                right: 0,
+                bottom: "-0.08em",
+                height: 1,
+                background: MINT,
+                transformOrigin: "left",
+                display: "block",
+              }}
+            />
+          </span>
+          .
         </motion.h1>
 
         {/* CENTER: vice diagram */}
@@ -111,7 +144,7 @@ export default function Slide2() {
             display: "grid",
             gridTemplateColumns: isMobile
               ? "1fr"
-              : "1fr minmax(120px, 200px) 1fr",
+              : "1fr minmax(140px, 220px) 1fr",
             gap: isMobile ? "clamp(20px, 3vh, 32px)" : "clamp(16px, 3vw, 48px)",
             alignItems: "center",
           }}
@@ -121,8 +154,9 @@ export default function Slide2() {
             style={{
               display: "flex",
               flexDirection: "column",
-              alignItems: isMobile ? "flex-start" : "flex-end",
+              alignItems: isMobile ? "stretch" : "flex-end",
               gap: "clamp(10px, 1.5vh, 16px)",
+              position: "relative",
             }}
           >
             <div
@@ -130,9 +164,14 @@ export default function Slide2() {
                 ...columnLabelStyle,
                 color: BLUE,
                 textAlign: isMobile ? "left" : "right",
+                display: "flex",
+                gap: 8,
+                justifyContent: isMobile ? "flex-start" : "flex-end",
               }}
             >
-              UNCERTAINTY
+              <span style={{ opacity: 0.5 }}>01</span>
+              <span style={{ opacity: 0.4 }}>—</span>
+              <span>UNCERTAINTY</span>
             </div>
             {uncertaintyItems.map(({ Icon, text }, i) => (
               <motion.div
@@ -140,17 +179,11 @@ export default function Slide2() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{
-                  duration: 0.3,
-                  delay: 0.7 + i * 0.08,
-                  ease: "easeOut",
+                  duration: 0.4,
+                  delay: ITEM_BASE_DELAY + i * 2 * ITEM_STEP,
+                  ease: EXPO_OUT,
                 }}
-                style={{
-                  display: "flex",
-                  flexDirection: isMobile ? "row" : "row-reverse",
-                  alignItems: "center",
-                  gap: "clamp(8px, 1vw, 12px)",
-                  textAlign: isMobile ? "left" : "right",
-                }}
+                style={rowStyle("right")}
               >
                 <Icon
                   style={{ width: iconSize, height: iconSize, flexShrink: 0 }}
@@ -160,73 +193,130 @@ export default function Slide2() {
                 <span style={itemTextStyle}>{text}</span>
               </motion.div>
             ))}
+
+            {/* Inward arrow — desktop only */}
+            {!isMobile && (
+              <motion.svg
+                aria-hidden
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 1.1, ease: EXPO_OUT }}
+                width="100%"
+                height="14"
+                viewBox="0 0 200 14"
+                preserveAspectRatio="none"
+                style={{
+                  position: "absolute",
+                  right: "-12%",
+                  top: "50%",
+                  width: "18%",
+                  transform: "translateY(-50%)",
+                  pointerEvents: "none",
+                }}
+              >
+                <defs>
+                  <linearGradient id="arrL" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor={BLUE} stopOpacity="0" />
+                    <stop offset="100%" stopColor={BLUE} stopOpacity="0.7" />
+                  </linearGradient>
+                </defs>
+                <line x1="0" y1="7" x2="195" y2="7" stroke="url(#arrL)" strokeWidth="1" />
+                <polyline
+                  points="188,3 196,7 188,11"
+                  fill="none"
+                  stroke={BLUE}
+                  strokeOpacity="0.7"
+                  strokeWidth="1"
+                />
+              </motion.svg>
+            )}
           </div>
 
-          {/* CENTER — THE REPORTING TEAM */}
+          {/* CENTER — pressure point */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 1.05, ease: "easeOut" }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1, x: [0, -2, 0, 2, 0] }}
+            transition={{
+              opacity: { duration: 0.6, delay: 1.15, ease: EXPO_OUT },
+              scale: { duration: 0.6, delay: 1.15, ease: EXPO_OUT },
+              x: { duration: 1.4, delay: 1.4, ease: "easeInOut" },
+            }}
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: "clamp(6px, 1vh, 10px)",
+              gap: "clamp(10px, 1.5vh, 16px)",
+              position: "relative",
             }}
           >
-            {!isMobile && (
-              <ChevronDown
-                size={16}
-                color={LIGHT}
-                style={{ opacity: 0.4 }}
-                strokeWidth={1.5}
-              />
-            )}
+            {/* Concentric pulse rings */}
             <div
               style={{
-                border: `2px solid ${MINT}CC`,
-                padding: "clamp(12px, 2vw, 20px)",
-                borderRadius: 6,
-                backgroundColor: "rgba(109, 212, 173, 0.04)",
-                boxShadow: "0 0 32px rgba(109, 212, 173, 0.12)",
+                position: "relative",
+                width: "clamp(72px, 9vw, 120px)",
+                height: "clamp(72px, 9vw, 120px)",
                 display: "flex",
-                flexDirection: "column",
                 alignItems: "center",
-                gap: "clamp(4px, 0.5vh, 8px)",
-                minWidth: "clamp(140px, 16vw, 200px)",
+                justifyContent: "center",
               }}
             >
-              <Users
+              {[0, 1, 2].map((i) => (
+                <motion.div
+                  key={i}
+                  aria-hidden
+                  animate={{ scale: [0.6, 1.6], opacity: [0.45, 0] }}
+                  transition={{
+                    duration: 2.6,
+                    repeat: Infinity,
+                    delay: 1.4 + i * 0.65,
+                    ease: "easeOut",
+                  }}
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    borderRadius: "50%",
+                    border: `1px solid ${MINT}`,
+                  }}
+                />
+              ))}
+              {/* Soft halo */}
+              <div
+                aria-hidden
                 style={{
-                  width: "clamp(24px, 3vw, 40px)",
-                  height: "clamp(24px, 3vw, 40px)",
+                  position: "absolute",
+                  inset: "-30%",
+                  background:
+                    "radial-gradient(circle, rgba(109,212,173,0.18), transparent 65%)",
+                  pointerEvents: "none",
                 }}
-                color={MINT}
-                strokeWidth={1.5}
               />
+              {/* Core dot */}
               <div
                 style={{
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "clamp(10px, 1vw, 12px)",
-                  fontWeight: 600,
-                  color: MINT,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  textAlign: "center",
-                  whiteSpace: "nowrap",
+                  width: "clamp(18px, 2vw, 26px)",
+                  height: "clamp(18px, 2vw, 26px)",
+                  borderRadius: "50%",
+                  background: MINT,
+                  boxShadow: `0 0 24px ${MINT}AA`,
+                  position: "relative",
+                  zIndex: 1,
                 }}
-              >
-                THE REPORTING TEAM
-              </div>
-            </div>
-            {!isMobile && (
-              <ChevronUp
-                size={16}
-                color={LIGHT}
-                style={{ opacity: 0.4 }}
-                strokeWidth={1.5}
               />
-            )}
+            </div>
+            <div
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: "clamp(10px, 1vw, 12px)",
+                fontWeight: 600,
+                color: MINT,
+                textTransform: "uppercase",
+                letterSpacing: "0.12em",
+                textAlign: "center",
+                whiteSpace: "nowrap",
+              }}
+            >
+              The Reporting Team
+            </div>
           </motion.div>
 
           {/* RIGHT — PRESSURE */}
@@ -234,12 +324,23 @@ export default function Slide2() {
             style={{
               display: "flex",
               flexDirection: "column",
-              alignItems: "flex-start",
+              alignItems: "stretch",
               gap: "clamp(10px, 1.5vh, 16px)",
+              position: "relative",
             }}
           >
-            <div style={{ ...columnLabelStyle, color: MINT, textAlign: "left" }}>
-              PRESSURE
+            <div
+              style={{
+                ...columnLabelStyle,
+                color: MINT,
+                textAlign: "left",
+                display: "flex",
+                gap: 8,
+              }}
+            >
+              <span style={{ opacity: 0.5 }}>02</span>
+              <span style={{ opacity: 0.4 }}>—</span>
+              <span>PRESSURE</span>
             </div>
             {pressureItems.map(({ Icon, text }, i) => (
               <motion.div
@@ -247,17 +348,11 @@ export default function Slide2() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{
-                  duration: 0.3,
-                  delay: 0.7 + i * 0.08,
-                  ease: "easeOut",
+                  duration: 0.4,
+                  delay: ITEM_BASE_DELAY + (i * 2 + 1) * ITEM_STEP,
+                  ease: EXPO_OUT,
                 }}
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: "clamp(8px, 1vw, 12px)",
-                  textAlign: "left",
-                }}
+                style={rowStyle("left")}
               >
                 <Icon
                   style={{ width: iconSize, height: iconSize, flexShrink: 0 }}
@@ -267,14 +362,51 @@ export default function Slide2() {
                 <span style={itemTextStyle}>{text}</span>
               </motion.div>
             ))}
+
+            {/* Inward arrow — desktop only */}
+            {!isMobile && (
+              <motion.svg
+                aria-hidden
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 1.1, ease: EXPO_OUT }}
+                width="100%"
+                height="14"
+                viewBox="0 0 200 14"
+                preserveAspectRatio="none"
+                style={{
+                  position: "absolute",
+                  left: "-12%",
+                  top: "50%",
+                  width: "18%",
+                  transform: "translateY(-50%)",
+                  pointerEvents: "none",
+                }}
+              >
+                <defs>
+                  <linearGradient id="arrR" x1="1" y1="0" x2="0" y2="0">
+                    <stop offset="0%" stopColor={MINT} stopOpacity="0" />
+                    <stop offset="100%" stopColor={MINT} stopOpacity="0.7" />
+                  </linearGradient>
+                </defs>
+                <line x1="5" y1="7" x2="200" y2="7" stroke="url(#arrR)" strokeWidth="1" />
+                <polyline
+                  points="12,3 4,7 12,11"
+                  fill="none"
+                  stroke={MINT}
+                  strokeOpacity="0.7"
+                  strokeWidth="1"
+                />
+              </motion.svg>
+            )}
           </div>
         </div>
 
-        {/* BOTTOM: thesis line */}
+        {/* BOTTOM: thesis line — serif italic, the slide's typographic moment */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 1.75, ease: "easeOut" }}
+          transition={{ duration: 0.5, delay: 1.85, ease: EXPO_OUT }}
           style={{
             display: "flex",
             flexDirection: "column",
@@ -292,13 +424,15 @@ export default function Slide2() {
           />
           <div
             style={{
-              fontSize: "clamp(16px, 2vw, 28px)",
+              fontFamily: "'Fraunces', Georgia, serif",
+              fontSize: "clamp(17px, 2.1vw, 30px)",
               fontWeight: 400,
               fontStyle: "italic",
               color: LIGHT,
-              opacity: 0.85,
+              opacity: 0.9,
               textAlign: "center",
-              lineHeight: 1.4,
+              lineHeight: 1.35,
+              letterSpacing: "-0.005em",
             }}
           >
             The work isn't going away. It's getting harder.
