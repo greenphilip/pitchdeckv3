@@ -172,10 +172,10 @@ export default function Slide3() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: cardDelay + 0.24, ease: EXPO_OUT }}
                   style={{
-                    fontSize: "clamp(14px, 1.6vw, 20px)",
+                    fontSize: "clamp(20px, 2.2vw, 28px)",
                     color: LIGHT,
                     fontWeight: 600,
-                    lineHeight: 1.25,
+                    lineHeight: 1.2,
                     letterSpacing: "-0.01em",
                   }}
                 >
