@@ -220,7 +220,7 @@ export default function Slide3() {
         </div>
 
         {/* THESIS STAMP */}
-        <div style={{ height: "clamp(24px, 4vh, 56px)" }} />
+        <div style={{ height: "clamp(36px, 6vh, 80px)" }} />
 
         <motion.div
           initial={{ opacity: 0, x: -20 }}
