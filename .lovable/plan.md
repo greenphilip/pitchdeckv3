@@ -1,67 +1,69 @@
 
-# Presentation Slide Deck App — Foundation
 
-Build the architectural foundation for a 10-slide presentation app. No real content yet — just the frame, navigation, and slide scaffolding ready for content prompts.
+# Slide 1 — Title Slide
+
+Build the deck's opening slide: a customer-situation hook framed by the Glacier wordmark on top and a meta line on bottom.
 
 ## What gets built
 
-**1. Slide frame system (`SlideFrame.tsx`)**
-- Full-viewport container (100vw × 100vh) with deep navy background (#143560) and off-white text (#F1F1F1)
-- Three visual variants:
-  - `minimal` — clean, optional soft radial gradient
-  - `technical` — dotted blue grid overlay (#539ADB, 7% opacity, 32px spacing)
-  - `technical-light` — same grid at 3% opacity
-- Responsive padding: `clamp(32px, 5vw, 80px)`
-- Inner content flows top-down (flex column, never centered vertically)
-- Technical variants show "SLIDE n / 10" in mono font, top-right, mint at 60% opacity
-- Layered z-index so grid/number sit behind content
+**File touched:** `/src/slides/Slide1.tsx` (rewrite). Nothing else.
 
-**2. Ten placeholder slides (`Slide1.tsx` … `Slide10.tsx`)**
-- Each wraps `SlideFrame` with `variant='minimal'`
-- Centered "Slide N" label in large mint type as a placeholder
-- Ready to be individually rewritten by future prompts
+**Structure (top → middle → bottom, all centered horizontally):**
 
-**3. App shell (`App.tsx`)**
-- Tracks current slide (0–9)
-- Smooth horizontal slide transitions via `AnimatePresence` (fade + 40px x-shift, 0.4s easeOut)
-- Renders navigation chrome on top of the active slide
+```text
+            Glacier                          ← wordmark, Mint
+                                              
+                                              (auto gap)
+                                              
+   Between regulatory chaos and              ← Line 1, big
+   relentless pressure.                        "chaos" Blue, "pressure" Mint
+                                              
+   Glacier helps companies get ESG           ← Line 2, smaller
+   reporting done — faster, with               "faster" + "quality they can
+   quality they can defend.                    defend" Mint
+                                              
+                                              (auto gap)
+                                              
+   Glacier • April 2026 • Bridge round       ← meta, mono, dim
+   • €250k → unlocks €425k
+```
 
-**4. Navigation system**
+**Layout mechanics**
+- Outer flex column, `justify-start`, `align-items: center`, full width/height.
+- Headline block uses `margin-top: auto` and `margin-bottom: auto` to vertically float between the wordmark anchor and the meta anchor.
+- Headline `max-width: min(1300px, 92vw)`, centered text.
+- Inter-line gap: `clamp(16px, 3vh, 36px)`.
+- All padding handled by `SlideFrame` (no extra outer padding added).
 
-Keyboard shortcuts (window listener, cleaned up on unmount):
-| Key | Action |
-|---|---|
-| → / Space / Enter | Next slide |
-| ← | Previous slide |
-| Home / End | Jump to first / last |
-| 1–9 | Jump to slide N |
-| O / Escape | Toggle 2×5 overview grid |
-| F | Toggle fullscreen |
-| B | Toggle black screen overlay |
+**Typography (all clamp-based, brand hex only)**
+- Wordmark: `clamp(20px, 2.2vw, 32px)`, weight 600, letter-spacing 0.08em, Mint `#6DD4AD`.
+- Line 1: `clamp(28px, 4.5vw, 64px)`, weight 700, tracking -0.02em, line-height 1.15, Light Gray `#F1F1F1`. Spans: "chaos" in Blue `#539ADB`, "pressure" in Mint `#6DD4AD`.
+- Line 2: `clamp(16px, 2vw, 28px)`, weight 400, line-height 1.5, Light Gray at 85%. Spans: "faster" and "quality they can defend" in Mint, weight 500.
+- Meta: `clamp(11px, 1vw, 14px)`, JetBrains Mono, Light Gray at 55%, letter-spacing 0.02em. "Glacier" token in Mint, weight 600.
 
-On-screen controls:
-- Left/right chevron buttons at edges (30% opacity, 100% on hover)
-- Progress dots bottom-center — current is mint 10px filled, others light gray 30% 8px, all clickable
-- Overview mode: 2×5 thumbnail grid, click to jump
-- Black screen: full-viewport black overlay (z-index 999)
+**Mobile behavior (`useIsMobile` at 768px)**
+- Headline lines wrap naturally — no forced breaks.
+- Meta line splits into two stacked rows on mobile: `Glacier • April 2026` / `Bridge round • €250k → unlocks €425k`. Desktop renders as one row.
+- Vertical budget at 390×724 fits within ~490px of content + SlideFrame padding.
 
-**5. Typography**
-- `@fontsource/inter` and `@fontsource/jetbrains-mono` installed and imported
-- Tailwind config extended: `font-sans` → Inter, `font-mono` → JetBrains Mono
-- Inter applied globally to body
+**Animations (Framer Motion, transform/opacity only)**
+| Element | From → To | Duration | Delay |
+|---|---|---|---|
+| Wordmark | opacity 0 → 1 | 0.4s | 0s |
+| Headline Line 1 | y 20 → 0, opacity 0 → 1 | 0.5s | 0.4s |
+| Headline Line 2 | y 20 → 0, opacity 0 → 1 | 0.5s | 0.9s |
+| Meta line | opacity 0 → 1 | 0.3s | 1.4s |
 
-**6. Mobile hook (`useIsMobile.ts`)**
-- Synchronous initial read from `matchMedia('(max-width: 767px)')` to avoid hydration flicker
-- Listener with proper cleanup
+All ease-out, all under 0.5s individually, well under deck-wide animation rules.
 
-## Verification I'll run after build
+## Guardrails
 
-**Desktop (1440×900):** all 10 slides render, every keyboard shortcut works, progress dots update and are clickable, transitions are smooth, overview shows a clean 2×5 grid, B/F toggles function, no console errors. I'll temporarily flip a slide to `technical` to confirm the grid overlay renders, then revert.
+Do not touch: `SlideFrame`, `useIsMobile`, `Presentation`, navigation, progress dots, transitions, theme tokens, or Slides 2–10.
 
-**Mobile (390×724):** all 10 slides render with no clipping, no horizontal scroll, progress dots tappable, no console errors.
+## Verification after build
 
-## Out of scope (intentionally)
-- No real slide content — that comes from follow-up prompts
-- No editor, presenter view, or notes panel
-- No persistence — slide state is in-memory only
+- Desktop (1440×900) and current preview viewport: wordmark top-centered, headline visually centered, meta bottom-centered. No clipping, no horizontal scroll.
+- Mobile (390×724): all three anchors visible, meta stacks into two rows, headline wraps naturally, no overflow.
+- Console clean.
+- Confirm "chaos" renders Blue and "pressure" / "faster" / "quality they can defend" render Mint.
 
