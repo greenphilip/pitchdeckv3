@@ -51,12 +51,13 @@ export default function Slide3() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-start",
+          alignItems: "center",
           width: "100%",
           height: "100%",
         }}
       >
         {/* HEADER */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div style={{ display: "flex", flexDirection: "column", width: "100%", maxWidth: "min(1400px, 100%)" }}>
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -72,7 +73,7 @@ export default function Slide3() {
             THE MARKET TODAY
           </motion.div>
 
-          <div style={{ height: "clamp(8px, 1vh, 16px)" }} />
+          <div style={{ height: "clamp(12px, 2vh, 24px)" }} />
 
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
@@ -91,7 +92,7 @@ export default function Slide3() {
             The tools they have don't solve this.
           </motion.h1>
 
-          <div style={{ height: "clamp(12px, 2vh, 24px)" }} />
+          <div style={{ height: "clamp(18px, 3vh, 32px)" }} />
 
           <motion.p
             initial={{ opacity: 0, y: 8 }}
@@ -111,7 +112,7 @@ export default function Slide3() {
         </div>
 
         {/* GRID */}
-        <div style={{ height: "clamp(24px, 4vh, 56px)" }} />
+        <div style={{ height: "clamp(36px, 6vh, 80px)" }} />
 
         <div
           style={{
@@ -119,7 +120,7 @@ export default function Slide3() {
             maxWidth: "min(1400px, 100%)",
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "repeat(3, minmax(0, 1fr))",
-            gap: isMobile ? "clamp(12px, 2vh, 20px)" : "clamp(16px, 2vw, 32px)",
+            gap: isMobile ? "clamp(12px, 2vh, 20px)" : "clamp(24px, 3vw, 48px)",
             ...(isMobile
               ? { maxHeight: "50vh", overflowY: "auto", paddingRight: 4 }
               : {}),
@@ -171,10 +172,10 @@ export default function Slide3() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: cardDelay + 0.24, ease: EXPO_OUT }}
                   style={{
-                    fontSize: "clamp(14px, 1.6vw, 20px)",
+                    fontSize: "clamp(20px, 2.2vw, 28px)",
                     color: LIGHT,
                     fontWeight: 600,
-                    lineHeight: 1.25,
+                    lineHeight: 1.2,
                     letterSpacing: "-0.01em",
                   }}
                 >
@@ -219,7 +220,7 @@ export default function Slide3() {
         </div>
 
         {/* THESIS STAMP */}
-        <div style={{ height: "clamp(24px, 4vh, 56px)" }} />
+        <div style={{ height: "clamp(36px, 6vh, 80px)" }} />
 
         <motion.div
           initial={{ opacity: 0, x: -20 }}
