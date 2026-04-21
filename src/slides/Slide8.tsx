@@ -96,7 +96,7 @@ export default function Slide8() {
             transition={{ duration: 0.4, ease: EXPO_OUT }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(12px, 1.1vw, 16px)",
+              fontSize: "clamp(13px, 1vw, 20px)",
               color: MINT,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -113,7 +113,7 @@ export default function Slide8() {
             style={{
               margin: 0,
               marginTop: "clamp(10px, 1.5vh, 20px)",
-              fontSize: "clamp(24px, 4vw, 52px)",
+              fontSize: "clamp(26px, 3.8vw, 64px)",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -121,7 +121,8 @@ export default function Slide8() {
               textAlign: "center",
             }}
           >
-            €1.3bn today. <span style={{ color: MINT }}>€7.8bn</span> by 2034.
+            <span style={{ color: BLUE }}>€1.3bn</span> today.{" "}
+            <span style={{ color: MINT, fontWeight: 700 }}>€7.8bn</span> by 2034.
           </motion.h1>
 
           <motion.p
@@ -130,14 +131,14 @@ export default function Slide8() {
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.16 }}
             style={{
               margin: "clamp(12px, 2vh, 20px) auto 0",
-              maxWidth: "1000px",
-              fontSize: "clamp(14px, 1.4vw, 20px)",
+              maxWidth: "1100px",
+              fontSize: "clamp(15px, 1.3vw, 24px)",
               color: `${LIGHT}B3`,
               lineHeight: 1.5,
               textAlign: "center",
             }}
           >
-            CAGR 21%. Plus a €7bn adjacent regulatory reporting market.
+            CAGR <span style={{ color: MINT, fontWeight: 700 }}>21%</span>. Plus a €7bn adjacent regulatory reporting market.
           </motion.p>
         </div>
 
@@ -177,7 +178,7 @@ export default function Slide8() {
                     transition={{ duration: 0.3, delay: 0.25 + i * 0.18 }}
                     style={{
                       fontFamily: "'JetBrains Mono', monospace",
-                      fontSize: "clamp(12px, 1.1vw, 16px)",
+                      fontSize: "clamp(13px, 1vw, 20px)",
                       color: LIGHT,
                       fontWeight: 600,
                       letterSpacing: "0.05em",
@@ -224,7 +225,7 @@ export default function Slide8() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: 0.85 + i * 0.18 }}
                       style={{
-                        fontSize: "clamp(12px, 1.3vw, 18px)",
+                        fontSize: "clamp(14px, 1.4vw, 24px)",
                         fontWeight: 500,
                         color: LIGHT,
                         flexShrink: 0,
@@ -240,7 +241,7 @@ export default function Slide8() {
 
             <div
               style={{
-                fontSize: "clamp(12px, 1.1vw, 14px)",
+                fontSize: "clamp(13px, 1vw, 18px)",
                 color: `${LIGHT}A6`,
               }}
             >
@@ -318,8 +319,8 @@ export default function Slide8() {
                         style={{
                           display: "inline-block",
                           fontFamily: "'JetBrains Mono', monospace",
-                          fontSize: "clamp(12px, 1.1vw, 14px)",
-                          fontWeight: 600,
+                          fontSize: "clamp(13px, 1vw, 18px)",
+                          fontWeight: 700,
                           letterSpacing: "0.1em",
                           padding: "clamp(4px, 0.6vw, 6px) clamp(10px, 1.2vw, 14px)",
                           borderRadius: 3,
@@ -332,7 +333,7 @@ export default function Slide8() {
                     </div>
                     <div
                       style={{
-                        fontSize: "clamp(18px, 2vw, 26px)",
+                        fontSize: "clamp(20px, 2vw, 32px)",
                         color: LIGHT,
                         fontWeight: 600,
                         lineHeight: 1.3,
@@ -342,7 +343,7 @@ export default function Slide8() {
                     </div>
                     <div
                       style={{
-                        fontSize: "clamp(13px, 1.1vw, 16px)",
+                        fontSize: "clamp(14px, 1.05vw, 19px)",
                         color: `${LIGHT}BF`,
                         lineHeight: 1.5,
                       }}
@@ -363,16 +364,16 @@ export default function Slide8() {
           transition={{ duration: 0.4, delay: 1.0 }}
           style={{
             width: "100%",
-            maxWidth: "min(1100px, 100%)",
+            maxWidth: "min(1200px, 100%)",
             margin: "0 auto",
             textAlign: "center",
-            fontSize: "clamp(14px, 1.4vw, 20px)",
+            fontSize: "clamp(15px, 1.3vw, 24px)",
             color: LIGHT,
             lineHeight: 1.5,
           }}
         >
-          <span style={{ color: MINT, fontWeight: 500 }}>DACH</span> today &nbsp;→&nbsp;{" "}
-          <span style={{ color: MINT, fontWeight: 500 }}>Benelux + Scandinavia</span> next.
+          <span style={{ color: MINT, fontWeight: 700 }}>DACH</span> today &nbsp;→&nbsp;{" "}
+          <span style={{ color: MINT, fontWeight: 700 }}>Benelux + Scandinavia</span> next.
         </motion.div>
       </div>
     </SlideFrame>
