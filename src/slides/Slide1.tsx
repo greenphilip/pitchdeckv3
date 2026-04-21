@@ -204,7 +204,7 @@ export default function Slide1() {
               />
             </span>
             <span>
-              <span style={{ color: MINT, fontWeight: 600, opacity: 1 / 0.55 }}>Glacier</span>
+              <span style={{ color: MINT, fontWeight: 600, opacity: 1 / 0.6 }}>Glacier</span>
               {" • April 2026"}
             </span>
           </div>
