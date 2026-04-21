@@ -72,7 +72,7 @@ export default function Slide9() {
           <span
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(11px, 1vw, 13px)",
+              fontSize: "clamp(12px, 0.9vw, 16px)",
               color: NAVY,
               fontWeight: 700,
               letterSpacing: "0.08em",
@@ -102,7 +102,7 @@ export default function Slide9() {
             transition={{ duration: 0.4, ease: EXPO_OUT, delay: 0.1 }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(12px, 1.1vw, 16px)",
+              fontSize: "clamp(13px, 1vw, 20px)",
               color: MINT,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -119,7 +119,7 @@ export default function Slide9() {
             style={{
               margin: 0,
               marginTop: "clamp(10px, 1.5vh, 20px)",
-              fontSize: "clamp(20px, 3.2vw, 48px)",
+              fontSize: "clamp(22px, 3.4vw, 64px)",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -127,7 +127,9 @@ export default function Slide9() {
               textAlign: "center",
             }}
           >
-            Regulatory depth. Product discipline. Applied AI.
+            <span style={{ color: BLUE }}>Regulatory depth.</span>{" "}
+            <span style={{ color: LIGHT }}>Product discipline.</span>{" "}
+            <span style={{ color: MINT, fontWeight: 700 }}>Applied AI.</span>
           </motion.h1>
         </div>
 
@@ -194,7 +196,7 @@ export default function Slide9() {
               >
                 <div
                   style={{
-                    fontSize: "clamp(16px, 1.7vw, 22px)",
+                    fontSize: "clamp(17px, 1.6vw, 26px)",
                     color: LIGHT,
                     fontWeight: 600,
                     lineHeight: 1.2,
@@ -204,7 +206,7 @@ export default function Slide9() {
                 </div>
                 <div
                   style={{
-                    fontSize: "clamp(13px, 1.3vw, 18px)",
+                    fontSize: "clamp(13px, 1.2vw, 20px)",
                     color: MINT,
                     lineHeight: 1.3,
                   }}
@@ -215,7 +217,7 @@ export default function Slide9() {
 
               <div
                 style={{
-                  fontSize: "clamp(12px, 1.1vw, 15px)",
+                  fontSize: "clamp(13px, 1.05vw, 18px)",
                   color: `${LIGHT}B3`,
                   lineHeight: 1.45,
                   display: "-webkit-box",
@@ -237,10 +239,10 @@ export default function Slide9() {
           transition={{ duration: 0.4, delay: 0.35 + team.length * 0.08 + 0.2 }}
           style={{
             width: "100%",
-            maxWidth: "min(900px, 100%)",
+            maxWidth: "min(1000px, 100%)",
             margin: "0 auto",
             marginTop: "clamp(28px, 4.5vh, 56px)",
-            fontSize: "clamp(14px, 1.5vw, 22px)",
+            fontSize: "clamp(15px, 1.4vw, 26px)",
             fontWeight: 400,
             fontStyle: "italic",
             color: `${LIGHT}CC`,
@@ -258,10 +260,10 @@ export default function Slide9() {
           transition={{ duration: 0.3, delay: 0.35 + team.length * 0.08 + 0.3 }}
           style={{
             width: "100%",
-            maxWidth: "min(1000px, 100%)",
+            maxWidth: "min(1100px, 100%)",
             margin: "0 auto",
             marginTop: "clamp(14px, 2vh, 22px)",
-            fontSize: "clamp(12px, 1.1vw, 15px)",
+            fontSize: "clamp(13px, 1.05vw, 18px)",
             fontStyle: "italic",
             color: `${LIGHT}8C`,
             textAlign: "center",
@@ -271,6 +273,9 @@ export default function Slide9() {
           [Advisors: Big 4 sustainability partner, ex-CFO of a CSRD-mandatory company, etc.]
         </motion.div>
 
+        {/* Spacer above bottom anchor — explicit, not auto */}
+        <div style={{ height: "clamp(28px, 5vh, 80px)", flexShrink: 0 }} />
+
         {/* BOTTOM ANCHOR */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -279,14 +284,13 @@ export default function Slide9() {
           style={{
             width: "100%",
             textAlign: "center",
-            fontSize: "clamp(13px, 1.2vw, 17px)",
+            fontSize: "clamp(14px, 1.15vw, 20px)",
             color: `${LIGHT}B3`,
-            marginTop: "auto",
-            paddingTop: "clamp(24px, 4vh, 48px)",
+            paddingTop: "clamp(8px, 1.5vh, 16px)",
           }}
         >
-          Headcount: <span style={{ color: MINT, fontWeight: 600 }}>[X]</span> today. Hiring{" "}
-          <span style={{ color: MINT, fontWeight: 600 }}>[Y]</span> with this round.
+          Headcount: <span style={{ color: MINT, fontWeight: 700 }}>[X]</span> today. Hiring{" "}
+          <span style={{ color: MINT, fontWeight: 700 }}>[Y]</span> with this round.
         </motion.div>
       </div>
     </SlideFrame>

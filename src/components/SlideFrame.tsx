@@ -111,11 +111,11 @@ export function SlideFrame({ children, variant, slideNumber, totalSlides }: Slid
           aria-hidden
           style={{
             position: "absolute",
-            top: "clamp(16px, 2vw, 28px)",
-            right: "clamp(16px, 2vw, 28px)",
-            zIndex: 0,
+            top: "clamp(20px, 2vw, 36px)",
+            right: "clamp(20px, 2vw, 36px)",
+            zIndex: 2,
             fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "clamp(10px, 0.8vw, 12px)",
+            fontSize: "clamp(12px, 0.9vw, 16px)",
             color: MINT,
             opacity: 0.6,
             letterSpacing: "0.05em",
@@ -133,7 +133,10 @@ export function SlideFrame({ children, variant, slideNumber, totalSlides }: Slid
           flexDirection: "column",
           justifyContent: "flex-start",
           width: "100%",
+          maxWidth: 1700,
           height: "100%",
+          marginLeft: "auto",
+          marginRight: "auto",
         }}
       >
         {children}

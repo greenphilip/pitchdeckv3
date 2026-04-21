@@ -59,9 +59,9 @@ export default function Slide1() {
           <div
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(9px, 0.75vw, 11px)",
+              fontSize: "clamp(13px, 0.95vw, 17px)",
               color: LIGHT,
-              opacity: 0.5,
+              opacity: 0.55,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
             }}
@@ -70,16 +70,17 @@ export default function Slide1() {
           </div>
         </motion.div>
 
+        {/* Spacer above headline — explicit, not auto, to avoid big-screen voids */}
+        <div style={{ height: "clamp(48px, 10vh, 140px)", flexShrink: 0 }} />
+
         {/* Center: headline block */}
         <div
           style={{
-            marginTop: "auto",
-            marginBottom: "auto",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "clamp(16px, 3vh, 36px)",
-            maxWidth: "min(1300px, 92vw)",
+            gap: "clamp(20px, 3.5vh, 44px)",
+            maxWidth: "min(1500px, 92vw)",
             width: "100%",
           }}
         >
@@ -88,7 +89,7 @@ export default function Slide1() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4, ease: EXPO_OUT }}
             style={{
-              fontSize: "clamp(32px, 5.5vw, 76px)",
+              fontSize: "clamp(34px, 5.2vw, 104px)",
               fontWeight: 700,
               letterSpacing: "-0.025em",
               lineHeight: 1.1,
@@ -139,23 +140,26 @@ export default function Slide1() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.0, ease: EXPO_OUT }}
             style={{
-              fontSize: "clamp(15px, 1.6vw, 22px)",
+              fontSize: "clamp(16px, 1.5vw, 28px)",
               fontWeight: 400,
               lineHeight: 1.55,
               color: LIGHT,
-              opacity: 0.7,
+              opacity: 0.75,
               margin: 0,
-              maxWidth: "min(820px, 80vw)",
+              maxWidth: "min(1000px, 85vw)",
             }}
           >
             Glacier helps companies get ESG reporting done —{" "}
-            <span style={{ color: MINT, fontWeight: 500, opacity: 1 / 0.7 }}>faster</span>, with{" "}
-            <span style={{ color: MINT, fontWeight: 500, opacity: 1 / 0.7 }}>
+            <span style={{ color: MINT, fontWeight: 600, opacity: 1 / 0.75 }}>faster</span>, with{" "}
+            <span style={{ color: MINT, fontWeight: 700, opacity: 1 / 0.75 }}>
               quality they can defend
             </span>
             .
           </motion.p>
         </div>
+
+        {/* Spacer below headline — explicit, not auto */}
+        <div style={{ height: "clamp(48px, 8vh, 120px)", flexShrink: 0 }} />
 
         {/* Bottom anchor: meta with status dot */}
         <motion.div
@@ -164,9 +168,9 @@ export default function Slide1() {
           transition={{ duration: 0.4, delay: 1.5, ease: EXPO_OUT }}
           style={{
             fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "clamp(11px, 1vw, 14px)",
+            fontSize: "clamp(13px, 1vw, 18px)",
             color: LIGHT,
-            opacity: 0.55,
+            opacity: 0.6,
             letterSpacing: "0.02em",
             display: "flex",
             flexDirection: isMobile ? "column" : "row",
@@ -200,7 +204,7 @@ export default function Slide1() {
               />
             </span>
             <span>
-              <span style={{ color: MINT, fontWeight: 600, opacity: 1 / 0.55 }}>Glacier</span>
+              <span style={{ color: MINT, fontWeight: 600, opacity: 1 / 0.6 }}>Glacier</span>
               {" • April 2026"}
             </span>
           </div>

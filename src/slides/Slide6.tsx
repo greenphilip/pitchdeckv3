@@ -75,7 +75,7 @@ export default function Slide6() {
             transition={{ duration: 0.4, ease: EXPO_OUT }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(12px, 1.1vw, 16px)",
+              fontSize: "clamp(13px, 1vw, 20px)",
               color: MINT,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -92,7 +92,7 @@ export default function Slide6() {
             style={{
               margin: 0,
               marginTop: "clamp(10px, 1.5vh, 20px)",
-              fontSize: "clamp(20px, 3vw, 44px)",
+              fontSize: "clamp(22px, 3vw, 56px)",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -100,8 +100,8 @@ export default function Slide6() {
               textAlign: "center",
             }}
           >
-            <span style={{ color: MINT }}>7.5×</span> ARR growth. Burn down{" "}
-            <span style={{ color: MINT }}>48%</span>. Closed with the companies{" "}
+            <span style={{ color: MINT, fontWeight: 700 }}>7.5×</span> ARR growth. Burn down{" "}
+            <span style={{ color: MINT, fontWeight: 700 }}>48%</span>. Closed with the companies{" "}
             <span style={{ color: MINT, fontWeight: 700 }}>hardest to close</span>.
           </motion.h1>
         </div>
@@ -148,7 +148,7 @@ export default function Slide6() {
                   gap: "clamp(12px, 2vw, 24px)",
                   flexWrap: "wrap",
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "clamp(12px, 1.1vw, 14px)",
+                  fontSize: "clamp(13px, 1vw, 18px)",
                   color: `${LIGHT}B3`,
                 }}
               >
@@ -182,7 +182,7 @@ export default function Slide6() {
                   padding: "clamp(8px, 1.2vw, 14px)",
                   borderRadius: 4,
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "clamp(12px, 1.1vw, 14px)",
+                  fontSize: "clamp(13px, 1vw, 18px)",
                   color: MINT,
                   fontWeight: 600,
                   letterSpacing: "0.05em",
@@ -307,7 +307,7 @@ export default function Slide6() {
               >
                 <div
                   style={{
-                    fontSize: "clamp(28px, 4vw, 56px)",
+                    fontSize: "clamp(32px, 4vw, 72px)",
                     color: s.emphasis ? MINT : LIGHT,
                     fontWeight: 700,
                     letterSpacing: "-0.02em",
@@ -319,7 +319,7 @@ export default function Slide6() {
                 <div
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "clamp(12px, 1.1vw, 16px)",
+                    fontSize: "clamp(13px, 1vw, 18px)",
                     color: `${LIGHT}B3`,
                     fontWeight: 600,
                     letterSpacing: "0.08em",
@@ -352,7 +352,7 @@ export default function Slide6() {
             <div
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(12px, 1.1vw, 14px)",
+                fontSize: "clamp(13px, 1vw, 18px)",
                 color: MINT,
                 fontWeight: 600,
                 letterSpacing: "0.1em",
@@ -362,7 +362,7 @@ export default function Slide6() {
             </div>
             <div
               style={{
-                fontSize: "clamp(13px, 1.1vw, 16px)",
+                fontSize: "clamp(14px, 1.05vw, 19px)",
                 color: `${LIGHT}D9`,
                 lineHeight: 1.5,
               }}
@@ -398,7 +398,7 @@ export default function Slide6() {
               transition={{ duration: 0.4, delay: 1.0 }}
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(12px, 1.1vw, 16px)",
+                fontSize: "clamp(13px, 1vw, 20px)",
                 color: MINT,
                 fontWeight: 600,
                 textTransform: "uppercase",
@@ -412,7 +412,7 @@ export default function Slide6() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 1.08 }}
               style={{
-                fontSize: "clamp(13px, 1.2vw, 16px)",
+                fontSize: "clamp(14px, 1.1vw, 20px)",
                 color: `${LIGHT}B3`,
               }}
             >
@@ -467,7 +467,7 @@ export default function Slide6() {
             transition={{ duration: 0.4, delay: 1.6 }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(11px, 1vw, 13px)",
+              fontSize: "clamp(12px, 0.85vw, 17px)",
               color: `${LIGHT}66`,
               textAlign: "center",
               letterSpacing: "0.02em",

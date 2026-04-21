@@ -35,7 +35,7 @@ export default function Slide2() {
   const isMobile = useIsMobile();
 
   const itemTextStyle: React.CSSProperties = {
-    fontSize: "clamp(12px, 1.3vw, 18px)",
+    fontSize: "clamp(13px, 1.25vw, 22px)",
     fontWeight: 500,
     color: LIGHT,
     lineHeight: 1.3,
@@ -43,7 +43,7 @@ export default function Slide2() {
 
   const columnLabelStyle: React.CSSProperties = {
     fontFamily: "'JetBrains Mono', monospace",
-    fontSize: "clamp(11px, 1.2vw, 14px)",
+    fontSize: "clamp(13px, 1vw, 20px)",
     fontWeight: 700,
     textTransform: "uppercase",
     letterSpacing: "0.1em",
@@ -83,8 +83,9 @@ export default function Slide2() {
           transition={{ duration: 0.4, ease: EXPO_OUT }}
           style={{
             fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "clamp(10px, 1vw, 12px)",
+            fontSize: "clamp(13px, 1vw, 20px)",
             color: MINT,
+            fontWeight: 600,
             textTransform: "uppercase",
             letterSpacing: "0.12em",
             textAlign: "center",
@@ -100,13 +101,13 @@ export default function Slide2() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: EXPO_OUT }}
           style={{
-            fontSize: "clamp(22px, 3.5vw, 52px)",
+            fontSize: "clamp(26px, 3.8vw, 64px)",
             fontWeight: 700,
             letterSpacing: "-0.02em",
             lineHeight: 1.15,
             color: LIGHT,
             margin: 0,
-            maxWidth: "min(1200px, 92vw)",
+            maxWidth: "min(1400px, 92vw)",
             textAlign: "center",
           }}
         >
@@ -306,7 +307,7 @@ export default function Slide2() {
             <div
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(10px, 1vw, 12px)",
+                fontSize: "clamp(13px, 1vw, 18px)",
                 fontWeight: 600,
                 color: MINT,
                 textTransform: "uppercase",
@@ -425,7 +426,7 @@ export default function Slide2() {
           <div
             style={{
               fontFamily: "'Fraunces', Georgia, serif",
-              fontSize: "clamp(17px, 2.1vw, 30px)",
+              fontSize: "clamp(18px, 2.1vw, 36px)",
               fontWeight: 400,
               fontStyle: "italic",
               color: LIGHT,
