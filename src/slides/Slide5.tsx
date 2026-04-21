@@ -57,7 +57,7 @@ export default function Slide5() {
             transition={{ duration: 0.4, ease: EXPO_OUT }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(12px, 1.1vw, 16px)",
+              fontSize: "clamp(13px, 1vw, 20px)",
               color: MINT,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -74,7 +74,7 @@ export default function Slide5() {
             style={{
               margin: 0,
               marginTop: "clamp(10px, 1.5vh, 20px)",
-              fontSize: "clamp(24px, 4vw, 52px)",
+              fontSize: "clamp(26px, 3.8vw, 64px)",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -91,14 +91,14 @@ export default function Slide5() {
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.16 }}
             style={{
               margin: "clamp(12px, 2vh, 20px) auto 0",
-              maxWidth: "1000px",
-              fontSize: "clamp(14px, 1.4vw, 20px)",
+              maxWidth: "1100px",
+              fontSize: "clamp(15px, 1.3vw, 24px)",
               color: `${LIGHT}B3`,
               lineHeight: 1.5,
               textAlign: "center",
             }}
           >
-            We started with the hardest standard. Every framework after is faster.
+            We started with the <span style={{ color: MINT, fontWeight: 700 }}>hardest standard</span>. Every framework after is faster.
           </motion.p>
         </div>
 
@@ -127,7 +127,7 @@ export default function Slide5() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: 0.25 + i * 0.18 }}
                     style={{
-                      fontSize: "clamp(13px, 1.3vw, 18px)",
+                      fontSize: "clamp(14px, 1.25vw, 22px)",
                       color: `${LIGHT}CC`,
                       fontWeight: 500,
                     }}
@@ -177,11 +177,11 @@ export default function Slide5() {
                         delay: 0.35 + i * 0.18 + (0.5 - i * 0.1),
                       }}
                       style={{
-                        fontSize: "clamp(18px, 2.2vw, 28px)",
+                        fontSize: "clamp(20px, 2.2vw, 36px)",
                         fontWeight: b.emphasis ? 700 : 600,
                         color: b.color,
                         whiteSpace: "nowrap",
-                        minWidth: "clamp(80px, 10vw, 140px)",
+                        minWidth: "clamp(80px, 10vw, 160px)",
                       }}
                     >
                       {b.rightLabel}
@@ -194,7 +194,7 @@ export default function Slide5() {
             <div style={{ display: "flex", flexDirection: "column", gap: "clamp(6px, 1vh, 10px)" }}>
               <div
                 style={{
-                  fontSize: "clamp(12px, 1.1vw, 14px)",
+                  fontSize: "clamp(13px, 1.05vw, 18px)",
                   color: `${LIGHT}99`,
                 }}
               >
@@ -203,7 +203,7 @@ export default function Slide5() {
               <div
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "clamp(11px, 1vw, 13px)",
+                  fontSize: "clamp(12px, 0.85vw, 17px)",
                   color: `${LIGHT}80`,
                   letterSpacing: "0.02em",
                 }}
@@ -232,7 +232,7 @@ export default function Slide5() {
             <div
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(12px, 1.1vw, 16px)",
+                fontSize: "clamp(13px, 1vw, 20px)",
                 color: MINT,
                 fontWeight: 600,
                 textTransform: "uppercase",
@@ -244,7 +244,7 @@ export default function Slide5() {
 
             <div
               style={{
-                fontSize: "clamp(18px, 2vw, 26px)",
+                fontSize: "clamp(20px, 2vw, 32px)",
                 color: LIGHT,
                 fontWeight: 600,
                 lineHeight: 1.3,
@@ -255,7 +255,7 @@ export default function Slide5() {
 
             <div
               style={{
-                fontSize: "clamp(13px, 1.1vw, 16px)",
+                fontSize: "clamp(14px, 1.05vw, 19px)",
                 color: `${LIGHT}D9`,
                 lineHeight: 1.5,
               }}
@@ -271,7 +271,7 @@ export default function Slide5() {
                 paddingTop: "clamp(10px, 1.5vh, 16px)",
                 borderTop: `1px solid ${MINT}33`,
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(11px, 1vw, 13px)",
+                fontSize: "clamp(12px, 0.85vw, 17px)",
                 color: `${MINT}CC`,
                 letterSpacing: "0.08em",
               }}
@@ -288,15 +288,15 @@ export default function Slide5() {
           transition={{ duration: 0.4, delay: 1.1 }}
           style={{
             width: "100%",
-            maxWidth: "min(1100px, 100%)",
+            maxWidth: "min(1200px, 100%)",
             margin: "0 auto",
             textAlign: "center",
-            fontSize: "clamp(14px, 1.4vw, 20px)",
+            fontSize: "clamp(15px, 1.3vw, 24px)",
             color: LIGHT,
             lineHeight: 1.5,
           }}
         >
-          <span style={{ color: MINT, fontWeight: 600 }}>Client Knowledge Profile (CKP)</span>{" "}
+          <span style={{ color: MINT, fontWeight: 700 }}>Client Knowledge Profile (CKP)</span>{" "}
           — each report makes the next one faster. Customers who use us more get more value.
         </motion.div>
       </div>

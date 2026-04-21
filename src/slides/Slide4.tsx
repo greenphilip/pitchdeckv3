@@ -82,7 +82,7 @@ export default function Slide4() {
             transition={{ duration: 0.4, ease: EXPO_OUT }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(12px, 1.1vw, 16px)",
+              fontSize: "clamp(13px, 1vw, 20px)",
               color: MINT,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -99,7 +99,7 @@ export default function Slide4() {
             style={{
               margin: 0,
               marginTop: "clamp(10px, 1.5vh, 20px)",
-              fontSize: "clamp(24px, 4vw, 52px)",
+              fontSize: "clamp(26px, 3.8vw, 64px)",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -116,15 +116,15 @@ export default function Slide4() {
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.16 }}
             style={{
               margin: "clamp(12px, 2vh, 20px) auto 0",
-              maxWidth: "1000px",
-              fontSize: "clamp(14px, 1.4vw, 20px)",
+              maxWidth: "1100px",
+              fontSize: "clamp(15px, 1.3vw, 24px)",
               color: `${LIGHT}B3`,
               lineHeight: 1.5,
               textAlign: "center",
             }}
           >
             In an age of AI hallucination,{" "}
-            <span style={{ color: MINT, fontWeight: 500 }}>can't afford to be wrong</span>{" "}
+            <span style={{ color: MINT, fontWeight: 700 }}>can't afford to be wrong</span>{" "}
             customers choose us. Here's why.
           </motion.p>
         </div>
@@ -165,7 +165,7 @@ export default function Slide4() {
                 transition={{ duration: 0.3, delay: 0.25 + i * 0.08 + 0.05 }}
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "clamp(12px, 1.1vw, 14px)",
+                  fontSize: "clamp(13px, 1vw, 20px)",
                   color: MINT,
                   fontWeight: 600,
                   letterSpacing: "0.1em",
@@ -208,7 +208,7 @@ export default function Slide4() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.25 + i * 0.08 + 0.29 }}
                 style={{
-                  fontSize: "clamp(13px, 1.1vw, 16px)",
+                  fontSize: "clamp(14px, 1.05vw, 19px)",
                   color: `${LIGHT}CC`,
                   lineHeight: 1.5,
                 }}
@@ -228,8 +228,8 @@ export default function Slide4() {
             width: "100%",
             textAlign: "center",
             fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "clamp(13px, 1.3vw, 18px)",
-            fontWeight: 500,
+            fontSize: "clamp(13px, 1.1vw, 20px)",
+            fontWeight: 600,
             color: `${MINT}CC`,
             letterSpacing: "0.08em",
           }}
