@@ -41,7 +41,7 @@ function Column({
         transition={{ duration: 0.3, ease: EXPO_OUT, delay: baseDelay }}
         style={{
           fontFamily: "'JetBrains Mono', monospace",
-          fontSize: "clamp(12px, 1.1vw, 16px)",
+          fontSize: "clamp(13px, 1vw, 20px)",
           color: MINT,
           fontWeight: 600,
           textTransform: "uppercase",
@@ -70,8 +70,8 @@ function Column({
           >
             <r.Icon
               style={{
-                width: "clamp(18px, 1.9vw, 22px)",
-                height: "clamp(18px, 1.9vw, 22px)",
+                width: "clamp(20px, 1.7vw, 28px)",
+                height: "clamp(20px, 1.7vw, 28px)",
                 color: MINT,
                 flexShrink: 0,
                 marginTop: "0.2em",
@@ -80,7 +80,7 @@ function Column({
             />
             <span
               style={{
-                fontSize: "clamp(14px, 1.5vw, 20px)",
+                fontSize: "clamp(15px, 1.4vw, 24px)",
                 color: LIGHT,
                 fontWeight: 500,
                 lineHeight: 1.4,
@@ -119,7 +119,7 @@ export default function Slide10() {
           transition={{ duration: 0.3 }}
           style={{
             fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "clamp(12px, 1.1vw, 16px)",
+            fontSize: "clamp(13px, 1vw, 20px)",
             color: MINT,
             fontWeight: 600,
             textTransform: "uppercase",
@@ -147,22 +147,22 @@ export default function Slide10() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EXPO_OUT, delay: 0.2 }}
             style={{
-              fontSize: "clamp(32px, 5.5vw, 80px)",
+              fontSize: "clamp(34px, 5.2vw, 104px)",
               fontWeight: 700,
               letterSpacing: "-0.02em",
               color: LIGHT,
               lineHeight: 1.1,
             }}
           >
-            <span style={{ color: MINT }}>€300k</span> unlocks{" "}
-            <span style={{ color: MINT }}>€750k</span>.
+            <span style={{ color: MINT, fontWeight: 700 }}>€300k</span> unlocks{" "}
+            <span style={{ color: MINT, fontWeight: 700 }}>€750k</span>.
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EXPO_OUT, delay: 0.35 }}
             style={{
-              fontSize: "clamp(32px, 5.5vw, 80px)",
+              fontSize: "clamp(28px, 4vw, 80px)",
               fontWeight: 700,
               letterSpacing: "-0.02em",
               color: LIGHT,
@@ -170,7 +170,7 @@ export default function Slide10() {
             }}
           >
             Twelve months to a Series A on{" "}
-            <span style={{ color: MINT }}>€2.4M ARR</span>.
+            <span style={{ color: MINT, fontWeight: 700 }}>€2.4M ARR</span>.
           </motion.div>
         </div>
 
@@ -200,10 +200,10 @@ export default function Slide10() {
           transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.3 }}
           style={{
             width: "100%",
-            maxWidth: "min(1100px, 100%)",
+            maxWidth: "min(1200px, 100%)",
             margin: "0 auto",
             marginTop: "clamp(28px, 4.5vh, 56px)",
-            fontSize: "clamp(14px, 1.7vw, 24px)",
+            fontSize: "clamp(15px, 1.6vw, 28px)",
             fontWeight: 400,
             fontStyle: "italic",
             color: `${MINT}E6`,
@@ -211,9 +211,15 @@ export default function Slide10() {
             lineHeight: 1.4,
           }}
         >
-          We're building for the customers who can't afford to be wrong. Come underwrite the
-          companies who close hardest.
+          We're building for the customers who{" "}
+          <span style={{ color: MINT, fontWeight: 700, fontStyle: "italic" }}>
+            can't afford to be wrong
+          </span>
+          . Come underwrite the companies who close hardest.
         </motion.div>
+
+        {/* Spacer above bottom placeholder — explicit, not auto */}
+        <div style={{ height: "clamp(20px, 4vh, 60px)", flexShrink: 0 }} />
 
         {/* BOTTOM PLACEHOLDER */}
         <motion.div
@@ -222,10 +228,9 @@ export default function Slide10() {
           transition={{ duration: 0.2, delay: 1.7 }}
           style={{
             width: "100%",
-            marginTop: "auto",
-            paddingTop: "clamp(20px, 3vh, 40px)",
+            paddingTop: "clamp(8px, 1.5vh, 16px)",
             fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "clamp(12px, 1.1vw, 14px)",
+            fontSize: "clamp(12px, 0.9vw, 17px)",
             color: `${LIGHT}80`,
             textAlign: "center",
             letterSpacing: "0.02em",
