@@ -150,8 +150,8 @@ export default function Slide1() {
             }}
           >
             Glacier helps companies get ESG reporting done —{" "}
-            <span style={{ color: MINT, fontWeight: 500, opacity: 1 / 0.7 }}>faster</span>, with{" "}
-            <span style={{ color: MINT, fontWeight: 500, opacity: 1 / 0.7 }}>
+            <span style={{ color: MINT, fontWeight: 600, opacity: 1 / 0.75 }}>faster</span>, with{" "}
+            <span style={{ color: MINT, fontWeight: 700, opacity: 1 / 0.75 }}>
               quality they can defend
             </span>
             .
