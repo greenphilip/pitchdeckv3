@@ -64,8 +64,9 @@ export default function Slide3() {
             transition={{ duration: 0.4, ease: EXPO_OUT }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(10px, 1vw, 12px)",
+              fontSize: "clamp(13px, 1vw, 20px)",
               color: MINT,
+              fontWeight: 600,
               textTransform: "uppercase",
               letterSpacing: "0.12em",
               textAlign: "center",
@@ -81,7 +82,7 @@ export default function Slide3() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.08, ease: EXPO_OUT }}
             style={{
-              fontSize: "clamp(24px, 4vw, 52px)",
+              fontSize: "clamp(26px, 3.8vw, 64px)",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.02em",
@@ -100,11 +101,11 @@ export default function Slide3() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.16, ease: EXPO_OUT }}
             style={{
-              fontSize: "clamp(13px, 1.4vw, 18px)",
+              fontSize: "clamp(15px, 1.3vw, 24px)",
               color: LIGHT,
               opacity: 0.7,
               lineHeight: 1.5,
-              maxWidth: 900,
+              maxWidth: 1000,
               margin: "0 auto",
               textAlign: "center",
             }}
@@ -152,7 +153,7 @@ export default function Slide3() {
                   transition={{ duration: 0.3, delay: cardDelay + 0.08, ease: EXPO_OUT }}
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "clamp(12px, 1.1vw, 16px)",
+                    fontSize: "clamp(13px, 1vw, 20px)",
                     fontWeight: 600,
                     color: MINT,
                     textTransform: "uppercase",
@@ -190,7 +191,7 @@ export default function Slide3() {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3, delay: cardDelay + 0.32, ease: EXPO_OUT }}
                   style={{
-                    fontSize: "clamp(12px, 1.1vw, 14px)",
+                    fontSize: "clamp(14px, 1.05vw, 19px)",
                     color: LIGHT,
                     opacity: 0.8,
                     lineHeight: 1.5,
@@ -207,9 +208,9 @@ export default function Slide3() {
                   transition={{ duration: 0.3, delay: cardDelay + 0.4, ease: EXPO_OUT }}
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "clamp(10px, 0.9vw, 11px)",
+                    fontSize: "clamp(12px, 0.85vw, 17px)",
                     color: BLUE,
-                    opacity: 0.7,
+                    opacity: 0.75,
                     letterSpacing: "0.04em",
                     paddingTop: "clamp(14px, 2vh, 22px)",
                     borderTop: `1px solid ${BLUE}26`,
@@ -258,22 +259,22 @@ export default function Slide3() {
           >
             <div
               style={{
-                fontSize: "clamp(16px, 2.2vw, 26px)",
+                fontSize: "clamp(18px, 2.2vw, 32px)",
                 color: LIGHT,
                 fontWeight: 500,
                 lineHeight: 1.3,
                 letterSpacing: "-0.015em",
-                maxWidth: "min(1200px, 100%)",
+                maxWidth: "min(1300px, 100%)",
               }}
             >
               Customers don't need more tools. They need their work done —{" "}
-              <span style={{ color: MINT, fontWeight: 600 }}>faster</span>, without losing{" "}
-              <span style={{ color: MINT, fontWeight: 600 }}>quality</span>.
+              <span style={{ color: MINT, fontWeight: 700 }}>faster</span>, without losing{" "}
+              <span style={{ color: MINT, fontWeight: 700 }}>quality</span>.
             </div>
             <div
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(10px, 0.9vw, 11px)",
+                fontSize: "clamp(12px, 0.85vw, 17px)",
                 color: MINT,
                 fontWeight: 600,
                 letterSpacing: "0.1em",
