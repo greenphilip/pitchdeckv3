@@ -189,7 +189,7 @@ export default function Slide6() {
                   whiteSpace: "nowrap",
                 }}
               >
-                ARR ↑ 7.5×&nbsp;&nbsp;|&nbsp;&nbsp;BURN ↓ 48%
+                ARR ↑ 7.5×&nbsp;&nbsp;|&nbsp;&nbsp;<span style={{ color: BLUE }}>BURN ↓ 48%</span>
               </div>
             </div>
 
