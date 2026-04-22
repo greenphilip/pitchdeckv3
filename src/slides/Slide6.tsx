@@ -57,6 +57,7 @@ const logos = [
   { src: andritzLogo, alt: "Andritz" },
   { src: lenzingLogo, alt: "Lenzing" },
   { src: voeslauerLogo, alt: "Vöslauer" },
+  { src: rlbOoeLogo, alt: "RLB Oberösterreich" },
 ];
 
 export default function Slide6() {
