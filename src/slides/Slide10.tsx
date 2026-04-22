@@ -105,7 +105,7 @@ export default function Slide10() {
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "flex-start",
+          justifyContent: "center",
           alignItems: "center",
           width: "100%",
           gap: "clamp(20px, 3vh, 36px)",
