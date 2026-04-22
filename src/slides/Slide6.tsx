@@ -21,6 +21,7 @@ import fraportLogo from "@/assets/logos/fraport.svg";
 import andritzLogo from "@/assets/logos/andritz.svg";
 import ottoGroupLogo from "@/assets/logos/otto-group.svg";
 import knaufLogo from "@/assets/logos/knauf.svg";
+import rlbOoeLogo from "@/assets/logos/rlb-ooe.svg";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
