@@ -226,7 +226,7 @@ export default function Slide9() {
             lineHeight: 1.4,
           }}
         >
-          The combination is rare. The product is how it shows up.
+          {" "}
         </motion.div>
 
         {/* Spacer above bottom anchor — explicit, not auto */}
@@ -245,8 +245,8 @@ export default function Slide9() {
             paddingTop: "clamp(8px, 1.5vh, 16px)",
           }}
         >
-          Headcount: <span style={{ color: MINT, fontWeight: 700 }}>[X]</span> today. Hiring{" "}
-          <span style={{ color: MINT, fontWeight: 700 }}>[Y]</span> with this round.
+          Headcount: <span style={{ color: MINT, fontWeight: 700 }}>15</span> today. Hiring{" "}
+          <span style={{ color: MINT, fontWeight: 700 }}>4-5</span> with this round.
         </motion.div>
       </div>
     </SlideFrame>
