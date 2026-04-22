@@ -315,7 +315,7 @@ export default function Slide2() {
                 textTransform: "uppercase",
                 letterSpacing: "0.12em",
                 textAlign: "center",
-                whiteSpace: "nowrap",
+                whiteSpace: "pre-line",
               }}
             >
               COMPANIES<br />OF ALL SIZES
