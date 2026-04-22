@@ -282,6 +282,7 @@ export default function Slide6() {
                     }}
                     isAnimationActive
                     animationDuration={700}
+                    maxBarSize={80}
                   >
                     {chartData.map((d, i) => (
                       <Cell key={d.year} fill={i === 0 ? TEAL : MINT} />
