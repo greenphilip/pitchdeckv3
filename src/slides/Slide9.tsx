@@ -17,24 +17,29 @@ interface Member {
 
 const team: Member[] = [
   {
-    name: "[Founder Name]",
-    title: "[Title]",
-    background: "[Background — e.g., ex-Workiva PM + ESG regulation specialist]",
+    name: "Rainhard Fuchs",
+    title: "CEO & Founder",
+    background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
   },
   {
-    name: "[Founder Name]",
-    title: "[Title]",
-    background: "[Background — e.g., ex-Big 4 sustainability lead, CSRD practitioner]",
+    name: "Philip",
+    title: "VP of AI & ESG",
+    background: "20 years sustainability and strategy consulting. Built 3 ESG SaaS data science tools. INSEAD MBA.",
   },
   {
-    name: "[Founder Name]",
-    title: "[Title]",
-    background: "[Background — e.g., applied AI engineer, ex-research lab, NLP at scale]",
+    name: "David Anders",
+    title: "Head of ESG Delivery",
+    background: "Previously PWC; Head of ESG at Burgenland Energie; ÖAMTC.",
   },
   {
-    name: "[Founder Name]",
-    title: "[Title]",
-    background: "[Background — e.g., enterprise GTM, scaled SaaS from seed to Series B]",
+    name: "Kishan Chimminiyan",
+    title: "CTO & Head of Engineering",
+    background: "Technical leadership across multiple AI ventures.",
+  },
+  {
+    name: "Nina Aichinger",
+    title: "Head of People",
+    background: "Previously Head of HR at Bitpanda and Shpock.",
   },
 ];
 
@@ -54,35 +59,6 @@ export default function Slide9() {
           gap: "clamp(20px, 3vh, 32px)",
         }}
       >
-        {/* PLACEHOLDER BANNER */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2 }}
-          style={{
-            width: "100%",
-            background: `${MINT}99`,
-            padding: "clamp(4px, 0.6vh, 8px) clamp(12px, 2vw, 24px)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: 2,
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(12px, 0.9vw, 16px)",
-              color: NAVY,
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              textAlign: "center",
-            }}
-          >
-            // PLACEHOLDER — REPLACE WITH REAL TEAM BEFORE SHARING
-          </span>
-        </motion.div>
-
         {/* HEADER */}
         <div
           style={{
@@ -137,14 +113,14 @@ export default function Slide9() {
         <div
           style={{
             width: "100%",
-            maxWidth: "min(1200px, 100%)",
+            maxWidth: "min(1400px, 100%)",
             margin: "0 auto",
             marginTop: "clamp(36px, 6vh, 80px)",
             display: "grid",
             gridTemplateColumns: isMobile
               ? "repeat(2, minmax(0, 1fr))"
-              : "repeat(4, minmax(0, 1fr))",
-            gap: isMobile ? "clamp(20px, 3vw, 32px)" : "clamp(28px, 3.5vw, 56px)",
+              : "repeat(5, minmax(0, 1fr))",
+            gap: isMobile ? "clamp(20px, 3vw, 32px)" : "clamp(20px, 2.4vw, 40px)",
             maxHeight: isMobile ? "55vh" : undefined,
             overflowY: isMobile ? "auto" : undefined,
           }}
@@ -166,8 +142,8 @@ export default function Slide9() {
               {/* Avatar */}
               <div
                 style={{
-                  width: "clamp(88px, 10.5vw, 148px)",
-                  height: "clamp(88px, 10.5vw, 148px)",
+                  width: "clamp(72px, 7.5vw, 110px)",
+                  height: "clamp(72px, 7.5vw, 110px)",
                   borderRadius: "50%",
                   background: `${BLUE}40`,
                   display: "flex",
@@ -196,7 +172,7 @@ export default function Slide9() {
               >
                 <div
                   style={{
-                    fontSize: "clamp(17px, 1.6vw, 26px)",
+                    fontSize: "clamp(15px, 1.35vw, 22px)",
                     color: LIGHT,
                     fontWeight: 600,
                     lineHeight: 1.2,
@@ -206,7 +182,7 @@ export default function Slide9() {
                 </div>
                 <div
                   style={{
-                    fontSize: "clamp(13px, 1.2vw, 20px)",
+                    fontSize: "clamp(12px, 1vw, 17px)",
                     color: MINT,
                     lineHeight: 1.3,
                   }}
@@ -251,26 +227,6 @@ export default function Slide9() {
           }}
         >
           The combination is rare. The product is how it shows up.
-        </motion.div>
-
-        {/* ADVISORS LINE */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.35 + team.length * 0.08 + 0.3 }}
-          style={{
-            width: "100%",
-            maxWidth: "min(1100px, 100%)",
-            margin: "0 auto",
-            marginTop: "clamp(14px, 2vh, 22px)",
-            fontSize: "clamp(13px, 1.05vw, 18px)",
-            fontStyle: "italic",
-            color: `${LIGHT}8C`,
-            textAlign: "center",
-            lineHeight: 1.4,
-          }}
-        >
-          [Advisors: Big 4 sustainability partner, ex-CFO of a CSRD-mandatory company, etc.]
         </motion.div>
 
         {/* Spacer above bottom anchor — explicit, not auto */}
