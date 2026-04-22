@@ -404,15 +404,16 @@ export default function Slide6() {
           </motion.div>
         </div>
 
-        {/* RIGHT COLUMN — TRUSTED BY + 3x3 logo grid */}
+        {/* RIGHT COLUMN — TRUSTED BY + 5×2 logo grid (10 logos, vertically distributed) */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
+            justifyContent: "flex-start",
+            alignItems: "stretch",
             gap: "clamp(20px, 3vh, 32px)",
             minWidth: 0,
+            minHeight: 0,
           }}
         >
           <div
