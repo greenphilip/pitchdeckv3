@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Building2 } from "lucide-react";
 import {
   Bar,
   CartesianGrid,
@@ -12,6 +11,16 @@ import {
 } from "recharts";
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import voeslauerLogo from "@/assets/logos/voeslauer.svg";
+import lenzingLogo from "@/assets/logos/lenzing.svg";
+import stihlLogo from "@/assets/logos/stihl.svg";
+import wuerthLogo from "@/assets/logos/wuerth.svg";
+import mannerLogo from "@/assets/logos/manner.svg";
+import deutscheTelekomLogo from "@/assets/logos/deutsche-telekom.svg";
+import fraportLogo from "@/assets/logos/fraport.svg";
+import andritzLogo from "@/assets/logos/andritz.svg";
+import ottoGroupLogo from "@/assets/logos/otto-group.svg";
+import knaufLogo from "@/assets/logos/knauf.svg";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
@@ -37,8 +46,18 @@ const stats: Stat[] = [
   { number: "−48%", label: "CASH BURN YoY", emphasis: true },
 ];
 
-// 6 placeholder logo slots — founder swaps in real logos.
-const logoSlots = Array.from({ length: 6 }, (_, i) => ({ id: i }));
+const logos = [
+  { src: deutscheTelekomLogo, alt: "Deutsche Telekom" },
+  { src: ottoGroupLogo, alt: "Otto Group" },
+  { src: stihlLogo, alt: "STIHL" },
+  { src: wuerthLogo, alt: "Würth" },
+  { src: fraportLogo, alt: "Fraport" },
+  { src: knaufLogo, alt: "Knauf" },
+  { src: andritzLogo, alt: "Andritz" },
+  { src: lenzingLogo, alt: "Lenzing" },
+  { src: voeslauerLogo, alt: "Vöslauer" },
+  { src: mannerLogo, alt: "Manner" },
+];
 
 export default function Slide6() {
   const isMobile = useIsMobile();
@@ -429,55 +448,43 @@ export default function Slide6() {
               margin: "0 auto",
               display: "grid",
               gridTemplateColumns: isMobile
-                ? "repeat(auto-fit, minmax(110px, 1fr))"
-                : "repeat(auto-fit, minmax(160px, 1fr))",
-              gap: isMobile ? "clamp(18px, 3vw, 28px)" : "clamp(24px, 3vw, 56px)",
+                ? "repeat(2, minmax(0, 1fr))"
+                : "repeat(5, minmax(0, 1fr))",
+              gap: isMobile ? "clamp(18px, 3vw, 28px)" : "clamp(24px, 3vw, 48px)",
               alignItems: "center",
               justifyItems: "center",
             }}
           >
-            {logoSlots.map((slot, i) => (
+            {logos.map((logo, i) => (
               <motion.div
-                key={slot.id}
+                key={logo.alt}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: EXPO_OUT, delay: 1.2 + i * 0.06 }}
-                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3, ease: EXPO_OUT, delay: 1.2 + i * 0.05 }}
+                whileHover={{ scale: 1.04, opacity: 1 }}
                 style={{
-                  height: isMobile ? "clamp(44px, 5.5vh, 64px)" : "clamp(56px, 7vh, 84px)",
+                  height: isMobile ? "clamp(36px, 5vh, 52px)" : "clamp(48px, 6.5vh, 72px)",
+                  width: "100%",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   cursor: "default",
                 }}
               >
-                <Building2
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
                   style={{
-                    width: "clamp(36px, 4.5vw, 60px)",
-                    height: "clamp(36px, 4.5vw, 60px)",
-                    color: `${LIGHT}B3`,
+                    maxHeight: "100%",
+                    maxWidth: "100%",
+                    objectFit: "contain",
+                    filter: "brightness(0) invert(1)",
+                    opacity: 0.75,
                   }}
-                  strokeWidth={1.5}
                 />
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 1.6 }}
-            style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(12px, 0.85vw, 17px)",
-              color: `${LIGHT}66`,
-              textAlign: "center",
-              letterSpacing: "0.02em",
-            }}
-          >
-            // LOGO SLOTS — Replace with 3-8 recognizable enterprise customer logos. Monochrome
-            Light Gray preferred.
-          </motion.div>
         </div>
       </div>
     </SlideFrame>
