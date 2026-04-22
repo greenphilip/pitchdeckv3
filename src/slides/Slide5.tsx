@@ -198,7 +198,6 @@ export default function Slide5() {
                   color: `${LIGHT}99`,
                 }}
               >
-                Measured across customers using multiple frameworks on Glacier.
               </div>
               <div
                 style={{
@@ -208,8 +207,6 @@ export default function Slide5() {
                   letterSpacing: "0.02em",
                 }}
               >
-                {/* placeholder for named customer example */}
-                // ADD: named customer example if available
               </div>
             </div>
           </div>
