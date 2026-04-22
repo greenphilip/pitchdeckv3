@@ -89,9 +89,10 @@ export default function Slide3() {
               lineHeight: 1.15,
               margin: 0,
               textAlign: "center",
+              whiteSpace: "pre-line",
             }}
           >
-            The tools they have don't solve this.
+            Tools currently on the market{"\n"}don't really solve this.
           </motion.h1>
 
           <div style={{ height: "clamp(18px, 3vh, 32px)" }} />
@@ -110,7 +111,7 @@ export default function Slide3() {
               textAlign: "center",
             }}
           >
-            Three categories. None were built for a customer in a squeeze.
+            {"\n"}
           </motion.p>
         </div>
 
