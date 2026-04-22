@@ -132,8 +132,9 @@ export default function Slide2() {
                 display: "block",
               }}
             />
+            </span>
+            .
           </span>
-          .
         </motion.h1>
 
         {/* CENTER: vice diagram */}
