@@ -313,14 +313,13 @@ export default function Slide6() {
             </div>
           </motion.div>
 
-          {/* STATS STRIP */}
+          {/* STATS — 2x2 grid */}
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: isMobile
-                ? "repeat(2, minmax(0, 1fr))"
-                : "repeat(4, minmax(0, 1fr))",
-              gap: "clamp(20px, 2.4vw, 40px)",
+              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+              columnGap: "clamp(20px, 2.4vw, 40px)",
+              rowGap: "clamp(20px, 3vh, 36px)",
             }}
           >
             {stats.map((s, i) => (
