@@ -308,7 +308,7 @@ export default function Slide6() {
                 <div
                   style={{
                     fontSize: "clamp(32px, 4vw, 72px)",
-                    color: s.emphasis ? MINT : LIGHT,
+                    color: s.emphasis ? BLUE : LIGHT,
                     fontWeight: 700,
                     letterSpacing: "-0.02em",
                     lineHeight: 1,
