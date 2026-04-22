@@ -123,9 +123,9 @@ export default function Slide4() {
               textAlign: "center",
             }}
           >
-            In an age of AI hallucination,{" "}
-            <span style={{ color: MINT, fontWeight: 700 }}>can't afford to be wrong</span>{" "}
-            customers choose us. Here's why.
+            In an age of AI hallucination, customers that{" "}
+            <span style={{ color: MINT, fontWeight: 700 }}>cannot afford to be wrong</span>{" "}
+            choose us. Here's why.
           </motion.p>
         </div>
 
@@ -234,7 +234,7 @@ export default function Slide4() {
             letterSpacing: "0.08em",
           }}
         >
-          The next slide is what that trust looks like →
+          {"\n"}
         </motion.div>
       </div>
     </SlideFrame>
