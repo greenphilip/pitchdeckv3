@@ -455,12 +455,15 @@ export default function Slide6() {
           <div
             style={{
               width: "100%",
+              flex: 1,
+              minHeight: 0,
               display: "grid",
               gridTemplateColumns: isMobile
                 ? "repeat(2, minmax(0, 1fr))"
-                : "repeat(3, minmax(0, 1fr))",
-              columnGap: isMobile ? "clamp(18px, 3vw, 28px)" : "clamp(20px, 2.4vw, 40px)",
-              rowGap: "clamp(20px, 3vh, 36px)",
+                : "repeat(2, minmax(0, 1fr))",
+              gridAutoRows: "1fr",
+              columnGap: isMobile ? "clamp(18px, 3vw, 28px)" : "clamp(24px, 3vw, 48px)",
+              rowGap: "clamp(16px, 2.5vh, 32px)",
               alignItems: "center",
               justifyItems: "center",
             }}
@@ -473,7 +476,7 @@ export default function Slide6() {
                 transition={{ duration: 0.3, ease: EXPO_OUT, delay: 1.2 + i * 0.05 }}
                 whileHover={{ scale: 1.04, opacity: 1 }}
                 style={{
-                  height: isMobile ? "clamp(36px, 5vh, 52px)" : "clamp(52px, 7vh, 80px)",
+                  height: "100%",
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
@@ -485,7 +488,7 @@ export default function Slide6() {
                   src={logo.src}
                   alt={logo.alt}
                   style={{
-                    maxHeight: "100%",
+                    maxHeight: isMobile ? "clamp(36px, 5vh, 52px)" : "clamp(48px, 7vh, 80px)",
                     maxWidth: "100%",
                     objectFit: "contain",
                     filter: "brightness(0) invert(1)",
