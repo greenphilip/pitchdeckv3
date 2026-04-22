@@ -126,15 +126,25 @@ export default function Slide6() {
           </motion.h1>
         </div>
 
-        {/* TOP HALF — chart + stats + customer impact */}
+        {/* BODY — 2-col on desktop: [chart + stats + impact] | [logo wall] */}
         <div
           style={{
             width: "100%",
             maxWidth: "min(1400px, 100%)",
             margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 1.35fr) minmax(0, 1fr)",
+            gap: isMobile ? "clamp(28px, 4vh, 48px)" : "clamp(24px, 3vw, 56px)",
+            alignItems: "stretch",
+          }}
+        >
+        {/* LEFT COLUMN — chart + stats + impact */}
+        <div
+          style={{
             display: "flex",
             flexDirection: "column",
             gap: "clamp(20px, 3vh, 32px)",
+            minWidth: 0,
           }}
         >
           {/* CHART */}
@@ -272,6 +282,7 @@ export default function Slide6() {
                     }}
                     isAnimationActive
                     animationDuration={700}
+                    maxBarSize={80}
                   >
                     {chartData.map((d, i) => (
                       <Cell key={d.year} fill={i === 0 ? TEAL : MINT} />
@@ -302,14 +313,13 @@ export default function Slide6() {
             </div>
           </motion.div>
 
-          {/* STATS STRIP */}
+          {/* STATS — 2x2 grid */}
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: isMobile
-                ? "repeat(2, minmax(0, 1fr))"
-                : "repeat(4, minmax(0, 1fr))",
-              gap: "clamp(20px, 2.4vw, 40px)",
+              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+              columnGap: "clamp(20px, 2.4vw, 40px)",
+              rowGap: "clamp(20px, 3vh, 36px)",
             }}
           >
             {stats.map((s, i) => (
@@ -357,9 +367,8 @@ export default function Slide6() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, ease: EXPO_OUT, delay: 0.9 }}
             style={{
-              maxWidth: "clamp(320px, 36vw, 480px)",
+              maxWidth: "100%",
               width: "100%",
-              margin: "0 auto",
               border: `1px solid ${BLUE}4D`,
               padding: "clamp(16px, 2vw, 22px)",
               borderRadius: 6,
@@ -393,14 +402,15 @@ export default function Slide6() {
           </motion.div>
         </div>
 
-        {/* BOTTOM HALF — LOGO WALL */}
+        {/* RIGHT COLUMN — TRUSTED BY + 3x3 logo grid */}
         <div
           style={{
-            width: "100%",
             display: "flex",
             flexDirection: "column",
+            justifyContent: "center",
             alignItems: "center",
             gap: "clamp(20px, 3vh, 32px)",
+            minWidth: 0,
           }}
         >
           <div
@@ -443,13 +453,12 @@ export default function Slide6() {
           <div
             style={{
               width: "100%",
-              maxWidth: "min(1400px, 100%)",
-              margin: "0 auto",
               display: "grid",
               gridTemplateColumns: isMobile
                 ? "repeat(2, minmax(0, 1fr))"
-                : "repeat(5, minmax(0, 1fr))",
-              gap: isMobile ? "clamp(18px, 3vw, 28px)" : "clamp(24px, 3vw, 48px)",
+                : "repeat(3, minmax(0, 1fr))",
+              columnGap: isMobile ? "clamp(18px, 3vw, 28px)" : "clamp(20px, 2.4vw, 40px)",
+              rowGap: "clamp(20px, 3vh, 36px)",
               alignItems: "center",
               justifyItems: "center",
             }}
@@ -462,7 +471,7 @@ export default function Slide6() {
                 transition={{ duration: 0.3, ease: EXPO_OUT, delay: 1.2 + i * 0.05 }}
                 whileHover={{ scale: 1.04, opacity: 1 }}
                 style={{
-                  height: isMobile ? "clamp(36px, 5vh, 52px)" : "clamp(48px, 6.5vh, 72px)",
+                  height: isMobile ? "clamp(36px, 5vh, 52px)" : "clamp(52px, 7vh, 80px)",
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
@@ -484,6 +493,7 @@ export default function Slide6() {
               </motion.div>
             ))}
           </div>
+        </div>
         </div>
       </div>
     </SlideFrame>
