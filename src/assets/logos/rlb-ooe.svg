@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" fill="none">
+  <!-- Giebelkreuz: two stylized crossed horse heads forming a gable cross -->
+  <g transform="translate(10, 10)" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Left horse head/arm of cross -->
+    <path d="M 8 70 L 40 8 L 40 25 L 60 25" />
+    <!-- Right horse head/arm of cross -->
+    <path d="M 72 70 L 40 8 L 40 25 L 20 25" />
+    <!-- Base bar -->
+    <path d="M 4 76 L 76 76" />
+  </g>
+  <!-- Wordmark -->
+  <g transform="translate(105, 0)" fill="#000" font-family="Helvetica, Arial, sans-serif">
+    <text x="0" y="42" font-size="26" font-weight="700" letter-spacing="0.5">RLB OÖ</text>
+    <text x="0" y="70" font-size="13" font-weight="500" letter-spacing="0.3">Raiffeisenlandesbank</text>
+    <text x="0" y="86" font-size="13" font-weight="500" letter-spacing="0.3">Oberösterreich</text>
+  </g>
+</svg>
