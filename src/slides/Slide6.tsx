@@ -15,7 +15,7 @@ import voeslauerLogo from "@/assets/logos/voeslauer.svg";
 import lenzingLogo from "@/assets/logos/lenzing.svg";
 import stihlLogo from "@/assets/logos/stihl.svg";
 import wuerthLogo from "@/assets/logos/wuerth.svg";
-import mannerLogo from "@/assets/logos/manner.svg";
+
 import deutscheTelekomLogo from "@/assets/logos/deutsche-telekom.svg";
 import fraportLogo from "@/assets/logos/fraport.svg";
 import andritzLogo from "@/assets/logos/andritz.svg";
@@ -56,7 +56,6 @@ const logos = [
   { src: andritzLogo, alt: "Andritz" },
   { src: lenzingLogo, alt: "Lenzing" },
   { src: voeslauerLogo, alt: "Vöslauer" },
-  { src: mannerLogo, alt: "Manner" },
 ];
 
 export default function Slide6() {
