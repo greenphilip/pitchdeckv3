@@ -44,7 +44,7 @@ const phases: Phase[] = [
     badgeText: NAVY,
   },
   {
-    badge: "12–18 MONTHS",
+    badge: "6-12 months",
     title: "Voluntary reporters + supply chain",
     detail:
       "VSME, ISSB, GRI, customer questionnaires. Expansion to Benelux + Scandinavia.",
