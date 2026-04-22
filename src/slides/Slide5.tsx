@@ -17,9 +17,9 @@ interface Bar {
 }
 
 const bars: Bar[] = [
-  { leftLabel: "1st framework — CSRD", rightLabel: "12 months", color: TEAL, widthPct: 100 },
-  { leftLabel: "2nd framework — EcoVadis", rightLabel: "6 months", color: BLUE, widthPct: 50 },
-  { leftLabel: "3rd framework onward", rightLabel: "weeks", color: MINT, widthPct: 20, emphasis: true },
+  { leftLabel: "1st framework — CSRD", rightLabel: "2 months", color: TEAL, widthPct: 100 },
+  { leftLabel: "2nd framework — EcoVadis", rightLabel: "1 month", color: BLUE, widthPct: 50 },
+  { leftLabel: "3rd framework onward", rightLabel: "1 week", color: MINT, widthPct: 20, emphasis: true },
 ];
 
 export default function Slide5() {
