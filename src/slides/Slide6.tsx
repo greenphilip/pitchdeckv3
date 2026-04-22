@@ -402,14 +402,15 @@ export default function Slide6() {
           </motion.div>
         </div>
 
-        {/* BOTTOM HALF — LOGO WALL */}
+        {/* RIGHT COLUMN — TRUSTED BY + 3x3 logo grid */}
         <div
           style={{
-            width: "100%",
             display: "flex",
             flexDirection: "column",
+            justifyContent: "center",
             alignItems: "center",
             gap: "clamp(20px, 3vh, 32px)",
+            minWidth: 0,
           }}
         >
           <div
@@ -452,13 +453,12 @@ export default function Slide6() {
           <div
             style={{
               width: "100%",
-              maxWidth: "min(1400px, 100%)",
-              margin: "0 auto",
               display: "grid",
               gridTemplateColumns: isMobile
                 ? "repeat(2, minmax(0, 1fr))"
-                : "repeat(5, minmax(0, 1fr))",
-              gap: isMobile ? "clamp(18px, 3vw, 28px)" : "clamp(24px, 3vw, 48px)",
+                : "repeat(3, minmax(0, 1fr))",
+              columnGap: isMobile ? "clamp(18px, 3vw, 28px)" : "clamp(20px, 2.4vw, 40px)",
+              rowGap: "clamp(20px, 3vh, 36px)",
               alignItems: "center",
               justifyItems: "center",
             }}
@@ -471,7 +471,7 @@ export default function Slide6() {
                 transition={{ duration: 0.3, ease: EXPO_OUT, delay: 1.2 + i * 0.05 }}
                 whileHover={{ scale: 1.04, opacity: 1 }}
                 style={{
-                  height: isMobile ? "clamp(36px, 5vh, 52px)" : "clamp(48px, 6.5vh, 72px)",
+                  height: isMobile ? "clamp(36px, 5vh, 52px)" : "clamp(52px, 7vh, 80px)",
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
@@ -493,6 +493,7 @@ export default function Slide6() {
               </motion.div>
             ))}
           </div>
+        </div>
         </div>
       </div>
     </SlideFrame>
