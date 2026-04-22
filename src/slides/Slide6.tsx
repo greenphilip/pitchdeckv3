@@ -101,7 +101,9 @@ export default function Slide6() {
             }}
           >
             <span style={{ color: MINT, fontWeight: 700 }}>7.5×</span> ARR growth. Burn down{" "}
-            <span style={{ color: BLUE, fontWeight: 700 }}>48%</span>. Closed with the companies{" "}
+            <span style={{ color: BLUE, fontWeight: 700 }}>48%</span>.
+            <br />
+            Closed with the companies{" "}
             <span style={{ color: MINT, fontWeight: 700 }}>hardest to close</span>.
           </motion.h1>
         </div>
