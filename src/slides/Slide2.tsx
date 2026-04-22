@@ -436,7 +436,7 @@ export default function Slide2() {
               letterSpacing: "-0.005em",
             }}
           >
-            The work isn't going away. It's getting harder.
+            The pressure is building on companies to turn ESG into strategic advantage rather than a compliance cost
           </div>
         </motion.div>
       </div>
