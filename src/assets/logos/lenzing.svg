@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="800"
+   height="230"
+   id="svg2">
+  <defs
+     id="defs4" />
+  <text
+     x="452.4111"
+     y="-500.96332"
+     id="text3377"
+     xml:space="preserve"
+     style="font-size:15.05820274px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Century Gothic;-inkscape-font-specification:Century Gothic Italic"><tspan
+       x="452.4111"
+       y="-500.96332"
+       id="tspan3379" /></text>
+  <path
+     d="M 732.45046,11.903471 C 717.24577,11.903573 705.0345,16.65861 695.83954,26.182028 C 686.64453,35.705624 682.06248,48.40313 682.0625,64.268015 C 682.06249,80.405751 686.18409,93.257071 694.42348,102.82602 C 702.66285,112.395 713.75727,117.16358 727.73028,117.16358 C 735.07772,117.16358 741.19576,115.77687 746.08,113.00392 C 750.9641,110.23097 754.77874,105.98718 757.49694,100.25942 L 757.49694,114.24297 L 776.14167,114.24297 L 776.14167,59.370824 L 736.19711,59.370824 L 736.19711,81.998207 L 750.00365,81.998207 C 746.23387,96.067242 712.24215,97.655517 712.24218,63.854999 C 712.24218,30.221268 743.6801,32.124662 746.0505,49.458437 L 776.14167,49.458437 C 774.78249,38.730354 768.68993,28.561211 760.53556,22.287876 C 752.38103,16.01473 745.02184,11.903573 732.45046,11.903471 z M 134.10811,14.676579 L 134.10811,114.24297 L 207.09396,114.24297 L 207.09396,88.517962 L 164.7303,88.517962 L 164.7303,14.676579 L 134.10811,14.676579 z M 220.28097,14.676579 L 220.28097,114.24297 L 301.26163,114.24297 L 301.26163,89.166987 L 249.63462,89.166987 L 249.63462,76.245483 L 295.59741,76.245483 L 295.59741,52.526557 L 249.63462,52.526557 L 249.63462,40.755597 L 301.26163,40.755597 L 301.26163,14.676579 L 220.28097,14.676579 z M 320.20137,14.676579 L 320.20137,114.24297 L 348.64048,114.24297 L 348.64048,62.733955 L 377.02059,114.24297 L 406.99376,114.24297 L 406.99376,14.676579 L 378.70215,14.676579 L 378.70215,67.926158 L 350.35155,14.676579 L 320.20137,14.676579 z M 427.64457,14.676579 L 427.64457,40.696595 L 469.6247,40.696595 L 425.60899,89.963518 L 425.60899,114.24297 L 512.78489,114.24297 L 512.78489,88.606465 L 464.58001,88.606465 L 510.21829,37.628475 L 510.21829,14.676579 L 427.64457,14.676579 z M 529.21703,14.676579 L 529.21703,114.24297 L 561.16678,114.24297 L 561.16678,14.676579 L 529.21703,14.676579 z M 582.49611,14.676579 L 582.49611,114.24297 L 610.93522,114.24297 L 610.93522,62.733955 L 639.31533,114.24297 L 669.2885,114.24297 L 669.2885,14.676579 L 640.99689,14.676579 L 640.99689,67.926158 L 612.64629,14.676579 L 582.49611,14.676579 z"
+     id="text3396"
+     style="font-size:142.98339844px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Folio Bk BT;-inkscape-font-specification:Folio Bk BT Bold" />
+  <path
+     d="M 27.794491,131.19925 L 111.4977,214.90246 L 775.69215,214.90246 L 775.69215,131.19925 L 27.794491,131.19925 z"
+     id="rect3404"
+     style="opacity:1;fill:#9d9fa2;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     d="M 17.462955,12.936008 L 17.462955,126.20503 L 111.4977,214.90246 L 111.4977,12.936008 L 17.462955,12.936008 z"
+     id="rect3402"
+     style="opacity:1;fill:#00ae4d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+</svg>
