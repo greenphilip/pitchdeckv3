@@ -70,7 +70,7 @@ export default function Slide2() {
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "flex-start",
+          justifyContent: "center",
           alignItems: "center",
           width: "100%",
           height: "100%",
@@ -141,7 +141,6 @@ export default function Slide2() {
         <div
           style={{
             marginTop: "clamp(24px, 5vh, 64px)",
-            marginBottom: "auto",
             width: "100%",
             maxWidth: "min(1400px, 100%)",
             display: "grid",

@@ -18,7 +18,7 @@ export default function Slide1() {
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "flex-start",
+          justifyContent: "center",
           alignItems: "center",
           width: "100%",
           height: "100%",
