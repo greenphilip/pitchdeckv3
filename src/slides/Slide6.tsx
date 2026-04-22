@@ -477,7 +477,8 @@ export default function Slide6() {
                     maxHeight: "100%",
                     maxWidth: "100%",
                     objectFit: "contain",
-                    opacity: 1,
+                    filter: "brightness(0) invert(1)",
+                    opacity: 0.75,
                   }}
                 />
               </motion.div>
