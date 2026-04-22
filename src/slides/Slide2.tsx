@@ -16,15 +16,15 @@ const LIGHT = "#F1F1F1";
 const EXPO_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const uncertaintyItems = [
-  { Icon: HelpCircle, text: "ESG is new, complex, changing" },
+  { Icon: HelpCircle, text: "ESG is a new, complex subject for most" },
   { Icon: Repeat, text: "Regulation keeps moving" },
-  { Icon: Globe, text: "Geopolitical volatility" },
+  { Icon: Globe, text: "Internal data is fragmented, missing" },
 ];
 
 const pressureItems = [
   { Icon: Handshake, text: "Customers and suppliers asking" },
-  { Icon: Landmark, text: "Banks and investors demanding" },
-  { Icon: ShieldAlert, text: "Regulators not waiting" },
+  { Icon: Landmark, text: "Banks and investors demanding transparency" },
+  { Icon: ShieldAlert, text: "Regulators not waiting, ready to fine" },
 ];
 
 // Unified stagger order: L0, R0, L1, R1, L2, R2 — one coordinated sequence.
@@ -315,10 +315,10 @@ export default function Slide2() {
                 textTransform: "uppercase",
                 letterSpacing: "0.12em",
                 textAlign: "center",
-                whiteSpace: "nowrap",
+                whiteSpace: "pre-line",
               }}
             >
-              The Reporting Team
+              COMPANIES<br />OF ALL SIZES
             </div>
           </motion.div>
 
