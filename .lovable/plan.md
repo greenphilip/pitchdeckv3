@@ -1,58 +1,34 @@
 
 
-## Slide 6 — Visual audit & restructure
+## Slide 9 — Real team, 5 cards in a single row
 
-### Current problem
-Slide 6 stacks four heavy blocks vertically (chart → 4 stats → customer-impact card → 9 logos + caption). On a 1561px-tall viewport the content compresses; on shorter screens it can't breathe. The chart spans the full 1400px width even though its two data points only need ~40% of that horizontal space — wasting prime real estate while the logo wall waits below.
+### Content updates
+Replace the 4 placeholder team members with the 5 real members below. Remove the placeholder banner at top and the advisors line near the bottom.
 
-### New layout — two-column composition
+| Name | Title | Background |
+|---|---|---|
+| Rainhard Fuchs | CEO & Founder | Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales. |
+| Philip | VP of AI & ESG | 20 years sustainability and strategy consulting. Built 3 ESG SaaS data science tools. INSEAD MBA. |
+| David Anders | Head of ESG Delivery | Previously PWC; Head of ESG at Burgenland Energie; ÖAMTC. |
+| Kishan Chimminiyan | CTO & Head of Engineering | Technical leadership across multiple AI ventures. |
+| Nina Aichinger | Head of People | Previously Head of HR at Bitpanda and Shpock. |
 
-```text
-┌────────────────────────────── HEADER (centered) ──────────────────────────────┐
-│  TRACTION                                                                     │
-│  7.5× ARR growth. Burn down 48%.                                              │
-│  Closed with the companies hardest to close.                                  │
-└───────────────────────────────────────────────────────────────────────────────┘
+### Layout updates
+- **Grid columns**: desktop `repeat(5, minmax(0, 1fr))`; tablet/narrower (still desktop, but tighter) handled implicitly by fr units; mobile stays `repeat(2, …)` with the 5th card wrapping to its own row (acceptable, scrollable).
+- **Avatar size**: shrink from `clamp(88px, 10.5vw, 148px)` to `clamp(72px, 7.5vw, 110px)` to fit 5 across.
+- **Grid maxWidth**: bump from `min(1200px, 100%)` to `min(1400px, 100%)` so 5 cards have breathing room.
+- **Name font**: trim from `clamp(17px, 1.6vw, 26px)` to `clamp(15px, 1.35vw, 22px)` so longer names (Kishan Chimminiyan) don't wrap awkwardly.
+- **Title font**: trim from `clamp(13px, 1.2vw, 20px)` to `clamp(12px, 1vw, 17px)`.
+- **Background text**: keep current size; line-clamp stays at 3.
+- **Gap**: tighten desktop column gap from `clamp(28px, 3.5vw, 56px)` to `clamp(20px, 2.4vw, 40px)`.
 
-┌─────────────────── LEFT (≈58%) ───────────────────┐  ┌──── RIGHT (≈42%) ────┐
-│  ┌─────────────────────────────────────────────┐  │  │  TRUSTED BY          │
-│  │ ARR ↑ 7.5×  |  BURN ↓ 48%                   │  │  │  Enterprise & mid-   │
-│  │                                             │  │  │  market customers.   │
-│  │  [narrower bar+line chart]                  │  │  │                      │
-│  │                                             │  │  │  ┌──┐ ┌──┐ ┌──┐      │
-│  └─────────────────────────────────────────────┘  │  │  │L1│ │L2│ │L3│      │
-│                                                   │  │  └──┘ └──┘ └──┘      │
-│  ┌──── 2x2 stats grid ────┐                       │  │  ┌──┐ ┌──┐ ┌──┐      │
-│  │  26      │  €526k      │                       │  │  │L4│ │L5│ │L6│      │
-│  │  CLIENTS │  ARR        │                       │  │  └──┘ └──┘ └──┘      │
-│  │  €20k    │  −48%       │                       │  │  ┌──┐ ┌──┐ ┌──┐      │
-│  │  ACV     │  BURN YoY   │                       │  │  │L7│ │L8│ │L9│      │
-│  └────────────────────────┘                       │  │  └──┘ └──┘ └──┘      │
-│                                                   │  │                      │
-│  Customer impact: 2,250h → 1,137h. €100k → €68k.  │  │                      │
-└───────────────────────────────────────────────────┘  └──────────────────────┘
-```
+### Removals
+- Delete the placeholder banner block (lines 57–84).
+- Delete the advisors line block (lines 256–274).
 
-### Changes (surgical)
-
-**Outer body** — wrap chart/stats/impact-card and logo wall in a 2-col grid:
-- Desktop: `gridTemplateColumns: "minmax(0, 1.35fr) minmax(0, 1fr)"`, gap `clamp(24px, 3vw, 56px)`, `alignItems: "stretch"`
-- Mobile (`useIsMobile`): single column, current stacking order preserved (chart → stats → impact → logos)
-
-**Left column**
-- Chart: keep existing component, now naturally narrower (~55% width). Reduce bar `barCategoryGap`/maxBarSize so the two bars don't look balloon-wide in the narrower frame (set `maxBarSize={80}` on the `<Bar>`).
-- Stats strip: change from 4-col to **2x2** grid (`repeat(2, minmax(0, 1fr))`) so it fits the narrower column without shrinking numbers.
-- Customer-impact card: keep, but `maxWidth: "100%"` (drop the 480px cap) so it spans the left column cleanly.
-
-**Right column**
-- "TRUSTED BY" eyebrow + caption move to the **top** of the right column (currently sit above the logo grid in the bottom block).
-- Logo grid: change from `repeat(5, …)` to **`repeat(3, minmax(0, 1fr))`** with `rowGap: "clamp(20px, 3vh, 36px)"`. Nine logos → clean 3×3. Logo height bumped to `clamp(52px, 7vh, 80px)` since each cell is wider.
-- Right column uses `display: flex; flexDirection: column; justifyContent: center` so the 3×3 grid centers vertically next to the taller left column.
-
-**Header & overall column** — unchanged: outer `justifyContent: "flex-start"` stays (was intentional for Slide 6 per recent memory note), header keeps current centered styling.
+### Bottom anchor
+Keep the "Headcount … Hiring …" line — values stay as `[X]` / `[Y]` placeholders since no numbers were supplied.
 
 ### Files touched
-- `src/slides/Slide6.tsx` — restructure body into 2-col grid; stats to 2×2; logos to 3×3; move "TRUSTED BY" block into right column; cap bar width on chart.
-
-No new dependencies. No memory updates needed (slide-specific layout, not a global rule).
+- `src/slides/Slide9.tsx`
 
