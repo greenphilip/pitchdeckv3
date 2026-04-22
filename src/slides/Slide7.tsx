@@ -205,61 +205,6 @@ export default function Slide7() {
           ))}
         </div>
 
-        {/* PULL QUOTE */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, ease: EXPO_OUT, delay: 0.25 + forces.length * 0.08 + 0.3 }}
-          style={{
-            width: "100%",
-            maxWidth: "min(1100px, 100%)",
-            margin: "0 auto",
-            display: "flex",
-            alignItems: "stretch",
-            gap: "clamp(16px, 2.2vw, 28px)",
-          }}
-        >
-          <div
-            style={{
-              width: 3,
-              flexShrink: 0,
-              background: MINT,
-              borderRadius: 2,
-            }}
-          />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "clamp(10px, 1.5vh, 14px)",
-              flex: 1,
-              minWidth: 0,
-            }}
-          >
-            <div
-              style={{
-                fontSize: "clamp(22px, 2.8vw, 48px)",
-                fontWeight: 400,
-                fontStyle: "italic",
-                color: LIGHT,
-                lineHeight: 1.25,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              The more chaotic the ground, the stronger our foundation.
-            </div>
-            <div
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(12px, 0.95vw, 17px)",
-                color: `${MINT}CC`,
-                letterSpacing: "0.08em",
-              }}
-            >
-              // GLACIER POSITIONING
-            </div>
-          </div>
-        </motion.div>
       </div>
     </SlideFrame>
   );
