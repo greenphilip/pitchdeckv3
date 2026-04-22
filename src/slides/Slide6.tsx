@@ -126,15 +126,25 @@ export default function Slide6() {
           </motion.h1>
         </div>
 
-        {/* TOP HALF — chart + stats + customer impact */}
+        {/* BODY — 2-col on desktop: [chart + stats + impact] | [logo wall] */}
         <div
           style={{
             width: "100%",
             maxWidth: "min(1400px, 100%)",
             margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 1.35fr) minmax(0, 1fr)",
+            gap: isMobile ? "clamp(28px, 4vh, 48px)" : "clamp(24px, 3vw, 56px)",
+            alignItems: "stretch",
+          }}
+        >
+        {/* LEFT COLUMN — chart + stats + impact */}
+        <div
+          style={{
             display: "flex",
             flexDirection: "column",
             gap: "clamp(20px, 3vh, 32px)",
+            minWidth: 0,
           }}
         >
           {/* CHART */}
