@@ -367,9 +367,8 @@ export default function Slide6() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, ease: EXPO_OUT, delay: 0.9 }}
             style={{
-              maxWidth: "clamp(320px, 36vw, 480px)",
+              maxWidth: "100%",
               width: "100%",
-              margin: "0 auto",
               border: `1px solid ${BLUE}4D`,
               padding: "clamp(16px, 2vw, 22px)",
               borderRadius: 6,
