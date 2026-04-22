@@ -111,8 +111,8 @@ export default function Slide2() {
             textAlign: "center",
           }}
         >
-          Caught between what they{" "}
-          <span style={{ color: BLUE }}>don't know</span> and what{" "}
+          EU companies are caught between what<br />
+          they <span style={{ color: BLUE }}>don't know</span> and what{" "}
           <span style={{ color: MINT, position: "relative", display: "inline-block" }}>
             can't wait
             <motion.span
