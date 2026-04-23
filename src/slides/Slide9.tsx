@@ -9,22 +9,21 @@ const LIGHT = "#F1F1F1";
 const NAVY = "#143560";
 const EXPO_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
+type Emphasis = "muted" | "medium" | "primary";
+
 interface MarketBar {
+  key: "TAM" | "SAM" | "SOM";
   leftLabel: string;
-  rightLabel: string;
   color: string;
   widthPct: number;
+  height: number;
+  emphasis: Emphasis;
 }
 
 const marketBars: MarketBar[] = [
-  { leftLabel: "TAM", rightLabel: "TAM €1.3bn → €7.8bn", color: TEAL, widthPct: 100 },
-  { leftLabel: "SAM", rightLabel: "SAM €520m", color: BLUE, widthPct: 40 },
-  {
-    leftLabel: "SOM",
-    rightLabel: "SOM €100m ≈ 5,000 customers @ €20k ACV",
-    color: MINT,
-    widthPct: 8,
-  },
+  { key: "TAM", leftLabel: "TAM", color: TEAL, widthPct: 100, height: 40, emphasis: "muted" },
+  { key: "SAM", leftLabel: "SAM", color: BLUE, widthPct: 40, height: 48, emphasis: "medium" },
+  { key: "SOM", leftLabel: "SOM", color: MINT, widthPct: 8, height: 88, emphasis: "primary" },
 ];
 
 interface Phase {
