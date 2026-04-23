@@ -118,7 +118,7 @@ export default function Slide9() {
             width: "100%",
             maxWidth: "min(1400px, 100%)",
             margin: "0 auto",
-            marginTop: "80px",
+            marginTop: "56px",
             display: "grid",
             gridTemplateColumns: isMobile
               ? "repeat(2, minmax(0, 1fr))"
@@ -139,14 +139,14 @@ export default function Slide9() {
                 flexDirection: "column",
                 alignItems: "center",
                 textAlign: "center",
-                gap: "20px",
+                gap: "24px",
               }}
             >
               {/* Avatar */}
               <div
                 style={{
-                  width: "110px",
-                  height: "110px",
+                  width: "160px",
+                  height: "160px",
                   borderRadius: "50%",
                   background: `${BLUE}40`,
                   display: "flex",
@@ -164,7 +164,7 @@ export default function Slide9() {
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
-                      objectPosition: "center 20%",
+                      objectPosition: "center top",
                     }}
                   />
                 ) : (
