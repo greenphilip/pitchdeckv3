@@ -129,7 +129,7 @@ export default function Slide10() {
             textAlign: "center",
           }}
         >
-          THE ASK
+          BRIDGE ROUND: THE ASK
         </motion.div>
 
         {/* HEADLINE */}
@@ -258,11 +258,7 @@ export default function Slide10() {
             lineHeight: 1.4,
           }}
         >
-          We're building for the customers who{" "}
-          <span style={{ color: MINT, fontWeight: 700, fontStyle: "italic" }}>
-            can't afford to be wrong
-          </span>
-          . Come underwrite the companies who close hardest.
+          Join us as we rapidly expand our offering, scale up and position ourselves for Series A.
         </motion.div>
 
         {/* Bottom spacer */}
