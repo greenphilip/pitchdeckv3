@@ -7,6 +7,7 @@ import philipPhoto from "@/assets/team/philip.png";
 import davidPhoto from "@/assets/team/david-anders.png";
 import kishanPhoto from "@/assets/team/kishan.png";
 import ninaPhoto from "@/assets/team/nina.png";
+import pioneersLogo from "@/assets/logos/pioneers.png";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
