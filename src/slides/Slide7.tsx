@@ -73,7 +73,7 @@ export default function Slide6() {
           justifyContent: "flex-start",
           alignItems: "center",
           width: "100%",
-          gap: isMobile ? "48px" : "80px",
+          gap: isMobile ? "48px" : "48px",
           overflowY: isMobile ? "auto" : undefined,
         }}
       >
@@ -111,8 +111,8 @@ export default function Slide6() {
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.08 }}
             style={{
               margin: 0,
-              marginTop: "20px",
-              fontSize: "56px",
+              marginTop: "14px",
+              fontSize: "44px",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -136,7 +136,7 @@ export default function Slide6() {
             margin: "0 auto",
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 1.35fr) minmax(0, 1fr)",
-            gap: isMobile ? "48px" : "56px",
+            gap: isMobile ? "48px" : "40px",
             alignItems: "stretch",
           }}
         >
@@ -145,7 +145,7 @@ export default function Slide6() {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "32px",
+            gap: "24px",
             minWidth: 0,
           }}
         >
@@ -159,7 +159,7 @@ export default function Slide6() {
               width: "100%",
               border: `1px solid ${BLUE}33`,
               borderRadius: 6,
-              padding: "28px",
+              padding: "20px",
               background: "rgba(255, 255, 255, 0.02)",
             }}
           >
@@ -171,7 +171,7 @@ export default function Slide6() {
                 alignItems: "flex-start",
                 gap: "24px",
                 flexWrap: "wrap",
-                marginBottom: "16px",
+                marginBottom: "10px",
               }}
             >
               <div
@@ -228,7 +228,7 @@ export default function Slide6() {
             <div
               style={{
                 width: "100%",
-                height: isMobile ? "240px" : "300px",
+                height: isMobile ? "240px" : "230px",
               }}
             >
               <ResponsiveContainer width="100%" height="100%">
@@ -320,8 +320,8 @@ export default function Slide6() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-              columnGap: "40px",
-              rowGap: "36px",
+              columnGap: "24px",
+              rowGap: "20px",
             }}
           >
             {stats.map((s, i) => (
@@ -339,7 +339,7 @@ export default function Slide6() {
               >
                 <div
                   style={{
-                    fontSize: "72px",
+                    fontSize: "56px",
                     color: s.emphasis ? BLUE : LIGHT,
                     fontWeight: 700,
                     letterSpacing: "-0.02em",
@@ -351,7 +351,7 @@ export default function Slide6() {
                 <div
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "18px",
+                    fontSize: "15px",
                     color: `${LIGHT}B3`,
                     fontWeight: 600,
                     letterSpacing: "0.08em",
@@ -372,18 +372,18 @@ export default function Slide6() {
               maxWidth: "100%",
               width: "100%",
               border: `1px solid ${BLUE}4D`,
-              padding: "22px",
+              padding: "16px",
               borderRadius: 6,
               background: "rgba(20, 53, 96, 0.6)",
               display: "flex",
               flexDirection: "column",
-              gap: "12px",
+              gap: "8px",
             }}
           >
             <div
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "18px",
+                fontSize: "15px",
                 color: MINT,
                 fontWeight: 600,
                 letterSpacing: "0.1em",
@@ -393,7 +393,7 @@ export default function Slide6() {
             </div>
             <div
               style={{
-                fontSize: "19px",
+                fontSize: "16px",
                 color: `${LIGHT}D9`,
                 lineHeight: 1.5,
               }}
@@ -411,7 +411,7 @@ export default function Slide6() {
             flexDirection: "column",
             justifyContent: "flex-start",
             alignItems: "stretch",
-            gap: "32px",
+            gap: "20px",
             minWidth: 0,
             minHeight: 0,
           }}
@@ -422,7 +422,7 @@ export default function Slide6() {
               flexDirection: "column",
               alignItems: "center",
               textAlign: "center",
-              gap: "14px",
+              gap: "10px",
             }}
           >
             <motion.div
@@ -431,7 +431,7 @@ export default function Slide6() {
               transition={{ duration: 0.4, delay: 1.0 }}
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "20px",
+                fontSize: "16px",
                 color: MINT,
                 fontWeight: 600,
                 textTransform: "uppercase",
@@ -445,7 +445,7 @@ export default function Slide6() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 1.08 }}
               style={{
-                fontSize: "20px",
+                fontSize: "15px",
                 color: `${LIGHT}B3`,
               }}
             >
@@ -463,8 +463,8 @@ export default function Slide6() {
                 ? "repeat(2, minmax(0, 1fr))"
                 : "repeat(2, minmax(0, 1fr))",
               gridAutoRows: "1fr",
-              columnGap: isMobile ? "28px" : "48px",
-              rowGap: "32px",
+              columnGap: isMobile ? "28px" : "28px",
+              rowGap: "18px",
               alignItems: "center",
               justifyItems: "center",
             }}
@@ -489,7 +489,7 @@ export default function Slide6() {
                   src={logo.src}
                   alt={logo.alt}
                   style={{
-                    maxHeight: isMobile ? "52px" : "80px",
+                    maxHeight: isMobile ? "52px" : "56px",
                     maxWidth: "100%",
                     objectFit: "contain",
                     filter: "brightness(0) invert(1)",
