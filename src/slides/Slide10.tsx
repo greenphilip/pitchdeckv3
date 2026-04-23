@@ -8,6 +8,9 @@ import davidPhoto from "@/assets/team/david-anders.png";
 import kishanPhoto from "@/assets/team/kishan.png";
 import ninaPhoto from "@/assets/team/nina.png";
 import pioneersLogo from "@/assets/logos/pioneers.png";
+import wbcsdLogo from "@/assets/logos/wbcsd.svg";
+import inseadLogo from "@/assets/logos/insead.svg";
+import osceLogo from "@/assets/logos/osce.svg";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
@@ -20,7 +23,7 @@ interface Member {
   title: string;
   background: string;
   photo?: string;
-  logo?: string;
+  logos?: { src: string; invert?: boolean }[];
 }
 
 const team: Member[] = [
@@ -29,13 +32,18 @@ const team: Member[] = [
     title: "CEO & Founder",
     background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
     photo: rainhardPhoto,
-    logo: pioneersLogo,
+    logos: [{ src: pioneersLogo, invert: true }],
   },
   {
     name: "Philip",
     title: "VP of AI & ESG",
     background: "20+ years sustainability and strategy: OSCE, WBCSD, INSEAD MBA",
     photo: philipPhoto,
+    logos: [
+      { src: osceLogo },
+      { src: wbcsdLogo },
+      { src: inseadLogo },
+    ],
   },
   {
     name: "David Anders",
@@ -233,19 +241,34 @@ export default function Slide9() {
                 {m.background}
               </div>
 
-              {m.logo && (
-                <img
-                  src={m.logo}
-                  alt=""
+              {m.logos && m.logos.length > 0 && (
+                <div
                   style={{
-                    height: "20px",
-                    width: "auto",
-                    objectFit: "contain",
-                    opacity: 0.85,
-                    filter: "invert(1) brightness(1.1)",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "14px",
                     marginTop: "-4px",
+                    minHeight: "24px",
                   }}
-                />
+                >
+                  {m.logos.map((logo, idx) => (
+                    <img
+                      key={idx}
+                      src={logo.src}
+                      alt=""
+                      style={{
+                        height: "22px",
+                        width: "auto",
+                        maxWidth: "70px",
+                        objectFit: "contain",
+                        opacity: 0.85,
+                        filter: logo.invert ? "invert(1) brightness(1.1)" : "brightness(0) invert(1)",
+                      }}
+                    />
+                  ))}
+                </div>
               )}
             </motion.div>
           ))}
