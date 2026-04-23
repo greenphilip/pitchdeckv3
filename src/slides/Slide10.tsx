@@ -43,6 +43,7 @@ const team: Member[] = [
     name: "Kishan Chimminiyan",
     title: "CTO & Head of Engineering",
     background: "full-stack, 10+years building with applied LLM products (GPT-3 era onward) ",
+    photo: kishanPhoto,
   },
   {
     name: "Nina Aichinger",
