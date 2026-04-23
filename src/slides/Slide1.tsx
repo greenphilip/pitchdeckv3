@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { SlideFrame } from "@/components/SlideFrame";
-import { GlacierMark } from "@/components/GlacierMark";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import glacierLogo from "@/assets/glacier-logo.svg";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
@@ -12,7 +12,7 @@ export default function Slide1() {
   const isMobile = useIsMobile();
 
   return (
-    <SlideFrame variant="minimal" slideNumber={1} totalSlides={11}>
+    <SlideFrame variant="minimal" slideNumber={1} totalSlides={11} showLogo={false}>
       <div
         style={{
           flex: 1,
@@ -34,28 +34,18 @@ export default function Slide1() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "10px",
+            gap: "20px",
           }}
         >
-          <div
+          <img
+            src={glacierLogo}
+            alt="Glacier"
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
+              height: isMobile ? 180 : 280,
+              width: "auto",
+              display: "block",
             }}
-          >
-            <GlacierMark size={Math.round(isMobile ? 22 : 28)} color={MINT} strokeWidth={1.5} />
-            <span
-              style={{
-                fontSize: "32px",
-                fontWeight: 600,
-                letterSpacing: "0.08em",
-                color: MINT,
-              }}
-            >
-              Glacier
-            </span>
-          </div>
+          />
           <div
             style={{
               fontFamily: "'JetBrains Mono', monospace",
@@ -71,7 +61,7 @@ export default function Slide1() {
         </motion.div>
 
         {/* Spacer above headline — explicit, not auto, to avoid big-screen voids */}
-        <div style={{ height: "140px", flexShrink: 0 }} />
+        <div style={{ height: "80px", flexShrink: 0 }} />
 
         {/* Center: headline block */}
         <div

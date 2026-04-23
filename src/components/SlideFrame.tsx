@@ -19,7 +19,7 @@ const BLUE = "#539ADB";
 // Tiny inline SVG noise — kills banding on projectors, no asset round-trip.
 const NOISE_SVG = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>`;
 
-export function SlideFrame({ children, variant, slideNumber, totalSlides }: SlideFrameProps) {
+export function SlideFrame({ children, variant, slideNumber, totalSlides, showLogo = true }: SlideFrameProps) {
   const showGrid = variant === "technical" || variant === "technical-light";
   const gridOpacity = variant === "technical" ? 0.07 : 0.03;
   const showSlideNumber = showGrid;
@@ -104,6 +104,22 @@ export function SlideFrame({ children, variant, slideNumber, totalSlides }: Slid
             zIndex: 0,
             border: `1px solid ${BLUE}1A`,
             pointerEvents: "none",
+          }}
+        />
+      )}
+
+      {showLogo && (
+        <img
+          src={glacierLogo}
+          alt="Glacier"
+          style={{
+            position: "absolute",
+            top: 32,
+            left: 32,
+            height: 44,
+            width: "auto",
+            zIndex: 2,
+            opacity: 0.85,
           }}
         />
       )}
