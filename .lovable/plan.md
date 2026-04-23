@@ -1,35 +1,32 @@
 
 
-## Slide 10 — Enlarge team avatars so faces are visible
+## Slide 10 — Stack Philip's logos vertically, remove white pill backgrounds
 
-Bump the avatar circles on Slide 10 from `110px` to `160px` and adjust surrounding spacing so names + descriptions move down naturally without breaking the 5-column grid or the slide's vertical rhythm.
+Make the OSCE / WBCSD / INSEAD logos under Philip readable by stacking them vertically and rendering them in their native colors directly on the dark blue slide background (no white pill).
 
-### 1. Avatar size
-In `src/slides/Slide10.tsx`, the team grid renders each member's avatar as a `110px × 110px` circle. Change both `width` and `height` to `160px`.
+### Changes in `src/slides/Slide10.tsx`
 
-- Larger faces become legible at projector distance.
-- 160px × 5 columns + 40px gaps = ~960px — still fits comfortably in the `min(1400px, 100%)` grid container at 1379px viewport.
+1. **Logo container** (the `m.logos` block under each member):
+   - Change `flexDirection` to `column` so logos stack one under another.
+   - Keep `alignItems: center`, `justifyContent: center`.
+   - Bump `gap` from `10px` to `12px` for vertical breathing room.
+   - Remove `flexWrap: "wrap"` (no longer needed in a column).
+   - Remove `minHeight: 32px`.
 
-### 2. Photo framing — show full face, not cropped
-Current `objectPosition: "center 20%"` was tuned for the small circle. With a 160px circle the existing photo will read better with `objectPosition: "center top"` so Rainhard's full face (not just forehead) sits in frame. Keep `objectFit: "cover"`.
+2. **Non-inverted logos** (OSCE, WBCSD, INSEAD):
+   - Drop the white pill wrapper (`background: LIGHT`, `borderRadius`, `padding`).
+   - Render the `<img>` directly with no background.
+   - Increase `height` from `20px` to `28px` and `maxWidth` from `70px` to `140px` so each logo reads clearly when stacked.
+   - Keep native colors (no filter). The OSCE, WBCSD, INSEAD SVGs contain colored marks that read fine on `#143560`; they were only being hidden by the previous `brightness(0) invert(1)` filter, which the pill was compensating for.
 
-### 3. Fallback icon scaling
-The `User` lucide icon uses `width: 50%, height: 50%` — relative, so it scales automatically with the larger circle. No change needed.
+3. **Inverted logos** (Pioneers under Rainhard):
+   - Unchanged behavior — still uses the `invert(1) brightness(1.1)` filter to render white against the dark background.
+   - Match the new height (`28px`) and `maxWidth` (`140px`) so Rainhard's column visually aligns with Philip's.
 
-### 4. Card vertical rhythm
-The card column currently uses `gap: "20px"` between avatar / name-block / description. With a larger avatar this gap reads tight. Increase to `gap: "24px"` so the name sits a touch lower and the description has breathing room.
-
-### 5. Grid top offset
-The grid currently has `marginTop: "80px"` below the header. With taller cards the whole block grows by ~50px. Reduce `marginTop` to `"56px"` to preserve the slide's overall vertical balance and avoid pushing the bottom anchor ("Headcount: 15…") into the progress dots.
-
-### 6. Mobile behavior
-On mobile (`isMobile === true`) the grid is `repeat(2, minmax(0, 1fr))` with `maxHeight: 55vh` and `overflowY: auto`. A 160px avatar is fine in a 2-col mobile grid (~50vw wide cells). No layout change needed — the existing scroll panel absorbs the extra height.
-
-### 7. What stays the same
-- Name typography (`22px`, weight 600, Light)
-- Title typography (`17px`, Mint)
-- Background line (`18px`, Light at 70%, 3-line clamp)
-- Header, eyebrow, headline, bottom anchor, animations, delays, palette, SlideFrame variant, slide numbering.
+### What stays the same
+- Avatar size, name/title/background typography, header, eyebrow, headline, bottom anchor.
+- Grid structure, animations, palette, SlideFrame variant, slide numbering.
+- Mobile behavior (the column stack works the same in the 2-col mobile grid; the scroll panel absorbs added height).
 
 ### Files touched
 - `src/slides/Slide10.tsx` only.
