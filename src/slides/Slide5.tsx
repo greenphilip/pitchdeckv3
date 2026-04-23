@@ -38,7 +38,7 @@ const pillars: Pillar[] = [
     number: "04",
     Icon: Handshake,
     title: "Partnered with the experts.",
-    body: "Consulting firms bring deep regulatory depth. They deliver faster on Glacier; we're stronger with their expertise behind the product.",
+    body: "Consulting firms bring deep regulatory depth. They deliver faster with Glacier; we're stronger with their expertise behind the product.",
   },
   {
     number: "05",
