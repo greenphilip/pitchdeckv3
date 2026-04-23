@@ -50,6 +50,7 @@ const team: Member[] = [
     name: "Nina Aichinger",
     title: "Head of People",
     background: "Previously Head of HR at Bitpanda and Shpock.",
+    photo: ninaPhoto,
   },
 ];
 
