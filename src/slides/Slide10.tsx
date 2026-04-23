@@ -3,6 +3,7 @@ import { User } from "lucide-react";
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import rainhardPhoto from "@/assets/team/rainhard-fuchs.png";
+import philipPhoto from "@/assets/team/philip.png";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
