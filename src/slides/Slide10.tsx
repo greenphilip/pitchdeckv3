@@ -13,6 +13,7 @@ import inseadLogo from "@/assets/logos/insead.svg";
 import osceLogo from "@/assets/logos/osce.svg";
 import pwcLogo from "@/assets/logos/pwc.svg";
 import oeamtcLogo from "@/assets/logos/oeamtc.svg";
+import smartCounselLogo from "@/assets/logos/smart-counsel.png";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
@@ -62,6 +63,7 @@ const team: Member[] = [
     title: "CTO & Head of Engineering",
     background: "full-stack, 10+years building with applied LLM products (GPT-3 era onward) ",
     photo: kishanPhoto,
+    logos: [{ src: smartCounselLogo }],
   },
   {
     name: "Nina Aichinger",
