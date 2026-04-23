@@ -107,7 +107,7 @@ export default function Slide2() {
             lineHeight: 1.15,
             color: LIGHT,
             margin: 0,
-            maxWidth: "min(1400px, 92vw)",
+            maxWidth: "1400px",
             textAlign: "center",
           }}
         >

@@ -81,7 +81,7 @@ export default function Slide6() {
         <div
           style={{
             width: "100%",
-            maxWidth: "min(1300px, 92vw)",
+            maxWidth: "1300px",
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",

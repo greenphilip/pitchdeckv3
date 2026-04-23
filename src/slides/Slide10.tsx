@@ -63,7 +63,7 @@ export default function Slide9() {
         <div
           style={{
             width: "100%",
-            maxWidth: "min(1200px, 92vw)",
+            maxWidth: "1200px",
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",

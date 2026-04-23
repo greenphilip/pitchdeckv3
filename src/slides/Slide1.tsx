@@ -80,7 +80,7 @@ export default function Slide1() {
             flexDirection: "column",
             alignItems: "center",
             gap: "44px",
-            maxWidth: "min(1500px, 92vw)",
+            maxWidth: "1500px",
             width: "100%",
           }}
         >
@@ -146,7 +146,7 @@ export default function Slide1() {
               color: LIGHT,
               opacity: 0.75,
               margin: 0,
-              maxWidth: "min(1000px, 85vw)",
+              maxWidth: "1000px",
             }}
           >
             Glacier helps companies get ESG reporting done —{" "}
