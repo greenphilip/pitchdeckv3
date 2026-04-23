@@ -437,7 +437,9 @@ export default function Slide2() {
               letterSpacing: "-0.005em",
             }}
           >
-            The pressure is building on companies to turn ESG into strategic advantage rather than a compliance cost
+            The pressure is building on companies to turn ESG into strategic advantage
+            <br />
+            rather than just a compliance cost
           </div>
         </motion.div>
       </div>
