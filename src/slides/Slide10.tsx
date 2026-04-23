@@ -5,6 +5,12 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import rainhardPhoto from "@/assets/team/rainhard-fuchs.png";
 import philipPhoto from "@/assets/team/philip.png";
 import davidPhoto from "@/assets/team/david-anders.png";
+import kishanPhoto from "@/assets/team/kishan.png";
+import ninaPhoto from "@/assets/team/nina.png";
+import pioneersLogo from "@/assets/logos/pioneers.png";
+import wbcsdLogo from "@/assets/logos/wbcsd.svg";
+import inseadLogo from "@/assets/logos/insead.svg";
+import osceLogo from "@/assets/logos/osce.svg";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
@@ -17,6 +23,7 @@ interface Member {
   title: string;
   background: string;
   photo?: string;
+  logos?: { src: string; invert?: boolean }[];
 }
 
 const team: Member[] = [
@@ -25,12 +32,18 @@ const team: Member[] = [
     title: "CEO & Founder",
     background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
     photo: rainhardPhoto,
+    logos: [{ src: pioneersLogo, invert: true }],
   },
   {
     name: "Philip",
     title: "VP of AI & ESG",
     background: "20+ years sustainability and strategy: OSCE, WBCSD, INSEAD MBA",
     photo: philipPhoto,
+    logos: [
+      { src: osceLogo },
+      { src: wbcsdLogo },
+      { src: inseadLogo },
+    ],
   },
   {
     name: "David Anders",
@@ -42,11 +55,13 @@ const team: Member[] = [
     name: "Kishan Chimminiyan",
     title: "CTO & Head of Engineering",
     background: "full-stack, 10+years building with applied LLM products (GPT-3 era onward) ",
+    photo: kishanPhoto,
   },
   {
     name: "Nina Aichinger",
     title: "Head of People",
     background: "Previously Head of HR at Bitpanda and Shpock.",
+    photo: ninaPhoto,
   },
 ];
 
