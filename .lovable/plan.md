@@ -1,64 +1,69 @@
 
 
-## Build Slide 4 — "Meet Glacier" product slide
+## Lock the deck to a fixed PowerPoint canvas (1920×1080)
 
-### Scope
-Create new file `src/slides/Slide4.tsx` per spec. Insert it into the slides array in `Presentation.tsx` between Slide3 and Slide5 so it appears in the 4th position. No other slides touched.
+### Why
+Right now every slide is `100vw × 100vh` and uses `clamp()` everywhere, so layouts shift at every screen size — text wraps differently, gaps shrink, graphics overflow. PowerPoint avoids this by authoring at a fixed resolution and scaling the whole slide as one unit. We'll do the same. Once locked, what you see in the editor is exactly what you'll see when projected.
 
-### Slide structure
-`SlideFrame variant="technical" slideNumber={4} totalSlides={11}` wrapping a flex column (`justify-content: flex-start`, `align-items: center`).
+### Target format
+**1920 × 1080 (16:9)** — the standard PowerPoint widescreen size. Every slide is authored at these exact pixel dimensions and scaled uniformly to fit the browser window (or fullscreen projector) with letterboxing if the screen aspect differs.
 
-**1. Header (centered)**
-- Eyebrow "THE PRODUCT" — JetBrains Mono, Mint, uppercase, letter-spacing 0.12em, clamp(12px, 1.1vw, 16px)
-- Headline "Meet Glacier." — clamp(28px, 5vw, 64px), weight 700, "Glacier" wrapped in Mint span
-- Subhead "One evidence graph. Every ESG framework reads from it." — clamp(14px, 1.4vw, 20px), Light Gray @ 70%, max-width 900px, centered
-- Internal gaps clamp(10px, 1.5vh, 20px) and clamp(12px, 2vh, 20px)
+### Approach
 
-Section gap: clamp(36px, 6vh, 80px)
+**1. New `ScaledSlide` wrapper (`src/components/ScaledSlide.tsx`)**
+- Outer container: full viewport, black background, `overflow: hidden`, `position: relative`, flex-centered.
+- Inner stage: absolutely positioned `1920 × 1080` element, centered via `left: 50%; top: 50%; margin-left: -960px; margin-top: -540px`, with `transform: scale(var(--scale))` and `transform-origin: center center`.
+- A `ResizeObserver` on the outer container computes `scale = Math.min(width / 1920, height / 1080)` and writes it to the CSS variable. No re-renders, no layout thrash.
+- `Presentation.tsx` wraps the active slide in `<ScaledSlide>` so the chevrons, dots, and overview UI stay in real viewport pixels (they don't get scaled).
 
-**2. Workflow row (hero)**
-- Grid `1fr auto 1fr auto 1fr`, gap clamp(12px, 1.8vw, 24px), max-width min(1400px, 100%), margin 0 auto, align-items stretch
-- Three boxes: Dark Blue fill, 1px Mint @ 30% border, radius 12px, padding clamp(20px, 2.4vw, 32px), flex column centered, gap clamp(10px, 1.4vh, 16px)
-  - Box 1 — `01` / UploadCloud / "What you bring" / "Your documents, data, interviews. Any format."
-  - Box 2 — `02` / Link2 / "What Glacier does" / "Extract, cite, draft. Every claim linked to its source. Every step human-reviewed."
-  - Box 3 — `03` / ShieldCheck / "What you get" / "CSRD-grade reports. EcoVadis questionnaires. Evidence ready for the next framework."
-- Two arrow cells: ArrowRight Lucide, Mint @ 70%, stroke 2, clamp(20px, 2.4vw, 32px)
-- Mobile (useIsMobile): switch to single-column stack, replace ArrowRight with ArrowDown
+**2. Rework `SlideFrame.tsx` to a fixed canvas**
+- Replace `width: 100vw; height: 100vh` with `width: 1920px; height: 1080px`.
+- Replace `padding: clamp(32px, 5vw, 80px)` with a fixed padding (`80px`).
+- Replace the inner content cap of `maxWidth: 1700` with the full `1760px` usable width (1920 − 2×80).
+- Slide-number indicator, hairline, grid overlay, glows — all keep working, just at fixed coordinates now.
 
-Section gap: clamp(32px, 5vh, 56px)
+**3. Convert all `clamp()` typography and gaps to fixed pixels**
+- Every slide currently uses `clamp(min, vw, max)` for fonts and `clamp(min, vh, max)` for gaps. At a fixed canvas these are unnecessary and harmful (the `vw`/`vh` values resolve against the *browser*, not the 1920 stage, so they no longer match the design intent).
+- New fixed scale derived from the existing ceilings (which were tuned for 2K projectors):
+  - Minimal headline: `96px` / weight 700
+  - Technical headline: `56px` / weight 600
+  - Subhead: `22px`
+  - Body: `18px`
+  - Big stat: `144px` / Mint
+  - Eyebrow / mono label: `16px`
+  - Card title: `28px`
+  - Card body: `16px`
+  - Section gap: `64px`
+  - Header → subhead gap: `20px`
+  - Card inner gap: `16px`
+- Apply consistently across all 11 slides.
 
-**3. Screenshot + caption row**
-- Grid `minmax(0, 3fr) minmax(0, 2fr)`, gap clamp(24px, 3vw, 56px), max-width min(1300px, 100%), margin 0 auto, align-items center
-- Left: `<img>` from `/src/assets/glacier-csrd-dashboard.png`, width 100%, 1px Mint @ 40% border, radius 8px, shadow
-  - Image is not yet uploaded — use the import path as specified; render a placeholder fallback (Dark Blue tile with dashed Mint @ 30% border + "Screenshot loading…" mono caption) wrapped in `onError` on the `<img>` so the slide doesn't break if the asset is missing. Document the expected path in a code comment.
-- Right: overline "EVIDENCE TRACE VIEW" + body copy per spec
-- Mobile: stack vertically, screenshot first
+**4. Per-slide audit + fix overflow**
+After conversion, walk slides 1–11 at the fixed 1920×1080 canvas and fix anything that no longer fits:
+- Re-check Slide 4 workflow boxes (three-box grid + arrows) at full width.
+- Re-check Slide 6 logo wall, Slide 9 card grid, Slide 7 quote area.
+- Verify nothing clips against the 1080px height — especially headers + footers stacking.
+- Confirm screenshot blocks have explicit pixel dimensions instead of `width: 100%`.
 
-Section gap: clamp(28px, 4.5vh, 48px)
+**5. Browser/window behavior**
+- At any viewport the slide letterboxes (black bars on top/bottom or sides) — exactly like PowerPoint slideshow mode.
+- Fullscreen (F key) still works via the existing `requestFullscreen` call.
+- The mobile-stacking branch in `useIsMobile` becomes obsolete on the canvas itself (the canvas is always 1920×1080), so mobile-only code paths inside slides can be removed in a later pass — out of scope here unless something breaks.
 
-**4. Bottom strip (centered)**
-- "Deterministic · Auditable · Multi-framework" — clamp(15px, 1.6vw, 22px), weight 700
-- Three words in Mint, dots Light Gray @ 40%, letter-spacing 0.04em
-
-### Animation (Framer Motion)
-- Header eyebrow → headline → subhead, 0.08s stagger, opacity + y:20→0, 0.4s ease-out
-- Workflow: Box 1 (scale 0.97→1 + opacity, 0.4s) → Arrow 1 (scaleX 0→1, origin left, 0.3s) → Box 2 → Arrow 2 → Box 3, sequenced via delays
-- Screenshot: x:20→0 + opacity, 0.4s, delay 0.2s after Box 3
-- Caption: opacity 0.3s, delay 0.15s after screenshot
-- Bottom strip: opacity 0.3s last
-- All transform/opacity only
-
-### Presentation.tsx update
-- Add `import Slide4 from "@/slides/Slide4";`
-- Update slides array to `[Slide1, Slide2, Slide3, Slide4, Slide5, Slide6, Slide7, Slide8, Slide9, Slide10, Slide11]` (11 entries, matches `totalSlides=11`)
-
-### Audit before finishing
-Per `mem://preferences/slide-audit-checklist.md`: A) verify centering on outer column + each row, B) confirm gaps use clamp+vh, C) mono labels ≥12px floor, D) workflow boxes equal-height via `align-items: stretch`, no `margin: auto` on children.
+### Trade-offs you should know
+- **No more responsive reflow inside slides.** That's the point — it's a deck, not a webpage. On phones, the slide will appear small but identical to the projected version, with letterboxing.
+- **Mobile-stacking branches become dead code** on the slide canvas. Leaving them in doesn't hurt, but they'll never fire. We can prune them in a follow-up.
+- All previously-tuned `clamp()` ceilings convert directly to their max value, so the look on a 2K projector stays the same.
 
 ### Files touched
-- `src/slides/Slide4.tsx` (new)
-- `src/components/Presentation.tsx` (one import + array entry)
+- `src/components/ScaledSlide.tsx` (new)
+- `src/components/SlideFrame.tsx` (fixed dimensions + padding, drop `vw`/`vh`)
+- `src/components/Presentation.tsx` (wrap active slide in `ScaledSlide`)
+- `src/slides/Slide1.tsx` through `Slide11.tsx` (replace `clamp()` font/gap values with fixed pixels, fix any overflow surfaced at 1920×1080)
 
 ### Not touched
-SlideFrame, useIsMobile, navigation, theme, slides 1-3 and 5-11.
+Navigation/keyboard handlers, progress dots, overview grid, theme tokens, brand palette, animation logic, slide content/copy, project knowledge.
+
+### Audit before finishing
+For each slide at exactly 1920×1080: outer column centered, no content beyond the 1760×920 inner area, mono labels ≥16px, no leftover `clamp()` calls in slide files, and no `100vw`/`100vh` references outside `ScaledSlide`'s outer container.
 
