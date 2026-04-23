@@ -1,32 +1,26 @@
 
 
-## Slide 10 — Stack Philip's logos vertically, remove white pill backgrounds
+## Slide 10 — Enlarge logos and unify their sizing
 
-Make the OSCE / WBCSD / INSEAD logos under Philip readable by stacking them vertically and rendering them in their native colors directly on the dark blue slide background (no white pill).
+Make the logos under Rainhard (Pioneers) and Philip (OSCE, WBCSD, INSEAD) larger and visually consistent in size on screen.
 
 ### Changes in `src/slides/Slide10.tsx`
 
-1. **Logo container** (the `m.logos` block under each member):
-   - Change `flexDirection` to `column` so logos stack one under another.
-   - Keep `alignItems: center`, `justifyContent: center`.
-   - Bump `gap` from `10px` to `12px` for vertical breathing room.
-   - Remove `flexWrap: "wrap"` (no longer needed in a column).
-   - Remove `minHeight: 32px`.
+1. **Logo dimensions** (in the `m.logos.map(...)` block):
+   - Increase `height` from `28px` → `48px`.
+   - Increase `maxWidth` from `140px` → `200px`.
+   - Keep `objectFit: "contain"` so each logo scales proportionally inside the same bounding box (this is what makes mixed aspect ratios *look* the same size).
 
-2. **Non-inverted logos** (OSCE, WBCSD, INSEAD):
-   - Drop the white pill wrapper (`background: LIGHT`, `borderRadius`, `padding`).
-   - Render the `<img>` directly with no background.
-   - Increase `height` from `20px` to `28px` and `maxWidth` from `70px` to `140px` so each logo reads clearly when stacked.
-   - Keep native colors (no filter). The OSCE, WBCSD, INSEAD SVGs contain colored marks that read fine on `#143560`; they were only being hidden by the previous `brightness(0) invert(1)` filter, which the pill was compensating for.
+2. **Stack spacing**:
+   - Bump container `gap` from `12px` → `18px` so the larger logos still breathe.
 
-3. **Inverted logos** (Pioneers under Rainhard):
-   - Unchanged behavior — still uses the `invert(1) brightness(1.1)` filter to render white against the dark background.
-   - Match the new height (`28px`) and `maxWidth` (`140px`) so Rainhard's column visually aligns with Philip's.
+3. **Inverted vs native**:
+   - No change to the filter logic — Pioneers keeps `invert(1) brightness(1.1)`; OSCE / WBCSD / INSEAD render in native colors.
 
 ### What stays the same
-- Avatar size, name/title/background typography, header, eyebrow, headline, bottom anchor.
-- Grid structure, animations, palette, SlideFrame variant, slide numbering.
-- Mobile behavior (the column stack works the same in the 2-col mobile grid; the scroll panel absorbs added height).
+- Vertical column stacking (`flexDirection: "column"`, centered).
+- Avatars, names, titles, backgrounds, header, eyebrow, headline, bottom anchor.
+- Grid layout, animations, palette, SlideFrame variant, mobile scroll behavior.
 
 ### Files touched
 - `src/slides/Slide10.tsx` only.
