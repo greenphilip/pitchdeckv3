@@ -1,27 +1,21 @@
 
 
-## Slide 10 — Enlarge logos and unify their sizing
+## Center the screenshot row on Slide 4
 
-Make the logos under Rainhard (Pioneers) and Philip (OSCE, WBCSD, INSEAD) larger and visually consistent in size on screen.
+The lower section (screenshot + caption) currently uses a `3fr / 2fr` grid which makes the screenshot sit left-of-center relative to the three workflow boxes above it. I'll re-balance so the screenshot is visually centered on the slide.
 
-### Changes in `src/slides/Slide10.tsx`
+### Change
 
-1. **Logo dimensions** (in the `m.logos.map(...)` block):
-   - Increase `height` from `28px` → `48px`.
-   - Increase `maxWidth` from `140px` → `200px`.
-   - Keep `objectFit: "contain"` so each logo scales proportionally inside the same bounding box (this is what makes mixed aspect ratios *look* the same size).
+In `src/slides/Slide4.tsx`, the screenshot+caption grid (around lines 254–264):
 
-2. **Stack spacing**:
-   - Bump container `gap` from `12px` → `18px` so the larger logos still breathe.
+- Switch grid columns from `minmax(0, 3fr) minmax(0, 2fr)` to a centered layout: `auto minmax(0, 420px)` with the whole grid `justifyContent: "center"`, OR simpler — wrap the screenshot in a container with `margin: 0 auto` and let the caption sit beside it without forcing 3/5 width.
 
-3. **Inverted vs native**:
-   - No change to the filter logic — Pioneers keeps `invert(1) brightness(1.1)`; OSCE / WBCSD / INSEAD render in native colors.
+Concretely:
+- Set `gridTemplateColumns` (desktop) to `minmax(0, 560px) minmax(0, 360px)` and add `justifyContent: "center"` on the grid so the pair is centered as a block under the three workflow cards.
+- Keep mobile as `1fr` stacked (unchanged).
+- Screenshot motion.div: add `margin: "0 auto"` and `justifySelf: "center"` so the image itself stays centered within its column.
 
-### What stays the same
-- Vertical column stacking (`flexDirection: "column"`, centered).
-- Avatars, names, titles, backgrounds, header, eyebrow, headline, bottom anchor.
-- Grid layout, animations, palette, SlideFrame variant, mobile scroll behavior.
+### Result
 
-### Files touched
-- `src/slides/Slide10.tsx` only.
+The screenshot sits visually centered beneath the middle workflow card, with the caption to its right, matching the centered alignment of the rest of the slide.
 
