@@ -3,6 +3,7 @@ import { User } from "lucide-react";
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import rainhardPhoto from "@/assets/team/rainhard-fuchs.png";
+import philipPhoto from "@/assets/team/philip.png";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
@@ -28,6 +29,7 @@ const team: Member[] = [
     name: "Philip",
     title: "VP of AI & ESG",
     background: "20+ years sustainability and strategy: OSCE, WBCSD, INSEAD MBA",
+    photo: philipPhoto,
   },
   {
     name: "David Anders",
