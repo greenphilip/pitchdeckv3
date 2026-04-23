@@ -36,6 +36,7 @@ const team: Member[] = [
     name: "David Anders",
     title: "Head of ESG Delivery",
     background: "Previously PWC; Head of ESG at Burgenland Energie; ÖAMTC.",
+    photo: davidPhoto,
   },
   {
     name: "Kishan Chimminiyan",
