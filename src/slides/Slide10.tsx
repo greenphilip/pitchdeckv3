@@ -40,7 +40,7 @@ const team: Member[] = [
     logos: [{ src: pioneersLogo, invert: true }],
   },
   {
-    name: "Philip",
+    name: "Philip Reuchlin",
     title: "VP of AI & ESG",
     background: "20+ years sustainability and strategy: OSCE, WBCSD, INSEAD MBA",
     photo: philipPhoto,
