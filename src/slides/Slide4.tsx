@@ -66,6 +66,7 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
           fontSize: "16px",
           color: `${LIGHT_GRAY}CC`,
           lineHeight: 1.5,
+          whiteSpace: "pre-line",
         }}
       >
         {body}
@@ -226,7 +227,7 @@ export default function Slide4() {
             number="01"
             Icon={UploadCloud}
             headline="Documents"
-            body="Any format: PDF/PPT/DOC/XLS"
+            body={"Upload any format: PDF/PPT/DOC/XLS\nQuantity doesn't matter\n\nUnstructured data reflects company reality"}
             delay={tBox1}
           />
           <ArrowCell delay={tArrow1} vertical={isMobile} />
@@ -234,7 +235,7 @@ export default function Slide4() {
             number="02"
             Icon={Link2}
             headline="Glacier AI"
-            body="Match evidence to requirements, cite, draft, delegate, review, approve, export"
+            body={"Matches evidence to requirements\nProvides citations\n\n\nUser can draft, delegate, review, approve, export"}
             delay={tBox2}
           />
           <ArrowCell delay={tArrow2} vertical={isMobile} />
@@ -242,7 +243,7 @@ export default function Slide4() {
             number="03"
             Icon={ShieldCheck}
             headline="Report / Gap"
-            body="CSRD-grade reports, Ecovadis questionnaires, gap analysis, policy builders, + more ESG standards soon"
+            body={"CSRD-grade reports, Ecovadis questionnaires, gap analysis, policy builders\n\n\n+ more ESG standards soon"}
             delay={tBox3}
           />
         </div>
