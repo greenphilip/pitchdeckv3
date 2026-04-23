@@ -24,7 +24,7 @@ const team: Member[] = [
   {
     name: "Philip",
     title: "VP of AI & ESG",
-    background: "20 years sustainability and strategy consulting. Built 3 ESG SaaS data science tools. INSEAD MBA.",
+    background: "20+ years sustainability and strategy: OSCE, WBCSD, INSEAD MBA",
   },
   {
     name: "David Anders",
@@ -34,7 +34,7 @@ const team: Member[] = [
   {
     name: "Kishan Chimminiyan",
     title: "CTO & Head of Engineering",
-    background: "Technical leadership across multiple AI ventures.",
+    background: "full-stack, 10+years building with applied LLM products (GPT-3 era onward) ",
   },
   {
     name: "Nina Aichinger",
