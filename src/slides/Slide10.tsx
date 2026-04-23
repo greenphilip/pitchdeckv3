@@ -14,6 +14,8 @@ import osceLogo from "@/assets/logos/osce.svg";
 import pwcLogo from "@/assets/logos/pwc.svg";
 import oeamtcLogo from "@/assets/logos/oeamtc.svg";
 import smartCounselLogo from "@/assets/logos/smart-counsel.png";
+import bitpandaLogo from "@/assets/logos/bitpanda.svg";
+import shpockLogo from "@/assets/logos/shpock.svg";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
@@ -70,6 +72,10 @@ const team: Member[] = [
     title: "Head of People",
     background: "Previously Head of HR at Bitpanda and Shpock.",
     photo: ninaPhoto,
+    logos: [
+      { src: bitpandaLogo, invert: true },
+      { src: shpockLogo, invert: true },
+    ],
   },
 ];
 
