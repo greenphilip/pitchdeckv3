@@ -5,6 +5,7 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import rainhardPhoto from "@/assets/team/rainhard-fuchs.png";
 import philipPhoto from "@/assets/team/philip.png";
 import davidPhoto from "@/assets/team/david-anders.png";
+import kishanPhoto from "@/assets/team/kishan.png";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
@@ -42,6 +43,7 @@ const team: Member[] = [
     name: "Kishan Chimminiyan",
     title: "CTO & Head of Engineering",
     background: "full-stack, 10+years building with applied LLM products (GPT-3 era onward) ",
+    photo: kishanPhoto,
   },
   {
     name: "Nina Aichinger",
