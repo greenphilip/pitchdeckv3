@@ -73,7 +73,7 @@ export default function Slide6() {
           justifyContent: "flex-start",
           alignItems: "center",
           width: "100%",
-          gap: isMobile ? "clamp(28px, 4vh, 48px)" : "clamp(36px, 6vh, 80px)",
+          gap: isMobile ? "48px" : "80px",
           overflowY: isMobile ? "auto" : undefined,
         }}
       >
@@ -81,7 +81,7 @@ export default function Slide6() {
         <div
           style={{
             width: "100%",
-            maxWidth: "min(1300px, 92vw)",
+            maxWidth: "1300px",
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",
@@ -95,7 +95,7 @@ export default function Slide6() {
             transition={{ duration: 0.4, ease: EXPO_OUT }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(13px, 1vw, 20px)",
+              fontSize: "20px",
               color: MINT,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -111,8 +111,8 @@ export default function Slide6() {
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.08 }}
             style={{
               margin: 0,
-              marginTop: "clamp(10px, 1.5vh, 20px)",
-              fontSize: "clamp(22px, 3vw, 56px)",
+              marginTop: "20px",
+              fontSize: "56px",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -136,7 +136,7 @@ export default function Slide6() {
             margin: "0 auto",
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 1.35fr) minmax(0, 1fr)",
-            gap: isMobile ? "clamp(28px, 4vh, 48px)" : "clamp(24px, 3vw, 56px)",
+            gap: isMobile ? "48px" : "56px",
             alignItems: "stretch",
           }}
         >
@@ -145,7 +145,7 @@ export default function Slide6() {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "clamp(20px, 3vh, 32px)",
+            gap: "32px",
             minWidth: 0,
           }}
         >
@@ -159,7 +159,7 @@ export default function Slide6() {
               width: "100%",
               border: `1px solid ${BLUE}33`,
               borderRadius: 6,
-              padding: "clamp(16px, 2vw, 28px)",
+              padding: "28px",
               background: "rgba(255, 255, 255, 0.02)",
             }}
           >
@@ -169,18 +169,18 @@ export default function Slide6() {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "flex-start",
-                gap: "clamp(12px, 2vw, 24px)",
+                gap: "24px",
                 flexWrap: "wrap",
-                marginBottom: "clamp(8px, 1.5vh, 16px)",
+                marginBottom: "16px",
               }}
             >
               <div
                 style={{
                   display: "flex",
-                  gap: "clamp(12px, 2vw, 24px)",
+                  gap: "24px",
                   flexWrap: "wrap",
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "clamp(13px, 1vw, 18px)",
+                  fontSize: "18px",
                   color: `${LIGHT}B3`,
                 }}
               >
@@ -211,10 +211,10 @@ export default function Slide6() {
               <div
                 style={{
                   border: `1px solid ${MINT}`,
-                  padding: "clamp(8px, 1.2vw, 14px)",
+                  padding: "14px",
                   borderRadius: 4,
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "clamp(13px, 1vw, 18px)",
+                  fontSize: "18px",
                   color: MINT,
                   fontWeight: 600,
                   letterSpacing: "0.05em",
@@ -228,7 +228,7 @@ export default function Slide6() {
             <div
               style={{
                 width: "100%",
-                height: isMobile ? "clamp(180px, 26vh, 240px)" : "clamp(200px, 30vh, 300px)",
+                height: isMobile ? "240px" : "300px",
               }}
             >
               <ResponsiveContainer width="100%" height="100%">
@@ -320,8 +320,8 @@ export default function Slide6() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-              columnGap: "clamp(20px, 2.4vw, 40px)",
-              rowGap: "clamp(20px, 3vh, 36px)",
+              columnGap: "40px",
+              rowGap: "36px",
             }}
           >
             {stats.map((s, i) => (
@@ -333,13 +333,13 @@ export default function Slide6() {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  gap: "clamp(6px, 0.8vh, 10px)",
+                  gap: "10px",
                   textAlign: "center",
                 }}
               >
                 <div
                   style={{
-                    fontSize: "clamp(32px, 4vw, 72px)",
+                    fontSize: "72px",
                     color: s.emphasis ? BLUE : LIGHT,
                     fontWeight: 700,
                     letterSpacing: "-0.02em",
@@ -351,7 +351,7 @@ export default function Slide6() {
                 <div
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "clamp(13px, 1vw, 18px)",
+                    fontSize: "18px",
                     color: `${LIGHT}B3`,
                     fontWeight: 600,
                     letterSpacing: "0.08em",
@@ -372,18 +372,18 @@ export default function Slide6() {
               maxWidth: "100%",
               width: "100%",
               border: `1px solid ${BLUE}4D`,
-              padding: "clamp(16px, 2vw, 22px)",
+              padding: "22px",
               borderRadius: 6,
               background: "rgba(20, 53, 96, 0.6)",
               display: "flex",
               flexDirection: "column",
-              gap: "clamp(8px, 1.2vh, 12px)",
+              gap: "12px",
             }}
           >
             <div
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(13px, 1vw, 18px)",
+                fontSize: "18px",
                 color: MINT,
                 fontWeight: 600,
                 letterSpacing: "0.1em",
@@ -393,7 +393,7 @@ export default function Slide6() {
             </div>
             <div
               style={{
-                fontSize: "clamp(14px, 1.05vw, 19px)",
+                fontSize: "19px",
                 color: `${LIGHT}D9`,
                 lineHeight: 1.5,
               }}
@@ -411,7 +411,7 @@ export default function Slide6() {
             flexDirection: "column",
             justifyContent: "flex-start",
             alignItems: "stretch",
-            gap: "clamp(20px, 3vh, 32px)",
+            gap: "32px",
             minWidth: 0,
             minHeight: 0,
           }}
@@ -422,7 +422,7 @@ export default function Slide6() {
               flexDirection: "column",
               alignItems: "center",
               textAlign: "center",
-              gap: "clamp(8px, 1.2vh, 14px)",
+              gap: "14px",
             }}
           >
             <motion.div
@@ -431,7 +431,7 @@ export default function Slide6() {
               transition={{ duration: 0.4, delay: 1.0 }}
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(13px, 1vw, 20px)",
+                fontSize: "20px",
                 color: MINT,
                 fontWeight: 600,
                 textTransform: "uppercase",
@@ -445,7 +445,7 @@ export default function Slide6() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 1.08 }}
               style={{
-                fontSize: "clamp(14px, 1.1vw, 20px)",
+                fontSize: "20px",
                 color: `${LIGHT}B3`,
               }}
             >
@@ -463,8 +463,8 @@ export default function Slide6() {
                 ? "repeat(2, minmax(0, 1fr))"
                 : "repeat(2, minmax(0, 1fr))",
               gridAutoRows: "1fr",
-              columnGap: isMobile ? "clamp(18px, 3vw, 28px)" : "clamp(24px, 3vw, 48px)",
-              rowGap: "clamp(16px, 2.5vh, 32px)",
+              columnGap: isMobile ? "28px" : "48px",
+              rowGap: "32px",
               alignItems: "center",
               justifyItems: "center",
             }}
@@ -489,7 +489,7 @@ export default function Slide6() {
                   src={logo.src}
                   alt={logo.alt}
                   style={{
-                    maxHeight: isMobile ? "clamp(36px, 5vh, 52px)" : "clamp(48px, 7vh, 80px)",
+                    maxHeight: isMobile ? "52px" : "80px",
                     maxWidth: "100%",
                     objectFit: "contain",
                     filter: "brightness(0) invert(1)",

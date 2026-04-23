@@ -64,7 +64,7 @@ export default function Slide3() {
             transition={{ duration: 0.4, ease: EXPO_OUT }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(13px, 1vw, 20px)",
+              fontSize: "20px",
               color: MINT,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -75,14 +75,14 @@ export default function Slide3() {
             THE MARKET TODAY
           </motion.div>
 
-          <div style={{ height: "clamp(12px, 2vh, 24px)" }} />
+          <div style={{ height: "24px" }} />
 
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.08, ease: EXPO_OUT }}
             style={{
-              fontSize: "clamp(26px, 3.8vw, 64px)",
+              fontSize: "64px",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.02em",
@@ -95,14 +95,14 @@ export default function Slide3() {
             Tools currently on the market{"\n"}don't really solve this.
           </motion.h1>
 
-          <div style={{ height: "clamp(18px, 3vh, 32px)" }} />
+          <div style={{ height: "32px" }} />
 
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.16, ease: EXPO_OUT }}
             style={{
-              fontSize: "clamp(15px, 1.3vw, 24px)",
+              fontSize: "24px",
               color: LIGHT,
               opacity: 0.7,
               lineHeight: 1.5,
@@ -116,7 +116,7 @@ export default function Slide3() {
         </div>
 
         {/* GRID */}
-        <div style={{ height: "clamp(36px, 6vh, 80px)" }} />
+        <div style={{ height: "80px" }} />
 
         <div
           style={{
@@ -124,7 +124,7 @@ export default function Slide3() {
             maxWidth: "min(1400px, 100%)",
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "repeat(3, minmax(0, 1fr))",
-            gap: isMobile ? "clamp(12px, 2vh, 20px)" : "clamp(24px, 3vw, 48px)",
+            gap: isMobile ? "20px" : "48px",
             ...(isMobile
               ? { maxHeight: "50vh", overflowY: "auto", paddingRight: 4 }
               : {}),
@@ -141,11 +141,11 @@ export default function Slide3() {
                 style={{
                   border: `1px solid ${BLUE}40`,
                   background: "rgba(255, 255, 255, 0.03)",
-                  padding: "clamp(18px, 2vw, 28px)",
+                  padding: "28px",
                   borderRadius: 6,
                   display: "flex",
                   flexDirection: "column",
-                  gap: "clamp(14px, 2vh, 20px)",
+                  gap: "20px",
                 }}
               >
                 <motion.div
@@ -154,7 +154,7 @@ export default function Slide3() {
                   transition={{ duration: 0.3, delay: cardDelay + 0.08, ease: EXPO_OUT }}
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "clamp(13px, 1vw, 20px)",
+                    fontSize: "20px",
                     fontWeight: 600,
                     color: MINT,
                     textTransform: "uppercase",
@@ -177,7 +177,7 @@ export default function Slide3() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: cardDelay + 0.24, ease: EXPO_OUT }}
                   style={{
-                    fontSize: "clamp(20px, 2.2vw, 28px)",
+                    fontSize: "28px",
                     color: LIGHT,
                     fontWeight: 600,
                     lineHeight: 1.2,
@@ -192,7 +192,7 @@ export default function Slide3() {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3, delay: cardDelay + 0.32, ease: EXPO_OUT }}
                   style={{
-                    fontSize: "clamp(14px, 1.05vw, 19px)",
+                    fontSize: "19px",
                     color: LIGHT,
                     opacity: 0.8,
                     lineHeight: 1.5,
@@ -201,7 +201,7 @@ export default function Slide3() {
                   {cat.body}
                 </motion.div>
 
-                <div style={{ flex: 1, minHeight: "clamp(4px, 1vh, 8px)" }} />
+                <div style={{ flex: 1, minHeight: "8px" }} />
 
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -209,11 +209,11 @@ export default function Slide3() {
                   transition={{ duration: 0.3, delay: cardDelay + 0.4, ease: EXPO_OUT }}
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "clamp(12px, 0.85vw, 17px)",
+                    fontSize: "17px",
                     color: BLUE,
                     opacity: 0.75,
                     letterSpacing: "0.04em",
-                    paddingTop: "clamp(14px, 2vh, 22px)",
+                    paddingTop: "22px",
                     borderTop: `1px solid ${BLUE}26`,
                   }}
                 >
@@ -225,7 +225,7 @@ export default function Slide3() {
         </div>
 
         {/* THESIS STAMP */}
-        <div style={{ height: "clamp(36px, 6vh, 80px)" }} />
+        <div style={{ height: "80px" }} />
 
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -234,7 +234,7 @@ export default function Slide3() {
           style={{
             display: "flex",
             alignItems: "stretch",
-            gap: "clamp(16px, 2vw, 24px)",
+            gap: "24px",
             maxWidth: "min(1400px, 100%)",
             marginLeft: "auto",
             marginRight: "auto",
@@ -253,14 +253,14 @@ export default function Slide3() {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "clamp(6px, 1vh, 10px)",
-              paddingTop: "clamp(2px, 0.5vh, 6px)",
-              paddingBottom: "clamp(2px, 0.5vh, 6px)",
+              gap: "10px",
+              paddingTop: "6px",
+              paddingBottom: "6px",
             }}
           >
             <div
               style={{
-                fontSize: "clamp(18px, 2.2vw, 32px)",
+                fontSize: "32px",
                 color: LIGHT,
                 fontWeight: 500,
                 lineHeight: 1.3,
@@ -275,7 +275,7 @@ export default function Slide3() {
             <div
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(12px, 0.85vw, 17px)",
+                fontSize: "17px",
                 color: MINT,
                 fontWeight: 600,
                 letterSpacing: "0.1em",

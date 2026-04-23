@@ -35,7 +35,7 @@ export default function Slide5() {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          gap: isMobile ? "clamp(28px, 4vh, 48px)" : "clamp(36px, 6vh, 80px)",
+          gap: isMobile ? "48px" : "80px",
           overflowY: isMobile ? "auto" : undefined,
         }}
       >
@@ -57,7 +57,7 @@ export default function Slide5() {
             transition={{ duration: 0.4, ease: EXPO_OUT }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(13px, 1vw, 20px)",
+              fontSize: "20px",
               color: MINT,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -73,8 +73,8 @@ export default function Slide5() {
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.08 }}
             style={{
               margin: 0,
-              marginTop: "clamp(10px, 1.5vh, 20px)",
-              fontSize: "clamp(26px, 3.8vw, 64px)",
+              marginTop: "20px",
+              fontSize: "64px",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -90,9 +90,9 @@ export default function Slide5() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.16 }}
             style={{
-              margin: "clamp(12px, 2vh, 20px) auto 0",
+              margin: "20px auto 0",
               maxWidth: "1100px",
-              fontSize: "clamp(15px, 1.3vw, 24px)",
+              fontSize: "24px",
               color: `${LIGHT}B3`,
               lineHeight: 1.5,
               textAlign: "center",
@@ -110,24 +110,24 @@ export default function Slide5() {
             margin: "0 auto",
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 3fr) minmax(0, 2fr)",
-            gap: isMobile ? "clamp(32px, 5vh, 56px)" : "clamp(32px, 4.5vw, 72px)",
+            gap: isMobile ? "56px" : "72px",
             alignItems: "center",
           }}
         >
           {/* LEFT — TIME COMPRESSION CHART */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "clamp(16px, 2.5vh, 24px)" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "clamp(14px, 2vh, 20px)" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
               {bars.map((b, i) => (
                 <div
                   key={b.leftLabel}
-                  style={{ display: "flex", flexDirection: "column", gap: "clamp(6px, 0.8vh, 10px)" }}
+                  style={{ display: "flex", flexDirection: "column", gap: "10px" }}
                 >
                   <motion.div
                     initial={{ opacity: 0, y: 4 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: 0.25 + i * 0.18 }}
                     style={{
-                      fontSize: "clamp(14px, 1.25vw, 22px)",
+                      fontSize: "22px",
                       color: `${LIGHT}CC`,
                       fontWeight: 500,
                     }}
@@ -139,7 +139,7 @@ export default function Slide5() {
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      gap: "clamp(12px, 1.5vw, 20px)",
+                      gap: "20px",
                       flexWrap: "wrap",
                     }}
                   >
@@ -147,7 +147,7 @@ export default function Slide5() {
                       style={{
                         flex: "1 1 0",
                         minWidth: 0,
-                        height: "clamp(48px, 6vh, 72px)",
+                        height: "72px",
                         position: "relative",
                       }}
                     >
@@ -177,11 +177,11 @@ export default function Slide5() {
                         delay: 0.35 + i * 0.18 + (0.5 - i * 0.1),
                       }}
                       style={{
-                        fontSize: "clamp(20px, 2.2vw, 36px)",
+                        fontSize: "36px",
                         fontWeight: b.emphasis ? 700 : 600,
                         color: b.color,
                         whiteSpace: "nowrap",
-                        minWidth: "clamp(80px, 10vw, 160px)",
+                        minWidth: "160px",
                       }}
                     >
                       {b.rightLabel}
@@ -191,10 +191,10 @@ export default function Slide5() {
               ))}
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "clamp(6px, 1vh, 10px)" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               <div
                 style={{
-                  fontSize: "clamp(13px, 1.05vw, 18px)",
+                  fontSize: "18px",
                   color: `${LIGHT}99`,
                 }}
               >
@@ -202,7 +202,7 @@ export default function Slide5() {
               <div
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "clamp(12px, 0.85vw, 17px)",
+                  fontSize: "17px",
                   color: `${LIGHT}80`,
                   letterSpacing: "0.02em",
                 }}
@@ -219,17 +219,17 @@ export default function Slide5() {
             style={{
               border: `1px solid ${MINT}80`,
               background: `linear-gradient(135deg, rgba(109, 212, 173, 0.04), rgba(109, 212, 173, 0.02))`,
-              padding: "clamp(22px, 2.6vw, 36px)",
+              padding: "36px",
               borderRadius: 6,
               display: "flex",
               flexDirection: "column",
-              gap: "clamp(14px, 2vh, 20px)",
+              gap: "20px",
             }}
           >
             <div
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(13px, 1vw, 20px)",
+                fontSize: "20px",
                 color: MINT,
                 fontWeight: 600,
                 textTransform: "uppercase",
@@ -241,7 +241,7 @@ export default function Slide5() {
 
             <div
               style={{
-                fontSize: "clamp(20px, 2vw, 32px)",
+                fontSize: "32px",
                 color: LIGHT,
                 fontWeight: 600,
                 lineHeight: 1.3,
@@ -252,7 +252,7 @@ export default function Slide5() {
 
             <div
               style={{
-                fontSize: "clamp(14px, 1.05vw, 19px)",
+                fontSize: "19px",
                 color: `${LIGHT}D9`,
                 lineHeight: 1.5,
               }}
@@ -265,10 +265,10 @@ export default function Slide5() {
 
             <div
               style={{
-                paddingTop: "clamp(10px, 1.5vh, 16px)",
+                paddingTop: "16px",
                 borderTop: `1px solid ${MINT}33`,
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(12px, 0.85vw, 17px)",
+                fontSize: "17px",
                 color: `${MINT}CC`,
                 letterSpacing: "0.08em",
               }}
@@ -288,7 +288,7 @@ export default function Slide5() {
             maxWidth: "min(1200px, 100%)",
             margin: "0 auto",
             textAlign: "center",
-            fontSize: "clamp(15px, 1.3vw, 24px)",
+            fontSize: "24px",
             color: LIGHT,
             lineHeight: 1.5,
           }}

@@ -31,13 +31,13 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
         background: NAVY,
         border: `1px solid ${MINT}4D`,
         borderRadius: 12,
-        padding: "clamp(20px, 2.4vw, 32px)",
+        padding: "32px",
         boxShadow: "0 1px 2px 0 rgba(0,0,0,0.2)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         textAlign: "center",
-        gap: "clamp(10px, 1.4vh, 16px)",
+        gap: "16px",
         height: "100%",
         boxSizing: "border-box",
       }}
@@ -45,7 +45,7 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
       <div
         style={{
           fontFamily: "'JetBrains Mono', monospace",
-          fontSize: "clamp(12px, 1vw, 14px)",
+          fontSize: "14px",
           color: MINT,
           fontWeight: 600,
           letterSpacing: "0.1em",
@@ -53,10 +53,10 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
       >
         {number}
       </div>
-      <Icon size={44} color={MINT} strokeWidth={1.5} style={{ width: "clamp(32px, 3.8vw, 44px)", height: "auto" }} />
+      <Icon size={44} color={MINT} strokeWidth={1.5} style={{ width: "44px", height: "auto" }} />
       <div
         style={{
-          fontSize: "clamp(16px, 1.8vw, 22px)",
+          fontSize: "22px",
           color: LIGHT_GRAY,
           fontWeight: 600,
         }}
@@ -65,7 +65,7 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
       </div>
       <div
         style={{
-          fontSize: "clamp(13px, 1.2vw, 16px)",
+          fontSize: "16px",
           color: `${LIGHT_GRAY}CC`,
           lineHeight: 1.5,
         }}
@@ -87,7 +87,7 @@ function ArrowCell({ delay, vertical }: { delay: number; vertical: boolean }) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        width: vertical ? "100%" : "clamp(24px, 3vw, 48px)",
+        width: vertical ? "100%" : "48px",
         height: vertical ? "auto" : "100%",
         transformOrigin: "left",
       }}
@@ -96,7 +96,7 @@ function ArrowCell({ delay, vertical }: { delay: number; vertical: boolean }) {
         size={32}
         color={MINT}
         strokeWidth={2}
-        style={{ width: "clamp(20px, 2.4vw, 32px)", height: "auto", opacity: 0.7 }}
+        style={{ width: "32px", height: "auto", opacity: 0.7 }}
       />
     </motion.div>
   );
@@ -115,7 +115,7 @@ function ScreenshotPlaceholder() {
         alignItems: "center",
         justifyContent: "center",
         fontFamily: "'JetBrains Mono', monospace",
-        fontSize: "clamp(11px, 0.9vw, 13px)",
+        fontSize: "13px",
         color: `${LIGHT_GRAY}99`,
         letterSpacing: "0.05em",
       }}
@@ -158,7 +158,7 @@ export default function Slide4() {
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
-            gap: "clamp(10px, 1.5vh, 20px)",
+            gap: "20px",
             width: "100%",
           }}
         >
@@ -168,7 +168,7 @@ export default function Slide4() {
             transition={{ duration: 0.4, ease: "easeOut" }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(12px, 1.1vw, 16px)",
+              fontSize: "16px",
               color: MINT,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -182,7 +182,7 @@ export default function Slide4() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.08, ease: "easeOut" }}
             style={{
-              fontSize: "clamp(28px, 5vw, 64px)",
+              fontSize: "64px",
               fontWeight: 700,
               letterSpacing: "-0.02em",
               color: LIGHT_GRAY,
@@ -197,8 +197,8 @@ export default function Slide4() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.16, ease: "easeOut" }}
             style={{
-              marginTop: "clamp(2px, 0.5vh, 4px)",
-              fontSize: "clamp(14px, 1.4vw, 20px)",
+              marginTop: "4px",
+              fontSize: "20px",
               color: `${LIGHT_GRAY}B3`,
               maxWidth: 900,
               lineHeight: 1.5,
@@ -209,14 +209,14 @@ export default function Slide4() {
         </div>
 
         {/* GAP */}
-        <div style={{ height: "clamp(36px, 6vh, 80px)", flexShrink: 0 }} />
+        <div style={{ height: "80px", flexShrink: 0 }} />
 
         {/* WORKFLOW */}
         <div
           style={{
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "1fr auto 1fr auto 1fr",
-            gap: "clamp(12px, 1.8vw, 24px)",
+            gap: "24px",
             maxWidth: "min(1400px, 100%)",
             width: "100%",
             margin: "0 auto",
@@ -249,14 +249,14 @@ export default function Slide4() {
         </div>
 
         {/* GAP */}
-        <div style={{ height: "clamp(32px, 5vh, 56px)", flexShrink: 0 }} />
+        <div style={{ height: "56px", flexShrink: 0 }} />
 
         {/* SCREENSHOT + CAPTION */}
         <div
           style={{
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 3fr) minmax(0, 2fr)",
-            gap: "clamp(24px, 3vw, 56px)",
+            gap: "56px",
             maxWidth: "min(1300px, 100%)",
             width: "100%",
             margin: "0 auto",
@@ -298,13 +298,13 @@ export default function Slide4() {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "clamp(10px, 1.4vh, 14px)",
+              gap: "14px",
             }}
           >
             <div
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(12px, 1.1vw, 14px)",
+                fontSize: "14px",
                 color: MINT,
                 fontWeight: 600,
                 textTransform: "uppercase",
@@ -315,7 +315,7 @@ export default function Slide4() {
             </div>
             <div
               style={{
-                fontSize: "clamp(14px, 1.4vw, 18px)",
+                fontSize: "18px",
                 color: `${LIGHT_GRAY}D9`,
                 lineHeight: 1.5,
               }}
@@ -327,7 +327,7 @@ export default function Slide4() {
         </div>
 
         {/* GAP */}
-        <div style={{ height: "clamp(28px, 4.5vh, 48px)", flexShrink: 0 }} />
+        <div style={{ height: "48px", flexShrink: 0 }} />
 
         {/* BOTTOM STRIP */}
         <motion.div
@@ -335,7 +335,7 @@ export default function Slide4() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3, delay: tStrip, ease: "easeOut" }}
           style={{
-            fontSize: "clamp(15px, 1.6vw, 22px)",
+            fontSize: "22px",
             fontWeight: 700,
             textAlign: "center",
             letterSpacing: "0.04em",
