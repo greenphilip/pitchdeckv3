@@ -1,35 +1,37 @@
 
 
-## Slide 4 — Update workflow box copy & shrink screenshot
+## Add the official Glacier logo to every slide
 
-### Copy changes (3 boxes in `src/slides/Slide4.tsx`)
+Replace the placeholder `GlacierMark` glyph with the official 4-color vertical logo asset across the deck — large and centered on Slide 1, small and consistent on Slides 2–11.
 
-**Box 01 — "Documents"**
-- headline: `"What you bring"` → `"Documents"`
-- body: `"Your documents, data, interviews. Any format."` → `"Any format: PDF/PPT/DOC/XLS"`
+### 1. Add the logo asset
+- Copy `user-uploads://glacier_logo_vertical_4C.svg` to `src/assets/glacier-logo.svg`.
+- Import it in components as a static URL: `import glacierLogo from "@/assets/glacier-logo.svg"`.
+- The SVG ships with brand colors baked in (Dark Blue, Dark Teal, Mint, Blue) — it sits cleanly on the Navy background, no recoloring needed.
 
-**Box 02 — "Glacier AI"**
-- headline: `"What Glacier does"` → `"Glacier AI"`
-- body: `"Extract, cite, draft. Every claim linked to its source. Every step human-reviewed."` → `"Match evidence to requirements, cite, draft, delegate, review, approve, export"`
+### 2. Slide 1 — make it the hero
+Replace the small `GlacierMark` glyph + "Glacier" wordmark line with the **full vertical logo, large and present**.
+- Render `<img src={glacierLogo} />` at `height: 280px` (desktop) / `180px` (mobile), `width: auto`.
+- Keep the existing fade-in animation (`opacity 0→1`, 0.5s).
+- Drop the separate `<GlacierMark>` + "Glacier" `<span>` row (the wordmark is part of the logo now).
+- Keep the "ESG Reporting — Fast, Defensible" tagline below it, with a slightly larger gap (`gap: 20px`) since the logo is the dominant element.
+- Reduce the spacer below the top anchor from `140px` → `80px` to keep the headline well-positioned given the larger logo.
 
-**Box 03 — "Report / Gap"**
-- headline: `"What you get"` → `"Report / Gap"`
-- body: `"CSRD-grade reports. EcoVadis questionnaires. Evidence ready for the next framework."` → `"CSRD-grade reports, Ecovadis questionnaires, gap analysis, policy builders, + more ESG standards soon"`
+### 3. Slides 2–11 — small persistent mark
+Add a small logo to **every other slide** in a consistent fixed position so it reads as branding, not content.
+- Place inside `SlideFrame` (best done by adding an optional `showLogo` prop, default `true`, and rendering it absolutely positioned in `SlideFrame.tsx`).
+- Position: `top: 32px, left: 32px`, `zIndex: 2`, `opacity: 0.85`.
+- Size: `height: 44px, width: auto`.
+- On Slide 1, pass `showLogo={false}` (the hero logo replaces it).
+- On technical slides the existing top-right "SLIDE N / 10" indicator stays — logo on the left balances it visually.
 
-### Layout fix — screenshot too tall, no breathing room at bottom
+### 4. Files touched
+- `src/assets/glacier-logo.svg` (new — copy of upload)
+- `src/components/SlideFrame.tsx` (new `showLogo` prop + corner mark rendering)
+- `src/slides/Slide1.tsx` (swap glyph + wordmark for hero logo, pass `showLogo={false}`, remove unused `GlacierMark` import)
 
-The screenshot block currently uses `width: 100%` of its 3fr column with `height: auto` (image's native aspect ratio), pushing the bottom strip past the canvas edge. Constrain its height instead so it stops bleeding to the bottom.
-
-In the screenshot motion.div (lines 266-292):
-- Add `maxHeight: "340px"` and `display: "flex"` to the wrapper.
-- On the `<img>`: change `width: "100%", height: "auto"` → `maxWidth: "100%", maxHeight: "340px", width: "auto", height: "auto", objectFit: "contain"`.
-- On `ScreenshotPlaceholder`: cap `aspectRatio` container with `maxHeight: 340px`.
-
-Also reduce the gap above the screenshot from `56px` → `40px` (line 252) so the new compact image sits with comfortable air above the bottom strip.
-
-### Files touched
-- `src/slides/Slide4.tsx` (copy in 3 WorkflowBox calls + screenshot sizing)
-
-### Not touched
-SlideFrame, animations, brand palette, other slides, the icons, the bottom "Deterministic · Auditable · Multi-framework" strip.
+### 5. Not touched
+- `src/components/GlacierMark.tsx` stays in the codebase (unused now, harmless to keep).
+- All other slides require no edits — the logo appears automatically via SlideFrame.
+- No changes to navigation, animations, color palette, copy, or layout of slides 2–11.
 
