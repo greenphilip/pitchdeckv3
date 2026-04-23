@@ -255,12 +255,13 @@ export default function Slide4() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 3fr) minmax(0, 2fr)",
+            gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 560px) minmax(0, 360px)",
             gap: "56px",
             maxWidth: "min(1300px, 100%)",
             width: "100%",
             margin: "0 auto",
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <motion.div
@@ -276,6 +277,8 @@ export default function Slide4() {
               overflow: "hidden",
               border: imgFailed ? "none" : `1px solid ${MINT}66`,
               boxShadow: "0 1px 2px 0 rgba(0,0,0,0.2)",
+              margin: "0 auto",
+              justifySelf: "center",
             }}
           >
             {imgFailed ? (
