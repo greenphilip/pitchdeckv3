@@ -248,7 +248,7 @@ export default function Slide9() {
                     flexDirection: "column",
                     justifyContent: "center",
                     alignItems: "center",
-                    gap: "12px",
+                    gap: "18px",
                     marginTop: "-4px",
                   }}
                 >
@@ -258,9 +258,9 @@ export default function Slide9() {
                       src={logo.src}
                       alt=""
                       style={{
-                        height: "28px",
+                        height: "48px",
                         width: "auto",
-                        maxWidth: "140px",
+                        maxWidth: "200px",
                         objectFit: "contain",
                         opacity: logo.invert ? 0.9 : 1,
                         filter: logo.invert ? "invert(1) brightness(1.1)" : undefined,
