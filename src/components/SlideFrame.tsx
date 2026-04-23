@@ -27,12 +27,12 @@ export function SlideFrame({ children, variant, slideNumber, totalSlides }: Slid
     <div
       style={{
         position: "relative",
-        width: "100vw",
-        height: "100vh",
+        width: 1920,
+        height: 1080,
         overflow: "hidden",
         background: NAVY,
         color: FOREGROUND,
-        padding: "clamp(32px, 5vw, 80px)",
+        padding: 80,
         boxSizing: "border-box",
       }}
     >
@@ -98,7 +98,7 @@ export function SlideFrame({ children, variant, slideNumber, totalSlides }: Slid
           aria-hidden
           style={{
             position: "absolute",
-            inset: "clamp(16px, 2vw, 24px)",
+            inset: 24,
             zIndex: 0,
             border: `1px solid ${BLUE}1A`,
             pointerEvents: "none",
@@ -111,11 +111,11 @@ export function SlideFrame({ children, variant, slideNumber, totalSlides }: Slid
           aria-hidden
           style={{
             position: "absolute",
-            top: "clamp(20px, 2vw, 36px)",
-            right: "clamp(20px, 2vw, 36px)",
+            top: 32,
+            right: 32,
             zIndex: 2,
             fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "clamp(12px, 0.9vw, 16px)",
+            fontSize: 16,
             color: MINT,
             opacity: 0.6,
             letterSpacing: "0.05em",
@@ -133,7 +133,7 @@ export function SlideFrame({ children, variant, slideNumber, totalSlides }: Slid
           flexDirection: "column",
           justifyContent: "flex-start",
           width: "100%",
-          maxWidth: 1700,
+          maxWidth: 1760,
           height: "100%",
           marginLeft: "auto",
           marginRight: "auto",

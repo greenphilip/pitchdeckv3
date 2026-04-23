@@ -12,6 +12,7 @@ import Slide8 from "@/slides/Slide8";
 import Slide9 from "@/slides/Slide9";
 import Slide10 from "@/slides/Slide10";
 import Slide11 from "@/slides/Slide11";
+import { ScaledSlide } from "@/components/ScaledSlide";
 
 const slides = [Slide1, Slide2, Slide3, Slide4, Slide5, Slide6, Slide7, Slide8, Slide9, Slide10, Slide11];
 const TOTAL = slides.length;
@@ -101,7 +102,9 @@ export function Presentation() {
         transition={{ duration: 0.4, ease: "easeOut" }}
         style={{ position: "absolute", inset: 0 }}
       >
-        <ActiveSlide />
+        <ScaledSlide>
+          <ActiveSlide />
+        </ScaledSlide>
       </motion.div>
 
       {/* Chevrons */}
