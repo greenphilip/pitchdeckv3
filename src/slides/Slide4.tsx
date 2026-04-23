@@ -108,6 +108,7 @@ function ScreenshotPlaceholder() {
       style={{
         width: "100%",
         aspectRatio: "16 / 10",
+        maxHeight: "340px",
         background: NAVY,
         border: `1px dashed ${MINT}4D`,
         borderRadius: 8,
@@ -226,30 +227,30 @@ export default function Slide4() {
           <WorkflowBox
             number="01"
             Icon={UploadCloud}
-            headline="What you bring"
-            body="Your documents, data, interviews. Any format."
+            headline="Documents"
+            body="Any format: PDF/PPT/DOC/XLS"
             delay={tBox1}
           />
           <ArrowCell delay={tArrow1} vertical={isMobile} />
           <WorkflowBox
             number="02"
             Icon={Link2}
-            headline="What Glacier does"
-            body="Extract, cite, draft. Every claim linked to its source. Every step human-reviewed."
+            headline="Glacier AI"
+            body="Match evidence to requirements, cite, draft, delegate, review, approve, export"
             delay={tBox2}
           />
           <ArrowCell delay={tArrow2} vertical={isMobile} />
           <WorkflowBox
             number="03"
             Icon={ShieldCheck}
-            headline="What you get"
-            body="CSRD-grade reports. EcoVadis questionnaires. Evidence ready for the next framework."
+            headline="Report / Gap"
+            body="CSRD-grade reports, Ecovadis questionnaires, gap analysis, policy builders, + more ESG standards soon"
             delay={tBox3}
           />
         </div>
 
         {/* GAP */}
-        <div style={{ height: "56px", flexShrink: 0 }} />
+        <div style={{ height: "40px", flexShrink: 0 }} />
 
         {/* SCREENSHOT + CAPTION */}
         <div
@@ -269,6 +270,9 @@ export default function Slide4() {
             transition={{ duration: 0.4, delay: tScreenshot, ease: "easeOut" }}
             style={{
               width: "100%",
+              maxHeight: "340px",
+              display: "flex",
+              justifyContent: "center",
               borderRadius: 8,
               overflow: "hidden",
               border: imgFailed ? "none" : `1px solid ${MINT}66`,
@@ -284,8 +288,11 @@ export default function Slide4() {
                 onError={() => setImgFailed(true)}
                 style={{
                   display: "block",
-                  width: "100%",
+                  maxWidth: "100%",
+                  maxHeight: "340px",
+                  width: "auto",
                   height: "auto",
+                  objectFit: "contain",
                 }}
               />
             )}
