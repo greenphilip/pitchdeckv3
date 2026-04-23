@@ -23,7 +23,7 @@ interface Member {
   title: string;
   background: string;
   photo?: string;
-  logo?: string;
+  logos?: { src: string; invert?: boolean }[];
 }
 
 const team: Member[] = [
@@ -32,13 +32,18 @@ const team: Member[] = [
     title: "CEO & Founder",
     background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
     photo: rainhardPhoto,
-    logo: pioneersLogo,
+    logos: [{ src: pioneersLogo, invert: true }],
   },
   {
     name: "Philip",
     title: "VP of AI & ESG",
     background: "20+ years sustainability and strategy: OSCE, WBCSD, INSEAD MBA",
     photo: philipPhoto,
+    logos: [
+      { src: osceLogo },
+      { src: wbcsdLogo },
+      { src: inseadLogo },
+    ],
   },
   {
     name: "David Anders",
