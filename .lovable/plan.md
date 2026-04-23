@@ -1,29 +1,18 @@
 
 
-## Memory updates based on recent successful edits
+## Rename Slide10 → Slide11
 
-### Why update
-Three recurring patterns emerged from the last batch of edits (Slide 6 logo restructure, Slide 9 5-card grid, Slide 7 quote removal) that aren't yet captured in memory. They're worth saving so future slide work applies them automatically.
-
-### Proposed changes
-
-**1. New memory: `mem://design/grid-vertical-fill.md`**
-Captures the Slide 6 logo wall fix — when a grid lives in a flex column and you want it to absorb vertical space evenly, use `flex: 1` on the grid + `gridAutoRows: "1fr"` + parent `alignItems: "stretch"`. This avoids the "logos clumped at top, void below" symptom. Type: `design`.
-
-**2. Update `mem://design/slide-layout-defaults.md`**
-Add a small section on **column-count vs avatar/card sizing** — when bumping a card grid from 4→5 columns, avatar and name/title type need to shrink proportionally (recipe: avatar `clamp(72px, 7.5vw, 110px)`, name `clamp(15px, 1.35vw, 22px)`, title `clamp(12px, 1vw, 17px)`, gap `clamp(20px, 2.4vw, 40px)`). Prevents the next "names wrap awkwardly" round.
-
-**3. Update `mem://index.md`**
-- Add Memories entry pointing to the new `grid-vertical-fill.md` file.
-- Add one Core line: "When a grid must fill a flex column's vertical space, use `flex: 1` + `gridAutoRows: 1fr` on the grid and `alignItems: stretch` on its parent — never `margin: auto` on children."
+### Changes
+1. **Create `src/slides/Slide11.tsx`** — copy of current `Slide10.tsx` with one edit: `<SlideFrame variant="minimal" slideNumber={10} totalSlides={10}>` becomes `<SlideFrame variant="minimal" slideNumber={11} totalSlides={11}>`.
+2. **Delete `src/slides/Slide10.tsx`**.
+3. **Update `src/components/Presentation.tsx`** — the only file importing Slide10. Change the import path from `@/slides/Slide10` to `@/slides/Slide11` and update the component reference (`Slide10` → `Slide11`) in the slides array.
 
 ### Not changing
-- `slide-audit-checklist.md` — still accurate, no new audit failures to add.
-- Project knowledge / custom instructions — those are user-owned, out of scope.
-- Brand colors, type ceilings, gap scale — all current values held up across the recent edits.
+- No other slide files touched.
+- `totalSlides` is bumped to 11 only inside the renamed file (since the slide number itself moved to 11). If you want every slide's footer to read "/ 11" instead of "/ 10", that's a separate pass — flag if you want it included.
 
 ### Files touched
-- `mem://design/grid-vertical-fill.md` (new)
-- `mem://design/slide-layout-defaults.md` (append column-count sizing recipe)
-- `mem://index.md` (one Core line + one Memories reference)
+- `src/slides/Slide11.tsx` (new, copied from Slide10)
+- `src/slides/Slide10.tsx` (deleted)
+- `src/components/Presentation.tsx` (import + reference rename)
 
