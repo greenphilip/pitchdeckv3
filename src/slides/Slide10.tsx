@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { User } from "lucide-react";
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import rainhardPhoto from "@/assets/team/rainhard-fuchs.png";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
@@ -13,6 +14,7 @@ interface Member {
   name: string;
   title: string;
   background: string;
+  photo?: string;
 }
 
 const team: Member[] = [
@@ -20,6 +22,7 @@ const team: Member[] = [
     name: "Rainhard Fuchs",
     title: "CEO & Founder",
     background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
+    photo: rainhardPhoto,
   },
   {
     name: "Philip",
@@ -150,16 +153,30 @@ export default function Slide9() {
                   alignItems: "center",
                   justifyContent: "center",
                   flexShrink: 0,
+                  overflow: "hidden",
                 }}
               >
-                <User
-                  style={{
-                    width: "50%",
-                    height: "50%",
-                    color: `${LIGHT}99`,
-                  }}
-                  strokeWidth={1.5}
-                />
+                {m.photo ? (
+                  <img
+                    src={m.photo}
+                    alt={m.name}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "center 20%",
+                    }}
+                  />
+                ) : (
+                  <User
+                    style={{
+                      width: "50%",
+                      height: "50%",
+                      color: `${LIGHT}99`,
+                    }}
+                    strokeWidth={1.5}
+                  />
+                )}
               </div>
 
               <div
