@@ -1,42 +1,71 @@
 
 
-## Slide 11 — Polish pass
+## Slide 9 — Anchor the eye on SOM
 
-Fix the data inconsistency, tame the typography, and clean up the developer placeholder so the closing slide lands cleanly.
+Reframe the left-column market funnel so SOM (the credible, near-term opportunity) becomes the primary visual anchor for a conservative family-office reader, while TAM and SAM recede into supporting context.
 
-### 1. Sync the ask figures with Slide 1
-Update the headline numbers in `src/slides/Slide11.tsx` to match the canonical ask used elsewhere in the deck:
-- `€300k unlocks €750k` → `€250k unlocks €425k`
+### 1. Bar height hierarchy (invert the visual weight)
+Currently all three bars are `height: 64px`. Make height inversely proportional to abstraction:
+- **TAM**: `64px` → `40px`
+- **SAM**: `64px` → `48px`
+- **SOM**: `64px` → `88px` (and add `borderRadius: 6` instead of 4 to subtly differentiate)
 
-(If you'd prefer Slide 1 to change instead, say so — I'll flip the direction. Default is to align Slide 11 to Slide 1.)
+Result: SOM is more than 2× the height of TAM despite being 8% of its width. The eye reads "this is the important one" before parsing labels.
 
-### 2. Tighten typography hierarchy
-Current sizes are 104px and 80px, both bold — they fight each other and crowd out the columns below.
-- Line 1 (`€250k unlocks €425k.`): `104px` → `clamp(34px, 5.2vw, 88px)`
-- Line 2 (`Twelve months to a Series A on €2.4M ARR.`): `80px` → `clamp(22px, 3vw, 48px)`, font-weight `500` (was 700)
+### 2. SOM bar — add a Mint glow + left accent
+On the SOM bar only:
+- `boxShadow: 0 0 0 1px ${MINT}, 0 8px 32px ${MINT}40` — crisp 1px outline plus a soft Mint halo on Navy.
+- Add a 4px-wide solid Mint vertical accent bar flush to the left of the bar container (inside the flex row, before the bar track), height matching the SOM bar. Reads as a "you are here" marker.
 
-Result: line 1 stays the hero, line 2 reads as the supporting clause.
+TAM and SAM get no shadow, no accent — flat color blocks.
 
-### 3. Calm the icon column
-Six identical Mint `CheckCircle` icons + Mint code/chart icons + Mint headline numbers + Mint eyebrow + Mint italic close = mint overload.
-- Change the three `MILESTONES` `CheckCircle` icons from Mint to Light Gray (`#F1F1F1`) at 70% opacity.
-- Keep the `USE OF FUNDS` icons (Code, TrendingUp, Server) Mint — they're the differentiated set.
+### 3. Left-label typography (TAM/SAM/SOM mono labels)
+Currently all three are `20px / weight 600 / Light`.
+- **TAM**: `16px`, weight `400`, color `${LIGHT}80` (50% opacity)
+- **SAM**: `16px`, weight `400`, color `${LIGHT}A6` (65% opacity)
+- **SOM**: `22px`, weight `700`, color `${MINT}` (full Mint, was Light)
 
-### 4. Layout breathing room
-- Column block `maxWidth`: `1100px` → `1300px` (matches headline width)
-- Gap between headline block and columns: `marginTop: 44px` → `clamp(24px, 4vh, 56px)`
-- Gap between italic close and bottom: `marginTop: 56px` → `clamp(20px, 3vh, 40px)`
-- Reduce the explicit `60px` spacer above the bottom placeholder to `clamp(16px, 2vh, 32px)` so the placeholder stops getting clipped by the progress dots.
+### 4. Right-label typography (the descriptions)
+Currently all three are `24px / weight 500 / Light`.
+- **TAM** (`TAM €1.3bn → €7.8bn`): `18px`, weight `400`, color `${LIGHT}80`
+- **SAM** (`SAM €520m`): `18px`, weight `400`, color `${LIGHT}A6`
+- **SOM** (`SOM €100m ≈ 5,000 customers @ €20k ACV`): `28px`, weight `700`, color `${LIGHT}`, with the `€100m` and `5,000 customers` numerics wrapped in `<span style={{ color: MINT }}>` for in-line emphasis.
 
-### 5. Remove the developer placeholder
-The bracketed line `[Existing investor participation: add here if applicable — critical signal]` is internal scaffolding, not investor-facing. Delete the entire bottom placeholder `motion.div` block.
+### 5. SOM gets a one-line subcaption
+Directly under the SOM right-label, add a small line:
+- Text: `Our 5-year target — credible, bottom-up`
+- Style: `13px`, italic, color `${LIGHT}99`, `marginTop: 6px`
+- Purpose: tells a conservative investor SOM is our actual plan, not a marketing TAM hand-wave.
 
-### 6. Sharpen the italic close
-`color: ${MINT}E6` (90% Mint) reads soft on Navy. Change to solid `LIGHT` (`#F1F1F1`) and keep the inline emphasis span Mint. The emphasis still pops, the surrounding sentence is legible.
+### 6. Animation reordering — SOM lands last and lingers
+Currently bars animate top-to-bottom (TAM → SAM → SOM) at `delay: 0.35 + i * 0.18`. Keep order but:
+- Slow SOM's bar fill from `0.5s` to `0.7s` (others stay 0.5s).
+- Add a one-time pulse to the SOM accent marker after the bar lands: `scale 1 → 1.15 → 1` over 0.6s, delay 1.4s. Done once, not looped — pulses can feel cheap if repeated.
 
-### Files touched
-- `src/slides/Slide11.tsx` only
+### 7. Restructure the data array
+Add per-row config to `marketBars` so the rendering logic stays clean:
+```ts
+{ key: 'TAM' | 'SAM' | 'SOM',
+  emphasis: 'muted' | 'medium' | 'primary',
+  height: number,
+  ... }
+```
+Render branches off `emphasis` for opacity, weight, shadow, accent bar, and subcaption. No new components — just conditional styles inside the existing `.map()`.
+
+### 8. Bottom helper text — keep, soften
+The `+ €7bn adjacent regulatory reporting market.` line below the bars stays as-is (already at 65% opacity), but reduce from `18px` → `15px` so it doesn't compete with the new SOM weight.
+
+### Visual outcome
+```text
+TAM  ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬   TAM €1.3bn → €7.8bn         (faded, thin)
+SAM  ▬▬▬▬▬▬▬▬▬▬▬                       SAM €520m                    (medium, thin)
+SOM  ▮▬▬   ◀ glowing                   SOM €100m ≈ 5,000 customers… (BOLD, tall, Mint)
+                                       Our 5-year target — credible, bottom-up
+```
+
+### Files touched (when implemented)
+- `src/slides/Slide9.tsx` only.
 
 ### Not touched
-- SlideFrame, animations, brand palette, slide numbering, Column component structure, eyebrow, or the `USE OF FUNDS` icons.
+- Right column (expansion roadmap), header, bottom strip, brand palette, SlideFrame, slide numbering, animation easing, mobile layout (responsive behavior preserved — just heights/sizes/weights change).
 
