@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import glacierLogo from "@/assets/glacier-logo.svg";
 
 type Variant = "minimal" | "technical" | "technical-light";
 
@@ -7,6 +8,7 @@ interface SlideFrameProps {
   variant: Variant;
   slideNumber: number;
   totalSlides: number;
+  showLogo?: boolean;
 }
 
 const NAVY = "#0F2A4D";
