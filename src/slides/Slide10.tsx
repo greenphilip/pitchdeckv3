@@ -29,6 +29,7 @@ const team: Member[] = [
     name: "Philip",
     title: "VP of AI & ESG",
     background: "20+ years sustainability and strategy: OSCE, WBCSD, INSEAD MBA",
+    photo: philipPhoto,
   },
   {
     name: "David Anders",
