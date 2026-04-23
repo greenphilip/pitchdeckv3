@@ -7,6 +7,7 @@ import philipPhoto from "@/assets/team/philip.png";
 import davidPhoto from "@/assets/team/david-anders.png";
 import kishanPhoto from "@/assets/team/kishan.png";
 import ninaPhoto from "@/assets/team/nina.png";
+import pioneersLogo from "@/assets/logos/pioneers.png";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
@@ -19,6 +20,7 @@ interface Member {
   title: string;
   background: string;
   photo?: string;
+  logo?: string;
 }
 
 const team: Member[] = [
@@ -27,6 +29,7 @@ const team: Member[] = [
     title: "CEO & Founder",
     background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
     photo: rainhardPhoto,
+    logo: pioneersLogo,
   },
   {
     name: "Philip",
@@ -229,6 +232,21 @@ export default function Slide9() {
               >
                 {m.background}
               </div>
+
+              {m.logo && (
+                <img
+                  src={m.logo}
+                  alt=""
+                  style={{
+                    height: "20px",
+                    width: "auto",
+                    objectFit: "contain",
+                    opacity: 0.85,
+                    filter: "invert(1) brightness(1.1)",
+                    marginTop: "-4px",
+                  }}
+                />
+              )}
             </motion.div>
           ))}
         </div>
