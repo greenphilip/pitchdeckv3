@@ -35,7 +35,7 @@ export default function Slide5() {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          gap: isMobile ? "48px" : "80px",
+          gap: isMobile ? "48px" : "56px",
           overflowY: isMobile ? "auto" : undefined,
         }}
       >
@@ -73,8 +73,8 @@ export default function Slide5() {
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.08 }}
             style={{
               margin: 0,
-              marginTop: "20px",
-              fontSize: "64px",
+              marginTop: "16px",
+              fontSize: "52px",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -92,7 +92,7 @@ export default function Slide5() {
             style={{
               margin: "20px auto 0",
               maxWidth: "1100px",
-              fontSize: "24px",
+              fontSize: "20px",
               color: `${LIGHT}B3`,
               lineHeight: 1.5,
               textAlign: "center",
@@ -116,11 +116,11 @@ export default function Slide5() {
         >
           {/* LEFT — TIME COMPRESSION CHART */}
           <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
               {bars.map((b, i) => (
                 <div
                   key={b.leftLabel}
-                  style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+                  style={{ display: "flex", flexDirection: "column", gap: "6px" }}
                 >
                   <motion.div
                     initial={{ opacity: 0, y: 4 }}
@@ -147,7 +147,7 @@ export default function Slide5() {
                       style={{
                         flex: "1 1 0",
                         minWidth: 0,
-                        height: "72px",
+                        height: "52px",
                         position: "relative",
                       }}
                     >
@@ -177,7 +177,7 @@ export default function Slide5() {
                         delay: 0.35 + i * 0.18 + (0.5 - i * 0.1),
                       }}
                       style={{
-                        fontSize: "36px",
+                        fontSize: "30px",
                         fontWeight: b.emphasis ? 700 : 600,
                         color: b.color,
                         whiteSpace: "nowrap",
@@ -191,24 +191,6 @@ export default function Slide5() {
               ))}
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              <div
-                style={{
-                  fontSize: "18px",
-                  color: `${LIGHT}99`,
-                }}
-              >
-              </div>
-              <div
-                style={{
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "17px",
-                  color: `${LIGHT}80`,
-                  letterSpacing: "0.02em",
-                }}
-              >
-              </div>
-            </div>
           </div>
 
           {/* RIGHT — WHY CSRD FIRST CALLOUT */}
@@ -219,11 +201,11 @@ export default function Slide5() {
             style={{
               border: `1px solid ${MINT}80`,
               background: `linear-gradient(135deg, rgba(109, 212, 173, 0.04), rgba(109, 212, 173, 0.02))`,
-              padding: "36px",
+              padding: "28px",
               borderRadius: 6,
               display: "flex",
               flexDirection: "column",
-              gap: "20px",
+              gap: "14px",
             }}
           >
             <div
@@ -241,7 +223,7 @@ export default function Slide5() {
 
             <div
               style={{
-                fontSize: "32px",
+                fontSize: "26px",
                 color: LIGHT,
                 fontWeight: 600,
                 lineHeight: 1.3,
@@ -252,7 +234,7 @@ export default function Slide5() {
 
             <div
               style={{
-                fontSize: "19px",
+                fontSize: "17px",
                 color: `${LIGHT}D9`,
                 lineHeight: 1.5,
               }}
@@ -268,7 +250,7 @@ export default function Slide5() {
                 paddingTop: "16px",
                 borderTop: `1px solid ${MINT}33`,
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "17px",
+                fontSize: "15px",
                 color: `${MINT}CC`,
                 letterSpacing: "0.08em",
               }}
@@ -288,7 +270,7 @@ export default function Slide5() {
             maxWidth: "min(1200px, 100%)",
             margin: "0 auto",
             textAlign: "center",
-            fontSize: "24px",
+            fontSize: "20px",
             color: LIGHT,
             lineHeight: 1.5,
           }}
