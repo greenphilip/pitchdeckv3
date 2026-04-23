@@ -200,11 +200,51 @@ export default function Slide10() {
           />
         </motion.div>
 
+        {/* EXISTING INVESTORS ROW */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: EXPO_OUT, delay: 1.15 }}
+          style={{
+            width: "100%",
+            maxWidth: "min(1100px, 100%)",
+            margin: "0 auto",
+            marginTop: "clamp(20px, 3vh, 40px)",
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: "20px",
+              fontWeight: 600,
+              color: MINT,
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+            }}
+          >
+            EXISTING INVESTORS PARTICIPATING
+          </div>
+          <div
+            style={{
+              fontSize: "clamp(14px, 1.5vw, 20px)",
+              fontWeight: 500,
+              color: LIGHT,
+              marginTop: "10px",
+            }}
+          >
+            2 existing investors — names on request
+          </div>
+        </motion.div>
+
         {/* ITALIC CLOSE */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.3 }}
+          transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.45 }}
           style={{
             width: "100%",
             maxWidth: "min(1200px, 100%)",
