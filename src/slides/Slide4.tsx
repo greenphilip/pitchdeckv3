@@ -3,15 +3,13 @@ import { UploadCloud, Link2, ShieldCheck, ArrowRight, ArrowDown } from "lucide-r
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useState } from "react";
+import dashboardScreenshot from "@/assets/glacier-csrd-dashboard.png";
 
 const NAVY = "#143560";
 const MINT = "#6DD4AD";
 const LIGHT_GRAY = "#F1F1F1";
 
-// Expected asset path — drop the screenshot file at this location:
-//   /src/assets/glacier-csrd-dashboard.png
-// Until then, the <img> onError handler swaps in a styled placeholder.
-const SCREENSHOT_SRC = "/src/assets/glacier-csrd-dashboard.png";
+const SCREENSHOT_SRC = dashboardScreenshot;
 
 type BoxProps = {
   number: string;
