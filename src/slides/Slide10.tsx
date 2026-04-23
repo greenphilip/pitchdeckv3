@@ -4,6 +4,7 @@ import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import rainhardPhoto from "@/assets/team/rainhard-fuchs.png";
 import philipPhoto from "@/assets/team/philip.png";
+import davidPhoto from "@/assets/team/david-anders.png";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
