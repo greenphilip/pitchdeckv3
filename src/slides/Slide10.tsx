@@ -248,28 +248,52 @@ export default function Slide9() {
                     flexWrap: "wrap",
                     justifyContent: "center",
                     alignItems: "center",
-                    gap: "14px",
+                    gap: "10px",
                     marginTop: "-4px",
-                    minHeight: "24px",
+                    minHeight: "32px",
                   }}
                 >
-                  {m.logos.map((logo, idx) => (
-                    <img
-                      key={idx}
-                      src={logo.src}
-                      alt=""
-                      style={{
-                        height: "22px",
-                        width: "auto",
-                        maxWidth: "70px",
-                        objectFit: "contain",
-                        opacity: 0.85,
-                        filter: logo.invert
-                          ? "invert(1) brightness(1.1)"
-                          : "brightness(0) invert(1)",
-                      }}
-                    />
-                  ))}
+                  {m.logos.map((logo, idx) =>
+                    logo.invert ? (
+                      <img
+                        key={idx}
+                        src={logo.src}
+                        alt=""
+                        style={{
+                          height: "22px",
+                          width: "auto",
+                          maxWidth: "80px",
+                          objectFit: "contain",
+                          opacity: 0.9,
+                          filter: "invert(1) brightness(1.1)",
+                        }}
+                      />
+                    ) : (
+                      <div
+                        key={idx}
+                        style={{
+                          background: LIGHT,
+                          borderRadius: "4px",
+                          padding: "4px 6px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <img
+                          src={logo.src}
+                          alt=""
+                          style={{
+                            height: "20px",
+                            width: "auto",
+                            maxWidth: "70px",
+                            objectFit: "contain",
+                            display: "block",
+                          }}
+                        />
+                      </div>
+                    )
+                  )}
                 </div>
               )}
             </motion.div>
