@@ -250,6 +250,7 @@ export default function Slide9() {
                   WebkitLineClamp: 3,
                   WebkitBoxOrient: "vertical",
                   overflow: "hidden",
+                  minHeight: `calc(18px * 1.45 * 3)`,
                 }}
               >
                 {m.background}
