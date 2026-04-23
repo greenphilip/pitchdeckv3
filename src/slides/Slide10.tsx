@@ -140,7 +140,7 @@ export default function Slide9() {
             }}
           >
             <span style={{ color: BLUE }}>Regulatory depth.</span>{" "}
-            <span style={{ color: LIGHT }}>Product discipline.</span>{" "}
+            <span style={{ color: LIGHT }}>Experience in scaling SaaS.</span>{" "}
             <span style={{ color: MINT, fontWeight: 700 }}>Applied AI.</span>
           </motion.h1>
         </div>
