@@ -1,69 +1,41 @@
 
 
-## Lock the deck to a fixed PowerPoint canvas (1920×1080)
+## Fix Slides 6 & 7 cutting off at the bottom
 
-### Why
-Right now every slide is `100vw × 100vh` and uses `clamp()` everywhere, so layouts shift at every screen size — text wraps differently, gaps shrink, graphics overflow. PowerPoint avoids this by authoring at a fixed resolution and scaling the whole slide as one unit. We'll do the same. Once locked, what you see in the editor is exactly what you'll see when projected.
+Both slides exceed the 1080×1920 fixed canvas (usable area ≈1760×920 after SlideFrame's 80px padding). Tighten vertical rhythm and trim oversized elements so each slide fits without scroll.
 
-### Target format
-**1920 × 1080 (16:9)** — the standard PowerPoint widescreen size. Every slide is authored at these exact pixel dimensions and scaled uniformly to fit the browser window (or fullscreen projector) with letterboxing if the screen aspect differs.
+### Slide 6 — "The product gets better"
+Currently overflowing because: 80px section gap × 2, three bars at 72px tall each + 20px gaps, and the right callout uses 36px padding plus generous interior gaps. Two empty placeholder `<div>` blocks (lines 194-211) also add silent height.
 
-### Approach
+Changes (file: `src/slides/Slide6.tsx`):
+- Outer column: keep `justifyContent: "center"` but reduce gap from `80px` → `56px`.
+- Headline: `64px` → `52px`, subhead `24px` → `20px`, header internal margin-top `20px` → `16px`.
+- Bars: height `72px` → `52px`, between-bar gap `20px` → `14px`, label-to-bar gap `10px` → `6px`, right-side number `36px` → `30px`.
+- Remove the two empty placeholder divs (lines 194-211) — they contribute no content, only silent vertical space via the parent gap.
+- Right callout: padding `36px` → `28px`, internal gap `20px` → `14px`, headline `32px` → `26px`, body `19px` → `17px`, RESULT line `17px` → `15px`.
+- Bottom strip: `24px` → `20px`.
 
-**1. New `ScaledSlide` wrapper (`src/components/ScaledSlide.tsx`)**
-- Outer container: full viewport, black background, `overflow: hidden`, `position: relative`, flex-centered.
-- Inner stage: absolutely positioned `1920 × 1080` element, centered via `left: 50%; top: 50%; margin-left: -960px; margin-top: -540px`, with `transform: scale(var(--scale))` and `transform-origin: center center`.
-- A `ResizeObserver` on the outer container computes `scale = Math.min(width / 1920, height / 1080)` and writes it to the CSS variable. No re-renders, no layout thrash.
-- `Presentation.tsx` wraps the active slide in `<ScaledSlide>` so the chevrons, dots, and overview UI stay in real viewport pixels (they don't get scaled).
+### Slide 7 — "Traction" (chart + logos)
+Currently overflowing because: header + 32px gaps × 2 + chart card (~380px) + 2×2 stats (each row ~120px) + impact card + right column logos. Right column is 5 logo rows at ~80px each + 32px gaps = pushes past 920px.
 
-**2. Rework `SlideFrame.tsx` to a fixed canvas**
-- Replace `width: 100vw; height: 100vh` with `width: 1920px; height: 1080px`.
-- Replace `padding: clamp(32px, 5vw, 80px)` with a fixed padding (`80px`).
-- Replace the inner content cap of `maxWidth: 1700` with the full `1760px` usable width (1920 − 2×80).
-- Slide-number indicator, hairline, grid overlay, glows — all keep working, just at fixed coordinates now.
+Changes (file: `src/slides/Slide7.tsx`):
+- Outer column gap: `80px` → `48px`.
+- Header headline: `56px` → `44px`, marginTop `20px` → `14px`.
+- Body grid gap: `56px` → `40px`.
+- Left column inner gap: `32px` → `24px`.
+- Chart card: padding `28px` → `20px`, chart height `300px` → `230px`, legend marginBottom `16px` → `10px`.
+- Stats grid: rowGap `36px` → `20px`, columnGap `40px` → `24px`, big number `72px` → `56px`, label `18px` → `15px`.
+- Impact card: padding `22px` → `16px`, gap `12px` → `8px`, label `18px` → `15px`, body `19px` → `16px`.
+- Right column gap: `32px` → `20px`. Logo grid `rowGap: 32px` → `18px`, `columnGap: 48px` → `28px`, max logo height `80px` → `56px`.
+- TRUSTED BY block: eyebrow `20px` → `16px`, subline `20px` → `15px`, internal gap `14px` → `10px`.
 
-**3. Convert all `clamp()` typography and gaps to fixed pixels**
-- Every slide currently uses `clamp(min, vw, max)` for fonts and `clamp(min, vh, max)` for gaps. At a fixed canvas these are unnecessary and harmful (the `vw`/`vh` values resolve against the *browser*, not the 1920 stage, so they no longer match the design intent).
-- New fixed scale derived from the existing ceilings (which were tuned for 2K projectors):
-  - Minimal headline: `96px` / weight 700
-  - Technical headline: `56px` / weight 600
-  - Subhead: `22px`
-  - Body: `18px`
-  - Big stat: `144px` / Mint
-  - Eyebrow / mono label: `16px`
-  - Card title: `28px`
-  - Card body: `16px`
-  - Section gap: `64px`
-  - Header → subhead gap: `20px`
-  - Card inner gap: `16px`
-- Apply consistently across all 11 slides.
-
-**4. Per-slide audit + fix overflow**
-After conversion, walk slides 1–11 at the fixed 1920×1080 canvas and fix anything that no longer fits:
-- Re-check Slide 4 workflow boxes (three-box grid + arrows) at full width.
-- Re-check Slide 6 logo wall, Slide 9 card grid, Slide 7 quote area.
-- Verify nothing clips against the 1080px height — especially headers + footers stacking.
-- Confirm screenshot blocks have explicit pixel dimensions instead of `width: 100%`.
-
-**5. Browser/window behavior**
-- At any viewport the slide letterboxes (black bars on top/bottom or sides) — exactly like PowerPoint slideshow mode.
-- Fullscreen (F key) still works via the existing `requestFullscreen` call.
-- The mobile-stacking branch in `useIsMobile` becomes obsolete on the canvas itself (the canvas is always 1920×1080), so mobile-only code paths inside slides can be removed in a later pass — out of scope here unless something breaks.
-
-### Trade-offs you should know
-- **No more responsive reflow inside slides.** That's the point — it's a deck, not a webpage. On phones, the slide will appear small but identical to the projected version, with letterboxing.
-- **Mobile-stacking branches become dead code** on the slide canvas. Leaving them in doesn't hurt, but they'll never fire. We can prune them in a follow-up.
-- All previously-tuned `clamp()` ceilings convert directly to their max value, so the look on a 2K projector stays the same.
+### Audit
+After edits, mentally sum vertical budget for each slide at exactly 1080px height − 160px padding − 48px hairline allowance = 872px content area. Both should land comfortably under that with no scroll.
 
 ### Files touched
-- `src/components/ScaledSlide.tsx` (new)
-- `src/components/SlideFrame.tsx` (fixed dimensions + padding, drop `vw`/`vh`)
-- `src/components/Presentation.tsx` (wrap active slide in `ScaledSlide`)
-- `src/slides/Slide1.tsx` through `Slide11.tsx` (replace `clamp()` font/gap values with fixed pixels, fix any overflow surfaced at 1920×1080)
+- `src/slides/Slide6.tsx`
+- `src/slides/Slide7.tsx`
 
 ### Not touched
-Navigation/keyboard handlers, progress dots, overview grid, theme tokens, brand palette, animation logic, slide content/copy, project knowledge.
-
-### Audit before finishing
-For each slide at exactly 1920×1080: outer column centered, no content beyond the 1760×920 inner area, mono labels ≥16px, no leftover `clamp()` calls in slide files, and no `100vw`/`100vh` references outside `ScaledSlide`'s outer container.
+SlideFrame, ScaledSlide, navigation, content/copy, animations, brand palette, other slides.
 
