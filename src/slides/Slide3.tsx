@@ -156,7 +156,7 @@ export default function Slide3() {
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: "20px",
                     fontWeight: 600,
-                    color: MINT,
+                    color: BLUE,
                     textTransform: "uppercase",
                     letterSpacing: "0.1em",
                   }}
