@@ -11,6 +11,8 @@ import pioneersLogo from "@/assets/logos/pioneers.png";
 import wbcsdLogo from "@/assets/logos/wbcsd.svg";
 import inseadLogo from "@/assets/logos/insead.svg";
 import osceLogo from "@/assets/logos/osce.svg";
+import pwcLogo from "@/assets/logos/pwc.svg";
+import oeamtcLogo from "@/assets/logos/oeamtc.svg";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
@@ -50,6 +52,10 @@ const team: Member[] = [
     title: "Head of ESG Delivery",
     background: "Previously PWC; Head of ESG at Burgenland Energie; ÖAMTC.",
     photo: davidPhoto,
+    logos: [
+      { src: pwcLogo },
+      { src: oeamtcLogo },
+    ],
   },
   {
     name: "Kishan Chimminiyan",
