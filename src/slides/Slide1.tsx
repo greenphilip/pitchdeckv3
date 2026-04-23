@@ -34,20 +34,20 @@ export default function Slide1() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "clamp(6px, 0.8vh, 10px)",
+            gap: "10px",
           }}
         >
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "clamp(8px, 0.9vw, 12px)",
+              gap: "12px",
             }}
           >
             <GlacierMark size={Math.round(isMobile ? 22 : 28)} color={MINT} strokeWidth={1.5} />
             <span
               style={{
-                fontSize: "clamp(20px, 2.2vw, 32px)",
+                fontSize: "32px",
                 fontWeight: 600,
                 letterSpacing: "0.08em",
                 color: MINT,
@@ -59,7 +59,7 @@ export default function Slide1() {
           <div
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(13px, 0.95vw, 17px)",
+              fontSize: "17px",
               color: LIGHT,
               opacity: 0.55,
               letterSpacing: "0.18em",
@@ -71,7 +71,7 @@ export default function Slide1() {
         </motion.div>
 
         {/* Spacer above headline — explicit, not auto, to avoid big-screen voids */}
-        <div style={{ height: "clamp(48px, 10vh, 140px)", flexShrink: 0 }} />
+        <div style={{ height: "140px", flexShrink: 0 }} />
 
         {/* Center: headline block */}
         <div
@@ -79,7 +79,7 @@ export default function Slide1() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "clamp(20px, 3.5vh, 44px)",
+            gap: "44px",
             maxWidth: "min(1500px, 92vw)",
             width: "100%",
           }}
@@ -89,7 +89,7 @@ export default function Slide1() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4, ease: EXPO_OUT }}
             style={{
-              fontSize: "clamp(34px, 5.2vw, 104px)",
+              fontSize: "104px",
               fontWeight: 700,
               letterSpacing: "-0.025em",
               lineHeight: 1.1,
@@ -128,7 +128,7 @@ export default function Slide1() {
             transition={{ duration: 0.6, delay: 0.85, ease: EXPO_OUT }}
             style={{
               width: 1,
-              height: "clamp(28px, 4vh, 44px)",
+              height: "44px",
               background: MINT,
               opacity: 0.35,
               transformOrigin: "top",
@@ -140,7 +140,7 @@ export default function Slide1() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.0, ease: EXPO_OUT }}
             style={{
-              fontSize: "clamp(16px, 1.5vw, 28px)",
+              fontSize: "28px",
               fontWeight: 400,
               lineHeight: 1.55,
               color: LIGHT,
@@ -159,7 +159,7 @@ export default function Slide1() {
         </div>
 
         {/* Spacer below headline — explicit, not auto */}
-        <div style={{ height: "clamp(48px, 8vh, 120px)", flexShrink: 0 }} />
+        <div style={{ height: "120px", flexShrink: 0 }} />
 
         {/* Bottom anchor: meta with status dot */}
         <motion.div
@@ -168,7 +168,7 @@ export default function Slide1() {
           transition={{ duration: 0.4, delay: 1.5, ease: EXPO_OUT }}
           style={{
             fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "clamp(13px, 1vw, 18px)",
+            fontSize: "18px",
             color: LIGHT,
             opacity: 0.6,
             letterSpacing: "0.02em",

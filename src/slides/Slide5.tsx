@@ -61,7 +61,7 @@ export default function Slide4() {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          gap: "clamp(36px, 6vh, 80px)",
+          gap: "80px",
         }}
       >
         {/* HEADER */}
@@ -82,7 +82,7 @@ export default function Slide4() {
             transition={{ duration: 0.4, ease: EXPO_OUT }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(13px, 1vw, 20px)",
+              fontSize: "20px",
               color: MINT,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -98,8 +98,8 @@ export default function Slide4() {
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.08 }}
             style={{
               margin: 0,
-              marginTop: "clamp(10px, 1.5vh, 20px)",
-              fontSize: "clamp(26px, 3.8vw, 64px)",
+              marginTop: "20px",
+              fontSize: "64px",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -115,9 +115,9 @@ export default function Slide4() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.16 }}
             style={{
-              margin: "clamp(12px, 2vh, 20px) auto 0",
+              margin: "20px auto 0",
               maxWidth: "1100px",
-              fontSize: "clamp(15px, 1.3vw, 24px)",
+              fontSize: "24px",
               color: `${LIGHT}B3`,
               lineHeight: 1.5,
               textAlign: "center",
@@ -137,7 +137,7 @@ export default function Slide4() {
             margin: "0 auto",
             display: "grid",
             gridTemplateColumns: isMobile ? "repeat(2, minmax(0, 1fr))" : "repeat(5, minmax(0, 1fr))",
-            gap: isMobile ? "clamp(12px, 2vw, 16px)" : "clamp(14px, 1.8vw, 24px)",
+            gap: isMobile ? "16px" : "24px",
             maxHeight: isMobile ? "58vh" : undefined,
             overflowY: isMobile ? "auto" : undefined,
           }}
@@ -152,11 +152,11 @@ export default function Slide4() {
                 gridColumn: isMobile && i === 4 ? "1 / -1" : undefined,
                 border: `1px solid ${BLUE}40`,
                 background: "rgba(255, 255, 255, 0.03)",
-                padding: "clamp(18px, 2vw, 26px)",
+                padding: "26px",
                 borderRadius: 6,
                 display: "flex",
                 flexDirection: "column",
-                gap: "clamp(14px, 2vh, 18px)",
+                gap: "18px",
               }}
             >
               <motion.div
@@ -165,7 +165,7 @@ export default function Slide4() {
                 transition={{ duration: 0.3, delay: 0.25 + i * 0.08 + 0.05 }}
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "clamp(13px, 1vw, 20px)",
+                  fontSize: "20px",
                   color: MINT,
                   fontWeight: 600,
                   letterSpacing: "0.1em",
@@ -181,8 +181,8 @@ export default function Slide4() {
               >
                 <p.Icon
                   style={{
-                    width: "clamp(32px, 3.5vw, 44px)",
-                    height: "clamp(32px, 3.5vw, 44px)",
+                    width: "44px",
+                    height: "44px",
                     color: MINT,
                   }}
                   strokeWidth={1.5}
@@ -194,7 +194,7 @@ export default function Slide4() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.25 + i * 0.08 + 0.21 }}
                 style={{
-                  fontSize: "clamp(20px, 2.2vw, 28px)",
+                  fontSize: "28px",
                   color: LIGHT,
                   fontWeight: 600,
                   lineHeight: 1.3,
@@ -208,7 +208,7 @@ export default function Slide4() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.25 + i * 0.08 + 0.29 }}
                 style={{
-                  fontSize: "clamp(14px, 1.05vw, 19px)",
+                  fontSize: "19px",
                   color: `${LIGHT}CC`,
                   lineHeight: 1.5,
                 }}
@@ -228,7 +228,7 @@ export default function Slide4() {
             width: "100%",
             textAlign: "center",
             fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "clamp(13px, 1.1vw, 20px)",
+            fontSize: "20px",
             fontWeight: 600,
             color: `${MINT}CC`,
             letterSpacing: "0.08em",

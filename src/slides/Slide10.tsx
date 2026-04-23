@@ -56,7 +56,7 @@ export default function Slide9() {
           justifyContent: "flex-start",
           alignItems: "center",
           width: "100%",
-          gap: "clamp(20px, 3vh, 32px)",
+          gap: "32px",
         }}
       >
         {/* HEADER */}
@@ -69,7 +69,7 @@ export default function Slide9() {
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
-            marginTop: "clamp(16px, 3vh, 48px)",
+            marginTop: "48px",
           }}
         >
           <motion.div
@@ -78,7 +78,7 @@ export default function Slide9() {
             transition={{ duration: 0.4, ease: EXPO_OUT, delay: 0.1 }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(13px, 1vw, 20px)",
+              fontSize: "20px",
               color: MINT,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -94,8 +94,8 @@ export default function Slide9() {
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.18 }}
             style={{
               margin: 0,
-              marginTop: "clamp(10px, 1.5vh, 20px)",
-              fontSize: "clamp(22px, 3.4vw, 64px)",
+              marginTop: "20px",
+              fontSize: "64px",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -115,12 +115,12 @@ export default function Slide9() {
             width: "100%",
             maxWidth: "min(1400px, 100%)",
             margin: "0 auto",
-            marginTop: "clamp(36px, 6vh, 80px)",
+            marginTop: "80px",
             display: "grid",
             gridTemplateColumns: isMobile
               ? "repeat(2, minmax(0, 1fr))"
               : "repeat(5, minmax(0, 1fr))",
-            gap: isMobile ? "clamp(20px, 3vw, 32px)" : "clamp(20px, 2.4vw, 40px)",
+            gap: isMobile ? "32px" : "40px",
             maxHeight: isMobile ? "55vh" : undefined,
             overflowY: isMobile ? "auto" : undefined,
           }}
@@ -136,14 +136,14 @@ export default function Slide9() {
                 flexDirection: "column",
                 alignItems: "center",
                 textAlign: "center",
-                gap: "clamp(14px, 2vh, 20px)",
+                gap: "20px",
               }}
             >
               {/* Avatar */}
               <div
                 style={{
-                  width: "clamp(72px, 7.5vw, 110px)",
-                  height: "clamp(72px, 7.5vw, 110px)",
+                  width: "110px",
+                  height: "110px",
                   borderRadius: "50%",
                   background: `${BLUE}40`,
                   display: "flex",
@@ -167,12 +167,12 @@ export default function Slide9() {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
-                  gap: "clamp(6px, 0.8vh, 10px)",
+                  gap: "10px",
                 }}
               >
                 <div
                   style={{
-                    fontSize: "clamp(15px, 1.35vw, 22px)",
+                    fontSize: "22px",
                     color: LIGHT,
                     fontWeight: 600,
                     lineHeight: 1.2,
@@ -182,7 +182,7 @@ export default function Slide9() {
                 </div>
                 <div
                   style={{
-                    fontSize: "clamp(12px, 1vw, 17px)",
+                    fontSize: "17px",
                     color: MINT,
                     lineHeight: 1.3,
                   }}
@@ -193,7 +193,7 @@ export default function Slide9() {
 
               <div
                 style={{
-                  fontSize: "clamp(13px, 1.05vw, 18px)",
+                  fontSize: "18px",
                   color: `${LIGHT}B3`,
                   lineHeight: 1.45,
                   display: "-webkit-box",
@@ -217,8 +217,8 @@ export default function Slide9() {
             width: "100%",
             maxWidth: "min(1000px, 100%)",
             margin: "0 auto",
-            marginTop: "clamp(28px, 4.5vh, 56px)",
-            fontSize: "clamp(15px, 1.4vw, 26px)",
+            marginTop: "56px",
+            fontSize: "26px",
             fontWeight: 400,
             fontStyle: "italic",
             color: `${LIGHT}CC`,
@@ -230,7 +230,7 @@ export default function Slide9() {
         </motion.div>
 
         {/* Spacer above bottom anchor — explicit, not auto */}
-        <div style={{ height: "clamp(28px, 5vh, 80px)", flexShrink: 0 }} />
+        <div style={{ height: "80px", flexShrink: 0 }} />
 
         {/* BOTTOM ANCHOR */}
         <motion.div
@@ -240,9 +240,9 @@ export default function Slide9() {
           style={{
             width: "100%",
             textAlign: "center",
-            fontSize: "clamp(14px, 1.15vw, 20px)",
+            fontSize: "20px",
             color: `${LIGHT}B3`,
-            paddingTop: "clamp(8px, 1.5vh, 16px)",
+            paddingTop: "16px",
           }}
         >
           Headcount: <span style={{ color: MINT, fontWeight: 700 }}>15</span> today. Hiring{" "}

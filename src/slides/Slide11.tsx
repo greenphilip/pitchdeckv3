@@ -34,14 +34,14 @@ function Column({
   baseDelay: number;
 }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "clamp(14px, 2vh, 20px)" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
       <motion.div
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, ease: EXPO_OUT, delay: baseDelay }}
         style={{
           fontFamily: "'JetBrains Mono', monospace",
-          fontSize: "clamp(13px, 1vw, 20px)",
+          fontSize: "20px",
           color: MINT,
           fontWeight: 600,
           textTransform: "uppercase",
@@ -51,7 +51,7 @@ function Column({
         {label}
       </motion.div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "clamp(14px, 2vh, 20px)" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         {rows.map((r, i) => (
           <motion.div
             key={r.text}
@@ -65,13 +65,13 @@ function Column({
             style={{
               display: "flex",
               alignItems: "flex-start",
-              gap: "clamp(10px, 1.2vw, 14px)",
+              gap: "14px",
             }}
           >
             <r.Icon
               style={{
-                width: "clamp(20px, 1.7vw, 28px)",
-                height: "clamp(20px, 1.7vw, 28px)",
+                width: "28px",
+                height: "28px",
                 color: MINT,
                 flexShrink: 0,
                 marginTop: "0.2em",
@@ -80,7 +80,7 @@ function Column({
             />
             <span
               style={{
-                fontSize: "clamp(15px, 1.4vw, 24px)",
+                fontSize: "24px",
                 color: LIGHT,
                 fontWeight: 500,
                 lineHeight: 1.4,
@@ -108,7 +108,7 @@ export default function Slide10() {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          gap: "clamp(20px, 3vh, 36px)",
+          gap: "36px",
           overflowY: isMobile ? "auto" : undefined,
         }}
       >
@@ -119,7 +119,7 @@ export default function Slide10() {
           transition={{ duration: 0.3 }}
           style={{
             fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "clamp(13px, 1vw, 20px)",
+            fontSize: "20px",
             color: MINT,
             fontWeight: 600,
             textTransform: "uppercase",
@@ -139,7 +139,7 @@ export default function Slide10() {
             textAlign: "center",
             display: "flex",
             flexDirection: "column",
-            gap: "clamp(8px, 1.2vh, 14px)",
+            gap: "14px",
           }}
         >
           <motion.div
@@ -147,7 +147,7 @@ export default function Slide10() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EXPO_OUT, delay: 0.2 }}
             style={{
-              fontSize: "clamp(34px, 5.2vw, 104px)",
+              fontSize: "104px",
               fontWeight: 700,
               letterSpacing: "-0.02em",
               color: LIGHT,
@@ -162,7 +162,7 @@ export default function Slide10() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EXPO_OUT, delay: 0.35 }}
             style={{
-              fontSize: "clamp(28px, 4vw, 80px)",
+              fontSize: "80px",
               fontWeight: 700,
               letterSpacing: "-0.02em",
               color: LIGHT,
@@ -183,10 +183,10 @@ export default function Slide10() {
             width: "100%",
             maxWidth: "min(1100px, 100%)",
             margin: "0 auto",
-            marginTop: "clamp(16px, 3vh, 44px)",
+            marginTop: "44px",
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "repeat(2, minmax(0, 1fr))",
-            gap: isMobile ? "clamp(28px, 4.5vh, 40px)" : "clamp(32px, 4.5vw, 80px)",
+            gap: isMobile ? "40px" : "80px",
           }}
         >
           <Column label="USE OF FUNDS" rows={useOfFunds} baseDelay={0.78} />
@@ -202,8 +202,8 @@ export default function Slide10() {
             width: "100%",
             maxWidth: "min(1200px, 100%)",
             margin: "0 auto",
-            marginTop: "clamp(28px, 4.5vh, 56px)",
-            fontSize: "clamp(15px, 1.6vw, 28px)",
+            marginTop: "56px",
+            fontSize: "28px",
             fontWeight: 400,
             fontStyle: "italic",
             color: `${MINT}E6`,
@@ -219,7 +219,7 @@ export default function Slide10() {
         </motion.div>
 
         {/* Spacer above bottom placeholder — explicit, not auto */}
-        <div style={{ height: "clamp(20px, 4vh, 60px)", flexShrink: 0 }} />
+        <div style={{ height: "60px", flexShrink: 0 }} />
 
         {/* BOTTOM PLACEHOLDER */}
         <motion.div
@@ -228,9 +228,9 @@ export default function Slide10() {
           transition={{ duration: 0.2, delay: 1.7 }}
           style={{
             width: "100%",
-            paddingTop: "clamp(8px, 1.5vh, 16px)",
+            paddingTop: "16px",
             fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "clamp(12px, 0.9vw, 17px)",
+            fontSize: "17px",
             color: `${LIGHT}80`,
             textAlign: "center",
             letterSpacing: "0.02em",

@@ -35,7 +35,7 @@ export default function Slide2() {
   const isMobile = useIsMobile();
 
   const itemTextStyle: React.CSSProperties = {
-    fontSize: "clamp(13px, 1.25vw, 22px)",
+    fontSize: "22px",
     fontWeight: 500,
     color: LIGHT,
     lineHeight: 1.3,
@@ -43,23 +43,23 @@ export default function Slide2() {
 
   const columnLabelStyle: React.CSSProperties = {
     fontFamily: "'JetBrains Mono', monospace",
-    fontSize: "clamp(13px, 1vw, 20px)",
+    fontSize: "20px",
     fontWeight: 700,
     textTransform: "uppercase",
     letterSpacing: "0.1em",
   };
 
-  const iconSize = "clamp(16px, 1.6vw, 20px)";
+  const iconSize = "20px";
 
   // Row with bottom divider, full width
   const rowStyle = (align: "left" | "right"): React.CSSProperties => ({
     display: "flex",
     flexDirection: align === "right" && !isMobile ? "row-reverse" : "row",
     alignItems: "center",
-    gap: "clamp(8px, 1vw, 12px)",
+    gap: "12px",
     textAlign: align === "right" && !isMobile ? "right" : "left",
     width: "100%",
-    paddingBottom: "clamp(8px, 1vh, 12px)",
+    paddingBottom: "12px",
     borderBottom: `1px solid ${BLUE}26`,
   });
 
@@ -83,7 +83,7 @@ export default function Slide2() {
           transition={{ duration: 0.4, ease: EXPO_OUT }}
           style={{
             fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "clamp(13px, 1vw, 20px)",
+            fontSize: "20px",
             color: MINT,
             fontWeight: 600,
             textTransform: "uppercase",
@@ -94,14 +94,14 @@ export default function Slide2() {
           THE CUSTOMER'S SITUATION
         </motion.div>
 
-        <div style={{ height: "clamp(8px, 1vh, 16px)" }} />
+        <div style={{ height: "16px" }} />
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: EXPO_OUT }}
           style={{
-            fontSize: "clamp(26px, 3.8vw, 64px)",
+            fontSize: "64px",
             fontWeight: 700,
             letterSpacing: "-0.02em",
             lineHeight: 1.15,
@@ -140,14 +140,14 @@ export default function Slide2() {
         {/* CENTER: vice diagram */}
         <div
           style={{
-            marginTop: "clamp(24px, 5vh, 64px)",
+            marginTop: "64px",
             width: "100%",
             maxWidth: "min(1400px, 100%)",
             display: "grid",
             gridTemplateColumns: isMobile
               ? "1fr"
               : "1fr minmax(140px, 220px) 1fr",
-            gap: isMobile ? "clamp(20px, 3vh, 32px)" : "clamp(16px, 3vw, 48px)",
+            gap: isMobile ? "32px" : "48px",
             alignItems: "center",
           }}
         >
@@ -157,7 +157,7 @@ export default function Slide2() {
               display: "flex",
               flexDirection: "column",
               alignItems: isMobile ? "stretch" : "flex-end",
-              gap: "clamp(10px, 1.5vh, 16px)",
+              gap: "16px",
               position: "relative",
             }}
           >
@@ -247,7 +247,7 @@ export default function Slide2() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: "clamp(10px, 1.5vh, 16px)",
+              gap: "16px",
               position: "relative",
             }}
           >
@@ -255,8 +255,8 @@ export default function Slide2() {
             <div
               style={{
                 position: "relative",
-                width: "clamp(72px, 9vw, 120px)",
-                height: "clamp(72px, 9vw, 120px)",
+                width: "120px",
+                height: "120px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -295,8 +295,8 @@ export default function Slide2() {
               {/* Core dot */}
               <div
                 style={{
-                  width: "clamp(18px, 2vw, 26px)",
-                  height: "clamp(18px, 2vw, 26px)",
+                  width: "26px",
+                  height: "26px",
                   borderRadius: "50%",
                   background: MINT,
                   boxShadow: `0 0 24px ${MINT}AA`,
@@ -308,7 +308,7 @@ export default function Slide2() {
             <div
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(13px, 1vw, 18px)",
+                fontSize: "18px",
                 fontWeight: 600,
                 color: MINT,
                 textTransform: "uppercase",
@@ -327,7 +327,7 @@ export default function Slide2() {
               display: "flex",
               flexDirection: "column",
               alignItems: "stretch",
-              gap: "clamp(10px, 1.5vh, 16px)",
+              gap: "16px",
               position: "relative",
             }}
           >
@@ -413,13 +413,13 @@ export default function Slide2() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "clamp(12px, 1.5vh, 20px)",
-            marginTop: "clamp(24px, 4vh, 48px)",
+            gap: "20px",
+            marginTop: "48px",
           }}
         >
           <div
             style={{
-              width: "clamp(40px, 5vw, 60px)",
+              width: "60px",
               height: 2,
               background: MINT,
             }}
@@ -427,7 +427,7 @@ export default function Slide2() {
           <div
             style={{
               fontFamily: "'Fraunces', Georgia, serif",
-              fontSize: "clamp(18px, 2.1vw, 36px)",
+              fontSize: "36px",
               fontWeight: 400,
               fontStyle: "italic",
               color: LIGHT,

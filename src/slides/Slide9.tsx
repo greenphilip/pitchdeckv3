@@ -74,7 +74,7 @@ export default function Slide8() {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          gap: isMobile ? "clamp(28px, 4vh, 48px)" : "clamp(36px, 6vh, 80px)",
+          gap: isMobile ? "48px" : "80px",
           overflowY: isMobile ? "auto" : undefined,
         }}
       >
@@ -96,7 +96,7 @@ export default function Slide8() {
             transition={{ duration: 0.4, ease: EXPO_OUT }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(13px, 1vw, 20px)",
+              fontSize: "20px",
               color: MINT,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -112,8 +112,8 @@ export default function Slide8() {
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.08 }}
             style={{
               margin: 0,
-              marginTop: "clamp(10px, 1.5vh, 20px)",
-              fontSize: "clamp(26px, 3.8vw, 64px)",
+              marginTop: "20px",
+              fontSize: "64px",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -130,9 +130,9 @@ export default function Slide8() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.16 }}
             style={{
-              margin: "clamp(12px, 2vh, 20px) auto 0",
+              margin: "20px auto 0",
               maxWidth: "1100px",
-              fontSize: "clamp(15px, 1.3vw, 24px)",
+              fontSize: "24px",
               color: `${LIGHT}B3`,
               lineHeight: 1.5,
               textAlign: "center",
@@ -150,7 +150,7 @@ export default function Slide8() {
             margin: "0 auto",
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 2fr) minmax(0, 3fr)",
-            gap: isMobile ? "clamp(32px, 5vh, 56px)" : "clamp(32px, 4.5vw, 72px)",
+            gap: isMobile ? "56px" : "72px",
             alignItems: "center",
           }}
         >
@@ -159,17 +159,17 @@ export default function Slide8() {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "clamp(16px, 2.5vh, 24px)",
+              gap: "24px",
             }}
           >
-            <div style={{ display: "flex", flexDirection: "column", gap: "clamp(14px, 2vh, 20px)" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
               {marketBars.map((b, i) => (
                 <div
                   key={b.leftLabel}
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: "clamp(6px, 0.8vh, 10px)",
+                    gap: "10px",
                   }}
                 >
                   <motion.div
@@ -178,7 +178,7 @@ export default function Slide8() {
                     transition={{ duration: 0.3, delay: 0.25 + i * 0.18 }}
                     style={{
                       fontFamily: "'JetBrains Mono', monospace",
-                      fontSize: "clamp(13px, 1vw, 20px)",
+                      fontSize: "20px",
                       color: LIGHT,
                       fontWeight: 600,
                       letterSpacing: "0.05em",
@@ -191,7 +191,7 @@ export default function Slide8() {
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      gap: "clamp(12px, 1.5vw, 20px)",
+                      gap: "20px",
                       flexWrap: "wrap",
                     }}
                   >
@@ -199,7 +199,7 @@ export default function Slide8() {
                       style={{
                         flex: "1 1 0",
                         minWidth: 0,
-                        height: "clamp(44px, 6vh, 64px)",
+                        height: "64px",
                         position: "relative",
                       }}
                     >
@@ -225,7 +225,7 @@ export default function Slide8() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: 0.85 + i * 0.18 }}
                       style={{
-                        fontSize: "clamp(14px, 1.4vw, 24px)",
+                        fontSize: "24px",
                         fontWeight: 500,
                         color: LIGHT,
                         flexShrink: 0,
@@ -241,7 +241,7 @@ export default function Slide8() {
 
             <div
               style={{
-                fontSize: "clamp(13px, 1vw, 18px)",
+                fontSize: "18px",
                 color: `${LIGHT}A6`,
               }}
             >
@@ -254,7 +254,7 @@ export default function Slide8() {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "clamp(20px, 3vh, 36px)",
+              gap: "36px",
             }}
           >
             {phases.map((p, i) => {
@@ -267,7 +267,7 @@ export default function Slide8() {
                   transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.4 + i * 0.08 }}
                   style={{
                     display: "flex",
-                    gap: "clamp(14px, 1.8vw, 24px)",
+                    gap: "24px",
                     alignItems: "stretch",
                   }}
                 >
@@ -278,13 +278,13 @@ export default function Slide8() {
                       flexDirection: "column",
                       alignItems: "center",
                       flexShrink: 0,
-                      paddingTop: "clamp(4px, 0.6vh, 8px)",
+                      paddingTop: "8px",
                     }}
                   >
                     <div
                       style={{
-                        width: "clamp(12px, 1.2vw, 16px)",
-                        height: "clamp(12px, 1.2vw, 16px)",
+                        width: "16px",
+                        height: "16px",
                         borderRadius: "50%",
                         background: p.color,
                         flexShrink: 0,
@@ -297,7 +297,7 @@ export default function Slide8() {
                           width: 1,
                           background: `${MINT}4D`,
                           marginTop: 4,
-                          minHeight: "clamp(20px, 3vh, 40px)",
+                          minHeight: "40px",
                         }}
                       />
                     )}
@@ -310,8 +310,8 @@ export default function Slide8() {
                       minWidth: 0,
                       display: "flex",
                       flexDirection: "column",
-                      gap: "clamp(8px, 1.2vh, 12px)",
-                      paddingBottom: isLast ? 0 : "clamp(4px, 0.8vh, 10px)",
+                      gap: "12px",
+                      paddingBottom: isLast ? 0 : "10px",
                     }}
                   >
                     <div>
@@ -319,10 +319,10 @@ export default function Slide8() {
                         style={{
                           display: "inline-block",
                           fontFamily: "'JetBrains Mono', monospace",
-                          fontSize: "clamp(13px, 1vw, 18px)",
+                          fontSize: "18px",
                           fontWeight: 700,
                           letterSpacing: "0.1em",
-                          padding: "clamp(4px, 0.6vw, 6px) clamp(10px, 1.2vw, 14px)",
+                          padding: "6px 14px",
                           borderRadius: 3,
                           background: p.color,
                           color: p.badgeText,
@@ -333,7 +333,7 @@ export default function Slide8() {
                     </div>
                     <div
                       style={{
-                        fontSize: "clamp(20px, 2vw, 32px)",
+                        fontSize: "32px",
                         color: LIGHT,
                         fontWeight: 600,
                         lineHeight: 1.3,
@@ -343,7 +343,7 @@ export default function Slide8() {
                     </div>
                     <div
                       style={{
-                        fontSize: "clamp(14px, 1.05vw, 19px)",
+                        fontSize: "19px",
                         color: `${LIGHT}BF`,
                         lineHeight: 1.5,
                       }}
@@ -367,7 +367,7 @@ export default function Slide8() {
             maxWidth: "min(1200px, 100%)",
             margin: "0 auto",
             textAlign: "center",
-            fontSize: "clamp(15px, 1.3vw, 24px)",
+            fontSize: "24px",
             color: LIGHT,
             lineHeight: 1.5,
           }}

@@ -48,7 +48,7 @@ export default function Slide7() {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          gap: "clamp(36px, 6vh, 80px)",
+          gap: "80px",
         }}
       >
         {/* HEADER */}
@@ -69,7 +69,7 @@ export default function Slide7() {
             transition={{ duration: 0.4, ease: EXPO_OUT }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(13px, 1vw, 20px)",
+              fontSize: "20px",
               color: MINT,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -85,8 +85,8 @@ export default function Slide7() {
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.08 }}
             style={{
               margin: 0,
-              marginTop: "clamp(10px, 1.5vh, 20px)",
-              fontSize: "clamp(28px, 4.5vw, 76px)",
+              marginTop: "20px",
+              fontSize: "76px",
               fontWeight: 700,
               color: LIGHT,
               letterSpacing: "-0.02em",
@@ -102,9 +102,9 @@ export default function Slide7() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.16 }}
             style={{
-              margin: "clamp(12px, 2vh, 20px) auto 0",
+              margin: "20px auto 0",
               maxWidth: "1100px",
-              fontSize: "clamp(15px, 1.3vw, 24px)",
+              fontSize: "24px",
               color: `${LIGHT}B3`,
               lineHeight: 1.5,
               textAlign: "center",
@@ -122,7 +122,7 @@ export default function Slide7() {
             margin: "0 auto",
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "repeat(3, minmax(0, 1fr))",
-            gap: isMobile ? "clamp(24px, 4vh, 40px)" : "clamp(24px, 3vw, 56px)",
+            gap: isMobile ? "40px" : "56px",
             maxHeight: isMobile ? "55vh" : undefined,
             overflowY: isMobile ? "auto" : undefined,
           }}
@@ -135,13 +135,13 @@ export default function Slide7() {
               transition={{ duration: 0.4, ease: EXPO_OUT, delay: 0.25 + i * 0.08 }}
               style={{
                 borderLeft: `2px solid ${MINT}B3`,
-                paddingLeft: "clamp(20px, 2.4vw, 32px)",
-                paddingRight: "clamp(4px, 0.6vw, 8px)",
-                paddingTop: "clamp(2px, 0.4vh, 6px)",
-                paddingBottom: "clamp(2px, 0.4vh, 6px)",
+                paddingLeft: "32px",
+                paddingRight: "8px",
+                paddingTop: "6px",
+                paddingBottom: "6px",
                 display: "flex",
                 flexDirection: "column",
-                gap: "clamp(14px, 2vh, 20px)",
+                gap: "20px",
               }}
             >
               <motion.div
@@ -150,7 +150,7 @@ export default function Slide7() {
                 transition={{ duration: 0.3, delay: 0.25 + i * 0.08 + 0.05 }}
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "clamp(13px, 1vw, 20px)",
+                  fontSize: "20px",
                   color: MINT,
                   fontWeight: 600,
                   textTransform: "uppercase",
@@ -167,8 +167,8 @@ export default function Slide7() {
               >
                 <f.Icon
                   style={{
-                    width: "clamp(32px, 3.8vw, 44px)",
-                    height: "clamp(32px, 3.8vw, 44px)",
+                    width: "44px",
+                    height: "44px",
                     color: MINT,
                   }}
                   strokeWidth={1.5}
@@ -180,7 +180,7 @@ export default function Slide7() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.25 + i * 0.08 + 0.21 }}
                 style={{
-                  fontSize: "clamp(20px, 2.2vw, 28px)",
+                  fontSize: "28px",
                   color: LIGHT,
                   fontWeight: 600,
                   lineHeight: 1.3,
@@ -194,7 +194,7 @@ export default function Slide7() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.25 + i * 0.08 + 0.29 }}
                 style={{
-                  fontSize: "clamp(14px, 1.05vw, 19px)",
+                  fontSize: "19px",
                   color: `${LIGHT}CC`,
                   lineHeight: 1.5,
                 }}
