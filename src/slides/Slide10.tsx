@@ -240,6 +240,38 @@ export default function Slide9() {
               >
                 {m.background}
               </div>
+
+              {m.logos && m.logos.length > 0 && (
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "14px",
+                    marginTop: "-4px",
+                    minHeight: "24px",
+                  }}
+                >
+                  {m.logos.map((logo, idx) => (
+                    <img
+                      key={idx}
+                      src={logo.src}
+                      alt=""
+                      style={{
+                        height: "22px",
+                        width: "auto",
+                        maxWidth: "70px",
+                        objectFit: "contain",
+                        opacity: 0.85,
+                        filter: logo.invert
+                          ? "invert(1) brightness(1.1)"
+                          : "brightness(0) invert(1)",
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
