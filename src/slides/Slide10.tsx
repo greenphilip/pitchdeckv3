@@ -245,55 +245,29 @@ export default function Slide9() {
                 <div
                   style={{
                     display: "flex",
-                    flexWrap: "wrap",
+                    flexDirection: "column",
                     justifyContent: "center",
                     alignItems: "center",
-                    gap: "10px",
+                    gap: "12px",
                     marginTop: "-4px",
-                    minHeight: "32px",
                   }}
                 >
-                  {m.logos.map((logo, idx) =>
-                    logo.invert ? (
-                      <img
-                        key={idx}
-                        src={logo.src}
-                        alt=""
-                        style={{
-                          height: "22px",
-                          width: "auto",
-                          maxWidth: "80px",
-                          objectFit: "contain",
-                          opacity: 0.9,
-                          filter: "invert(1) brightness(1.1)",
-                        }}
-                      />
-                    ) : (
-                      <div
-                        key={idx}
-                        style={{
-                          background: LIGHT,
-                          borderRadius: "4px",
-                          padding: "4px 6px",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <img
-                          src={logo.src}
-                          alt=""
-                          style={{
-                            height: "20px",
-                            width: "auto",
-                            maxWidth: "70px",
-                            objectFit: "contain",
-                            display: "block",
-                          }}
-                        />
-                      </div>
-                    )
-                  )}
+                  {m.logos.map((logo, idx) => (
+                    <img
+                      key={idx}
+                      src={logo.src}
+                      alt=""
+                      style={{
+                        height: "28px",
+                        width: "auto",
+                        maxWidth: "140px",
+                        objectFit: "contain",
+                        opacity: logo.invert ? 0.9 : 1,
+                        filter: logo.invert ? "invert(1) brightness(1.1)" : undefined,
+                        display: "block",
+                      }}
+                    />
+                  ))}
                 </div>
               )}
             </motion.div>
