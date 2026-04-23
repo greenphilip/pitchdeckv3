@@ -28,10 +28,12 @@ function Column({
   label,
   rows,
   baseDelay,
+  iconColor,
 }: {
   label: string;
   rows: Row[];
   baseDelay: number;
+  iconColor: string;
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -72,7 +74,7 @@ function Column({
               style={{
                 width: "28px",
                 height: "28px",
-                color: MINT,
+                color: iconColor,
                 flexShrink: 0,
                 marginTop: "0.2em",
               }}
@@ -147,23 +149,23 @@ export default function Slide10() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EXPO_OUT, delay: 0.2 }}
             style={{
-              fontSize: "104px",
+              fontSize: "clamp(34px, 5.2vw, 88px)",
               fontWeight: 700,
               letterSpacing: "-0.02em",
               color: LIGHT,
               lineHeight: 1.1,
             }}
           >
-            <span style={{ color: MINT, fontWeight: 700 }}>€300k</span> unlocks{" "}
-            <span style={{ color: MINT, fontWeight: 700 }}>€750k</span>.
+            <span style={{ color: MINT, fontWeight: 700 }}>€250k</span> unlocks{" "}
+            <span style={{ color: MINT, fontWeight: 700 }}>€425k</span>.
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EXPO_OUT, delay: 0.35 }}
             style={{
-              fontSize: "80px",
-              fontWeight: 700,
+              fontSize: "clamp(22px, 3vw, 48px)",
+              fontWeight: 500,
               letterSpacing: "-0.02em",
               color: LIGHT,
               lineHeight: 1.1,
@@ -181,16 +183,21 @@ export default function Slide10() {
           transition={{ duration: 0.4, delay: 0.7 }}
           style={{
             width: "100%",
-            maxWidth: "min(1100px, 100%)",
+            maxWidth: "min(1300px, 100%)",
             margin: "0 auto",
-            marginTop: "44px",
+            marginTop: "clamp(24px, 4vh, 56px)",
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "repeat(2, minmax(0, 1fr))",
             gap: isMobile ? "40px" : "80px",
           }}
         >
-          <Column label="USE OF FUNDS" rows={useOfFunds} baseDelay={0.78} />
-          <Column label="MILESTONES — DEC 2026" rows={milestones} baseDelay={0.86} />
+          <Column label="USE OF FUNDS" rows={useOfFunds} baseDelay={0.78} iconColor={MINT} />
+          <Column
+            label="MILESTONES — DEC 2026"
+            rows={milestones}
+            baseDelay={0.86}
+            iconColor={`${LIGHT}B3`}
+          />
         </motion.div>
 
         {/* ITALIC CLOSE */}
@@ -202,11 +209,11 @@ export default function Slide10() {
             width: "100%",
             maxWidth: "min(1200px, 100%)",
             margin: "0 auto",
-            marginTop: "56px",
+            marginTop: "clamp(20px, 3vh, 40px)",
             fontSize: "28px",
             fontWeight: 400,
             fontStyle: "italic",
-            color: `${MINT}E6`,
+            color: LIGHT,
             textAlign: "center",
             lineHeight: 1.4,
           }}
@@ -218,26 +225,8 @@ export default function Slide10() {
           . Come underwrite the companies who close hardest.
         </motion.div>
 
-        {/* Spacer above bottom placeholder — explicit, not auto */}
-        <div style={{ height: "60px", flexShrink: 0 }} />
-
-        {/* BOTTOM PLACEHOLDER */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2, delay: 1.7 }}
-          style={{
-            width: "100%",
-            paddingTop: "16px",
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "17px",
-            color: `${LIGHT}80`,
-            textAlign: "center",
-            letterSpacing: "0.02em",
-          }}
-        >
-          [Existing investor participation: add here if applicable — critical signal]
-        </motion.div>
+        {/* Bottom spacer */}
+        <div style={{ height: "clamp(16px, 2vh, 32px)", flexShrink: 0 }} />
       </div>
     </SlideFrame>
   );
