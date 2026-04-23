@@ -264,7 +264,9 @@ export default function Slide9() {
                         maxWidth: "70px",
                         objectFit: "contain",
                         opacity: 0.85,
-                        filter: logo.invert ? "invert(1) brightness(1.1)" : "brightness(0) invert(1)",
+                        filter: logo.invert
+                          ? "invert(1) brightness(1.1)"
+                          : "brightness(0) invert(1)",
                       }}
                     />
                   ))}
