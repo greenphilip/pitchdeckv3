@@ -232,6 +232,21 @@ export default function Slide9() {
               >
                 {m.background}
               </div>
+
+              {m.logo && (
+                <img
+                  src={m.logo}
+                  alt=""
+                  style={{
+                    height: "20px",
+                    width: "auto",
+                    objectFit: "contain",
+                    opacity: 0.85,
+                    filter: "invert(1) brightness(1.1)",
+                    marginTop: "-4px",
+                  }}
+                />
+              )}
             </motion.div>
           ))}
         </div>
