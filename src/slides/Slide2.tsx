@@ -439,7 +439,7 @@ export default function Slide2() {
           >
             The pressure is building on companies to turn ESG into strategic advantage
             <br />
-            rather than just a compliance cost
+            and reduce compliance cost
           </div>
         </motion.div>
       </div>
