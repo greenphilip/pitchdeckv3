@@ -44,7 +44,7 @@ export default function Slide3() {
   const isMobile = useIsMobile();
 
   return (
-    <SlideFrame variant="technical" slideNumber={3} totalSlides={10}>
+    <SlideFrame variant="technical" slideNumber={3} totalSlides={11}>
       <div
         style={{
           flex: 1,
