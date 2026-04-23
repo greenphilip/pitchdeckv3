@@ -162,85 +162,142 @@ export default function Slide8() {
             }}
           >
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-              {marketBars.map((b, i) => (
-                <div
-                  key={b.leftLabel}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "10px",
-                  }}
-                >
-                  <motion.div
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.25 + i * 0.18 }}
-                    style={{
-                      fontFamily: "'JetBrains Mono', monospace",
-                      fontSize: "20px",
-                      color: LIGHT,
-                      fontWeight: 600,
-                      letterSpacing: "0.05em",
-                    }}
-                  >
-                    {b.leftLabel}
-                  </motion.div>
+              {marketBars.map((b, i) => {
+                const isPrimary = b.emphasis === "primary";
+                const isMuted = b.emphasis === "muted";
+                const leftLabelStyle = isPrimary
+                  ? { fontSize: "22px", fontWeight: 700, color: MINT }
+                  : isMuted
+                  ? { fontSize: "16px", fontWeight: 400, color: `${LIGHT}80` }
+                  : { fontSize: "16px", fontWeight: 400, color: `${LIGHT}A6` };
 
+                const rightLabelNode = isPrimary ? (
+                  <>
+                    SOM <span style={{ color: MINT }}>€100m</span> ≈{" "}
+                    <span style={{ color: MINT }}>5,000 customers</span> @ €20k ACV
+                  </>
+                ) : b.key === "TAM" ? (
+                  "TAM €1.3bn → €7.8bn"
+                ) : (
+                  "SAM €520m"
+                );
+                const rightLabelStyle = isPrimary
+                  ? { fontSize: "28px", fontWeight: 700 as const, color: LIGHT }
+                  : isMuted
+                  ? { fontSize: "18px", fontWeight: 400 as const, color: `${LIGHT}80` }
+                  : { fontSize: "18px", fontWeight: 400 as const, color: `${LIGHT}A6` };
+
+                return (
                   <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "20px",
-                      flexWrap: "wrap",
-                    }}
+                    key={b.key}
+                    style={{ display: "flex", flexDirection: "column", gap: "10px" }}
                   >
+                    <motion.div
+                      initial={{ opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: 0.25 + i * 0.18 }}
+                      style={{
+                        fontFamily: "'JetBrains Mono', monospace",
+                        letterSpacing: "0.05em",
+                        ...leftLabelStyle,
+                      }}
+                    >
+                      {b.leftLabel}
+                    </motion.div>
+
                     <div
                       style={{
-                        flex: "1 1 0",
-                        minWidth: 0,
-                        height: "64px",
-                        position: "relative",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "20px",
+                        flexWrap: "wrap",
                       }}
                     >
-                      <motion.div
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: b.widthPct / 100 }}
-                        transition={{
-                          duration: 0.5,
-                          ease: EXPO_OUT,
-                          delay: 0.35 + i * 0.18,
-                        }}
+                      {/* Accent marker (SOM only) */}
+                      {isPrimary && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 1 }}
+                          animate={{
+                            opacity: 1,
+                            scale: [1, 1.15, 1],
+                          }}
+                          transition={{
+                            opacity: { duration: 0.3, delay: 0.35 + i * 0.18 },
+                            scale: { duration: 0.6, delay: 1.4, times: [0, 0.5, 1] },
+                          }}
+                          style={{
+                            width: 4,
+                            height: b.height,
+                            background: MINT,
+                            borderRadius: 2,
+                            flexShrink: 0,
+                          }}
+                        />
+                      )}
+
+                      <div
                         style={{
-                          width: "100%",
-                          height: "100%",
-                          background: b.color,
-                          borderRadius: 4,
-                          transformOrigin: "left",
+                          flex: "1 1 0",
+                          minWidth: 0,
+                          height: `${b.height}px`,
+                          position: "relative",
                         }}
-                      />
+                      >
+                        <motion.div
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: b.widthPct / 100 }}
+                          transition={{
+                            duration: isPrimary ? 0.7 : 0.5,
+                            ease: EXPO_OUT,
+                            delay: 0.35 + i * 0.18,
+                          }}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            background: b.color,
+                            borderRadius: isPrimary ? 6 : 4,
+                            transformOrigin: "left",
+                            boxShadow: isPrimary
+                              ? `0 0 0 1px ${MINT}, 0 8px 32px ${MINT}40`
+                              : undefined,
+                          }}
+                        />
+                      </div>
+                      <motion.div
+                        initial={{ opacity: 0, x: -8 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.85 + i * 0.18 }}
+                        style={{
+                          flexShrink: 0,
+                          maxWidth: "100%",
+                          lineHeight: 1.3,
+                          ...rightLabelStyle,
+                        }}
+                      >
+                        {rightLabelNode}
+                        {isPrimary && (
+                          <div
+                            style={{
+                              fontSize: "13px",
+                              fontStyle: "italic",
+                              color: `${LIGHT}99`,
+                              fontWeight: 400,
+                              marginTop: 6,
+                            }}
+                          >
+                            Our 5-year target — credible, bottom-up
+                          </div>
+                        )}
+                      </motion.div>
                     </div>
-                    <motion.div
-                      initial={{ opacity: 0, x: -8 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: 0.85 + i * 0.18 }}
-                      style={{
-                        fontSize: "24px",
-                        fontWeight: 500,
-                        color: LIGHT,
-                        flexShrink: 0,
-                        maxWidth: "100%",
-                      }}
-                    >
-                      {b.rightLabel}
-                    </motion.div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             <div
               style={{
-                fontSize: "18px",
+                fontSize: "15px",
                 color: `${LIGHT}A6`,
               }}
             >
