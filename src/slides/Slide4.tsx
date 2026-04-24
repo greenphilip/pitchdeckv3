@@ -126,9 +126,10 @@ type BoxProps = {
   headline: string;
   body: string;
   delay: number;
+  emphasis?: boolean;
 };
 
-function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
+function WorkflowBox({ number, Icon, headline, body, delay, emphasis }: BoxProps) {
   return (
     <motion.div
       initial={{ scale: 0.97, opacity: 0 }}
@@ -136,10 +137,12 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
       transition={{ duration: 0.4, delay, ease: "easeOut" }}
       style={{
         background: NAVY,
-        border: `1px solid ${MINT}4D`,
+        border: emphasis ? `1.5px solid ${MINT}` : `1px solid ${MINT}4D`,
         borderRadius: 12,
         padding: "12px 16px",
-        boxShadow: "0 1px 2px 0 rgba(0,0,0,0.2)",
+        boxShadow: emphasis
+          ? `0 0 0 1px ${MINT}33, 0 0 32px ${MINT}40, 0 1px 2px 0 rgba(0,0,0,0.2)`
+          : "0 1px 2px 0 rgba(0,0,0,0.2)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -163,9 +166,10 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
       <Icon size={28} color={MINT} strokeWidth={1.5} style={{ width: "28px", height: "auto" }} />
       <div
         style={{
-          fontSize: "18px",
-          color: LIGHT_GRAY,
-          fontWeight: 600,
+          fontSize: emphasis ? "20px" : "18px",
+          color: emphasis ? MINT : LIGHT_GRAY,
+          fontWeight: emphasis ? 700 : 600,
+          letterSpacing: emphasis ? "-0.01em" : undefined,
         }}
       >
         {headline}
@@ -394,6 +398,7 @@ export default function Slide4() {
             headline="Glacier AI"
             body={"Matches evidence to requirements\nEvaluates quality\nProvides citations and improvements\n\n\nUser can draft, delegate, review, approve, export"}
             delay={tBox2}
+            emphasis
           />
           <ArrowCell delay={tArrow2} vertical={isMobile} />
           <WorkflowBox
