@@ -251,54 +251,75 @@ export default function Slide8() {
         </div>
 
         {/* USE OF FUNDS → MILESTONES */}
-        <div
-          style={{
-            width: "100%",
-            maxWidth: "min(1300px, 100%)",
-            display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "1fr 56px 1fr",
-            columnGap: "clamp(20px, 2vw, 32px)",
-            rowGap: "clamp(14px, 2vh, 22px)",
-            alignItems: "start",
-          }}
-        >
-          {/* Row 1: column headers */}
-          <motion.div
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.95 }}
+        {isMobile ? (
+          <div
             style={{
+              width: "100%",
+              maxWidth: "min(1300px, 100%)",
               display: "flex",
               flexDirection: "column",
-              gap: "clamp(6px, 0.8vh, 10px)",
+              gap: "clamp(20px, 3vh, 32px)",
             }}
           >
-            <div
+            <MobileColumn
+              header="USE OF FUNDS"
+              items={useOfFunds.map((text) => ({ text, kind: "diamond" as const }))}
+              baseDelay={0.95}
+            />
+            <MobileColumn
+              header="BY DEC 2026"
+              items={milestones.map((text) => ({ text, kind: "check" as const }))}
+              baseDelay={1.15}
+            />
+          </div>
+        ) : (
+          <div
+            style={{
+              width: "100%",
+              maxWidth: "min(1300px, 100%)",
+              display: "grid",
+              gridTemplateColumns: "1fr 56px 1fr",
+              columnGap: "clamp(20px, 2vw, 32px)",
+              rowGap: "clamp(14px, 2vh, 22px)",
+              alignItems: "start",
+            }}
+          >
+            {/* Row 1: column headers */}
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.95 }}
               style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(15px, 1.3vw, 22px)",
-                color: MINT,
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.16em",
+                display: "flex",
+                flexDirection: "column",
+                gap: "clamp(6px, 0.8vh, 10px)",
               }}
             >
-              USE OF FUNDS
-            </div>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.05 }}
-              style={{
-                width: "80%",
-                height: "1px",
-                background: `${MINT}4D`,
-                transformOrigin: "left",
-              }}
-            />
-          </motion.div>
+              <div
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: "clamp(15px, 1.3vw, 22px)",
+                  color: MINT,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.16em",
+                }}
+              >
+                USE OF FUNDS
+              </div>
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.05 }}
+                style={{
+                  width: "80%",
+                  height: "1px",
+                  background: `${MINT}4D`,
+                  transformOrigin: "left",
+                }}
+              />
+            </motion.div>
 
-          {!isMobile && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -315,54 +336,53 @@ export default function Slide8() {
                 strokeWidth={1.75}
               />
             </motion.div>
-          )}
 
-          <motion.div
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.95 }}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "clamp(6px, 0.8vh, 10px)",
-            }}
-          >
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.95 }}
               style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(15px, 1.3vw, 22px)",
-                color: MINT,
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.16em",
+                display: "flex",
+                flexDirection: "column",
+                gap: "clamp(6px, 0.8vh, 10px)",
               }}
             >
-              BY DEC 2026
-            </div>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.05 }}
-              style={{
-                width: "80%",
-                height: "1px",
-                background: `${MINT}4D`,
-                transformOrigin: "left",
-              }}
-            />
-          </motion.div>
+              <div
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: "clamp(15px, 1.3vw, 22px)",
+                  color: MINT,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.16em",
+                }}
+              >
+                BY DEC 2026
+              </div>
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.05 }}
+                style={{
+                  width: "80%",
+                  height: "1px",
+                  background: `${MINT}4D`,
+                  transformOrigin: "left",
+                }}
+              />
+            </motion.div>
 
-          {/* Three row pairs */}
-          {[0, 1, 2].map((i) => (
-            <RowPair
-              key={i}
-              left={useOfFunds[i]}
-              right={milestones[i]}
-              delay={1.05 + i * 0.08}
-              isMobile={isMobile}
-            />
-          ))}
-        </div>
+            {/* Three row pairs */}
+            {[0, 1, 2].map((i) => (
+              <RowPair
+                key={i}
+                left={useOfFunds[i]}
+                right={milestones[i]}
+                delay={1.05 + i * 0.08}
+              />
+            ))}
+          </div>
+        )}
 
         {/* BOTTOM DIVIDER */}
         <div style={{ width: "100%", maxWidth: "min(1300px, 100%)" }}>
