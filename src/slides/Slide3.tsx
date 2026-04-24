@@ -35,7 +35,7 @@ const forces: Force[] = [
   {
     label: "REGULATION",
     Icon: Repeat,
-    title: "Rules keep changing.",
+    title: "ESG rules keep changing.",
     body: "Omnibus I in force, ESRS simplified, VSME drafting through 2027. Static tools break on moving targets.",
   },
   {
