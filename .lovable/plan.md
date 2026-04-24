@@ -1,41 +1,34 @@
-## Add the compounding-effect bar chart to Slide 4 (lower right)
+## Slide 4 — fix bottom crowding and align the compounding chart with box 03
 
-### What
+### Diagnosis
 
-Duplicate the three time-compression bars from Slide 5 ("THE COMPOUNDING EFFECT" — `1st framework — CSRD / 2 months`, `2nd framework — EcoVadis / 1 month`, `3rd framework onward / 1 week`) onto Slide 4 (`src/slides/Slide4.tsx`). Place them free-floating in the rightmost column of the bottom row, alongside the "Client Knowledge Profile" (CKP) box that sits in the middle column. Slide 5 itself is unchanged.
+Two visual issues, one root cause for each:
 
-### Why this layout
+1. **Chart not aligned with the box above (box 03 "Report / Gap")**
+   The bottom-row grid uses the same 5-column template as the top row (`1fr | auto | 1fr | auto | 1fr`), so the rightmost cell sits exactly under box 03 — *but* the chart wrapper currently has `maxWidth: 360px` and `paddingLeft: 8px`. That shrinks the chart and pushes it 8px off the column's left edge, so the eyebrow "THE COMPOUNDING EFFECT" no longer lines up with box 03's left edge above it, and the bars terminate well before box 03's right edge.
 
-Slide 4's bottom row uses a 5-column grid: `1fr | auto | 1fr | auto | 1fr`. The CKP box anchors the middle `1fr`; the trailing two cells are currently empty placeholders. The right placeholder is the natural "lower right" slot — vertically centered with the CKP box, no card chrome, no extra grid math. Free-floating = no border, no background, just bars + labels (which themes well with the bars on Slide 5 — they aren't carded there either).
+2. **Crammed at the bottom**
+   Vertical stack at 1080px is: header → 64px gap → top row of boxes → 20px → arrow row → 16px → bottom row (CKP + chart) → 40px → bottom strip. Because the chart adds visual mass on the right side of the bottom row, the row reads taller than before and the 40px-then-strip tail feels squeezed.
 
-### Implementation in `src/slides/Slide4.tsx`
+### Fixes (in `src/slides/Slide4.tsx`)
 
-1. **Imports / constants (top of file)**
-   - Add `BLUE = "#539ADB"` and `TEAL = "#2D9D90"` constants (palette already used elsewhere).
-   - Add `EXPO_OUT` easing tuple.
-   - Add a `CompoundingBar` interface and a `compoundingBars` data array — same three entries as Slide 5.
+1. **Make the chart fill its column** — drop `maxWidth: 360px` and `paddingLeft: 8px` from the chart wrapper. The wrapper becomes `{ alignSelf: "center", width: "100%" }`. Result: chart's left/right edges match box 03's column edges exactly. The eyebrow, all three bar labels, and the "1 week" anchor sit perfectly under box 03's outline above.
 
-2. **New `CompoundingChart` component** in the same file (kept local — only Slide 4 uses this density). It renders:
-   - A small JetBrains Mono eyebrow `THE COMPOUNDING EFFECT` (12px, Mint, uppercase).
-   - Three rows. Each row: label on top (13px), then a flex line with the bar (`height: 22px`, scaleX-animated from 0 → widthPct/100, transformOrigin left) and the duration text (16px, color = bar color, bold for the emphasized last bar).
-   - Sizes are scaled down from Slide 5 (which uses 22/30/52px) so it sits compactly in the column without dominating.
-   - Animations stagger off a `baseDelay` prop, identical pattern to Slide 5.
+2. **Recover vertical space** — tighten the four gaps that compound into the crowding:
+   - Header → top row: `64px` → `40px`
+   - Top row → downward arrow: `marginTop: 20px` → `12px`
+   - Arrow → bottom row: `marginTop: 16px` → `8px` (desktop only)
+   - Bottom row → strip: `40px` → `20px`
 
-3. **Slot it into the bottom row**
-   - Add a new timing constant: `tChart = tBox4 + 0.2`. Push `tStrip = tChart + 0.6`.
-   - In the bottom-row grid (lines 261–285), the rightmost cell — currently the second `<div />` after the CKP box — becomes a wrapper that renders `<CompoundingChart baseDelay={tChart} />`. The wrapper aligns center vertically (`alignSelf: "center"`) and constrains width with `maxWidth: 360px` so the chart looks like a free-floating panel rather than stretching across the full column.
-   - Mobile: keep the current single-column stack. Render the chart as an additional stacked block beneath the CKP box (no grid changes needed — just append after the CKP `<WorkflowBox>` inside the `isMobile` branch).
+   Total reclaimed: ~60px. Bottom row + strip get noticeable breathing room without changing any element's intrinsic size.
 
-### Visual / interaction notes
+### What stays the same
 
-- No card border, no background fill — matches the user's "free floating" intent.
-- Bars use the existing brand palette (Teal → Blue → Mint), preserving the third-bar Mint emphasis with the soft glow.
-- Final bottom strip ("Deterministic · Auditable · Multi-framework") still animates last because `tStrip` is pushed after the chart finishes.
+- Animation timings unchanged.
+- Mobile layout unchanged (still stacks chart under CKP with its own 20px gap; the desktop-only `marginTop: 16 → 8` change explicitly preserves the mobile value).
+- Box sizes, fonts, colors, content — all unchanged.
+- Slide 5 untouched.
 
-### Files touched
+### File touched
 
-- `src/slides/Slide4.tsx` — single file. New constants + `CompoundingChart` component + bottom-row slotting + delay adjustment.
-
-### Files NOT touched
-
-- `src/slides/Slide6.tsx` (Slide 5 in display order) — unchanged. The chart on Slide 5 stays exactly as it is; Slide 4 gets a smaller-scale duplicate.
+- `src/slides/Slide4.tsx` — five small edits, all in the existing JSX (no structural changes).
