@@ -5,7 +5,120 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 
 const NAVY = "#143560";
 const MINT = "#6DD4AD";
+const BLUE = "#539ADB";
+const TEAL = "#2D9D90";
 const LIGHT_GRAY = "#F1F1F1";
+const EXPO_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+interface CompoundingBar {
+  leftLabel: string;
+  rightLabel: string;
+  color: string;
+  widthPct: number;
+  emphasis?: boolean;
+}
+
+const compoundingBars: CompoundingBar[] = [
+  { leftLabel: "1st framework — CSRD", rightLabel: "2 months", color: TEAL, widthPct: 100 },
+  { leftLabel: "2nd framework — EcoVadis", rightLabel: "1 month", color: BLUE, widthPct: 50 },
+  { leftLabel: "3rd framework onward", rightLabel: "1 week", color: MINT, widthPct: 20, emphasis: true },
+];
+
+function CompoundingChart({ baseDelay }: { baseDelay: number }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "10px", width: "100%" }}>
+      <motion.div
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35, ease: EXPO_OUT, delay: baseDelay }}
+        style={{
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: "12px",
+          color: MINT,
+          fontWeight: 600,
+          textTransform: "uppercase",
+          letterSpacing: "0.12em",
+        }}
+      >
+        THE COMPOUNDING EFFECT
+      </motion.div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+        {compoundingBars.map((b, i) => (
+          <div
+            key={b.leftLabel}
+            style={{ display: "flex", flexDirection: "column", gap: "4px" }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: baseDelay + 0.1 + i * 0.15 }}
+              style={{
+                fontSize: "13px",
+                color: `${LIGHT_GRAY}CC`,
+                fontWeight: 500,
+              }}
+            >
+              {b.leftLabel}
+            </motion.div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+              }}
+            >
+              <div
+                style={{
+                  flex: "1 1 0",
+                  minWidth: 0,
+                  height: "22px",
+                  position: "relative",
+                }}
+              >
+                <motion.div
+                  initial={{ scaleX: 0, opacity: 0.8 }}
+                  animate={{ scaleX: b.widthPct / 100, opacity: 1 }}
+                  transition={{
+                    duration: 0.5 - i * 0.1,
+                    ease: EXPO_OUT,
+                    delay: baseDelay + 0.18 + i * 0.15,
+                  }}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    background: b.color,
+                    borderRadius: 3,
+                    transformOrigin: "left",
+                    boxShadow: b.emphasis ? `0 0 16px ${b.color}55` : undefined,
+                  }}
+                />
+              </div>
+              <motion.div
+                initial={{ opacity: 0, x: -6 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 0.3,
+                  delay: baseDelay + 0.18 + i * 0.15 + (0.5 - i * 0.1),
+                }}
+                style={{
+                  fontSize: "16px",
+                  fontWeight: b.emphasis ? 700 : 600,
+                  color: b.color,
+                  whiteSpace: "nowrap",
+                  minWidth: "78px",
+                  textAlign: "right",
+                }}
+              >
+                {b.rightLabel}
+              </motion.div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 type BoxProps = {
   number: string;
