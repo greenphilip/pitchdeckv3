@@ -83,7 +83,7 @@ export default function Slide9() {
   const isMobile = useIsMobile();
 
   return (
-    <SlideFrame variant="minimal" slideNumber={9} totalSlides={10}>
+    <SlideFrame variant="minimal" slideNumber={8} totalSlides={9}>
       <div
         style={{
           flex: 1,
