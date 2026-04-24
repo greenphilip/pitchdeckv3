@@ -112,7 +112,7 @@ export default function Slide5() {
             style={{
               margin: 0,
               marginTop: "14px",
-              fontSize: "44px",
+              fontSize: "clamp(22px, 5.5vw, 44px)",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -339,7 +339,7 @@ export default function Slide5() {
               >
                 <div
                   style={{
-                    fontSize: "56px",
+                    fontSize: "clamp(36px, 9vw, 56px)",
                     color: s.emphasis ? BLUE : LIGHT,
                     fontWeight: 700,
                     letterSpacing: "-0.02em",
