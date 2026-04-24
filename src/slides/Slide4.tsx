@@ -163,7 +163,7 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
       <Icon size={28} color={MINT} strokeWidth={1.5} style={{ width: "28px", height: "auto" }} />
       <div
         style={{
-          fontSize: "20px",
+          fontSize: "18px",
           color: LIGHT_GRAY,
           fontWeight: 600,
         }}
