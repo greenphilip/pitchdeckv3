@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { UploadCloud, Link2, ShieldCheck, Database, ArrowRight, ArrowDown } from "lucide-react";
+import { UploadCloud, Link2, ShieldCheck, Database, ArrowRight, ArrowDown, FileText } from "lucide-react";
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
@@ -138,13 +138,13 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
         background: NAVY,
         border: `1px solid ${MINT}4D`,
         borderRadius: 12,
-        padding: "20px 22px",
+        padding: "16px 20px",
         boxShadow: "0 1px 2px 0 rgba(0,0,0,0.2)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         textAlign: "center",
-        gap: "10px",
+        gap: "8px",
         height: "100%",
         boxSizing: "border-box",
       }}
@@ -160,7 +160,7 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
       >
         {number}
       </div>
-      <Icon size={36} color={MINT} strokeWidth={1.5} style={{ width: "36px", height: "auto" }} />
+      <Icon size={32} color={MINT} strokeWidth={1.5} style={{ width: "32px", height: "auto" }} />
       <div
         style={{
           fontSize: "20px",
@@ -214,7 +214,9 @@ export default function Slide4() {
   const isMobile = useIsMobile();
 
   // Animation timing
-  const tBox1 = 0.24;
+  const tBoxQ = 0.18;
+  const tArrowQ = tBoxQ + 0.4;
+  const tBox1 = tArrowQ + 0.2;
   const tArrow1 = tBox1 + 0.4;
   const tBox2 = tArrow1 + 0.3;
   const tArrow2 = tBox2 + 0.4;
@@ -244,7 +246,7 @@ export default function Slide4() {
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
-            gap: "20px",
+            gap: "14px",
             width: "100%",
           }}
         >
@@ -283,7 +285,7 @@ export default function Slide4() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.16, ease: "easeOut" }}
             style={{
-              marginTop: "4px",
+              marginTop: "0px",
               fontSize: "20px",
               color: `${LIGHT_GRAY}B3`,
               maxWidth: 900,
@@ -295,7 +297,76 @@ export default function Slide4() {
         </div>
 
         {/* GAP */}
-        <div style={{ height: "40px", flexShrink: 0 }} />
+        <div style={{ height: "20px", flexShrink: 0 }} />
+
+        {/* WORKFLOW — questionnaire input row (box 00) */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 48px 1fr 48px 1fr",
+            gap: "24px",
+            maxWidth: "min(1400px, 100%)",
+            width: "100%",
+            margin: "0 auto",
+            alignItems: "stretch",
+          }}
+        >
+          {!isMobile && <div />}
+          {!isMobile && <div />}
+          <WorkflowBox
+            number="00"
+            Icon={FileText}
+            headline="ESG Questionnaires"
+            body={"Varying standards, different formats, validity criteria for evidence"}
+            delay={tBoxQ}
+          />
+          {!isMobile && <div />}
+          {!isMobile && <div />}
+        </div>
+
+        {/* DOWNWARD ARROW from questionnaire box into Glacier AI */}
+        {!isMobile && (
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 48px 1fr 48px 1fr",
+              gap: "24px",
+              maxWidth: "min(1400px, 100%)",
+              width: "100%",
+              margin: "0 auto",
+              marginTop: "8px",
+              marginBottom: "8px",
+              alignItems: "center",
+            }}
+          >
+            <div />
+            <div />
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: tArrowQ, ease: "easeOut" }}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <ArrowDown
+                size={40}
+                color={MINT}
+                strokeWidth={2}
+                style={{ opacity: 0.8 }}
+              />
+            </motion.div>
+            <div />
+            <div />
+          </div>
+        )}
+        {isMobile && (
+          <div style={{ display: "flex", justifyContent: "center", padding: "8px 0" }}>
+            <ArrowDown size={32} color={MINT} strokeWidth={2} style={{ opacity: 0.7 }} />
+          </div>
+        )}
 
         {/* WORKFLOW — top row */}
         <div
@@ -417,7 +488,7 @@ export default function Slide4() {
         </div>
 
         {/* GAP */}
-        <div style={{ height: "20px", flexShrink: 0 }} />
+        <div style={{ height: "16px", flexShrink: 0 }} />
 
         {/* BOTTOM STRIP */}
         <motion.div
