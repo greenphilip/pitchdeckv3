@@ -405,11 +405,12 @@ export default function Slide8() {
             transition={{ duration: 0.4, ease: EXPO_OUT, delay: 1.4 }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(11px, 0.85vw, 14px)",
+              fontSize: "clamp(12px, 0.9vw, 14px)",
               color: `${MINT}CC`,
               fontStyle: "italic",
               letterSpacing: "0.08em",
               textAlign: "center",
+              padding: "0 8px",
             }}
           >
             * €450k AWS "double equity loan" tranche
@@ -425,11 +426,21 @@ export default function Slide8() {
               color: `${LIGHT}8C`,
               fontWeight: 500,
               textTransform: "uppercase",
-              letterSpacing: "0.14em",
+              letterSpacing: isMobile ? "0.08em" : "0.14em",
               textAlign: "center",
+              lineHeight: 1.5,
+              padding: "0 8px",
             }}
           >
-            2 Existing Investors Participating · Names on Request
+            {isMobile ? (
+              <>
+                2 Existing Investors Participating
+                <br />
+                Names on Request
+              </>
+            ) : (
+              "2 Existing Investors Participating · Names on Request"
+            )}
           </motion.div>
         </div>
 
