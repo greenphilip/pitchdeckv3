@@ -60,7 +60,7 @@ const phases: Phase[] = [
   },
 ];
 
-export default function Slide8() {
+export default function Slide7() {
   const isMobile = useIsMobile();
 
   return (

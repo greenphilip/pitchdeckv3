@@ -79,7 +79,7 @@ const team: Member[] = [
   },
 ];
 
-export default function Slide9() {
+export default function Slide8() {
   const isMobile = useIsMobile();
 
   return (

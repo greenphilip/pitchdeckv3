@@ -97,7 +97,7 @@ function Column({
   );
 }
 
-export default function Slide10() {
+export default function Slide9() {
   const isMobile = useIsMobile();
 
   return (

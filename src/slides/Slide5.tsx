@@ -60,7 +60,7 @@ const logos = [
   { src: rlbOoeLogo, alt: "RLB Oberösterreich" },
 ];
 
-export default function Slide6() {
+export default function Slide5() {
   const isMobile = useIsMobile();
 
   return (

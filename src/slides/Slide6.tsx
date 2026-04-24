@@ -35,7 +35,7 @@ const forces: Force[] = [
   },
 ];
 
-export default function Slide7() {
+export default function Slide6() {
   const isMobile = useIsMobile();
 
   return (
