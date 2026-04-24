@@ -29,7 +29,7 @@ interface Member {
   title: string;
   background: string;
   photo?: string;
-  logos?: { src: string; invert?: boolean; boxed?: boolean; height?: number }[];
+  logos?: { src: string; invert?: boolean; boxed?: boolean; mono?: boolean; height?: number }[];
 }
 
 const team: Member[] = [
