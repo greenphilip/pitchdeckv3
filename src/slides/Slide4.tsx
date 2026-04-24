@@ -334,8 +334,8 @@ export default function Slide4() {
               maxWidth: "min(1400px, 100%)",
               width: "100%",
               margin: "0 auto",
-              marginTop: "8px",
-              marginBottom: "8px",
+              marginTop: "4px",
+              marginBottom: "4px",
               alignItems: "center",
             }}
           >
