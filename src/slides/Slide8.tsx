@@ -132,24 +132,38 @@ export default function Slide8() {
               </motion.div>
             </div>
 
-            {/* arrow connector — mirrors the column-pair arrow */}
+            {/* "unlocks" + arrow connector */}
             <motion.div
               initial={{ opacity: 0, x: -8 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: 0.32, ease: EXPO_OUT }}
               style={{
                 display: "flex",
+                flexDirection: isMobile ? "column" : "row",
                 alignItems: "center",
                 justifyContent: "center",
+                gap: "clamp(8px, 0.9vw, 14px)",
                 paddingBottom: isMobile ? 0 : "clamp(20px, 3vh, 40px)",
-                transform: isMobile ? "rotate(90deg)" : undefined,
               }}
             >
+              <span
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: "clamp(13px, 1.1vw, 18px)",
+                  color: `${MINT}CC`,
+                  fontStyle: "italic",
+                  letterSpacing: "0.08em",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                unlocks
+              </span>
               <ArrowRight
                 style={{
                   width: "clamp(32px, 3.4vw, 56px)",
                   height: "clamp(32px, 3.4vw, 56px)",
                   color: `${MINT}99`,
+                  transform: isMobile ? "rotate(90deg)" : undefined,
                 }}
                 strokeWidth={1.5}
               />
@@ -197,6 +211,16 @@ export default function Slide8() {
                 }}
               >
                 IN NEW CAPITAL
+                <span
+                  style={{
+                    verticalAlign: "super",
+                    fontSize: "0.75em",
+                    marginLeft: "2px",
+                    color: MINT,
+                  }}
+                >
+                  *
+                </span>
               </motion.div>
             </div>
           </div>
@@ -345,23 +369,49 @@ export default function Slide8() {
           <Divider delay={1.35} />
         </div>
 
-        {/* INVESTOR FOOTER */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, ease: EXPO_OUT, delay: 1.45 }}
+        {/* FOOTNOTE + INVESTOR FOOTER */}
+        <div
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "clamp(13px, 1.05vw, 17px)",
-            color: `${LIGHT}8C`,
-            fontWeight: 500,
-            textTransform: "uppercase",
-            letterSpacing: "0.14em",
-            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "clamp(6px, 0.8vh, 12px)",
+            width: "100%",
           }}
         >
-          2 Existing Investors Participating · Names on Request
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, ease: EXPO_OUT, delay: 1.4 }}
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: "clamp(11px, 0.85vw, 14px)",
+              color: `${MINT}CC`,
+              fontStyle: "italic",
+              letterSpacing: "0.08em",
+              textAlign: "center",
+            }}
+          >
+            * €450k AWS "double equity loan" tranche
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, ease: EXPO_OUT, delay: 1.5 }}
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: "clamp(13px, 1.05vw, 17px)",
+              color: `${LIGHT}8C`,
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: "0.14em",
+              textAlign: "center",
+            }}
+          >
+            2 Existing Investors Participating · Names on Request
+          </motion.div>
+        </div>
 
         <div style={{ height: "clamp(8px, 1vh, 16px)", flexShrink: 0 }} />
       </div>
