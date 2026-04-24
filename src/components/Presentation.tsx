@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Slide1 from "@/slides/Slide1";
 import Slide2 from "@/slides/Slide2";
