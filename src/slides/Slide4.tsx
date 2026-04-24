@@ -488,7 +488,7 @@ export default function Slide4() {
         </div>
 
         {/* GAP */}
-        <div style={{ height: "20px", flexShrink: 0 }} />
+        <div style={{ height: "16px", flexShrink: 0 }} />
 
         {/* BOTTOM STRIP */}
         <motion.div
