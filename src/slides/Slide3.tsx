@@ -224,68 +224,6 @@ export default function Slide3() {
           })}
         </div>
 
-        {/* THESIS STAMP */}
-        <div style={{ height: "80px" }} />
-
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.85, ease: EXPO_OUT }}
-          style={{
-            display: "flex",
-            alignItems: "stretch",
-            gap: "24px",
-            maxWidth: "min(1400px, 100%)",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        >
-          <div
-            style={{
-              width: 4,
-              background: MINT,
-              flexShrink: 0,
-              borderRadius: 2,
-              boxShadow: `0 0 16px ${MINT}55`,
-            }}
-          />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "10px",
-              paddingTop: "6px",
-              paddingBottom: "6px",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "32px",
-                color: LIGHT,
-                fontWeight: 500,
-                lineHeight: 1.3,
-                letterSpacing: "-0.015em",
-                maxWidth: "min(1300px, 100%)",
-              }}
-            >
-              Customers don't need more tools. They need their work done —{" "}
-              <span style={{ color: MINT, fontWeight: 700 }}>faster</span>, without losing{" "}
-              <span style={{ color: MINT, fontWeight: 700 }}>quality</span>.
-            </div>
-            <div
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "17px",
-                color: MINT,
-                fontWeight: 600,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-              }}
-            >
-              Glacier: Speed + Quality, Delivered Together
-            </div>
-          </div>
-        </motion.div>
       </div>
     </SlideFrame>
   );
