@@ -1,85 +1,55 @@
-# Slide 3 — Split into two clearly-titled bands
+## Reshuffle Slide 4 — add input box above Glacier AI
 
-## Audit findings
+### What changes
 
-Two pieces of "title" overlap right now:
-- **Top H1** says: *"3 forces pushing the market — 3 alternatives failing to meet it."* (covers BOTH halves of the slide)
-- **Two mono labels** further down repeat the same idea:
-  - "Three forces in motion" (above top row)
-  - "Three tools, three gaps" (above bottom row)
+Add a new box (visually identical to 01/03/04) directly above the "02 Glacier AI" box, with a downward arrow pointing into Glacier AI. The current top row (Documents → Glacier AI → Report/Gap/Policy) and bottom section (CKP + chart) stay in place but get tightened vertically to absorb the new row.
 
-So you read "3 forces…" twice in the top half, and the bottom half's "3 alternatives" is announced 100vh away from the cards it describes. The structure is hard to scan.
+### New box content
 
-Other observations:
-- Spacing between the divider and the bottom band is the same as between header and top band, so the bottom band reads as a continuation, not a parallel section.
-- Bottom mono label uses BLUE while top uses MINT — inconsistent emphasis for two equally important sections.
+- Number: `00`
+- Icon: `FileText` (lucide) — distinct from the other icons; reads as "questionnaire"
+- Headline: `ESG Questionnaires`
+- Body: `Varying standards, different formats, validity criteria for evidence`
 
-## Proposed change — give each band its own title
-
-Restructure into **two stacked sections**, each with its own headline:
+### New layout
 
 ```text
-─────────────────────────────────────────────
-EYEBROW: WHY NOW — AND WHY NOBODY'S SOLVED IT
-
-[ Section title 1 ]
-3 forces pushing the market.
-
-[ 3 force columns ]
-
-────────── divider ──────────
-
-[ Section title 2 ]
-3 alternatives failing to meet it.
-
-[ 3 tool/gap cards ]
-─────────────────────────────────────────────
+                    [ 00 · ESG Questionnaires ]
+                              │
+                              ▼
+[ 01 Documents ] ──▶ [ 02 Glacier AI ] ──▶ [ 03 Report / Gap / Policy ]
+                              │
+                              ▼
+                    [ 04 Client Knowledge Profile ] ──▶ [ Compounding chart ]
 ```
 
-### Specific edits
+The new top box sits in the center column of the same `1fr 48px 1fr 48px 1fr` grid (left/right cells empty), so it lines up exactly above Glacier AI, mirroring how box 04 currently sits below it.
 
-1. **Replace the combined H1** with just a section title for the top band:
-   - Text: `3 forces pushing the market.`
-   - Same H1 styling (`clamp(28px, 3.6vw, 56px)`, weight 700, mint accent on a key word — e.g. mint on "pushing").
+### Spacing tightening (to absorb the new row)
 
-2. **Remove the redundant mono label** "Three forces in motion" above the top row — the new H1 already names the section.
+To prevent vertical overflow, condense the existing rhythm:
 
-3. **Add a second H1 under the divider** for the bottom band:
-   - Text: `3 alternatives — all <span mint>failing to meet it.</span>`
-   - Same style as the top H1 (matching weight, size, alignment) so the two bands feel like a parallel pair.
+- WorkflowBox padding: `20px 22px` → `16px 20px`
+- WorkflowBox internal gap: `10px` → `8px`
+- WorkflowBox icon size: `36` → `32`
+- Header → workflow gap: `40px` → `20px`
+- Subtitle "One evidence graph…" marginTop: `4px` → `0`; header inner gap `20px` → `14px`
+- Top-row arrow row spacers (between new top box and main row, and between main row and box 04): `12px` / `8px` marginTop kept tight (~`8px` each)
+- Bottom strip top gap: `20px` → `16px`
 
-4. **Remove the redundant mono label** "Three tools, three gaps" above the bottom row.
+These are the standard knobs and keep the slide inside the 1080px budget without changing any typography floors.
 
-5. **Increase the vertical gap around the divider** to `clamp(32px, 5vh, 64px)` so the divider reads as a section break, not a continuation.
+### Animation timing
 
-6. Keep the eyebrow (`WHY NOW — AND WHY NOBODY'S SOLVED IT`) at the top as the slide-level frame for both bands.
+Insert the new box + its downward arrow at the start of the sequence so the visual flow reads top-down:
 
-### Resulting hierarchy
+- `tBoxQ` (new box) = `0.18`
+- `tArrowQ` (arrow into Glacier AI) = `tBoxQ + 0.4`
+- `tBox1` (Documents) shifts to `tArrowQ + 0.2`
+- All downstream delays cascade from there using the existing `+0.3` / `+0.4` increments.
 
-- L1 — Eyebrow: `WHY NOW — AND WHY NOBODY'S SOLVED IT` (slide identity)
-- L2 — Section title 1: `3 forces pushing the market.`
-- L3 — 3 force columns (regulation / AI / demand)
-- (divider)
-- L2 — Section title 2: `3 alternatives failing to meet it.`
-- L3 — 3 gap cards (workflow / general AI / consultancies)
+### Files touched
 
-No text repeats. Each title sits directly above what it describes.
+- `src/slides/Slide4.tsx` — only file changed. Add `FileText` to the lucide import, add a new top grid row (mirroring the existing "downward arrow" row pattern), insert the new `WorkflowBox`, retune the spacing constants listed above, and re-thread the animation delays.
 
-## Vertical fit check
-
-The slide currently fits 1920×1080 with the H1 + 2 mono labels + 2 grids. Replacing 1 H1 + 2 mono labels with 2 H1s is a small net increase (~30–40px). To absorb it:
-- Tighten outer column gap from `clamp(20px, 3.2vh, 40px)` to `clamp(16px, 2.6vh, 32px)`.
-- Card `minHeight` already has a clamp ceiling — no change needed.
-- If anything overflows on 1080p we'll trim card body line-height; flagged for QA after build.
-
-## Technical detail
-
-File: `src/slides/Slide3.tsx`
-
-- **Lines 125-142** — replace the combined H1 with a shorter "3 forces…" H1.
-- **Lines 155-170** — delete the "Three forces in motion" mono label motion.div.
-- **Lines 280-295** — delete the "Three tools, three gaps" mono label motion.div, and insert a new H1 ("3 alternatives…") in its place, using the same styling as the new top H1.
-- **Line 93** — adjust outer gap clamp.
-- Mint accent words: pick one short word per H1 to color mint (suggest "pushing" on top, "failing to meet it." on bottom — keeps existing mint accent pattern).
-
-No other slides affected. No new imports.
+Mobile: the new box stacks at the top of the single-column flow with a vertical arrow below it, consistent with the existing mobile pattern.

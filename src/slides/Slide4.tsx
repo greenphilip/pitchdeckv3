@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { UploadCloud, Link2, ShieldCheck, Database, ArrowRight, ArrowDown } from "lucide-react";
+import { UploadCloud, Link2, ShieldCheck, Database, ArrowRight, ArrowDown, FileText } from "lucide-react";
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
