@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import glacierLogo from "@/assets/glacier-logo.svg";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 type Variant = "minimal" | "technical" | "technical-light";
 
@@ -12,22 +13,37 @@ interface SlideFrameProps {
   showSlideNumber?: boolean;
 }
 
-const NAVY = "#0F2A4D";
+const NAVY = "#143560";
 const FOREGROUND = "#F1F1F1";
-const MINT = "#A8E6CF";
+const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
 
 // Tiny inline SVG noise — kills banding on projectors, no asset round-trip.
 const NOISE_SVG = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>`;
 
 export function SlideFrame({ children, variant, slideNumber, totalSlides, showLogo = true, showSlideNumber = true }: SlideFrameProps) {
+  const isMobile = useIsMobile();
   const showGrid = variant === "technical" || variant === "technical-light";
   const gridOpacity = variant === "technical" ? 0.07 : 0.03;
   const showHairline = showGrid;
 
-  return (
-    <div
-      style={{
+  // Outer wrapper differs between desktop (fixed 1920×1080) and mobile (fluid 100% × min-100dvh)
+  const wrapperStyle: React.CSSProperties = isMobile
+    ? {
+        position: "relative",
+        width: "100%",
+        minHeight: "100dvh",
+        overflow: "hidden",
+        background: NAVY,
+        color: FOREGROUND,
+        padding: "clamp(20px, 5vw, 32px)",
+        paddingTop: "clamp(56px, 12vw, 72px)", // room for logo / slide indicator
+        paddingBottom: "clamp(56px, 12vw, 72px)", // room for progress dots
+        boxSizing: "border-box",
+        display: "flex",
+        flexDirection: "column",
+      }
+    : {
         position: "relative",
         width: 1920,
         height: 1080,
@@ -36,8 +52,35 @@ export function SlideFrame({ children, variant, slideNumber, totalSlides, showLo
         color: FOREGROUND,
         padding: 80,
         boxSizing: "border-box",
-      }}
-    >
+      };
+
+  const innerStyle: React.CSSProperties = isMobile
+    ? {
+        position: "relative",
+        zIndex: 1,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        width: "100%",
+        flex: 1,
+        marginLeft: "auto",
+        marginRight: "auto",
+      }
+    : {
+        position: "relative",
+        zIndex: 1,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        width: "100%",
+        maxWidth: 1760,
+        height: "100%",
+        marginLeft: "auto",
+        marginRight: "auto",
+      };
+
+  return (
+    <div style={wrapperStyle}>
       {/* Atmospheric glows — both variants */}
       <div
         aria-hidden
@@ -88,14 +131,14 @@ export function SlideFrame({ children, variant, slideNumber, totalSlides, showLo
             inset: 0,
             zIndex: 0,
             backgroundImage: `radial-gradient(circle, ${BLUE} 1px, transparent 1px)`,
-            backgroundSize: "32px 32px",
+            backgroundSize: isMobile ? "20px 20px" : "32px 32px",
             opacity: gridOpacity,
             pointerEvents: "none",
           }}
         />
       )}
 
-      {showHairline && (
+      {showHairline && !isMobile && (
         <div
           aria-hidden
           style={{
@@ -114,9 +157,9 @@ export function SlideFrame({ children, variant, slideNumber, totalSlides, showLo
           alt="Glacier"
           style={{
             position: "absolute",
-            top: 32,
-            left: 32,
-            height: 44,
+            top: isMobile ? 16 : 32,
+            left: isMobile ? 16 : 32,
+            height: isMobile ? 28 : 44,
             width: "auto",
             zIndex: 2,
             opacity: 0.85,
@@ -129,11 +172,11 @@ export function SlideFrame({ children, variant, slideNumber, totalSlides, showLo
           aria-hidden
           style={{
             position: "absolute",
-            top: 32,
-            right: 32,
+            top: isMobile ? 18 : 32,
+            right: isMobile ? 16 : 32,
             zIndex: 2,
             fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 16,
+            fontSize: isMobile ? 11 : 16,
             color: MINT,
             opacity: 0.6,
             letterSpacing: "0.05em",
@@ -143,22 +186,7 @@ export function SlideFrame({ children, variant, slideNumber, totalSlides, showLo
         </div>
       )}
 
-      <div
-        style={{
-          position: "relative",
-          zIndex: 1,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start",
-          width: "100%",
-          maxWidth: 1760,
-          height: "100%",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-      >
-        {children}
-      </div>
+      <div style={innerStyle}>{children}</div>
     </div>
   );
 }

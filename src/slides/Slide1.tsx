@@ -45,7 +45,7 @@ export default function Slide1() {
             src={glacierLogo}
             alt="Glacier"
             style={{
-              height: isMobile ? 140 : 180,
+              height: isMobile ? "clamp(80px, 22vw, 140px)" : 180,
               width: "auto",
               display: "block",
             }}
@@ -81,7 +81,7 @@ export default function Slide1() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4, ease: EXPO_OUT }}
             style={{
-              fontSize: "76px",
+              fontSize: "clamp(28px, 7vw, 76px)",
               fontWeight: 700,
               letterSpacing: "-0.025em",
               lineHeight: 1.1,

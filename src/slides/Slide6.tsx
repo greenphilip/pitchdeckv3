@@ -112,7 +112,7 @@ export default function Slide6() {
             style={{
               margin: 0,
               marginTop: "20px",
-              fontSize: "64px",
+              fontSize: "clamp(26px, 6.5vw, 64px)",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -389,7 +389,7 @@ export default function Slide6() {
                     </div>
                     <div
                       style={{
-                        fontSize: "32px",
+                        fontSize: "clamp(20px, 5vw, 32px)",
                         color: LIGHT,
                         fontWeight: 600,
                         lineHeight: 1.3,

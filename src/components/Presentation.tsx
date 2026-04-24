@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Slide1 from "@/slides/Slide1";
@@ -9,15 +9,17 @@ import Slide5 from "@/slides/Slide5";
 import Slide6 from "@/slides/Slide6";
 import Slide7 from "@/slides/Slide7";
 import Slide8 from "@/slides/Slide8";
-import { ScaledSlide } from "@/components/ScaledSlide";
+import { ResponsiveSlideShell } from "@/components/ResponsiveSlideShell";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const slides = [Slide1, Slide2, Slide3, Slide4, Slide5, Slide6, Slide7, Slide8];
 const TOTAL = slides.length;
 
-const MINT = "#A8E6CF";
+const MINT = "#6DD4AD";
 const LIGHT_GRAY = "#F1F1F1";
 
 export function Presentation() {
+  const isMobile = useIsMobile();
   const [current, setCurrent] = useState(0);
   const [overview, setOverview] = useState(false);
   const [blackScreen, setBlackScreen] = useState(false);
@@ -88,10 +90,41 @@ export function Presentation() {
     return () => window.removeEventListener("keydown", onKey);
   }, [next, prev, goTo, toggleFullscreen]);
 
+  // Touch / swipe handling — horizontal swipes navigate, vertical swipes scroll the slide
+  const touchStart = useRef<{ x: number; y: number; t: number } | null>(null);
+  const onTouchStart = useCallback((e: React.TouchEvent) => {
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY, t: Date.now() };
+  }, []);
+  const onTouchEnd = useCallback(
+    (e: React.TouchEvent) => {
+      const start = touchStart.current;
+      touchStart.current = null;
+      if (!start) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - start.x;
+      const dy = t.clientY - start.y;
+      const dt = Date.now() - start.t;
+      const absX = Math.abs(dx);
+      const absY = Math.abs(dy);
+      // Only treat as swipe if horizontal-dominant, ≥50px, and reasonably quick
+      if (absX < 50) return;
+      if (absX < absY * 1.2) return; // vertical-dominant: let scroll happen
+      if (dt > 700) return;
+      if (dx < 0) next();
+      else prev();
+    },
+    [next, prev]
+  );
+
   const ActiveSlide = slides[current];
 
   return (
-    <div style={{ position: "relative", width: "100vw", height: "100vh", overflow: "hidden" }}>
+    <div
+      style={{ position: "relative", width: "100vw", height: "100dvh", overflow: "hidden" }}
+      onTouchStart={isMobile ? onTouchStart : undefined}
+      onTouchEnd={isMobile ? onTouchEnd : undefined}
+    >
       <motion.div
         key={current}
         initial={{ opacity: 0, x: 40 }}
@@ -99,42 +132,51 @@ export function Presentation() {
         transition={{ duration: 0.4, ease: "easeOut" }}
         style={{ position: "absolute", inset: 0 }}
       >
-        <ScaledSlide>
+        <ResponsiveSlideShell>
           <ActiveSlide />
-        </ScaledSlide>
+        </ResponsiveSlideShell>
       </motion.div>
 
-      {/* Chevrons */}
-      <button
-        aria-label="Previous slide"
-        onClick={prev}
-        disabled={current === 0}
-        style={chevronStyle("left")}
-        className="group"
-      >
-        <ChevronLeft size={32} color={LIGHT_GRAY} />
-      </button>
-      <button
-        aria-label="Next slide"
-        onClick={next}
-        disabled={current === TOTAL - 1}
-        style={chevronStyle("right")}
-        className="group"
-      >
-        <ChevronRight size={32} color={LIGHT_GRAY} />
-      </button>
+      {/* Chevrons — desktop only (mobile uses swipe) */}
+      {!isMobile && (
+        <>
+          <button
+            aria-label="Previous slide"
+            onClick={prev}
+            disabled={current === 0}
+            style={chevronStyle("left")}
+            className="group"
+          >
+            <ChevronLeft size={32} color={LIGHT_GRAY} />
+          </button>
+          <button
+            aria-label="Next slide"
+            onClick={next}
+            disabled={current === TOTAL - 1}
+            style={chevronStyle("right")}
+            className="group"
+          >
+            <ChevronRight size={32} color={LIGHT_GRAY} />
+          </button>
+        </>
+      )}
 
       {/* Progress dots */}
       <div
         style={{
           position: "absolute",
-          bottom: 24,
+          bottom: isMobile ? 12 : 24,
           left: "50%",
           transform: "translateX(-50%)",
           display: "flex",
-          gap: 10,
+          gap: isMobile ? 14 : 10,
           alignItems: "center",
           zIndex: 50,
+          paddingBottom: isMobile ? "env(safe-area-inset-bottom)" : 0,
+          padding: isMobile ? "8px 14px" : 0,
+          background: isMobile ? "rgba(20, 53, 96, 0.55)" : "transparent",
+          borderRadius: isMobile ? 999 : 0,
+          backdropFilter: isMobile ? "blur(6px)" : undefined,
         }}
       >
         {slides.map((_, i) => {
@@ -153,6 +195,7 @@ export function Presentation() {
                 padding: 0,
                 cursor: "pointer",
                 transition: "all 0.2s ease",
+                flexShrink: 0,
               }}
             />
           );
@@ -189,8 +232,8 @@ export function Presentation() {
             style={{
               flex: 1,
               display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gridTemplateRows: "repeat(3, 1fr)",
+              gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(3, 1fr)",
+              gridTemplateRows: isMobile ? "repeat(4, 1fr)" : "repeat(3, 1fr)",
               gap: 16,
             }}
           >

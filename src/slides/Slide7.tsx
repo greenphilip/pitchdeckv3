@@ -132,7 +132,7 @@ export default function Slide7() {
             style={{
               margin: 0,
               marginTop: "20px",
-              fontSize: "64px",
+              fontSize: "clamp(26px, 6.5vw, 64px)",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
@@ -179,8 +179,8 @@ export default function Slide7() {
               {/* Avatar */}
               <div
                 style={{
-                  width: "160px",
-                  height: "160px",
+                  width: "clamp(96px, 26vw, 160px)",
+                  height: "clamp(96px, 26vw, 160px)",
                   borderRadius: "50%",
                   background: `${BLUE}40`,
                   display: "flex",
