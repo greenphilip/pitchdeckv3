@@ -1,65 +1,85 @@
-# Slide Audit + Show Slide Numbers on All Slides
+# Slide 3 — Split into two clearly-titled bands
 
 ## Audit findings
 
-### Files vs. counts
-- `src/slides/` contains **8 files**: `Slide1.tsx` … `Slide8.tsx`. ✅ Filenames match their `slideNumber` prop and import order in `Presentation.tsx`.
-- `Presentation.tsx` registers all 8. `totalSlides={8}` is consistent everywhere.
-- Project knowledge says "Exactly 10 slides" — the deck currently has **8**. Flagging this as a discrepancy. **No change made** unless you want us to either (a) update the project knowledge to 10→8, or (b) add the 2 missing slides. Please confirm separately.
+Two pieces of "title" overlap right now:
+- **Top H1** says: *"3 forces pushing the market — 3 alternatives failing to meet it."* (covers BOTH halves of the slide)
+- **Two mono labels** further down repeat the same idea:
+  - "Three forces in motion" (above top row)
+  - "Three tools, three gaps" (above bottom row)
 
-### Eyebrow / section labels (current state)
+So you read "3 forces…" twice in the top half, and the bottom half's "3 alternatives" is announced 100vh away from the cards it describes. The structure is hard to scan.
 
-| # | File | Variant | Eyebrow / Section label | Slide number shown? |
-|---|------|---------|-------------------------|---------------------|
-| 1 | Slide1.tsx | minimal | *(cover — no eyebrow; tagline "ESG Reporting — Fast, Defensible")* | ❌ no |
-| 2 | Slide2.tsx | minimal | `THE CUSTOMER'S SITUATION` | ❌ no |
-| 3 | Slide3.tsx | technical | `WHY NOW — AND WHY NOBODY'S SOLVED IT` | ✅ yes |
-| 4 | Slide4.tsx | technical | `THE PRODUCT` | ✅ yes |
-| 5 | Slide5.tsx | technical-light | `TRACTION` | ✅ yes |
-| 6 | Slide6.tsx | technical | `MARKET & EXPANSION` | ✅ yes |
-| 7 | Slide7.tsx | minimal | `TEAM` | ❌ no |
-| 8 | Slide8.tsx | minimal | `BRIDGE ROUND · THE ASK` | ❌ no |
+Other observations:
+- Spacing between the divider and the bottom band is the same as between header and top band, so the bottom band reads as a continuation, not a parallel section.
+- Bottom mono label uses BLUE while top uses MINT — inconsistent emphasis for two equally important sections.
 
-The eyebrow naming is **consistent in style** (mono, mint, uppercase, 0.12em tracking) and the labels are coherent. No renames needed.
+## Proposed change — give each band its own title
 
-### Why slide numbers are inconsistent
-In `src/components/SlideFrame.tsx` line 25:
-```ts
-const showSlideNumber = showGrid; // only true for 'technical' / 'technical-light'
+Restructure into **two stacked sections**, each with its own headline:
+
+```text
+─────────────────────────────────────────────
+EYEBROW: WHY NOW — AND WHY NOBODY'S SOLVED IT
+
+[ Section title 1 ]
+3 forces pushing the market.
+
+[ 3 force columns ]
+
+────────── divider ──────────
+
+[ Section title 2 ]
+3 alternatives failing to meet it.
+
+[ 3 tool/gap cards ]
+─────────────────────────────────────────────
 ```
-The `SLIDE N / 8` indicator is **gated by variant**, so minimal slides (1, 2, 7, 8) never show it.
 
-## Changes
+### Specific edits
 
-### Single edit — `src/components/SlideFrame.tsx`
+1. **Replace the combined H1** with just a section title for the top band:
+   - Text: `3 forces pushing the market.`
+   - Same H1 styling (`clamp(28px, 3.6vw, 56px)`, weight 700, mint accent on a key word — e.g. mint on "pushing").
 
-Decouple slide-number visibility from variant so it appears on every slide — except an opt-out for the cover.
+2. **Remove the redundant mono label** "Three forces in motion" above the top row — the new H1 already names the section.
 
-1. Change `showSlideNumber` to **always true** by default, controlled by a new prop `showSlideNumber?: boolean` (default `true`).
-2. In `Slide1.tsx` (the cover), pass `showSlideNumber={false}` alongside the existing `showLogo={false}` — covers conventionally hide pagination.
-3. Keep the existing visual treatment (top-right, JetBrains Mono 16px, mint at 60% opacity, `SLIDE N / 8`).
+3. **Add a second H1 under the divider** for the bottom band:
+   - Text: `3 alternatives — all <span mint>failing to meet it.</span>`
+   - Same style as the top H1 (matching weight, size, alignment) so the two bands feel like a parallel pair.
 
-### Result
+4. **Remove the redundant mono label** "Three tools, three gaps" above the bottom row.
 
-| # | Slide number visible after change |
-|---|-----------------------------------|
-| 1 | ❌ (intentional — cover) |
-| 2 | ✅ new |
-| 3 | ✅ |
-| 4 | ✅ |
-| 5 | ✅ |
-| 6 | ✅ |
-| 7 | ✅ new |
-| 8 | ✅ new |
+5. **Increase the vertical gap around the divider** to `clamp(32px, 5vh, 64px)` so the divider reads as a section break, not a continuation.
+
+6. Keep the eyebrow (`WHY NOW — AND WHY NOBODY'S SOLVED IT`) at the top as the slide-level frame for both bands.
+
+### Resulting hierarchy
+
+- L1 — Eyebrow: `WHY NOW — AND WHY NOBODY'S SOLVED IT` (slide identity)
+- L2 — Section title 1: `3 forces pushing the market.`
+- L3 — 3 force columns (regulation / AI / demand)
+- (divider)
+- L2 — Section title 2: `3 alternatives failing to meet it.`
+- L3 — 3 gap cards (workflow / general AI / consultancies)
+
+No text repeats. Each title sits directly above what it describes.
+
+## Vertical fit check
+
+The slide currently fits 1920×1080 with the H1 + 2 mono labels + 2 grids. Replacing 1 H1 + 2 mono labels with 2 H1s is a small net increase (~30–40px). To absorb it:
+- Tighten outer column gap from `clamp(20px, 3.2vh, 40px)` to `clamp(16px, 2.6vh, 32px)`.
+- Card `minHeight` already has a clamp ceiling — no change needed.
+- If anything overflows on 1080p we'll trim card body line-height; flagged for QA after build.
 
 ## Technical detail
 
-Files modified:
-- `src/components/SlideFrame.tsx` — add `showSlideNumber?: boolean` prop (default `true`); replace the `const showSlideNumber = showGrid` line.
-- `src/slides/Slide1.tsx` — add `showSlideNumber={false}` to the `<SlideFrame>` opening tag.
+File: `src/slides/Slide3.tsx`
 
-No other slide files need to change. No layout shifts (the indicator is absolutely positioned in the top-right, outside the content flow).
+- **Lines 125-142** — replace the combined H1 with a shorter "3 forces…" H1.
+- **Lines 155-170** — delete the "Three forces in motion" mono label motion.div.
+- **Lines 280-295** — delete the "Three tools, three gaps" mono label motion.div, and insert a new H1 ("3 alternatives…") in its place, using the same styling as the new top H1.
+- **Line 93** — adjust outer gap clamp.
+- Mint accent words: pick one short word per H1 to color mint (suggest "pushing" on top, "failing to meet it." on bottom — keeps existing mint accent pattern).
 
-## Open question (not blocking)
-
-Project knowledge states the deck should be **10 slides**, but only 8 exist. Want me to (a) update the project knowledge note to reflect 8, or (b) plan the 2 additional slides? I'd suggest handling that as a separate task once you decide.
+No other slides affected. No new imports.

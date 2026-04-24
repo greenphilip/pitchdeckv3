@@ -90,7 +90,7 @@ export default function Slide3() {
           alignItems: "center",
           width: "100%",
           height: "100%",
-          gap: "clamp(20px, 3.2vh, 40px)",
+          gap: "clamp(16px, 2.6vh, 32px)",
         }}
       >
         {/* HEADER */}
@@ -133,12 +133,9 @@ export default function Slide3() {
               letterSpacing: "-0.02em",
               lineHeight: 1.15,
               margin: 0,
-              whiteSpace: "pre-line",
             }}
           >
-            3 forces pushing the market-{"\n"}
-            3 alternatives{" "}
-            <span style={{ color: MINT }}>failing to meet it.</span>
+            3 forces <span style={{ color: MINT }}>pushing the market.</span>
           </motion.h1>
         </div>
 
@@ -152,22 +149,6 @@ export default function Slide3() {
             gap: "clamp(10px, 1.4vh, 18px)",
           }}
         >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.18, ease: EXPO_OUT }}
-            style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(11px, 0.85vw, 14px)",
-              color: MINT,
-              fontWeight: 600,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              opacity: 0.85,
-            }}
-          >
-            Three forces in motion
-          </motion.div>
 
           <div
             style={{
