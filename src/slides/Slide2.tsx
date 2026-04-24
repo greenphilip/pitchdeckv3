@@ -204,14 +204,14 @@ export default function Slide2() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 1.1, ease: EXPO_OUT }}
                 width="100%"
-                height="14"
-                viewBox="0 0 200 14"
+                height="22"
+                viewBox="0 0 200 22"
                 preserveAspectRatio="none"
                 style={{
                   position: "absolute",
-                  right: "-12%",
+                  right: "-22%",
                   top: "50%",
-                  width: "18%",
+                  width: "30%",
                   transform: "translateY(-50%)",
                   pointerEvents: "none",
                 }}
@@ -219,16 +219,18 @@ export default function Slide2() {
                 <defs>
                   <linearGradient id="arrL" x1="0" y1="0" x2="1" y2="0">
                     <stop offset="0%" stopColor={BLUE} stopOpacity="0" />
-                    <stop offset="100%" stopColor={BLUE} stopOpacity="0.7" />
+                    <stop offset="100%" stopColor={BLUE} stopOpacity="1" />
                   </linearGradient>
                 </defs>
-                <line x1="0" y1="7" x2="195" y2="7" stroke="url(#arrL)" strokeWidth="1" />
+                <line x1="0" y1="11" x2="188" y2="11" stroke="url(#arrL)" strokeWidth="2.5" />
                 <polyline
-                  points="188,3 196,7 188,11"
+                  points="178,3 196,11 178,19"
                   fill="none"
                   stroke={BLUE}
-                  strokeOpacity="0.7"
-                  strokeWidth="1"
+                  strokeOpacity="1"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </motion.svg>
             )}
@@ -373,14 +375,14 @@ export default function Slide2() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 1.1, ease: EXPO_OUT }}
                 width="100%"
-                height="14"
-                viewBox="0 0 200 14"
+                height="22"
+                viewBox="0 0 200 22"
                 preserveAspectRatio="none"
                 style={{
                   position: "absolute",
-                  left: "-12%",
+                  left: "-22%",
                   top: "50%",
-                  width: "18%",
+                  width: "30%",
                   transform: "translateY(-50%)",
                   pointerEvents: "none",
                 }}
@@ -388,16 +390,18 @@ export default function Slide2() {
                 <defs>
                   <linearGradient id="arrR" x1="1" y1="0" x2="0" y2="0">
                     <stop offset="0%" stopColor={MINT} stopOpacity="0" />
-                    <stop offset="100%" stopColor={MINT} stopOpacity="0.7" />
+                    <stop offset="100%" stopColor={MINT} stopOpacity="1" />
                   </linearGradient>
                 </defs>
-                <line x1="5" y1="7" x2="200" y2="7" stroke="url(#arrR)" strokeWidth="1" />
+                <line x1="12" y1="11" x2="200" y2="11" stroke="url(#arrR)" strokeWidth="2.5" />
                 <polyline
-                  points="12,3 4,7 12,11"
+                  points="22,3 4,11 22,19"
                   fill="none"
                   stroke={MINT}
-                  strokeOpacity="0.7"
-                  strokeWidth="1"
+                  strokeOpacity="1"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </motion.svg>
             )}
