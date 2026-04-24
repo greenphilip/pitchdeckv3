@@ -64,7 +64,7 @@ export default function Slide2() {
   });
 
   return (
-    <SlideFrame variant="minimal" slideNumber={2} totalSlides={9}>
+    <SlideFrame variant="minimal" slideNumber={2} totalSlides={8}>
       <div
         style={{
           flex: 1,

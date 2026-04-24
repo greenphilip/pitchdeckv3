@@ -1,62 +1,81 @@
 import { motion } from "framer-motion";
+import { User } from "lucide-react";
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import rainhardPhoto from "@/assets/team/rainhard-fuchs.png";
+import philipPhoto from "@/assets/team/philip.png";
+import davidPhoto from "@/assets/team/david-anders.png";
+import kishanPhoto from "@/assets/team/kishan.png";
+import ninaPhoto from "@/assets/team/nina.png";
+import pioneersLogo from "@/assets/logos/pioneers.png";
+import wbcsdLogo from "@/assets/logos/wbcsd.jpg";
+import inseadLogo from "@/assets/logos/insead-white.svg";
+import osceLogo from "@/assets/logos/osce.svg";
+import pwcLogo from "@/assets/logos/pwc.svg";
+import oeamtcLogo from "@/assets/logos/oeamtc.svg";
+import smartCounselLogo from "@/assets/logos/smart-counsel.png";
+import bitpandaLogo from "@/assets/logos/bitpanda.svg";
+import shpockLogo from "@/assets/logos/shpock.svg";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
-const TEAL = "#2D9D90";
 const LIGHT = "#F1F1F1";
 const NAVY = "#143560";
 const EXPO_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-type Emphasis = "muted" | "medium" | "primary";
-
-interface MarketBar {
-  key: "TAM" | "SAM" | "SOM";
-  leftLabel: string;
-  color: string;
-  widthPct: number;
-  height: number;
-  emphasis: Emphasis;
-}
-
-const marketBars: MarketBar[] = [
-  { key: "TAM", leftLabel: "TAM", color: TEAL, widthPct: 100, height: 40, emphasis: "muted" },
-  { key: "SAM", leftLabel: "SAM", color: BLUE, widthPct: 40, height: 48, emphasis: "medium" },
-  { key: "SOM", leftLabel: "SOM", color: MINT, widthPct: 8, height: 88, emphasis: "primary" },
-];
-
-interface Phase {
-  badge: string;
+interface Member {
+  name: string;
   title: string;
-  detail: string;
-  color: string;
-  badgeText: string;
+  background: string;
+  photo?: string;
+  logos?: { src: string; invert?: boolean }[];
 }
 
-const phases: Phase[] = [
+const team: Member[] = [
   {
-    badge: "NOW",
-    title: "EU enterprise, CSRD-grade",
-    detail: "CSRD and EcoVadis live, paying customers. DACH first.",
-    color: MINT,
-    badgeText: NAVY,
+    name: "Rainhard Fuchs",
+    title: "CEO & Founder",
+    background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
+    photo: rainhardPhoto,
+    logos: [{ src: pioneersLogo, invert: true }],
   },
   {
-    badge: "6-12 months",
-    title: "Voluntary reporters + supply chain",
-    detail:
-      "VSME, ISSB, GRI, customer questionnaires. Expansion to Benelux + Scandinavia.",
-    color: BLUE,
-    badgeText: LIGHT,
+    name: "Philip Reuchlin",
+    title: "VP of AI & ESG",
+    background: "20+ years sustainability and strategy: OSCE, WBCSD, INSEAD MBA",
+    photo: philipPhoto,
+    logos: [
+      { src: osceLogo },
+      { src: wbcsdLogo },
+      { src: inseadLogo },
+    ],
   },
   {
-    badge: "YEAR 2+",
-    title: "Partner & channel scale",
-    detail:
-      "Consultancies and audit firms delivering on Glacier. Platform reach beyond direct sales.",
-    color: TEAL,
-    badgeText: LIGHT,
+    name: "David Anders",
+    title: "Head of ESG Delivery",
+    background: "Previously PWC; Head of ESG at Burgenland Energie; ÖAMTC.",
+    photo: davidPhoto,
+    logos: [
+      { src: pwcLogo },
+      { src: oeamtcLogo },
+    ],
+  },
+  {
+    name: "Kishan Chimminiyan",
+    title: "Head of Engineering",
+    background: "full-stack, 10+years building with applied LLM products (GPT-3 era onward) ",
+    photo: kishanPhoto,
+    logos: [{ src: smartCounselLogo }],
+  },
+  {
+    name: "Nina Aichinger",
+    title: "Head of People",
+    background: "Previously Head of HR at Bitpanda and Shpock.",
+    photo: ninaPhoto,
+    logos: [
+      { src: bitpandaLogo, invert: true },
+      { src: shpockLogo, invert: true },
+    ],
   },
 ];
 
@@ -64,35 +83,35 @@ export default function Slide7() {
   const isMobile = useIsMobile();
 
   return (
-    <SlideFrame variant="technical" slideNumber={7} totalSlides={9}>
+    <SlideFrame variant="minimal" slideNumber={7} totalSlides={8}>
       <div
         style={{
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
+          justifyContent: "flex-start",
           alignItems: "center",
           width: "100%",
-          gap: isMobile ? "48px" : "80px",
-          overflowY: isMobile ? "auto" : undefined,
+          gap: "32px",
         }}
       >
         {/* HEADER */}
         <div
           style={{
             width: "100%",
-            maxWidth: "min(1200px, 100%)",
+            maxWidth: "1200px",
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
+            marginTop: "48px",
           }}
         >
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: EXPO_OUT }}
+            transition={{ duration: 0.4, ease: EXPO_OUT, delay: 0.1 }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: "20px",
@@ -102,13 +121,13 @@ export default function Slide7() {
               letterSpacing: "0.12em",
             }}
           >
-            MARKET & EXPANSION
+            TEAM
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.08 }}
+            transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.18 }}
             style={{
               margin: 0,
               marginTop: "20px",
@@ -116,320 +135,199 @@ export default function Slide7() {
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
-              lineHeight: 1.1,
+              lineHeight: 1.15,
               textAlign: "center",
             }}
           >
-            <span style={{ color: BLUE }}>€1.3bn</span> today.{" "}
-            <span style={{ color: MINT, fontWeight: 700 }}>€7.8bn</span> by 2034.
+            <span style={{ color: BLUE }}>Regulatory depth.</span>{" "}
+            <span style={{ color: LIGHT }}>Experience in scaling SaaS.</span>{" "}
+            <span style={{ color: MINT, fontWeight: 700 }}>Applied AI.</span>
           </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.16 }}
-            style={{
-              margin: "20px auto 0",
-              maxWidth: "1100px",
-              fontSize: "24px",
-              color: `${LIGHT}B3`,
-              lineHeight: 1.5,
-              textAlign: "center",
-            }}
-          >
-            CAGR <span style={{ color: MINT, fontWeight: 700 }}>21%</span>. Plus a €7bn adjacent regulatory reporting market.
-          </motion.p>
         </div>
 
-        {/* MAIN SPLIT */}
+        {/* TEAM GRID */}
         <div
           style={{
             width: "100%",
             maxWidth: "min(1400px, 100%)",
             margin: "0 auto",
+            marginTop: "56px",
             display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 2fr) minmax(0, 3fr)",
-            gap: isMobile ? "56px" : "72px",
-            alignItems: "center",
+            gridTemplateColumns: isMobile
+              ? "repeat(2, minmax(0, 1fr))"
+              : "repeat(5, minmax(0, 1fr))",
+            gap: isMobile ? "32px" : "40px",
+            maxHeight: isMobile ? "55vh" : undefined,
+            overflowY: isMobile ? "auto" : undefined,
           }}
         >
-          {/* LEFT — MARKET SIZING */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "24px",
-            }}
-          >
-            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-              {marketBars.map((b, i) => {
-                const isPrimary = b.emphasis === "primary";
-                const isMuted = b.emphasis === "muted";
-                const leftLabelStyle = isPrimary
-                  ? { fontSize: "22px", fontWeight: 700, color: MINT }
-                  : isMuted
-                  ? { fontSize: "16px", fontWeight: 400, color: `${LIGHT}80` }
-                  : { fontSize: "16px", fontWeight: 400, color: `${LIGHT}A6` };
-
-                const rightLabelNode = isPrimary ? (
-                  <>
-                    SOM <span style={{ color: MINT }}>€100m</span> ≈{" "}
-                    <span style={{ color: MINT }}>5,000 customers</span> @ €20k ACV
-                  </>
-                ) : b.key === "TAM" ? (
-                  "TAM €1.3bn → €7.8bn"
-                ) : (
-                  "SAM €520m"
-                );
-                const rightLabelStyle = isPrimary
-                  ? { fontSize: "28px", fontWeight: 700 as const, color: LIGHT }
-                  : isMuted
-                  ? { fontSize: "18px", fontWeight: 400 as const, color: `${LIGHT}80` }
-                  : { fontSize: "18px", fontWeight: 400 as const, color: `${LIGHT}A6` };
-
-                return (
-                  <div
-                    key={b.key}
-                    style={{ display: "flex", flexDirection: "column", gap: "10px" }}
-                  >
-                    <motion.div
-                      initial={{ opacity: 0, y: 4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: 0.25 + i * 0.18 }}
-                      style={{
-                        fontFamily: "'JetBrains Mono', monospace",
-                        letterSpacing: "0.05em",
-                        ...leftLabelStyle,
-                      }}
-                    >
-                      {b.leftLabel}
-                    </motion.div>
-
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "20px",
-                        flexWrap: "wrap",
-                      }}
-                    >
-                      {/* Accent marker (SOM only) */}
-                      {isPrimary && (
-                        <motion.div
-                          initial={{ opacity: 0, scale: 1 }}
-                          animate={{
-                            opacity: 1,
-                            scale: [1, 1.15, 1],
-                          }}
-                          transition={{
-                            opacity: { duration: 0.3, delay: 0.35 + i * 0.18 },
-                            scale: { duration: 0.6, delay: 1.4, times: [0, 0.5, 1] },
-                          }}
-                          style={{
-                            width: 4,
-                            height: b.height,
-                            background: MINT,
-                            borderRadius: 2,
-                            flexShrink: 0,
-                          }}
-                        />
-                      )}
-
-                      <div
-                        style={{
-                          flex: "1 1 0",
-                          minWidth: 0,
-                          height: `${b.height}px`,
-                          position: "relative",
-                        }}
-                      >
-                        <motion.div
-                          initial={{ scaleX: 0 }}
-                          animate={{ scaleX: b.widthPct / 100 }}
-                          transition={{
-                            duration: isPrimary ? 0.7 : 0.5,
-                            ease: EXPO_OUT,
-                            delay: 0.35 + i * 0.18,
-                          }}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            background: b.color,
-                            borderRadius: isPrimary ? 6 : 4,
-                            transformOrigin: "left",
-                            boxShadow: isPrimary
-                              ? `0 0 0 1px ${MINT}, 0 8px 32px ${MINT}40`
-                              : undefined,
-                          }}
-                        />
-                      </div>
-                      <motion.div
-                        initial={{ opacity: 0, x: -8 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: 0.85 + i * 0.18 }}
-                        style={{
-                          flexShrink: 0,
-                          maxWidth: "100%",
-                          lineHeight: 1.3,
-                          ...rightLabelStyle,
-                        }}
-                      >
-                        {rightLabelNode}
-                        {isPrimary && (
-                          <div
-                            style={{
-                              fontSize: "13px",
-                              fontStyle: "italic",
-                              color: `${LIGHT}99`,
-                              fontWeight: 400,
-                              marginTop: 6,
-                            }}
-                          >
-                            Our 5-year target — credible, bottom-up
-                          </div>
-                        )}
-                      </motion.div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div
+          {team.map((m, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.35 + i * 0.08 }}
               style={{
-                fontSize: "15px",
-                color: `${LIGHT}A6`,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+                gap: "24px",
               }}
             >
-              + €7bn adjacent regulatory reporting market.
-            </div>
-          </div>
+              {/* Avatar */}
+              <div
+                style={{
+                  width: "160px",
+                  height: "160px",
+                  borderRadius: "50%",
+                  background: `${BLUE}40`,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                  overflow: "hidden",
+                }}
+              >
+                {m.photo ? (
+                  <img
+                    src={m.photo}
+                    alt={m.name}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "center top",
+                    }}
+                  />
+                ) : (
+                  <User
+                    style={{
+                      width: "50%",
+                      height: "50%",
+                      color: `${LIGHT}99`,
+                    }}
+                    strokeWidth={1.5}
+                  />
+                )}
+              </div>
 
-          {/* RIGHT — EXPANSION ROADMAP */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "36px",
-            }}
-          >
-            {phases.map((p, i) => {
-              const isLast = i === phases.length - 1;
-              return (
-                <motion.div
-                  key={p.badge}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.4 + i * 0.08 }}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "10px",
+                }}
+              >
+                <div
                   style={{
-                    display: "flex",
-                    gap: "24px",
-                    alignItems: "stretch",
+                    fontSize: "22px",
+                    color: LIGHT,
+                    fontWeight: 600,
+                    lineHeight: 1.2,
                   }}
                 >
-                  {/* Marker + connector line */}
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      flexShrink: 0,
-                      paddingTop: "8px",
-                    }}
-                  >
-                    <div
+                  {m.name}
+                </div>
+                <div
+                  style={{
+                    fontSize: "17px",
+                    color: MINT,
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {m.title}
+                </div>
+              </div>
+
+              <div
+                style={{
+                  fontSize: "18px",
+                  color: `${LIGHT}B3`,
+                  lineHeight: 1.45,
+                  display: "-webkit-box",
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  minHeight: `calc(18px * 1.45 * 3)`,
+                }}
+              >
+                {m.background}
+              </div>
+
+              {m.logos && m.logos.length > 0 && (
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "18px",
+                    marginTop: "-4px",
+                  }}
+                >
+                  {m.logos.map((logo, idx) => (
+                    <img
+                      key={idx}
+                      src={logo.src}
+                      alt=""
                       style={{
-                        width: "16px",
-                        height: "16px",
-                        borderRadius: "50%",
-                        background: p.color,
-                        flexShrink: 0,
+                        height: "48px",
+                        width: "auto",
+                        maxWidth: "200px",
+                        objectFit: "contain",
+                        opacity: logo.invert ? 0.9 : 1,
+                        filter: logo.invert ? "invert(1) brightness(1.1)" : undefined,
+                        display: "block",
                       }}
                     />
-                    {!isLast && (
-                      <div
-                        style={{
-                          flex: 1,
-                          width: 1,
-                          background: `${MINT}4D`,
-                          marginTop: 4,
-                          minHeight: "40px",
-                        }}
-                      />
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div
-                    style={{
-                      flex: 1,
-                      minWidth: 0,
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "12px",
-                      paddingBottom: isLast ? 0 : "10px",
-                    }}
-                  >
-                    <div>
-                      <span
-                        style={{
-                          display: "inline-block",
-                          fontFamily: "'JetBrains Mono', monospace",
-                          fontSize: "18px",
-                          fontWeight: 700,
-                          letterSpacing: "0.1em",
-                          padding: "6px 14px",
-                          borderRadius: 3,
-                          background: p.color,
-                          color: p.badgeText,
-                        }}
-                      >
-                        {p.badge}
-                      </span>
-                    </div>
-                    <div
-                      style={{
-                        fontSize: "32px",
-                        color: LIGHT,
-                        fontWeight: 600,
-                        lineHeight: 1.3,
-                      }}
-                    >
-                      {p.title}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: "19px",
-                        color: `${LIGHT}BF`,
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {p.detail}
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          ))}
         </div>
 
-        {/* BOTTOM STRIP */}
+        {/* THESIS LINE */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 1.0 }}
+          transition={{ duration: 0.4, delay: 0.35 + team.length * 0.08 + 0.2 }}
           style={{
             width: "100%",
-            maxWidth: "min(1200px, 100%)",
+            maxWidth: "min(1000px, 100%)",
             margin: "0 auto",
+            marginTop: "56px",
+            fontSize: "26px",
+            fontWeight: 400,
+            fontStyle: "italic",
+            color: `${LIGHT}CC`,
             textAlign: "center",
-            fontSize: "24px",
-            color: LIGHT,
-            lineHeight: 1.5,
+            lineHeight: 1.4,
           }}
         >
-          <span style={{ color: MINT, fontWeight: 700 }}>DACH</span> today &nbsp;→&nbsp;{" "}
-          <span style={{ color: MINT, fontWeight: 700 }}>Benelux + Scandinavia</span> next.
+          {" "}
+        </motion.div>
+
+        {/* Spacer above bottom anchor — explicit, not auto */}
+        <div style={{ height: "80px", flexShrink: 0 }} />
+
+        {/* BOTTOM ANCHOR */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3, delay: 0.35 + team.length * 0.08 + 0.4 }}
+          style={{
+            width: "100%",
+            textAlign: "center",
+            fontSize: "20px",
+            color: `${LIGHT}B3`,
+            paddingTop: "16px",
+          }}
+        >
+          Headcount: <span style={{ color: MINT, fontWeight: 700 }}>15</span> today. Hiring{" "}
+          <span style={{ color: MINT, fontWeight: 700 }}>4-5</span> with this round.
         </motion.div>
       </div>
     </SlideFrame>
