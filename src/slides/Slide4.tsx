@@ -299,6 +299,75 @@ export default function Slide4() {
         {/* GAP */}
         <div style={{ height: "20px", flexShrink: 0 }} />
 
+        {/* WORKFLOW — questionnaire input row (box 00) */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 48px 1fr 48px 1fr",
+            gap: "24px",
+            maxWidth: "min(1400px, 100%)",
+            width: "100%",
+            margin: "0 auto",
+            alignItems: "stretch",
+          }}
+        >
+          {!isMobile && <div />}
+          {!isMobile && <div />}
+          <WorkflowBox
+            number="00"
+            Icon={FileText}
+            headline="ESG Questionnaires"
+            body={"Varying standards, different formats, validity criteria for evidence"}
+            delay={tBoxQ}
+          />
+          {!isMobile && <div />}
+          {!isMobile && <div />}
+        </div>
+
+        {/* DOWNWARD ARROW from questionnaire box into Glacier AI */}
+        {!isMobile && (
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 48px 1fr 48px 1fr",
+              gap: "24px",
+              maxWidth: "min(1400px, 100%)",
+              width: "100%",
+              margin: "0 auto",
+              marginTop: "8px",
+              marginBottom: "8px",
+              alignItems: "center",
+            }}
+          >
+            <div />
+            <div />
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: tArrowQ, ease: "easeOut" }}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <ArrowDown
+                size={40}
+                color={MINT}
+                strokeWidth={2}
+                style={{ opacity: 0.8 }}
+              />
+            </motion.div>
+            <div />
+            <div />
+          </div>
+        )}
+        {isMobile && (
+          <div style={{ display: "flex", justifyContent: "center", padding: "8px 0" }}>
+            <ArrowDown size={32} color={MINT} strokeWidth={2} style={{ opacity: 0.7 }} />
+          </div>
+        )}
+
         {/* WORKFLOW — top row */}
         <div
           style={{
