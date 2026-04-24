@@ -297,7 +297,7 @@ export default function Slide4() {
         </div>
 
         {/* GAP */}
-        <div style={{ height: "20px", flexShrink: 0 }} />
+        <div style={{ height: "12px", flexShrink: 0 }} />
 
         {/* WORKFLOW — questionnaire input row (box 00) */}
         <div
