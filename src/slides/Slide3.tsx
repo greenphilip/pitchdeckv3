@@ -57,14 +57,14 @@ const categories: Category[] = [
     header: "WORKFLOW & COMPLIANCE",
     Icon: FileText,
     shortHeadline: "Built for documents, not decisions.",
-    body: "Help you file the report. Don't help you understand the regulation. You still need consultants to tell you what goes in the boxes.",
+    body: "Help you file the report. Don't help you understand the regulation. You still need consultants to tell you what data is missing.",
     tag: "GAP: regulatory knowledge",
   },
   {
     header: "GENERAL AI",
     Icon: Sparkles,
     shortHeadline: "Fast, but can't be trusted at audit.",
-    body: "Generic LLMs hallucinate. No source traceability. No specialist regulatory knowledge. No structured memory.",
+    body: "No source traceability. No specialist regulatory knowledge. No structured memory. No review and delegation/audit roles.",
     tag: "GAP: quality & traceability",
   },
   {
