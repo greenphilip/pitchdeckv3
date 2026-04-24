@@ -301,7 +301,7 @@ export default function Slide4() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "1fr auto 1fr auto 1fr",
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 48px 1fr 48px 1fr",
             gap: "24px",
             maxWidth: "min(1400px, 100%)",
             width: "100%",
@@ -339,7 +339,7 @@ export default function Slide4() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr auto 1fr auto 1fr",
+              gridTemplateColumns: "1fr 48px 1fr 48px 1fr",
               gap: "24px",
               maxWidth: "min(1400px, 100%)",
               width: "100%",
@@ -376,7 +376,7 @@ export default function Slide4() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "1fr auto 1fr auto 1fr",
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 48px 1fr 48px 1fr",
             gap: "24px",
             maxWidth: "min(1400px, 100%)",
             width: "100%",
