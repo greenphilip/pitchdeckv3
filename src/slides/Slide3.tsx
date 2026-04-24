@@ -258,22 +258,22 @@ export default function Slide3() {
             gap: "clamp(10px, 1.4vh, 18px)",
           }}
         >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.5, ease: EXPO_OUT }}
+          <motion.h1
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5, ease: EXPO_OUT }}
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(11px, 0.85vw, 14px)",
-              color: BLUE,
-              fontWeight: 600,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              opacity: 0.9,
+              fontSize: "clamp(28px, 3.6vw, 56px)",
+              fontWeight: 700,
+              color: LIGHT,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.15,
+              margin: 0,
+              textAlign: "center",
             }}
           >
-            Three tools, three gaps
-          </motion.div>
+            3 alternatives <span style={{ color: MINT }}>failing to meet it.</span>
+          </motion.h1>
 
           <div
             style={{
