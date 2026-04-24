@@ -9,6 +9,7 @@ interface SlideFrameProps {
   slideNumber: number;
   totalSlides: number;
   showLogo?: boolean;
+  showSlideNumber?: boolean;
 }
 
 const NAVY = "#0F2A4D";
@@ -19,10 +20,9 @@ const BLUE = "#539ADB";
 // Tiny inline SVG noise — kills banding on projectors, no asset round-trip.
 const NOISE_SVG = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>`;
 
-export function SlideFrame({ children, variant, slideNumber, totalSlides, showLogo = true }: SlideFrameProps) {
+export function SlideFrame({ children, variant, slideNumber, totalSlides, showLogo = true, showSlideNumber = true }: SlideFrameProps) {
   const showGrid = variant === "technical" || variant === "technical-light";
   const gridOpacity = variant === "technical" ? 0.07 : 0.03;
-  const showSlideNumber = showGrid;
   const showHairline = showGrid;
 
   return (
