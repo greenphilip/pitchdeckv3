@@ -285,7 +285,7 @@ export default function Slide4() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.16, ease: "easeOut" }}
             style={{
-              marginTop: "4px",
+              marginTop: "0px",
               fontSize: "20px",
               color: `${LIGHT_GRAY}B3`,
               maxWidth: 900,
