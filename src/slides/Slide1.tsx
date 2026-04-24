@@ -87,10 +87,9 @@ export default function Slide1() {
               margin: 0,
             }}
           >
-            Between regulatory{" "}
-            <span style={{ color: BLUE }}>chaos</span> and relentless{" "}
+            Glacier helps companies get ESG reporting done —{" "}
             <span style={{ color: MINT, position: "relative", display: "inline-block" }}>
-              pressure
+              faster
               <motion.span
                 aria-hidden
                 initial={{ scaleX: 0 }}
@@ -108,7 +107,7 @@ export default function Slide1() {
                 }}
               />
             </span>
-            .
+            , with <span style={{ color: MINT }}>quality they can defend</span>.
           </motion.h1>
 
           {/* Vertical accent line — signature motion */}
@@ -139,12 +138,9 @@ export default function Slide1() {
               maxWidth: "1000px",
             }}
           >
-            Glacier helps companies get ESG reporting done —{" "}
-            <span style={{ color: MINT, fontWeight: 600, opacity: 1 / 0.75 }}>faster</span>, with{" "}
-            <span style={{ color: MINT, fontWeight: 700, opacity: 1 / 0.75 }}>
-              quality they can defend
-            </span>
-            .
+            Built for companies caught between regulatory{" "}
+            <span style={{ color: BLUE, fontWeight: 600, opacity: 1 / 0.75 }}>chaos</span> and relentless{" "}
+            <span style={{ color: MINT, fontWeight: 600, opacity: 1 / 0.75 }}>pressure</span>.
           </motion.p>
         </div>
 
