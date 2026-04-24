@@ -398,6 +398,7 @@ export default function Slide4() {
             headline="Glacier AI"
             body={"Matches evidence to requirements\nEvaluates quality\nProvides citations and improvements\n\n\nUser can draft, delegate, review, approve, export"}
             delay={tBox2}
+            emphasis
           />
           <ArrowCell delay={tArrow2} vertical={isMobile} />
           <WorkflowBox
