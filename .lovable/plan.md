@@ -1,49 +1,54 @@
-## Remove Slide 5 ("Quality is the moat") and renumber the deck
+## Slide 4 — replace the screenshot block with a 4th workflow box hanging below "Glacier AI"
 
-### What changes
+### Goal
 
-The deck currently has 11 slides. Slide 5 (the five-pillar "Quality is the moat" differentiation slide, file `src/slides/Slide5.tsx`) gets removed from the playback sequence. The remaining 10 slides slide up one position from slide 5 onward.
+Remove the dashboard screenshot + "EVIDENCE TRACE VIEW" caption block. Replace it with a fourth `WorkflowBox` (visually identical to the three top-row boxes) positioned **below the middle "Glacier AI" box**, connected by a downward arrow. Content of the new box:
 
-New order:
+- **Number**: 04
+- **Headline**: Client Knowledge Profile
+- **Body**: A compounding knowledge base to accelerate each future reporting questionnaire. Provides defensible moat and increases accuracy at scale.
+
+### Visual layout after change
 
 ```text
-Position  File             Was      Now
-   1      Slide1.tsx        1/11     1/10
-   2      Slide2.tsx        2/11     2/10
-   3      Slide3.tsx        3/11     3/10
-   4      Slide4.tsx        4/11     4/10
-   —      Slide5.tsx        5/11     (removed from sequence)
-   5      Slide6.tsx        6/11     5/10
-   6      Slide7.tsx        7/11     6/10
-   7      Slide8.tsx        8/11     7/10
-   8      Slide9.tsx        9/11     8/10
-   9      Slide10.tsx      10/11     9/10
-  10      Slide11.tsx      11/11    10/10
+┌─────────────┐  →  ┌─────────────┐  →  ┌─────────────┐
+│ 01          │     │ 02          │     │ 03          │
+│ Documents   │     │ Glacier AI  │     │ Report/Gap  │
+└─────────────┘     └──────┬──────┘     └─────────────┘
+                           │
+                           ▼   (mint downward arrow)
+                    ┌─────────────┐
+                    │ 04          │
+                    │ Client      │
+                    │ Knowledge   │
+                    │ Profile     │
+                    └─────────────┘
 ```
+
+The new box sits in the **middle column** of the existing 3-column grid. Left and right columns of the second row stay empty so the new box is visually anchored under "Glacier AI". On mobile (single column), it just stacks at the end of the workflow with a vertical arrow above it, same as the existing boxes do.
+
+### Implementation in `src/slides/Slide4.tsx`
+
+1. **Remove**:
+   - The `useState` for `imgFailed` and the `dashboardScreenshot` import
+   - The `SCREENSHOT_SRC` const
+   - `ScreenshotPlaceholder` helper component (no longer used)
+   - The entire "SCREENSHOT + CAPTION" `<div>` block (~lines 254–336) including the "EVIDENCE TRACE VIEW" caption
+   - One of the GAP spacers (40px) that surrounded that block
+
+2. **Add** below the existing 3-box workflow grid: a second grid row (or a separate flex block) containing:
+   - A small mint downward `<ArrowDown>` arrow centered on the middle column, animated in
+   - A new `<WorkflowBox number="04" Icon={Sparkles or Database} headline="Client Knowledge Profile" body="..." delay={tBox4} />` constrained to the same width as the middle column (use a 3-column grid: `1fr | 1fr | 1fr` with the box in column 2, arrow above it)
+
+3. **Icon choice for box 04**: use `Database` from lucide-react (semantically: a knowledge base) — fits the existing icon tone (UploadCloud, Link2, ShieldCheck).
+
+4. **Animation timing**: insert `tArrow3 = tBox3 + 0.4` and `tBox4 = tArrow3 + 0.3` into the existing timing chain. Push `tStrip` to `tBox4 + 0.4 + 0.1` so the bottom "Deterministic · Auditable · Multi-framework" strip still appears last.
+
+5. **Vertical budget**: removing the screenshot block (~340px tall + caption + 40+48px gaps ≈ 450px) frees plenty of room for the new box (~220px tall + arrow ~32px + small gap). Net reduction in slide height, so no risk of clipping.
+
+6. **Keep unchanged**: header ("THE PRODUCT" / "Meet Glacier." / subhead), the three top-row WorkflowBoxes and arrows, the bottom "Deterministic · Auditable · Multi-framework" strip.
 
 ### Files touched
 
-1. **`src/components/Presentation.tsx`**
-   - Remove the `import Slide5 from "@/slides/Slide5";` line
-   - Remove `Slide5` from the `slides` array
-
-2. **All 10 remaining slide files** — update their `<SlideFrame>` props:
-   - `Slide1.tsx`: `slideNumber={1} totalSlides={11}` → `totalSlides={10}`
-   - `Slide2.tsx`: `slideNumber={2} totalSlides={11}` → `totalSlides={10}`
-   - `Slide3.tsx`: `slideNumber={3} totalSlides={11}` → `totalSlides={10}`
-   - `Slide4.tsx`: `slideNumber={4} totalSlides={11}` → `totalSlides={10}`
-   - `Slide6.tsx`: `slideNumber={6} totalSlides={11}` → `slideNumber={5} totalSlides={10}`
-   - `Slide7.tsx`: `slideNumber={7} totalSlides={11}` → `slideNumber={6} totalSlides={10}`
-   - `Slide8.tsx`: `slideNumber={8} totalSlides={11}` → `slideNumber={7} totalSlides={10}`
-   - `Slide9.tsx`: `slideNumber={9} totalSlides={11}` → `slideNumber={8} totalSlides={10}`
-   - `Slide10.tsx`: `slideNumber={10} totalSlides={11}` → `slideNumber={9} totalSlides={10}`
-   - `Slide11.tsx`: `slideNumber={11} totalSlides={11}` → `slideNumber={10} totalSlides={10}`
-
-3. **`src/slides/Slide5.tsx`** — leave the file on disk (no longer imported anywhere). Avoids touching git history; we can delete it later if confirmed it won't come back.
-
-### Notes
-
-- Filenames intentionally NOT renamed. Renaming `Slide6.tsx`→`Slide5.tsx` etc. would create dozens of cascading import/path changes for no functional benefit — `slideNumber` is the only thing the user sees on-screen.
-- The Presentation overview grid auto-derives count from the `slides` array, so it updates from 11 to 10 automatically.
-- Keyboard shortcut `5` will now jump to what was previously slide 6 (current `Slide6.tsx`), which is the new slide 5 — correct behavior.
-- The "SLIDE N / 10" indicator (top-right on technical variants) will read 1/10 through 10/10.
+- `src/slides/Slide4.tsx` — only this file. No changes to `WorkflowBox` or `ArrowCell` components themselves; the new box reuses `WorkflowBox` exactly.
+- The `glacier-csrd-dashboard.png` asset stays on disk (no longer imported); harmless.

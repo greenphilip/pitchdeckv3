@@ -1,15 +1,11 @@
 import { motion } from "framer-motion";
-import { UploadCloud, Link2, ShieldCheck, ArrowRight, ArrowDown } from "lucide-react";
+import { UploadCloud, Link2, ShieldCheck, Database, ArrowRight, ArrowDown } from "lucide-react";
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { useState } from "react";
-import dashboardScreenshot from "@/assets/glacier-csrd-dashboard.png";
 
 const NAVY = "#143560";
 const MINT = "#6DD4AD";
 const LIGHT_GRAY = "#F1F1F1";
-
-const SCREENSHOT_SRC = dashboardScreenshot;
 
 type BoxProps = {
   number: string;
@@ -101,33 +97,8 @@ function ArrowCell({ delay, vertical }: { delay: number; vertical: boolean }) {
   );
 }
 
-function ScreenshotPlaceholder() {
-  return (
-    <div
-      style={{
-        width: "100%",
-        aspectRatio: "16 / 10",
-        maxHeight: "340px",
-        background: NAVY,
-        border: `1px dashed ${MINT}4D`,
-        borderRadius: 8,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontFamily: "'JetBrains Mono', monospace",
-        fontSize: "13px",
-        color: `${LIGHT_GRAY}99`,
-        letterSpacing: "0.05em",
-      }}
-    >
-      SCREENSHOT LOADING…
-    </div>
-  );
-}
-
 export default function Slide4() {
   const isMobile = useIsMobile();
-  const [imgFailed, setImgFailed] = useState(false);
 
   // Animation timing
   const tBox1 = 0.24;
@@ -135,9 +106,9 @@ export default function Slide4() {
   const tBox2 = tArrow1 + 0.3;
   const tArrow2 = tBox2 + 0.4;
   const tBox3 = tArrow2 + 0.3;
-  const tScreenshot = tBox3 + 0.4 + 0.2;
-  const tCaption = tScreenshot + 0.4 + 0.15;
-  const tStrip = tCaption + 0.3 + 0.1;
+  const tArrow3 = tBox3 + 0.4;
+  const tBox4 = tArrow3 + 0.3;
+  const tStrip = tBox4 + 0.4 + 0.1;
 
   return (
     <SlideFrame variant="technical" slideNumber={4} totalSlides={10}>
@@ -209,9 +180,9 @@ export default function Slide4() {
         </div>
 
         {/* GAP */}
-        <div style={{ height: "80px", flexShrink: 0 }} />
+        <div style={{ height: "64px", flexShrink: 0 }} />
 
-        {/* WORKFLOW */}
+        {/* WORKFLOW — top row */}
         <div
           style={{
             display: "grid",
@@ -248,95 +219,73 @@ export default function Slide4() {
           />
         </div>
 
-        {/* GAP */}
-        <div style={{ height: "40px", flexShrink: 0 }} />
+        {/* DOWNWARD ARROW from Glacier AI to box 04 */}
+        {!isMobile && (
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr auto 1fr auto 1fr",
+              gap: "24px",
+              maxWidth: "min(1400px, 100%)",
+              width: "100%",
+              margin: "0 auto",
+              marginTop: "20px",
+              alignItems: "center",
+            }}
+          >
+            <div />
+            <div />
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: tArrow3, ease: "easeOut" }}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <ArrowDown
+                size={40}
+                color={MINT}
+                strokeWidth={2}
+                style={{ opacity: 0.8 }}
+              />
+            </motion.div>
+            <div />
+            <div />
+          </div>
+        )}
 
-        {/* SCREENSHOT + CAPTION */}
+        {/* WORKFLOW — bottom row: box 04 anchored under Glacier AI */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 560px) minmax(0, 360px)",
-            gap: "56px",
-            maxWidth: "min(1300px, 100%)",
+            gridTemplateColumns: isMobile ? "1fr" : "1fr auto 1fr auto 1fr",
+            gap: "24px",
+            maxWidth: "min(1400px, 100%)",
             width: "100%",
             margin: "0 auto",
-            alignItems: "center",
-            justifyContent: "center",
+            marginTop: isMobile ? "20px" : "16px",
+            alignItems: "stretch",
           }}
         >
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, delay: tScreenshot, ease: "easeOut" }}
-            style={{
-              width: "100%",
-              maxHeight: "340px",
-              display: "flex",
-              justifyContent: "center",
-              borderRadius: 8,
-              overflow: "hidden",
-              border: imgFailed ? "none" : `1px solid ${MINT}66`,
-              boxShadow: "0 1px 2px 0 rgba(0,0,0,0.2)",
-              margin: "0 auto",
-              justifySelf: "center",
-            }}
-          >
-            {imgFailed ? (
-              <ScreenshotPlaceholder />
-            ) : (
-              <img
-                src={SCREENSHOT_SRC}
-                alt="Glacier CSRD evidence trace dashboard"
-                onError={() => setImgFailed(true)}
-                style={{
-                  display: "block",
-                  maxWidth: "100%",
-                  maxHeight: "340px",
-                  width: "auto",
-                  height: "auto",
-                  objectFit: "contain",
-                }}
-              />
-            )}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: tCaption, ease: "easeOut" }}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "14px",
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "14px",
-                color: MINT,
-                fontWeight: 600,
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-              }}
-            >
-              EVIDENCE TRACE VIEW
-            </div>
-            <div
-              style={{
-                fontSize: "18px",
-                color: `${LIGHT_GRAY}D9`,
-                lineHeight: 1.5,
-              }}
-            >
-              Every disclosure tracked to completion. Every claim in the report
-              links back to its source document and page.
-            </div>
-          </motion.div>
+          {!isMobile && <div />}
+          {!isMobile && <div />}
+          {isMobile && <ArrowCell delay={tArrow3} vertical />}
+          <WorkflowBox
+            number="04"
+            Icon={Database}
+            headline="Client Knowledge Profile"
+            body={"A compounding knowledge base to accelerate each future reporting questionnaire.\n\nProvides defensible moat and increases accuracy at scale."}
+            delay={tBox4}
+          />
+          {!isMobile && <div />}
+          {!isMobile && <div />}
         </div>
 
         {/* GAP */}
-        <div style={{ height: "48px", flexShrink: 0 }} />
+        <div style={{ height: "40px", flexShrink: 0 }} />
 
         {/* BOTTOM STRIP */}
         <motion.div
