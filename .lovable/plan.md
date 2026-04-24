@@ -1,56 +1,53 @@
-## Delete display Slide 5 ("The Compounding Effect") and renumber the deck to 9 slides
+## Audit results & rename plan
 
-### Mapping
+### Audit
 
-Current deck array:
-```
-[Slide1, Slide2, Slide3, Slide4, Slide6, Slide7, Slide8, Slide9, Slide10, Slide11]
-display: 1       2       3       4      5       6       7       8       9        10
-```
+The user-facing slide numbering (the `slideNumber` prop displayed in the top-right of each slide) is correct everywhere — all 9 slides number 1 through 9. **No on-screen labels are wrong.**
 
-Display Slide 5 is the file `src/slides/Slide6.tsx` ("THE COMPOUNDING EFFECT" — three time-compression bars). Its content already lives as a free-floating chart inside Slide 4 (the duplicate added earlier), so removing the standalone slide loses no information.
+The naming inconsistency is internal:
 
-New deck (9 slides):
-```
-[Slide1, Slide2, Slide3, Slide4, Slide7, Slide8, Slide9, Slide10, Slide11]
-display: 1       2       3       4      5       6       7       8        9
-```
+| File | Display position | Internal function name | File-name match? |
+|---|---|---|---|
+| `Slide1.tsx` | 1 | `Slide1` | ✓ |
+| `Slide2.tsx` | 2 | `Slide2` | ✓ |
+| `Slide3.tsx` | 3 | `Slide3` | ✓ |
+| `Slide4.tsx` | 4 | `Slide4` | ✓ |
+| `Slide7.tsx` | 5 | `Slide6` | ✗ both stale |
+| `Slide8.tsx` | 6 | `Slide7` | ✗ both stale |
+| `Slide9.tsx` | 7 | `Slide8` | ✗ both stale |
+| `Slide10.tsx` | 8 | `Slide9` | ✗ both stale |
+| `Slide11.tsx` | 9 | `Slide10` | ✗ both stale |
 
-### Changes
+This is leftover drift from the two earlier "remove a slide" passes. It's harmless functionally but confusing for navigation, search, and future edits.
 
-**1. `src/components/Presentation.tsx`**
-- Remove `import Slide6 from "@/slides/Slide6";`
-- Remove `Slide6` from the `slides` array.
-- Update overview grid template from `gridTemplateColumns: repeat(5, 1fr); gridTemplateRows: repeat(2, 1fr)` to `gridTemplateColumns: repeat(3, 1fr); gridTemplateRows: repeat(3, 1fr)` so 9 tiles fit cleanly (3×3).
-- Keyboard `/^[1-9]$/` shortcut range already covers 1–9. No change.
+### Fix
 
-**2. Renumber `slideNumber` & `totalSlides` on each remaining slide**
-All `totalSlides` go from `10` → `9`. `slideNumber` updates per new position:
+Rename files **and** function names so file ↔ function ↔ display-position all match:
 
-| File | Old `slideNumber` | New `slideNumber` |
-|---|---|---|
-| `Slide1.tsx` | 1 | 1 |
-| `Slide2.tsx` | 2 | 2 |
-| `Slide3.tsx` | 3 | 3 |
-| `Slide4.tsx` | 4 | 4 |
-| `Slide7.tsx` | 6 | 5 |
-| `Slide8.tsx` | 7 | 6 |
-| `Slide9.tsx` | 8 | 7 |
-| `Slide10.tsx` | 9 | 8 |
-| `Slide11.tsx` | 10 | 9 |
+| Move | New function name |
+|---|---|
+| `Slide7.tsx` → `Slide5.tsx` | `Slide5` |
+| `Slide8.tsx` → `Slide6.tsx` | `Slide6` |
+| `Slide9.tsx` → `Slide7.tsx` | `Slide7` |
+| `Slide10.tsx` → `Slide8.tsx` | `Slide8` |
+| `Slide11.tsx` → `Slide9.tsx` | `Slide9` |
 
-(File names stay as-is to keep the diff small and avoid rewriting many import statements; the user only sees display numbers.)
+Order of operations matters because `Slide7.tsx` exists when we want to write `Slide7.tsx` from old `Slide9.tsx`. I'll move from low number first (`Slide7→Slide5` clears Slide7 slot) then chain (`Slide8→Slide6` clears Slide8, etc.) — this works because each move's destination is freed by the previous move.
 
-**3. Delete dead files**
-- `src/slides/Slide6.tsx` — no longer referenced anywhere.
-- `src/slides/Slide5.tsx` — already orphaned from a previous removal (still on disk, not in the deck). Delete to clean up.
+Inside each renamed file:
+- Update `export default function SlideX()` to the new number.
 
-### What stays untouched
+Then in `src/components/Presentation.tsx`:
+- Replace `Slide7..Slide11` imports with `Slide5..Slide9` from their new paths.
+- Update the `slides` array accordingly: `[Slide1, Slide2, Slide3, Slide4, Slide5, Slide6, Slide7, Slide8, Slide9]`.
+- Drop the no-longer-needed blank line where the old import gap sat.
 
-- All slide content, copy, animations.
-- Keyboard navigation logic.
-- The compounding-effect chart on Slide 4 (the user's free-floating duplicate) stays as is — it now becomes the only place this content lives.
+### What stays unchanged
+
+- All slide content, copy, animations, assets.
+- `slideNumber` props (already correct).
+- Asset imports inside each slide (they reference `@/assets/...`, not sibling slides).
 
 ### Verification
 
-After edits I'll run `tsc --noEmit` to confirm no broken imports.
+`tsc --noEmit` after the renames to confirm imports resolve.
