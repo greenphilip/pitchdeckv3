@@ -88,7 +88,7 @@ export default function Slide8() {
               gridTemplateColumns: isMobile ? "1fr" : "auto auto auto",
               alignItems: "end",
               justifyItems: "center",
-              gap: isMobile ? "clamp(12px, 2vh, 20px)" : "clamp(24px, 3.5vw, 56px)",
+              gap: isMobile ? "4px" : "clamp(24px, 3.5vw, 56px)",
               width: "100%",
             }}
           >
@@ -106,7 +106,7 @@ export default function Slide8() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: EXPO_OUT, delay: 0.15 }}
                 style={{
-                  fontSize: "clamp(56px, 7.5vw, 112px)",
+                  fontSize: isMobile ? "clamp(40px, 13vw, 72px)" : "clamp(56px, 7.5vw, 112px)",
                   fontWeight: 700,
                   letterSpacing: "-0.025em",
                   color: MINT,
@@ -160,8 +160,8 @@ export default function Slide8() {
               </span>
               <ArrowRight
                 style={{
-                  width: "clamp(32px, 3.4vw, 56px)",
-                  height: "clamp(32px, 3.4vw, 56px)",
+                  width: isMobile ? "24px" : "clamp(32px, 3.4vw, 56px)",
+                  height: isMobile ? "24px" : "clamp(32px, 3.4vw, 56px)",
                   color: `${MINT}99`,
                   transform: isMobile ? "rotate(90deg)" : undefined,
                 }}
