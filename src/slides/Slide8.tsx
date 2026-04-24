@@ -454,12 +454,10 @@ function RowPair({
   left,
   right,
   delay,
-  isMobile,
 }: {
   left: string;
   right: string;
   delay: number;
-  isMobile: boolean;
 }) {
   return (
     <>
@@ -495,24 +493,22 @@ function RowPair({
         </span>
       </motion.div>
 
-      {!isMobile && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: delay + 0.04 }}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "flex-start",
-            paddingTop: "0.55em",
-          }}
-        >
-          <ArrowRight
-            style={{ width: "18px", height: "18px", color: `${MINT}4D` }}
-            strokeWidth={1.5}
-          />
-        </motion.div>
-      )}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3, delay: delay + 0.04 }}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "flex-start",
+          paddingTop: "0.55em",
+        }}
+      >
+        <ArrowRight
+          style={{ width: "18px", height: "18px", color: `${MINT}4D` }}
+          strokeWidth={1.5}
+        />
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 8 }}
