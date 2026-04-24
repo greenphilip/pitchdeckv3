@@ -246,7 +246,7 @@ export default function Slide4() {
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
-            gap: "20px",
+            gap: "14px",
             width: "100%",
           }}
         >
