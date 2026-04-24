@@ -544,3 +544,101 @@ function RowPair({
     </>
   );
 }
+
+interface MobileItem {
+  text: string;
+  kind: "diamond" | "check";
+}
+
+function MobileColumn({
+  header,
+  items,
+  baseDelay,
+}: {
+  header: string;
+  items: MobileItem[];
+  baseDelay: number;
+}) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "clamp(10px, 1.4vh, 16px)" }}>
+      <motion.div
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, ease: EXPO_OUT, delay: baseDelay }}
+        style={{ display: "flex", flexDirection: "column", gap: "8px" }}
+      >
+        <div
+          style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: "14px",
+            color: MINT,
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: "0.16em",
+          }}
+        >
+          {header}
+        </div>
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.5, ease: EXPO_OUT, delay: baseDelay + 0.1 }}
+          style={{
+            width: "60%",
+            height: "1px",
+            background: `${MINT}4D`,
+            transformOrigin: "left",
+          }}
+        />
+      </motion.div>
+
+      {items.map((item, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, ease: EXPO_OUT, delay: baseDelay + 0.1 + i * 0.06 }}
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            gap: "14px",
+          }}
+        >
+          {item.kind === "diamond" ? (
+            <span
+              style={{
+                width: "9px",
+                height: "9px",
+                background: MINT,
+                transform: "rotate(45deg)",
+                flexShrink: 0,
+                marginTop: "0.55em",
+              }}
+            />
+          ) : (
+            <CheckCircle
+              style={{
+                width: "20px",
+                height: "20px",
+                color: MINT,
+                flexShrink: 0,
+                marginTop: "0.2em",
+              }}
+              strokeWidth={1.75}
+            />
+          )}
+          <span
+            style={{
+              fontSize: "16px",
+              color: LIGHT,
+              fontWeight: 500,
+              lineHeight: 1.4,
+            }}
+          >
+            {item.text}
+          </span>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
