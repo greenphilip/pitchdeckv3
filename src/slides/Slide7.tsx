@@ -47,7 +47,7 @@ const team: Member[] = [
     photo: philipPhoto,
     logos: [
       { src: osceLogo },
-      { src: wbcsdLogo },
+      { src: wbcsdLogo, mono: true, height: 64 },
       { src: inseadLogo },
     ],
   },
