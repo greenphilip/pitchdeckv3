@@ -8,7 +8,7 @@ import davidPhoto from "@/assets/team/david-anders.png";
 import kishanPhoto from "@/assets/team/kishan.png";
 import ninaPhoto from "@/assets/team/nina.png";
 import pioneersLogo from "@/assets/logos/pioneers.png";
-import wbcsdLogo from "@/assets/logos/wbcsd.jpg";
+import wbcsdLogo from "@/assets/logos/wbcsd.png";
 import inseadLogo from "@/assets/logos/insead-white.svg";
 import osceLogo from "@/assets/logos/osce.svg";
 import pwcLogo from "@/assets/logos/pwc.svg";
