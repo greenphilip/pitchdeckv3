@@ -146,8 +146,8 @@ export default function Slide2() {
             display: "grid",
             gridTemplateColumns: isMobile
               ? "1fr"
-              : "1fr minmax(140px, 220px) 1fr",
-            gap: isMobile ? "32px" : "48px",
+              : "1fr minmax(260px, 360px) 1fr",
+            gap: isMobile ? "32px" : "72px",
             alignItems: "center",
           }}
         >
