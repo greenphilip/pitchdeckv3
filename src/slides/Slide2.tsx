@@ -439,13 +439,10 @@ export default function Slide2() {
               textAlign: "center",
               lineHeight: 1.35,
               letterSpacing: "-0.005em",
+              whiteSpace: "pre-line",
             }}
           >
-            The pressure is building on companies
-            <br />
-            to turn ESG into strategic advantage
-            <br />
-            and reduce compliance cost
+            {"\nESG has become a compliance cost, not a source of strategic advantage\n- we aim to change that."}
           </div>
         </motion.div>
       </div>
