@@ -1,72 +1,117 @@
 import { motion } from "framer-motion";
-import { Repeat, Sparkles, Users, type LucideIcon } from "lucide-react";
+import { User } from "lucide-react";
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import rainhardPhoto from "@/assets/team/rainhard-fuchs.png";
+import philipPhoto from "@/assets/team/philip.png";
+import davidPhoto from "@/assets/team/david-anders.png";
+import kishanPhoto from "@/assets/team/kishan.png";
+import ninaPhoto from "@/assets/team/nina.png";
+import pioneersLogo from "@/assets/logos/pioneers.png";
+import wbcsdLogo from "@/assets/logos/wbcsd.jpg";
+import inseadLogo from "@/assets/logos/insead-white.svg";
+import osceLogo from "@/assets/logos/osce.svg";
+import pwcLogo from "@/assets/logos/pwc.svg";
+import oeamtcLogo from "@/assets/logos/oeamtc.svg";
+import smartCounselLogo from "@/assets/logos/smart-counsel.png";
+import bitpandaLogo from "@/assets/logos/bitpanda.svg";
+import shpockLogo from "@/assets/logos/shpock.svg";
 
 const MINT = "#6DD4AD";
+const BLUE = "#539ADB";
 const LIGHT = "#F1F1F1";
+const NAVY = "#143560";
 const EXPO_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-interface Force {
-  label: string;
-  Icon: LucideIcon;
+interface Member {
+  name: string;
   title: string;
-  body: string;
+  background: string;
+  photo?: string;
+  logos?: { src: string; invert?: boolean }[];
 }
 
-const forces: Force[] = [
+const team: Member[] = [
   {
-    label: "FORCE 01 / REGULATION",
-    Icon: Repeat,
-    title: "Rules keep changing. Our ingestion keeps up.",
-    body: "Omnibus I in force. Simplified ESRS coming. VSME in draft. Transposition through 2027. Static tools break on moving targets — Glacier updates faster than legislative cycles.",
+    name: "Rainhard Fuchs",
+    title: "CEO & Founder",
+    background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
+    photo: rainhardPhoto,
+    logos: [{ src: pioneersLogo, invert: true }],
   },
   {
-    label: "FORCE 02 / AI",
-    Icon: Sparkles,
-    title: "General AI is table stakes. Quality isn't.",
-    body: "Every ESG tool claims AI. But generic models hallucinate, lack traceability, and fail regulatory edge cases. Our custom regulatory knowledge is the moat — widening, not narrowing.",
+    name: "Philip Reuchlin",
+    title: "VP of AI & ESG",
+    background: "20+ years sustainability and strategy: OSCE, WBCSD, INSEAD MBA",
+    photo: philipPhoto,
+    logos: [
+      { src: osceLogo },
+      { src: wbcsdLogo },
+      { src: inseadLogo },
+    ],
   },
   {
-    label: "FORCE 03 / DEMAND",
-    Icon: Users,
-    title: "One company. N stakeholders. All asking.",
-    body: "Customers, suppliers, banks, investors, regulators — each wants sustainability evidence in a different format. Framework-agnostic ingestion is the only shape that scales across every request.",
+    name: "David Anders",
+    title: "Head of ESG Delivery",
+    background: "Previously PWC; Head of ESG at Burgenland Energie; ÖAMTC.",
+    photo: davidPhoto,
+    logos: [
+      { src: pwcLogo },
+      { src: oeamtcLogo },
+    ],
+  },
+  {
+    name: "Kishan Chimminiyan",
+    title: "Head of Engineering",
+    background: "full-stack, 10+years building with applied LLM products (GPT-3 era onward) ",
+    photo: kishanPhoto,
+    logos: [{ src: smartCounselLogo }],
+  },
+  {
+    name: "Nina Aichinger",
+    title: "Head of People",
+    background: "Previously Head of HR at Bitpanda and Shpock.",
+    photo: ninaPhoto,
+    logos: [
+      { src: bitpandaLogo, invert: true },
+      { src: shpockLogo, invert: true },
+    ],
   },
 ];
 
-export default function Slide7() {
+export default function Slide9() {
   const isMobile = useIsMobile();
 
   return (
-    <SlideFrame variant="technical" slideNumber={6} totalSlides={9}>
+    <SlideFrame variant="minimal" slideNumber={8} totalSlides={9}>
       <div
         style={{
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
+          justifyContent: "flex-start",
           alignItems: "center",
           width: "100%",
-          gap: "80px",
+          gap: "32px",
         }}
       >
         {/* HEADER */}
         <div
           style={{
             width: "100%",
-            maxWidth: "min(1200px, 100%)",
+            maxWidth: "1200px",
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
+            marginTop: "48px",
           }}
         >
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: EXPO_OUT }}
+            transition={{ duration: 0.4, ease: EXPO_OUT, delay: 0.1 }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: "20px",
@@ -76,135 +121,214 @@ export default function Slide7() {
               letterSpacing: "0.12em",
             }}
           >
-            WHY NOW
+            TEAM
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.08 }}
+            transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.18 }}
             style={{
               margin: 0,
               marginTop: "20px",
-              fontSize: "76px",
-              fontWeight: 700,
+              fontSize: "64px",
+              fontWeight: 600,
               color: LIGHT,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.1,
+              letterSpacing: "-0.01em",
+              lineHeight: 1.15,
               textAlign: "center",
             }}
           >
-            Volatility is <span style={{ color: MINT }}>our friend</span>.
+            <span style={{ color: BLUE }}>Regulatory depth.</span>{" "}
+            <span style={{ color: LIGHT }}>Experience in scaling SaaS.</span>{" "}
+            <span style={{ color: MINT, fontWeight: 700 }}>Applied AI.</span>
           </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.16 }}
-            style={{
-              margin: "20px auto 0",
-              maxWidth: "1100px",
-              fontSize: "24px",
-              color: `${LIGHT}B3`,
-              lineHeight: 1.5,
-              textAlign: "center",
-            }}
-          >
-            Three forces in motion. Each one makes the case for what we're building.
-          </motion.p>
         </div>
 
-        {/* CONVERGENCE GRID */}
+        {/* TEAM GRID */}
         <div
           style={{
             width: "100%",
             maxWidth: "min(1400px, 100%)",
             margin: "0 auto",
+            marginTop: "56px",
             display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "repeat(3, minmax(0, 1fr))",
-            gap: isMobile ? "40px" : "56px",
+            gridTemplateColumns: isMobile
+              ? "repeat(2, minmax(0, 1fr))"
+              : "repeat(5, minmax(0, 1fr))",
+            gap: isMobile ? "32px" : "40px",
             maxHeight: isMobile ? "55vh" : undefined,
             overflowY: isMobile ? "auto" : undefined,
           }}
         >
-          {forces.map((f, i) => (
+          {team.map((m, i) => (
             <motion.div
-              key={f.label}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, ease: EXPO_OUT, delay: 0.25 + i * 0.08 }}
+              key={i}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.35 + i * 0.08 }}
               style={{
-                borderLeft: `2px solid ${MINT}B3`,
-                paddingLeft: "32px",
-                paddingRight: "8px",
-                paddingTop: "6px",
-                paddingBottom: "6px",
                 display: "flex",
                 flexDirection: "column",
-                gap: "20px",
+                alignItems: "center",
+                textAlign: "center",
+                gap: "24px",
               }}
             >
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.25 + i * 0.08 + 0.05 }}
+              {/* Avatar */}
+              <div
                 style={{
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "20px",
-                  color: MINT,
-                  fontWeight: 600,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
+                  width: "160px",
+                  height: "160px",
+                  borderRadius: "50%",
+                  background: `${BLUE}40`,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                  overflow: "hidden",
                 }}
               >
-                {f.label}
-              </motion.div>
+                {m.photo ? (
+                  <img
+                    src={m.photo}
+                    alt={m.name}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "center top",
+                    }}
+                  />
+                ) : (
+                  <User
+                    style={{
+                      width: "50%",
+                      height: "50%",
+                      color: `${LIGHT}99`,
+                    }}
+                    strokeWidth={1.5}
+                  />
+                )}
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.25 + i * 0.08 + 0.13 }}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "10px",
+                }}
               >
-                <f.Icon
+                <div
                   style={{
-                    width: "44px",
-                    height: "44px",
-                    color: MINT,
+                    fontSize: "22px",
+                    color: LIGHT,
+                    fontWeight: 600,
+                    lineHeight: 1.2,
                   }}
-                  strokeWidth={1.5}
-                />
-              </motion.div>
+                >
+                  {m.name}
+                </div>
+                <div
+                  style={{
+                    fontSize: "17px",
+                    color: MINT,
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {m.title}
+                </div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.25 + i * 0.08 + 0.21 }}
+              <div
                 style={{
-                  fontSize: "28px",
-                  color: LIGHT,
-                  fontWeight: 600,
-                  lineHeight: 1.3,
+                  fontSize: "18px",
+                  color: `${LIGHT}B3`,
+                  lineHeight: 1.45,
+                  display: "-webkit-box",
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  minHeight: `calc(18px * 1.45 * 3)`,
                 }}
               >
-                {f.title}
-              </motion.div>
+                {m.background}
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.25 + i * 0.08 + 0.29 }}
-                style={{
-                  fontSize: "19px",
-                  color: `${LIGHT}CC`,
-                  lineHeight: 1.5,
-                }}
-              >
-                {f.body}
-              </motion.div>
+              {m.logos && m.logos.length > 0 && (
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "18px",
+                    marginTop: "-4px",
+                  }}
+                >
+                  {m.logos.map((logo, idx) => (
+                    <img
+                      key={idx}
+                      src={logo.src}
+                      alt=""
+                      style={{
+                        height: "48px",
+                        width: "auto",
+                        maxWidth: "200px",
+                        objectFit: "contain",
+                        opacity: logo.invert ? 0.9 : 1,
+                        filter: logo.invert ? "invert(1) brightness(1.1)" : undefined,
+                        display: "block",
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
 
+        {/* THESIS LINE */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.35 + team.length * 0.08 + 0.2 }}
+          style={{
+            width: "100%",
+            maxWidth: "min(1000px, 100%)",
+            margin: "0 auto",
+            marginTop: "56px",
+            fontSize: "26px",
+            fontWeight: 400,
+            fontStyle: "italic",
+            color: `${LIGHT}CC`,
+            textAlign: "center",
+            lineHeight: 1.4,
+          }}
+        >
+          {" "}
+        </motion.div>
+
+        {/* Spacer above bottom anchor — explicit, not auto */}
+        <div style={{ height: "80px", flexShrink: 0 }} />
+
+        {/* BOTTOM ANCHOR */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3, delay: 0.35 + team.length * 0.08 + 0.4 }}
+          style={{
+            width: "100%",
+            textAlign: "center",
+            fontSize: "20px",
+            color: `${LIGHT}B3`,
+            paddingTop: "16px",
+          }}
+        >
+          Headcount: <span style={{ color: MINT, fontWeight: 700 }}>15</span> today. Hiring{" "}
+          <span style={{ color: MINT, fontWeight: 700 }}>4-5</span> with this round.
+        </motion.div>
       </div>
     </SlideFrame>
   );

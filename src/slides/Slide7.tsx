@@ -1,79 +1,79 @@
 import { motion } from "framer-motion";
-import {
-  Bar,
-  CartesianGrid,
-  Cell,
-  ComposedChart,
-  Line,
-  ResponsiveContainer,
-  XAxis,
-  YAxis,
-} from "recharts";
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import voeslauerLogo from "@/assets/logos/voeslauer.svg";
-import lenzingLogo from "@/assets/logos/lenzing.svg";
-import stihlLogo from "@/assets/logos/stihl.svg";
-import wuerthLogo from "@/assets/logos/wuerth.svg";
-
-import deutscheTelekomLogo from "@/assets/logos/deutsche-telekom.svg";
-import fraportLogo from "@/assets/logos/fraport.svg";
-import andritzLogo from "@/assets/logos/andritz.svg";
-import evnLogo from "@/assets/logos/evn.svg";
-import knaufLogo from "@/assets/logos/knauf.svg";
-import rlbOoeLogo from "@/assets/logos/rlb-ooe.svg";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
 const TEAL = "#2D9D90";
 const LIGHT = "#F1F1F1";
+const NAVY = "#143560";
 const EXPO_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-const chartData = [
-  { year: "2024", arr: 70, burn: 52 },
-  { year: "2025", arr: 526, burn: 27 },
-];
+type Emphasis = "muted" | "medium" | "primary";
 
-interface Stat {
-  number: string;
-  label: string;
-  emphasis?: boolean;
+interface MarketBar {
+  key: "TAM" | "SAM" | "SOM";
+  leftLabel: string;
+  color: string;
+  widthPct: number;
+  height: number;
+  emphasis: Emphasis;
 }
 
-const stats: Stat[] = [
-  { number: "26", label: "ENTERPRISE CLIENTS" },
-  { number: "€526k", label: "ARR END-2025" },
-  { number: "€20k", label: "AVERAGE ACV" },
-  { number: "−48%", label: "CASH BURN YoY", emphasis: true },
+const marketBars: MarketBar[] = [
+  { key: "TAM", leftLabel: "TAM", color: TEAL, widthPct: 100, height: 40, emphasis: "muted" },
+  { key: "SAM", leftLabel: "SAM", color: BLUE, widthPct: 40, height: 48, emphasis: "medium" },
+  { key: "SOM", leftLabel: "SOM", color: MINT, widthPct: 8, height: 88, emphasis: "primary" },
 ];
 
-const logos = [
-  { src: deutscheTelekomLogo, alt: "Deutsche Telekom" },
-  { src: evnLogo, alt: "EVN" },
-  { src: stihlLogo, alt: "STIHL" },
-  { src: wuerthLogo, alt: "Würth" },
-  { src: fraportLogo, alt: "Fraport" },
-  { src: knaufLogo, alt: "Knauf" },
-  { src: andritzLogo, alt: "Andritz" },
-  { src: lenzingLogo, alt: "Lenzing" },
-  { src: voeslauerLogo, alt: "Vöslauer" },
-  { src: rlbOoeLogo, alt: "RLB Oberösterreich" },
+interface Phase {
+  badge: string;
+  title: string;
+  detail: string;
+  color: string;
+  badgeText: string;
+}
+
+const phases: Phase[] = [
+  {
+    badge: "NOW",
+    title: "EU enterprise, CSRD-grade",
+    detail: "CSRD and EcoVadis live, paying customers. DACH first.",
+    color: MINT,
+    badgeText: NAVY,
+  },
+  {
+    badge: "6-12 months",
+    title: "Voluntary reporters + supply chain",
+    detail:
+      "VSME, ISSB, GRI, customer questionnaires. Expansion to Benelux + Scandinavia.",
+    color: BLUE,
+    badgeText: LIGHT,
+  },
+  {
+    badge: "YEAR 2+",
+    title: "Partner & channel scale",
+    detail:
+      "Consultancies and audit firms delivering on Glacier. Platform reach beyond direct sales.",
+    color: TEAL,
+    badgeText: LIGHT,
+  },
 ];
 
-export default function Slide6() {
+export default function Slide8() {
   const isMobile = useIsMobile();
 
   return (
-    <SlideFrame variant="technical-light" slideNumber={5} totalSlides={9}>
+    <SlideFrame variant="technical" slideNumber={7} totalSlides={9}>
       <div
         style={{
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "flex-start",
+          justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          gap: isMobile ? "48px" : "48px",
+          gap: isMobile ? "48px" : "80px",
           overflowY: isMobile ? "auto" : undefined,
         }}
       >
@@ -81,7 +81,7 @@ export default function Slide6() {
         <div
           style={{
             width: "100%",
-            maxWidth: "1300px",
+            maxWidth: "min(1200px, 100%)",
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",
@@ -102,7 +102,7 @@ export default function Slide6() {
               letterSpacing: "0.12em",
             }}
           >
-            TRACTION
+            MARKET & EXPANSION
           </motion.div>
 
           <motion.h1
@@ -111,396 +111,326 @@ export default function Slide6() {
             transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.08 }}
             style={{
               margin: 0,
-              marginTop: "14px",
-              fontSize: "44px",
+              marginTop: "20px",
+              fontSize: "64px",
               fontWeight: 600,
               color: LIGHT,
               letterSpacing: "-0.01em",
-              lineHeight: 1.2,
+              lineHeight: 1.1,
               textAlign: "center",
             }}
           >
-            <span style={{ color: MINT, fontWeight: 700 }}>7.5×</span> ARR growth. Burn down{" "}
-            <span style={{ color: BLUE, fontWeight: 700 }}>48%</span>.
-            <br />
-            Working with some of{" "}
-            <span style={{ color: MINT, fontWeight: 700 }}>hardest to close</span> companies.
+            <span style={{ color: BLUE }}>€1.3bn</span> today.{" "}
+            <span style={{ color: MINT, fontWeight: 700 }}>€7.8bn</span> by 2034.
           </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.16 }}
+            style={{
+              margin: "20px auto 0",
+              maxWidth: "1100px",
+              fontSize: "24px",
+              color: `${LIGHT}B3`,
+              lineHeight: 1.5,
+              textAlign: "center",
+            }}
+          >
+            CAGR <span style={{ color: MINT, fontWeight: 700 }}>21%</span>. Plus a €7bn adjacent regulatory reporting market.
+          </motion.p>
         </div>
 
-        {/* BODY — 2-col on desktop: [chart + stats + impact] | [logo wall] */}
+        {/* MAIN SPLIT */}
         <div
           style={{
             width: "100%",
             maxWidth: "min(1400px, 100%)",
             margin: "0 auto",
             display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 1.35fr) minmax(0, 1fr)",
-            gap: isMobile ? "48px" : "40px",
-            alignItems: "stretch",
+            gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 2fr) minmax(0, 3fr)",
+            gap: isMobile ? "56px" : "72px",
+            alignItems: "center",
           }}
         >
-        {/* LEFT COLUMN — chart + stats + impact */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "24px",
-            minWidth: 0,
-          }}
-        >
-          {/* CHART */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: EXPO_OUT, delay: 0.2 }}
+          {/* LEFT — MARKET SIZING */}
+          <div
             style={{
-              position: "relative",
-              width: "100%",
-              border: `1px solid ${BLUE}33`,
-              borderRadius: 6,
-              padding: "20px",
-              background: "rgba(255, 255, 255, 0.02)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "24px",
             }}
           >
-            {/* Legend + annotation */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "flex-start",
-                gap: "24px",
-                flexWrap: "wrap",
-                marginBottom: "10px",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  gap: "24px",
-                  flexWrap: "wrap",
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "18px",
-                  color: `${LIGHT}B3`,
-                }}
-              >
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                  <span
-                    style={{
-                      width: 14,
-                      height: 14,
-                      background: MINT,
-                      borderRadius: 2,
-                      display: "inline-block",
-                    }}
-                  />
-                  ARR (bars)
-                </span>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                  <span
-                    style={{
-                      width: 14,
-                      height: 2,
-                      background: BLUE,
-                      display: "inline-block",
-                    }}
-                  />
-                  Avg monthly burn (line)
-                </span>
-              </div>
-              <div
-                style={{
-                  border: `1px solid ${MINT}`,
-                  padding: "14px",
-                  borderRadius: 4,
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "18px",
-                  color: MINT,
-                  fontWeight: 600,
-                  letterSpacing: "0.05em",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                ARR ↑ 7.5×&nbsp;&nbsp;|&nbsp;&nbsp;<span style={{ color: BLUE }}>BURN ↓ 48%</span>
-              </div>
-            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+              {marketBars.map((b, i) => {
+                const isPrimary = b.emphasis === "primary";
+                const isMuted = b.emphasis === "muted";
+                const leftLabelStyle = isPrimary
+                  ? { fontSize: "22px", fontWeight: 700, color: MINT }
+                  : isMuted
+                  ? { fontSize: "16px", fontWeight: 400, color: `${LIGHT}80` }
+                  : { fontSize: "16px", fontWeight: 400, color: `${LIGHT}A6` };
 
-            <div
-              style={{
-                width: "100%",
-                height: isMobile ? "240px" : "230px",
-              }}
-            >
-              <ResponsiveContainer width="100%" height="100%">
-                <ComposedChart data={chartData} margin={{ top: 24, right: 16, bottom: 8, left: 8 }}>
-                  <CartesianGrid stroke={`${BLUE}1A`} vertical={false} />
-                  <XAxis
-                    dataKey="year"
-                    stroke={`${LIGHT}99`}
-                    tick={{
-                      fill: `${LIGHT}99`,
-                      fontFamily: "JetBrains Mono, monospace",
-                      fontSize: 12,
-                    }}
-                    axisLine={{ stroke: `${BLUE}33` }}
-                    tickLine={false}
-                  />
-                  <YAxis
-                    yAxisId="left"
-                    stroke={`${LIGHT}99`}
-                    tick={{
-                      fill: `${LIGHT}99`,
-                      fontFamily: "JetBrains Mono, monospace",
-                      fontSize: 11,
-                    }}
-                    axisLine={false}
-                    tickLine={false}
-                    tickFormatter={(v) => `€${v}k`}
-                  />
-                  <YAxis
-                    yAxisId="right"
-                    orientation="right"
-                    stroke={`${LIGHT}99`}
-                    tick={{
-                      fill: `${LIGHT}99`,
-                      fontFamily: "JetBrains Mono, monospace",
-                      fontSize: 11,
-                    }}
-                    axisLine={false}
-                    tickLine={false}
-                    tickFormatter={(v) => `€${v}k`}
-                  />
-                  <Bar
-                    yAxisId="left"
-                    dataKey="arr"
-                    radius={[4, 4, 0, 0]}
-                    label={{
-                      position: "top",
-                      fill: LIGHT,
-                      fontFamily: "JetBrains Mono, monospace",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      formatter: (v: number) => `€${v}k`,
-                    }}
-                    isAnimationActive
-                    animationDuration={700}
-                    maxBarSize={80}
+                const rightLabelNode = isPrimary ? (
+                  <>
+                    SOM <span style={{ color: MINT }}>€100m</span> ≈{" "}
+                    <span style={{ color: MINT }}>5,000 customers</span> @ €20k ACV
+                  </>
+                ) : b.key === "TAM" ? (
+                  "TAM €1.3bn → €7.8bn"
+                ) : (
+                  "SAM €520m"
+                );
+                const rightLabelStyle = isPrimary
+                  ? { fontSize: "28px", fontWeight: 700 as const, color: LIGHT }
+                  : isMuted
+                  ? { fontSize: "18px", fontWeight: 400 as const, color: `${LIGHT}80` }
+                  : { fontSize: "18px", fontWeight: 400 as const, color: `${LIGHT}A6` };
+
+                return (
+                  <div
+                    key={b.key}
+                    style={{ display: "flex", flexDirection: "column", gap: "10px" }}
                   >
-                    {chartData.map((d, i) => (
-                      <Cell key={d.year} fill={i === 0 ? TEAL : MINT} />
-                    ))}
-                  </Bar>
-                  <Line
-                    yAxisId="right"
-                    type="monotone"
-                    dataKey="burn"
-                    stroke={BLUE}
-                    strokeWidth={2.5}
-                    dot={{ r: 5, fill: BLUE, strokeWidth: 0 }}
-                    activeDot={{ r: 6 }}
-                    label={{
-                      position: "top",
-                      fill: BLUE,
-                      fontFamily: "JetBrains Mono, monospace",
-                      fontSize: 12,
-                      fontWeight: 600,
-                      formatter: (v: number) => `€${v}k`,
-                    }}
-                    isAnimationActive
-                    animationDuration={900}
-                    animationBegin={500}
-                  />
-                </ComposedChart>
-              </ResponsiveContainer>
-            </div>
-          </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: 0.25 + i * 0.18 }}
+                      style={{
+                        fontFamily: "'JetBrains Mono', monospace",
+                        letterSpacing: "0.05em",
+                        ...leftLabelStyle,
+                      }}
+                    >
+                      {b.leftLabel}
+                    </motion.div>
 
-          {/* STATS — 2x2 grid */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-              columnGap: "24px",
-              rowGap: "20px",
-            }}
-          >
-            {stats.map((s, i) => (
-              <motion.div
-                key={s.label}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, ease: EXPO_OUT, delay: 0.5 + i * 0.08 }}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "10px",
-                  textAlign: "center",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "56px",
-                    color: s.emphasis ? BLUE : LIGHT,
-                    fontWeight: 700,
-                    letterSpacing: "-0.02em",
-                    lineHeight: 1,
-                  }}
-                >
-                  {s.number}
-                </div>
-                <div
-                  style={{
-                    fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "15px",
-                    color: `${LIGHT}B3`,
-                    fontWeight: 600,
-                    letterSpacing: "0.08em",
-                  }}
-                >
-                  {s.label}
-                </div>
-              </motion.div>
-            ))}
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "20px",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      {/* Accent marker (SOM only) */}
+                      {isPrimary && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 1 }}
+                          animate={{
+                            opacity: 1,
+                            scale: [1, 1.15, 1],
+                          }}
+                          transition={{
+                            opacity: { duration: 0.3, delay: 0.35 + i * 0.18 },
+                            scale: { duration: 0.6, delay: 1.4, times: [0, 0.5, 1] },
+                          }}
+                          style={{
+                            width: 4,
+                            height: b.height,
+                            background: MINT,
+                            borderRadius: 2,
+                            flexShrink: 0,
+                          }}
+                        />
+                      )}
+
+                      <div
+                        style={{
+                          flex: "1 1 0",
+                          minWidth: 0,
+                          height: `${b.height}px`,
+                          position: "relative",
+                        }}
+                      >
+                        <motion.div
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: b.widthPct / 100 }}
+                          transition={{
+                            duration: isPrimary ? 0.7 : 0.5,
+                            ease: EXPO_OUT,
+                            delay: 0.35 + i * 0.18,
+                          }}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            background: b.color,
+                            borderRadius: isPrimary ? 6 : 4,
+                            transformOrigin: "left",
+                            boxShadow: isPrimary
+                              ? `0 0 0 1px ${MINT}, 0 8px 32px ${MINT}40`
+                              : undefined,
+                          }}
+                        />
+                      </div>
+                      <motion.div
+                        initial={{ opacity: 0, x: -8 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.85 + i * 0.18 }}
+                        style={{
+                          flexShrink: 0,
+                          maxWidth: "100%",
+                          lineHeight: 1.3,
+                          ...rightLabelStyle,
+                        }}
+                      >
+                        {rightLabelNode}
+                        {isPrimary && (
+                          <div
+                            style={{
+                              fontSize: "13px",
+                              fontStyle: "italic",
+                              color: `${LIGHT}99`,
+                              fontWeight: 400,
+                              marginTop: 6,
+                            }}
+                          >
+                            Our 5-year target — credible, bottom-up
+                          </div>
+                        )}
+                      </motion.div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div
+              style={{
+                fontSize: "15px",
+                color: `${LIGHT}A6`,
+              }}
+            >
+              + €7bn adjacent regulatory reporting market.
+            </div>
           </div>
 
-          {/* CUSTOMER IMPACT CARD */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, ease: EXPO_OUT, delay: 0.9 }}
+          {/* RIGHT — EXPANSION ROADMAP */}
+          <div
             style={{
-              maxWidth: "100%",
-              width: "100%",
-              border: `1px solid ${BLUE}4D`,
-              padding: "16px",
-              borderRadius: 6,
-              background: "rgba(20, 53, 96, 0.6)",
               display: "flex",
               flexDirection: "column",
-              gap: "8px",
+              gap: "36px",
             }}
           >
-            <div
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "15px",
-                color: MINT,
-                fontWeight: 600,
-                letterSpacing: "0.1em",
-              }}
-            >
-              CUSTOMER IMPACT — MID-MARKET BENCHMARK
-            </div>
-            <div
-              style={{
-                fontSize: "16px",
-                color: `${LIGHT}D9`,
-                lineHeight: 1.5,
-              }}
-            >
-              2,250 hours → 1,137 hours. €100k → €68k. ~50% time, ~32% cost reduction — first
-              reporting cycle.
-            </div>
-          </motion.div>
+            {phases.map((p, i) => {
+              const isLast = i === phases.length - 1;
+              return (
+                <motion.div
+                  key={p.badge}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.4 + i * 0.08 }}
+                  style={{
+                    display: "flex",
+                    gap: "24px",
+                    alignItems: "stretch",
+                  }}
+                >
+                  {/* Marker + connector line */}
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      flexShrink: 0,
+                      paddingTop: "8px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "16px",
+                        height: "16px",
+                        borderRadius: "50%",
+                        background: p.color,
+                        flexShrink: 0,
+                      }}
+                    />
+                    {!isLast && (
+                      <div
+                        style={{
+                          flex: 1,
+                          width: 1,
+                          background: `${MINT}4D`,
+                          marginTop: 4,
+                          minHeight: "40px",
+                        }}
+                      />
+                    )}
+                  </div>
+
+                  {/* Content */}
+                  <div
+                    style={{
+                      flex: 1,
+                      minWidth: 0,
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "12px",
+                      paddingBottom: isLast ? 0 : "10px",
+                    }}
+                  >
+                    <div>
+                      <span
+                        style={{
+                          display: "inline-block",
+                          fontFamily: "'JetBrains Mono', monospace",
+                          fontSize: "18px",
+                          fontWeight: 700,
+                          letterSpacing: "0.1em",
+                          padding: "6px 14px",
+                          borderRadius: 3,
+                          background: p.color,
+                          color: p.badgeText,
+                        }}
+                      >
+                        {p.badge}
+                      </span>
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "32px",
+                        color: LIGHT,
+                        fontWeight: 600,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {p.title}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "19px",
+                        color: `${LIGHT}BF`,
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {p.detail}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
-        {/* RIGHT COLUMN — TRUSTED BY + 5×2 logo grid (10 logos, vertically distributed) */}
-        <div
+        {/* BOTTOM STRIP */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 1.0 }}
           style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "stretch",
-            gap: "20px",
-            minWidth: 0,
-            minHeight: 0,
+            width: "100%",
+            maxWidth: "min(1200px, 100%)",
+            margin: "0 auto",
+            textAlign: "center",
+            fontSize: "24px",
+            color: LIGHT,
+            lineHeight: 1.5,
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              textAlign: "center",
-              gap: "10px",
-            }}
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 1.0 }}
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "16px",
-                color: MINT,
-                fontWeight: 600,
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-              }}
-            >
-              TRUSTED BY
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 1.08 }}
-              style={{
-                fontSize: "15px",
-                color: `${LIGHT}B3`,
-              }}
-            >
-              Enterprise and mid-market customers across industries.
-            </motion.div>
-          </div>
-
-          <div
-            style={{
-              width: "100%",
-              flex: 1,
-              minHeight: 0,
-              display: "grid",
-              gridTemplateColumns: isMobile
-                ? "repeat(2, minmax(0, 1fr))"
-                : "repeat(2, minmax(0, 1fr))",
-              gridAutoRows: "1fr",
-              columnGap: isMobile ? "28px" : "28px",
-              rowGap: "18px",
-              alignItems: "center",
-              justifyItems: "center",
-            }}
-          >
-            {logos.map((logo, i) => (
-              <motion.div
-                key={logo.alt}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: EXPO_OUT, delay: 1.2 + i * 0.05 }}
-                whileHover={{ scale: 1.04, opacity: 1 }}
-                style={{
-                  height: "100%",
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "default",
-                }}
-              >
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  style={{
-                    maxHeight: isMobile ? "52px" : "56px",
-                    maxWidth: "100%",
-                    objectFit: "contain",
-                    filter: "brightness(0) invert(1)",
-                    opacity: 0.75,
-                  }}
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-        </div>
+          <span style={{ color: MINT, fontWeight: 700 }}>DACH</span> today &nbsp;→&nbsp;{" "}
+          <span style={{ color: MINT, fontWeight: 700 }}>Benelux + Scandinavia</span> next.
+        </motion.div>
       </div>
     </SlideFrame>
   );
