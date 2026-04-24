@@ -297,7 +297,7 @@ export default function Slide4() {
         </div>
 
         {/* GAP */}
-        <div style={{ height: "40px", flexShrink: 0 }} />
+        <div style={{ height: "20px", flexShrink: 0 }} />
 
         {/* WORKFLOW — top row */}
         <div
