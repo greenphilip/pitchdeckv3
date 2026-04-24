@@ -226,7 +226,7 @@ export default function Slide4() {
   const tStrip = tChart + 0.6;
 
   return (
-    <SlideFrame variant="technical" slideNumber={4} totalSlides={10}>
+    <SlideFrame variant="technical" slideNumber={4} totalSlides={9}>
       <div
         style={{
           display: "flex",
