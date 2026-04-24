@@ -138,13 +138,13 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
         background: NAVY,
         border: `1px solid ${MINT}4D`,
         borderRadius: 12,
-        padding: "16px 20px",
+        padding: "12px 16px",
         boxShadow: "0 1px 2px 0 rgba(0,0,0,0.2)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         textAlign: "center",
-        gap: "8px",
+        gap: "6px",
         height: "100%",
         boxSizing: "border-box",
       }}
@@ -152,7 +152,7 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
       <div
         style={{
           fontFamily: "'JetBrains Mono', monospace",
-          fontSize: "14px",
+          fontSize: "13px",
           color: MINT,
           fontWeight: 600,
           letterSpacing: "0.1em",
@@ -160,10 +160,10 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
       >
         {number}
       </div>
-      <Icon size={32} color={MINT} strokeWidth={1.5} style={{ width: "32px", height: "auto" }} />
+      <Icon size={28} color={MINT} strokeWidth={1.5} style={{ width: "28px", height: "auto" }} />
       <div
         style={{
-          fontSize: "20px",
+          fontSize: "18px",
           color: LIGHT_GRAY,
           fontWeight: 600,
         }}
@@ -172,9 +172,9 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
       </div>
       <div
         style={{
-          fontSize: "15px",
+          fontSize: "14px",
           color: `${LIGHT_GRAY}CC`,
-          lineHeight: 1.45,
+          lineHeight: 1.4,
           whiteSpace: "pre-line",
         }}
       >
@@ -297,7 +297,7 @@ export default function Slide4() {
         </div>
 
         {/* GAP */}
-        <div style={{ height: "20px", flexShrink: 0 }} />
+        <div style={{ height: "12px", flexShrink: 0 }} />
 
         {/* WORKFLOW — questionnaire input row (box 00) */}
         <div
@@ -334,8 +334,8 @@ export default function Slide4() {
               maxWidth: "min(1400px, 100%)",
               width: "100%",
               margin: "0 auto",
-              marginTop: "8px",
-              marginBottom: "8px",
+              marginTop: "4px",
+              marginBottom: "4px",
               alignItems: "center",
             }}
           >
@@ -352,7 +352,7 @@ export default function Slide4() {
               }}
             >
               <ArrowDown
-                size={40}
+                size={32}
                 color={MINT}
                 strokeWidth={2}
                 style={{ opacity: 0.8 }}
@@ -415,7 +415,7 @@ export default function Slide4() {
               maxWidth: "min(1400px, 100%)",
               width: "100%",
               margin: "0 auto",
-              marginTop: "12px",
+              marginTop: "4px",
               alignItems: "center",
             }}
           >
@@ -432,7 +432,7 @@ export default function Slide4() {
               }}
             >
               <ArrowDown
-                size={40}
+                size={32}
                 color={MINT}
                 strokeWidth={2}
                 style={{ opacity: 0.8 }}
@@ -452,7 +452,7 @@ export default function Slide4() {
             maxWidth: "min(1400px, 100%)",
             width: "100%",
             margin: "0 auto",
-            marginTop: isMobile ? "20px" : "8px",
+            marginTop: isMobile ? "20px" : "4px",
             alignItems: "stretch",
           }}
         >
@@ -488,7 +488,7 @@ export default function Slide4() {
         </div>
 
         {/* GAP */}
-        <div style={{ height: "16px", flexShrink: 0 }} />
+        <div style={{ height: "12px", flexShrink: 0 }} />
 
         {/* BOTTOM STRIP */}
         <motion.div
