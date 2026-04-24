@@ -268,22 +268,42 @@ export default function Slide7() {
                     marginTop: "-4px",
                   }}
                 >
-                  {m.logos.map((logo, idx) => (
-                    <img
-                      key={idx}
-                      src={logo.src}
-                      alt=""
-                      style={{
-                        height: "48px",
-                        width: "auto",
-                        maxWidth: "200px",
-                        objectFit: "contain",
-                        opacity: logo.invert ? 0.9 : 1,
-                        filter: logo.invert ? "invert(1) brightness(1.1)" : undefined,
-                        display: "block",
-                      }}
-                    />
-                  ))}
+                  {m.logos.map((logo, idx) => {
+                    const h = logo.height ?? 48;
+                    const img = (
+                      <img
+                        src={logo.src}
+                        alt=""
+                        style={{
+                          height: `${h}px`,
+                          width: "auto",
+                          maxWidth: "220px",
+                          objectFit: "contain",
+                          opacity: logo.invert ? 0.9 : 1,
+                          filter: logo.invert ? "invert(1) brightness(1.1)" : undefined,
+                          display: "block",
+                        }}
+                      />
+                    );
+                    if (logo.boxed) {
+                      return (
+                        <div
+                          key={idx}
+                          style={{
+                            background: "#FFFFFF",
+                            padding: "8px 12px",
+                            borderRadius: "4px",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {img}
+                        </div>
+                      );
+                    }
+                    return <div key={idx}>{img}</div>;
+                  })}
                 </div>
               )}
             </motion.div>
