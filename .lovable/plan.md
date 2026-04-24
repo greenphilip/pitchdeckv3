@@ -1,34 +1,39 @@
-## Slide 4 — fix bottom crowding and align the compounding chart with box 03
+## Slide 4 — tighten boxes, align compounding chart, add arrow CKP → chart
 
-### Diagnosis
+### 1. Tighten all four workflow boxes
 
-Two visual issues, one root cause for each:
+In `WorkflowBox` (lines 131–185), shrink the internal spacing:
+- `padding: "32px"` → `padding: "20px 22px"` (less vertical, slightly less horizontal)
+- `gap: "16px"` → `gap: "10px"`
+- Icon `size={44}` → `size={36}` (and inline `width: 44px` → `width: 36px`)
+- Headline `fontSize: 22px` → `fontSize: 20px`
+- Body `fontSize: 16px` → `fontSize: 15px`, `lineHeight: 1.5` → `lineHeight: 1.45`
 
-1. **Chart not aligned with the box above (box 03 "Report / Gap")**
-   The bottom-row grid uses the same 5-column template as the top row (`1fr | auto | 1fr | auto | 1fr`), so the rightmost cell sits exactly under box 03 — *but* the chart wrapper currently has `maxWidth: 360px` and `paddingLeft: 8px`. That shrinks the chart and pushes it 8px off the column's left edge, so the eyebrow "THE COMPOUNDING EFFECT" no longer lines up with box 03's left edge above it, and the bars terminate well before box 03's right edge.
+Combined effect: each box loses ~50–60px of height while keeping the same content readable. Boxes 01/02/03 get visibly tighter; box 04 (CKP, same component) tightens with them — preserving uniformity across the row.
 
-2. **Crammed at the bottom**
-   Vertical stack at 1080px is: header → 64px gap → top row of boxes → 20px → arrow row → 16px → bottom row (CKP + chart) → 40px → bottom strip. Because the chart adds visual mass on the right side of the bottom row, the row reads taller than before and the 40px-then-strip tail feels squeezed.
+### 2. Left-align the chart with box 03's content edge
 
-### Fixes (in `src/slides/Slide4.tsx`)
+Right now the chart wrapper is `{ alignSelf: "center", width: "100%" }` — its left edge sits flush with box 03's outer border above. The user wants it aligned with box 03's **inner content** (where "Report / Gap", the icon, and the body text begin). Add `paddingLeft: 22px` (matching the new horizontal padding of `WorkflowBox`) and a matching `paddingRight: 22px` so the bars also terminate flush with box 03's right content edge.
 
-1. **Make the chart fill its column** — drop `maxWidth: 360px` and `paddingLeft: 8px` from the chart wrapper. The wrapper becomes `{ alignSelf: "center", width: "100%" }`. Result: chart's left/right edges match box 03's column edges exactly. The eyebrow, all three bar labels, and the "1 week" anchor sit perfectly under box 03's outline above.
+The eyebrow "THE COMPOUNDING EFFECT" already left-aligns inside the chart's flex column, so no change inside `CompoundingChart` itself.
 
-2. **Recover vertical space** — tighten the four gaps that compound into the crowding:
-   - Header → top row: `64px` → `40px`
-   - Top row → downward arrow: `marginTop: 20px` → `12px`
-   - Arrow → bottom row: `marginTop: 16px` → `8px` (desktop only)
-   - Bottom row → strip: `40px` → `20px`
+### 3. Add a horizontal arrow from CKP → compounding chart
 
-   Total reclaimed: ~60px. Bottom row + strip get noticeable breathing room without changing any element's intrinsic size.
+The bottom row currently lays out (desktop): `<div /> | <div /> | CKP | <div /> | Chart`. The fourth cell (the `auto` slot between CKP and chart) is currently an empty `<div />`. Replace it with `<ArrowCell delay={tArrowCKP} vertical={false} />` so a mint `ArrowRight` appears between CKP and the chart, matching the 01→02 and 02→03 arrows visually (same icon, same size, same color, same scaleX entrance animation).
 
-### What stays the same
+New timing constant: `tArrowCKP = tBox4 + 0.4`, then bump `tChart = tArrowCKP + 0.3` (chart now reveals after the arrow finishes drawing). `tStrip = tChart + 0.6` stays as is (just shifted by the arrow duration).
 
-- Animation timings unchanged.
-- Mobile layout unchanged (still stacks chart under CKP with its own 20px gap; the desktop-only `marginTop: 16 → 8` change explicitly preserves the mobile value).
-- Box sizes, fonts, colors, content — all unchanged.
-- Slide 5 untouched.
+### 4. Reclaim a bit more vertical room
+
+Because the boxes are now ~50px shorter each row, the slide has noticeably more breathing room — but to make the bottom not feel "sucked toward the strip" either, leave the existing gaps as they are (40px header→row, 12px row→arrow-down, 8px arrow-down→bottom-row, 20px bottom-row→strip). The diet on the boxes does the work.
 
 ### File touched
 
-- `src/slides/Slide4.tsx` — five small edits, all in the existing JSX (no structural changes).
+- `src/slides/Slide4.tsx` — only this file. No new components, no asset changes.
+
+### What stays unchanged
+
+- Slide 5 untouched.
+- `CompoundingChart` internals unchanged (font sizes, bar heights, colors).
+- All copy, all icons, all colors — same.
+- Mobile layout unchanged (chart still stacks below CKP; the new horizontal `ArrowCell` will simply not render between them on mobile because the bottom-row grid stays in `1fr` single-column on mobile and the chart is rendered in its own conditional block underneath).
