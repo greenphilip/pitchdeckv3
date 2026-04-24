@@ -294,7 +294,7 @@ export default function Slide4() {
         </div>
 
         {/* GAP */}
-        <div style={{ height: "64px", flexShrink: 0 }} />
+        <div style={{ height: "40px", flexShrink: 0 }} />
 
         {/* WORKFLOW — top row */}
         <div
@@ -343,7 +343,7 @@ export default function Slide4() {
               maxWidth: "min(1400px, 100%)",
               width: "100%",
               margin: "0 auto",
-              marginTop: "20px",
+              marginTop: "12px",
               alignItems: "center",
             }}
           >
@@ -380,7 +380,7 @@ export default function Slide4() {
             maxWidth: "min(1400px, 100%)",
             width: "100%",
             margin: "0 auto",
-            marginTop: isMobile ? "20px" : "16px",
+            marginTop: isMobile ? "20px" : "8px",
             alignItems: "stretch",
           }}
         >
@@ -400,8 +400,6 @@ export default function Slide4() {
               style={{
                 alignSelf: "center",
                 width: "100%",
-                maxWidth: "360px",
-                paddingLeft: "8px",
               }}
             >
               <CompoundingChart baseDelay={tChart} />
@@ -415,7 +413,7 @@ export default function Slide4() {
         </div>
 
         {/* GAP */}
-        <div style={{ height: "40px", flexShrink: 0 }} />
+        <div style={{ height: "20px", flexShrink: 0 }} />
 
         {/* BOTTOM STRIP */}
         <motion.div
