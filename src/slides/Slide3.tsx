@@ -196,6 +196,7 @@ export default function Slide3() {
                     color: LIGHT,
                     opacity: 0.8,
                     lineHeight: 1.5,
+                    whiteSpace: "pre-line",
                   }}
                 >
                   {cat.body}
