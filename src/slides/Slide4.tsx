@@ -321,14 +321,14 @@ export default function Slide4() {
             number="02"
             Icon={Link2}
             headline="Glacier AI"
-            body={"Matches evidence to requirements\nProvides citations\n\n\nUser can draft, delegate, review, approve, export"}
+            body={"Matches evidence to requirements\nEvaluates quality\nProvides citations and improvements\n\n\nUser can draft, delegate, review, approve, export"}
             delay={tBox2}
           />
           <ArrowCell delay={tArrow2} vertical={isMobile} />
           <WorkflowBox
             number="03"
             Icon={ShieldCheck}
-            headline="Report / Gap"
+            headline="Report / Gap / Policy"
             body={"CSRD-grade reports, Ecovadis questionnaires, gap analysis, policy builders\n\n\n+ more ESG standards soon"}
             delay={tBox3}
           />
