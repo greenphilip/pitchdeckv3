@@ -71,7 +71,7 @@ const team: Member[] = [
   {
     name: "Nina Aichinger",
     title: "Head of People",
-    background: "Previously Head of HR at Bitpanda and Shpock.",
+    background: "10+ years at fast scaling startups, previously Head of HR at Bitpanda and Shpock.",
     photo: ninaPhoto,
     logos: [
       { src: bitpandaLogo, invert: true },
