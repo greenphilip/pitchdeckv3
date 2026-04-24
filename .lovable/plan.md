@@ -1,39 +1,56 @@
-## Slide 4 — tighten boxes, align compounding chart, add arrow CKP → chart
+## Delete display Slide 5 ("The Compounding Effect") and renumber the deck to 9 slides
 
-### 1. Tighten all four workflow boxes
+### Mapping
 
-In `WorkflowBox` (lines 131–185), shrink the internal spacing:
-- `padding: "32px"` → `padding: "20px 22px"` (less vertical, slightly less horizontal)
-- `gap: "16px"` → `gap: "10px"`
-- Icon `size={44}` → `size={36}` (and inline `width: 44px` → `width: 36px`)
-- Headline `fontSize: 22px` → `fontSize: 20px`
-- Body `fontSize: 16px` → `fontSize: 15px`, `lineHeight: 1.5` → `lineHeight: 1.45`
+Current deck array:
+```
+[Slide1, Slide2, Slide3, Slide4, Slide6, Slide7, Slide8, Slide9, Slide10, Slide11]
+display: 1       2       3       4      5       6       7       8       9        10
+```
 
-Combined effect: each box loses ~50–60px of height while keeping the same content readable. Boxes 01/02/03 get visibly tighter; box 04 (CKP, same component) tightens with them — preserving uniformity across the row.
+Display Slide 5 is the file `src/slides/Slide6.tsx` ("THE COMPOUNDING EFFECT" — three time-compression bars). Its content already lives as a free-floating chart inside Slide 4 (the duplicate added earlier), so removing the standalone slide loses no information.
 
-### 2. Left-align the chart with box 03's content edge
+New deck (9 slides):
+```
+[Slide1, Slide2, Slide3, Slide4, Slide7, Slide8, Slide9, Slide10, Slide11]
+display: 1       2       3       4      5       6       7       8        9
+```
 
-Right now the chart wrapper is `{ alignSelf: "center", width: "100%" }` — its left edge sits flush with box 03's outer border above. The user wants it aligned with box 03's **inner content** (where "Report / Gap", the icon, and the body text begin). Add `paddingLeft: 22px` (matching the new horizontal padding of `WorkflowBox`) and a matching `paddingRight: 22px` so the bars also terminate flush with box 03's right content edge.
+### Changes
 
-The eyebrow "THE COMPOUNDING EFFECT" already left-aligns inside the chart's flex column, so no change inside `CompoundingChart` itself.
+**1. `src/components/Presentation.tsx`**
+- Remove `import Slide6 from "@/slides/Slide6";`
+- Remove `Slide6` from the `slides` array.
+- Update overview grid template from `gridTemplateColumns: repeat(5, 1fr); gridTemplateRows: repeat(2, 1fr)` to `gridTemplateColumns: repeat(3, 1fr); gridTemplateRows: repeat(3, 1fr)` so 9 tiles fit cleanly (3×3).
+- Keyboard `/^[1-9]$/` shortcut range already covers 1–9. No change.
 
-### 3. Add a horizontal arrow from CKP → compounding chart
+**2. Renumber `slideNumber` & `totalSlides` on each remaining slide**
+All `totalSlides` go from `10` → `9`. `slideNumber` updates per new position:
 
-The bottom row currently lays out (desktop): `<div /> | <div /> | CKP | <div /> | Chart`. The fourth cell (the `auto` slot between CKP and chart) is currently an empty `<div />`. Replace it with `<ArrowCell delay={tArrowCKP} vertical={false} />` so a mint `ArrowRight` appears between CKP and the chart, matching the 01→02 and 02→03 arrows visually (same icon, same size, same color, same scaleX entrance animation).
+| File | Old `slideNumber` | New `slideNumber` |
+|---|---|---|
+| `Slide1.tsx` | 1 | 1 |
+| `Slide2.tsx` | 2 | 2 |
+| `Slide3.tsx` | 3 | 3 |
+| `Slide4.tsx` | 4 | 4 |
+| `Slide7.tsx` | 6 | 5 |
+| `Slide8.tsx` | 7 | 6 |
+| `Slide9.tsx` | 8 | 7 |
+| `Slide10.tsx` | 9 | 8 |
+| `Slide11.tsx` | 10 | 9 |
 
-New timing constant: `tArrowCKP = tBox4 + 0.4`, then bump `tChart = tArrowCKP + 0.3` (chart now reveals after the arrow finishes drawing). `tStrip = tChart + 0.6` stays as is (just shifted by the arrow duration).
+(File names stay as-is to keep the diff small and avoid rewriting many import statements; the user only sees display numbers.)
 
-### 4. Reclaim a bit more vertical room
+**3. Delete dead files**
+- `src/slides/Slide6.tsx` — no longer referenced anywhere.
+- `src/slides/Slide5.tsx` — already orphaned from a previous removal (still on disk, not in the deck). Delete to clean up.
 
-Because the boxes are now ~50px shorter each row, the slide has noticeably more breathing room — but to make the bottom not feel "sucked toward the strip" either, leave the existing gaps as they are (40px header→row, 12px row→arrow-down, 8px arrow-down→bottom-row, 20px bottom-row→strip). The diet on the boxes does the work.
+### What stays untouched
 
-### File touched
+- All slide content, copy, animations.
+- Keyboard navigation logic.
+- The compounding-effect chart on Slide 4 (the user's free-floating duplicate) stays as is — it now becomes the only place this content lives.
 
-- `src/slides/Slide4.tsx` — only this file. No new components, no asset changes.
+### Verification
 
-### What stays unchanged
-
-- Slide 5 untouched.
-- `CompoundingChart` internals unchanged (font sizes, bar heights, colors).
-- All copy, all icons, all colors — same.
-- Mobile layout unchanged (chart still stacks below CKP; the new horizontal `ArrowCell` will simply not render between them on mobile because the bottom-row grid stays in `1fr` single-column on mobile and the chart is rendered in its own conditional block underneath).
+After edits I'll run `tsc --noEmit` to confirm no broken imports.
