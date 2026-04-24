@@ -87,9 +87,12 @@ export default function Slide1() {
               lineHeight: 1.1,
               color: LIGHT,
               margin: 0,
+              whiteSpace: "pre-line",
             }}
           >
-            Glacier helps companies get ESG reporting done —{" "}
+            Glacier helps companies{"\n"}
+            get ESG reporting done{"\n"}
+            —{" "}
             <span style={{ color: MINT, position: "relative", display: "inline-block" }}>
               faster
               <motion.span
@@ -109,7 +112,7 @@ export default function Slide1() {
                 }}
               />
             </span>
-            , with <span style={{ color: MINT }}>quality they can defend</span>.
+            {"\n"}, with <span style={{ color: MINT }}>quality they can defend</span>.
           </motion.h1>
 
           {/* Vertical accent line — signature motion */}
