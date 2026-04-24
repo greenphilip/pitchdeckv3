@@ -244,15 +244,34 @@ export default function Slide8() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.95 }}
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(13px, 1.1vw, 18px)",
-              color: `${LIGHT}B3`,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
+              display: "flex",
+              flexDirection: "column",
+              gap: "clamp(6px, 0.8vh, 10px)",
             }}
           >
-            USE OF FUNDS
+            <div
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: "clamp(15px, 1.3vw, 22px)",
+                color: MINT,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.16em",
+              }}
+            >
+              USE OF FUNDS
+            </div>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.05 }}
+              style={{
+                width: "80%",
+                height: "1px",
+                background: `${MINT}4D`,
+                transformOrigin: "left",
+              }}
+            />
           </motion.div>
 
           {!isMobile && (
@@ -264,6 +283,7 @@ export default function Slide8() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                paddingTop: "clamp(2px, 0.4vh, 6px)",
               }}
             >
               <ArrowRight
@@ -278,15 +298,34 @@ export default function Slide8() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.95 }}
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(13px, 1.1vw, 18px)",
-              color: `${LIGHT}B3`,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
+              display: "flex",
+              flexDirection: "column",
+              gap: "clamp(6px, 0.8vh, 10px)",
             }}
           >
-            BY DEC 2026
+            <div
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: "clamp(15px, 1.3vw, 22px)",
+                color: MINT,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.16em",
+              }}
+            >
+              BY DEC 2026
+            </div>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.05 }}
+              style={{
+                width: "80%",
+                height: "1px",
+                background: `${MINT}4D`,
+                transformOrigin: "left",
+              }}
+            />
           </motion.div>
 
           {/* Three row pairs */}
