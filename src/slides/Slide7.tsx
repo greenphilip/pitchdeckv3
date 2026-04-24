@@ -279,8 +279,13 @@ export default function Slide7() {
                           width: "auto",
                           maxWidth: "220px",
                           objectFit: "contain",
-                          opacity: logo.invert ? 0.9 : 1,
-                          filter: logo.invert ? "invert(1) brightness(1.1)" : undefined,
+                          opacity: logo.invert || logo.mono ? 0.9 : 1,
+                          filter: logo.mono
+                            ? "grayscale(1) invert(1) brightness(1.1)"
+                            : logo.invert
+                            ? "invert(1) brightness(1.1)"
+                            : undefined,
+                          mixBlendMode: logo.mono ? "screen" : undefined,
                           display: "block",
                         }}
                       />
