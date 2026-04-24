@@ -12,7 +12,7 @@ export default function Slide1() {
   const isMobile = useIsMobile();
 
   return (
-    <SlideFrame variant="minimal" slideNumber={1} totalSlides={8} showLogo={false}>
+    <SlideFrame variant="minimal" slideNumber={1} totalSlides={8} showLogo={false} showSlideNumber={false}>
       <div
         style={{
           flex: 1,

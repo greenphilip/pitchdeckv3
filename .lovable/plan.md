@@ -1,36 +1,65 @@
-# Slide 8 — Add "unlocks" label, asterisk reference, and AWS footnote
+# Slide Audit + Show Slide Numbers on All Slides
 
-Three small additions to the headline equation on Slide 8.
+## Audit findings
+
+### Files vs. counts
+- `src/slides/` contains **8 files**: `Slide1.tsx` … `Slide8.tsx`. ✅ Filenames match their `slideNumber` prop and import order in `Presentation.tsx`.
+- `Presentation.tsx` registers all 8. `totalSlides={8}` is consistent everywhere.
+- Project knowledge says "Exactly 10 slides" — the deck currently has **8**. Flagging this as a discrepancy. **No change made** unless you want us to either (a) update the project knowledge to 10→8, or (b) add the 2 missing slides. Please confirm separately.
+
+### Eyebrow / section labels (current state)
+
+| # | File | Variant | Eyebrow / Section label | Slide number shown? |
+|---|------|---------|-------------------------|---------------------|
+| 1 | Slide1.tsx | minimal | *(cover — no eyebrow; tagline "ESG Reporting — Fast, Defensible")* | ❌ no |
+| 2 | Slide2.tsx | minimal | `THE CUSTOMER'S SITUATION` | ❌ no |
+| 3 | Slide3.tsx | technical | `WHY NOW — AND WHY NOBODY'S SOLVED IT` | ✅ yes |
+| 4 | Slide4.tsx | technical | `THE PRODUCT` | ✅ yes |
+| 5 | Slide5.tsx | technical-light | `TRACTION` | ✅ yes |
+| 6 | Slide6.tsx | technical | `MARKET & EXPANSION` | ✅ yes |
+| 7 | Slide7.tsx | minimal | `TEAM` | ❌ no |
+| 8 | Slide8.tsx | minimal | `BRIDGE ROUND · THE ASK` | ❌ no |
+
+The eyebrow naming is **consistent in style** (mono, mint, uppercase, 0.12em tracking) and the labels are coherent. No renames needed.
+
+### Why slide numbers are inconsistent
+In `src/components/SlideFrame.tsx` line 25:
+```ts
+const showSlideNumber = showGrid; // only true for 'technical' / 'technical-light'
+```
+The `SLIDE N / 8` indicator is **gated by variant**, so minimal slides (1, 2, 7, 8) never show it.
 
 ## Changes
 
-### 1. Add "unlocks" left of the arrow + center the equation
+### Single edit — `src/components/SlideFrame.tsx`
 
-Currently the €250k → €425k equation uses a 3-column grid (`auto auto auto`) that's centered on the page already, but the arrow connector has no text label.
+Decouple slide-number visibility from variant so it appears on every slide — except an opt-out for the cover.
 
-- Add the word **"unlocks"** as a small mint italic label, positioned just to the **left of the arrow** (above or beside it), aligned with the arrow's vertical center.
-- Style: `'JetBrains Mono'`, `clamp(13px, 1.1vw, 18px)`, color `MINT` at ~80% opacity, lowercase, italic, letter-spacing `0.08em`.
-- Keep the existing arrow icon as the visual connector — "unlocks" sits as a caption to its left.
-- Ensure the entire equation block (€250k + unlocks + arrow + €425k) remains horizontally centered on the slide. The grid already centers via `justifyItems: "center"` on the parent; we'll wrap "unlocks + arrow" together in the middle column so spacing stays balanced.
+1. Change `showSlideNumber` to **always true** by default, controlled by a new prop `showSlideNumber?: boolean` (default `true`).
+2. In `Slide1.tsx` (the cover), pass `showSlideNumber={false}` alongside the existing `showLogo={false}` — covers conventionally hide pagination.
+3. Keep the existing visual treatment (top-right, JetBrains Mono 16px, mint at 60% opacity, `SLIDE N / 8`).
 
-### 2. Add asterisk next to "IN NEW CAPITAL"
+### Result
 
-- Append a mint `*` immediately after the "IN NEW CAPITAL" caption under €425k.
-- Same mint color as the caption, slightly elevated (superscript style) using `verticalAlign: "super"` and a smaller font size.
-
-### 3. Add footnote at the bottom
-
-- Insert a small footnote line **above** the existing "2 Existing Investors Participating · Names on Request" footer (or just below it — see note below).
-- Text: `* €450k AWS "double equity loan" tranche`
-- Style: `'JetBrains Mono'`, `clamp(11px, 0.85vw, 14px)`, color `MINT` at ~80% opacity, letter-spacing `0.08em`, centered.
-- Placement recommendation: **directly above** the investor footer so the asterisk reference is visually close to the figures, with a small gap (`clamp(4px, 0.6vh, 8px)`) separating the two footer lines.
+| # | Slide number visible after change |
+|---|-----------------------------------|
+| 1 | ❌ (intentional — cover) |
+| 2 | ✅ new |
+| 3 | ✅ |
+| 4 | ✅ |
+| 5 | ✅ |
+| 6 | ✅ |
+| 7 | ✅ new |
+| 8 | ✅ new |
 
 ## Technical detail
 
-File: `src/slides/Slide8.tsx`
+Files modified:
+- `src/components/SlideFrame.tsx` — add `showSlideNumber?: boolean` prop (default `true`); replace the `const showSlideNumber = showGrid` line.
+- `src/slides/Slide1.tsx` — add `showSlideNumber={false}` to the `<SlideFrame>` opening tag.
 
-- **Middle grid column** (currently just the arrow `motion.div` around line 138): wrap in a flex row containing `<span>unlocks</span>` + `<ArrowRight />`, both vertically centered. On mobile (rotated 90°), stack "unlocks" above the rotated arrow.
-- **€425k caption** (line ~196): change `IN NEW CAPITAL` to `IN NEW CAPITAL<sup>*</sup>` using a styled span (not raw `<sup>`) for precise control.
-- **Footnote**: add a new `motion.div` between the bottom `Divider` and the existing investor footer (around line 322), with the asterisk reference text in mint mono.
+No other slide files need to change. No layout shifts (the indicator is absolutely positioned in the top-right, outside the content flow).
 
-No other slides affected. No new dependencies.
+## Open question (not blocking)
+
+Project knowledge states the deck should be **10 slides**, but only 8 exist. Want me to (a) update the project knowledge note to reflect 8, or (b) plan the 2 additional slides? I'd suggest handling that as a separate task once you decide.
