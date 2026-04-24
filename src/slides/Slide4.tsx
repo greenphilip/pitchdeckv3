@@ -317,7 +317,7 @@ export default function Slide4() {
             number="00"
             Icon={FileText}
             headline="ESG Questionnaires"
-            body={"Varying standards, different formats, validity criteria for evidence"}
+            body={"Varying standards, formats,\ncriteria for evidence"}
             delay={tBoxQ}
           />
           {!isMobile && <div />}
@@ -383,8 +383,8 @@ export default function Slide4() {
           <WorkflowBox
             number="01"
             Icon={UploadCloud}
-            headline="Documents"
-            body={"Upload any format: PDF/PPT/DOC/XLS\nQuantity doesn't matter\n\nUnstructured data reflects company reality"}
+            headline="Company Documents"
+            body={"Upload any format: PDF/PPT/DOC/XLS\nQuantity doesn't matter\n\nUnstructured data reflects company reality "}
             delay={tBox1}
           />
           <ArrowCell delay={tArrow1} vertical={isMobile} />
