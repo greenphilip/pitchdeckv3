@@ -187,7 +187,7 @@ export default function Slide8() {
                   scale: { duration: 0.7, times: [0, 0.6, 1], ease: EXPO_OUT, delay: 0.4 },
                 }}
                 style={{
-                  fontSize: "clamp(72px, 10vw, 144px)",
+                  fontSize: isMobile ? "clamp(56px, 18vw, 96px)" : "clamp(72px, 10vw, 144px)",
                   fontWeight: 700,
                   letterSpacing: "-0.03em",
                   color: MINT,
