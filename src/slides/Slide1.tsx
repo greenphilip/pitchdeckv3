@@ -115,19 +115,6 @@ export default function Slide1() {
             {"\n"}, with <span style={{ color: MINT }}>quality they can defend</span>.
           </motion.h1>
 
-          {/* Vertical accent line — signature motion */}
-          <motion.div
-            initial={{ scaleY: 0 }}
-            animate={{ scaleY: 1 }}
-            transition={{ duration: 0.6, delay: 0.85, ease: EXPO_OUT }}
-            style={{
-              width: 1,
-              height: "32px",
-              background: MINT,
-              opacity: 0.35,
-              transformOrigin: "top",
-            }}
-          />
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
