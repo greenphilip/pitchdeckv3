@@ -240,7 +240,7 @@ export default function Slide8() {
               marginTop: "clamp(8px, 1.5vh, 16px)",
             }}
           >
-            Twelve months to Series A on{" "}
+            Join us on our 12 month journey to Series A on{" "}
             <span style={{ color: MINT, fontWeight: 700 }}>€2.4M ARR</span>.
           </motion.div>
         </div>
