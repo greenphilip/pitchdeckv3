@@ -42,7 +42,7 @@ const forces: Force[] = [
     label: "AI",
     Icon: Cpu,
     title: "General AI is table stakes.",
-    body: "Generic LLMs hallucinate and lack traceability. Quality is the moat — widening, not narrowing.",
+    body: "Generic LLMs hallucinate and lack traceability. Quality is the moat.",
   },
   {
     label: "DEMAND",
@@ -64,7 +64,7 @@ const categories: Category[] = [
     header: "GENERAL AI",
     Icon: Sparkles,
     shortHeadline: "Fast, but can't be trusted at audit.",
-    body: "Generic LLMs hallucinate. No source traceability. No specialist regulatory knowledge.",
+    body: "Generic LLMs hallucinate. No source traceability. No specialist regulatory knowledge. No structured memory.",
     tag: "GAP: quality & traceability",
   },
   {
