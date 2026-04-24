@@ -152,7 +152,7 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
       <div
         style={{
           fontFamily: "'JetBrains Mono', monospace",
-          fontSize: "14px",
+          fontSize: "13px",
           color: MINT,
           fontWeight: 600,
           letterSpacing: "0.1em",
