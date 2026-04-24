@@ -138,13 +138,13 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
         background: NAVY,
         border: `1px solid ${MINT}4D`,
         borderRadius: 12,
-        padding: "32px",
+        padding: "20px 22px",
         boxShadow: "0 1px 2px 0 rgba(0,0,0,0.2)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         textAlign: "center",
-        gap: "16px",
+        gap: "10px",
         height: "100%",
         boxSizing: "border-box",
       }}
@@ -160,10 +160,10 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
       >
         {number}
       </div>
-      <Icon size={44} color={MINT} strokeWidth={1.5} style={{ width: "44px", height: "auto" }} />
+      <Icon size={36} color={MINT} strokeWidth={1.5} style={{ width: "36px", height: "auto" }} />
       <div
         style={{
-          fontSize: "22px",
+          fontSize: "20px",
           color: LIGHT_GRAY,
           fontWeight: 600,
         }}
@@ -172,9 +172,9 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
       </div>
       <div
         style={{
-          fontSize: "16px",
+          fontSize: "15px",
           color: `${LIGHT_GRAY}CC`,
-          lineHeight: 1.5,
+          lineHeight: 1.45,
           whiteSpace: "pre-line",
         }}
       >
@@ -221,7 +221,8 @@ export default function Slide4() {
   const tBox3 = tArrow2 + 0.3;
   const tArrow3 = tBox3 + 0.4;
   const tBox4 = tArrow3 + 0.3;
-  const tChart = tBox4 + 0.2;
+  const tArrowCKP = tBox4 + 0.4;
+  const tChart = tArrowCKP + 0.3;
   const tStrip = tChart + 0.6;
 
   return (
@@ -394,12 +395,15 @@ export default function Slide4() {
             body={"A compounding knowledge base to accelerate each future reporting questionnaire.\n\nProvides defensible moat and increases accuracy at scale."}
             delay={tBox4}
           />
-          {!isMobile && <div />}
+          {!isMobile && <ArrowCell delay={tArrowCKP} vertical={false} />}
           {!isMobile && (
             <div
               style={{
                 alignSelf: "center",
                 width: "100%",
+                paddingLeft: "22px",
+                paddingRight: "22px",
+                boxSizing: "border-box",
               }}
             >
               <CompoundingChart baseDelay={tChart} />
