@@ -20,13 +20,13 @@ const pillars: Pillar[] = [
     number: "01",
     Icon: BookOpen,
     title: "Custom-built regulatory knowledge.",
-    body: "Not a general LLM with ESG prompts. Our models are trained on the regulatory texts, interpretations, and edge cases that decide audits.",
+    body: "Not a general LLM with ESG prompts. Our agentic workflows match regulatory texts, interpretations, and edge cases that decide audits.",
   },
   {
     number: "02",
     Icon: UserCheck,
     title: "Human-in-the-loop by design.",
-    body: "AI accelerates every step. The customer owns every output. Traceability and judgment stay with people.",
+    body: "The client is empowered at each stage to review every output. Traceability and judgement guaranteed. ",
   },
   {
     number: "03",
