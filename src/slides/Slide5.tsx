@@ -135,8 +135,8 @@ export default function Slide5() {
             maxWidth: "min(1400px, 100%)",
             margin: "0 auto",
             display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 1.35fr) minmax(0, 1fr)",
-            gap: isMobile ? "48px" : "40px",
+            gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 1.35fr) minmax(0, 0.9fr)",
+            gap: isMobile ? "48px" : "96px",
             alignItems: "stretch",
           }}
         >
@@ -489,7 +489,7 @@ export default function Slide5() {
                   src={logo.src}
                   alt={logo.alt}
                   style={{
-                    maxHeight: isMobile ? "52px" : "56px",
+                    maxHeight: isMobile ? "47px" : "50px",
                     maxWidth: "100%",
                     objectFit: "contain",
                     filter: "brightness(0) invert(1)",
