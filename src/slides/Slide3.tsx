@@ -41,7 +41,7 @@ const forces: Force[] = [
   {
     label: "AI",
     Icon: Cpu,
-    title: "General AI is table stakes.",
+    title: "AI capabilities grow without guidance",
     body: "Generic LLMs hallucinate and lack traceability. Quality is the moat.",
   },
   {
