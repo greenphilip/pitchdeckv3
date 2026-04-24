@@ -90,49 +90,8 @@ export default function Slide1() {
               whiteSpace: "pre-line",
             }}
           >
-            Glacier helps companies{"\n"}
-            get ESG reporting done{"\n"}
-            —{" "}
-            <span style={{ color: MINT, position: "relative", display: "inline-block" }}>
-              faster
-              <motion.span
-                aria-hidden
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.6, delay: 1.0, ease: EXPO_OUT }}
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  right: 0,
-                  bottom: "-0.08em",
-                  height: 1,
-                  background: MINT,
-                  transformOrigin: "left",
-                  display: "block",
-                }}
-              />
-            </span>
-            {"\n"}, with <span style={{ color: MINT }}>quality they can defend</span>.
+            {"Glacier helps companies\nget ESG reporting done\n— faster\n, with quality they can defend."}
           </motion.h1>
-
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.0, ease: EXPO_OUT }}
-            style={{
-              fontSize: "26px",
-              fontWeight: 400,
-              lineHeight: 1.5,
-              color: LIGHT,
-              opacity: 0.75,
-              margin: 0,
-              maxWidth: "1000px",
-              whiteSpace: "pre-line",
-            }}
-          >
-            {"\n"}
-          </motion.p>
         </div>
 
         {/* Bottom anchor: meta with status dot */}
