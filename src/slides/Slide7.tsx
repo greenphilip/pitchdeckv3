@@ -106,7 +106,7 @@ export default function Slide7() {
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
-            marginTop: "48px",
+            marginTop: isMobile ? "16px" : "48px",
           }}
         >
           <motion.div
@@ -152,14 +152,12 @@ export default function Slide7() {
             width: "100%",
             maxWidth: "min(1400px, 100%)",
             margin: "0 auto",
-            marginTop: "56px",
+            marginTop: isMobile ? "24px" : "56px",
             display: "grid",
             gridTemplateColumns: isMobile
               ? "repeat(2, minmax(0, 1fr))"
               : "repeat(5, minmax(0, 1fr))",
             gap: isMobile ? "32px" : "40px",
-            maxHeight: isMobile ? "55vh" : undefined,
-            overflowY: isMobile ? "auto" : undefined,
           }}
         >
           {team.map((m, i) => (
@@ -179,8 +177,8 @@ export default function Slide7() {
               {/* Avatar */}
               <div
                 style={{
-                  width: "clamp(96px, 26vw, 160px)",
-                  height: "clamp(96px, 26vw, 160px)",
+                  width: "clamp(120px, 32vw, 160px)",
+                  height: "clamp(120px, 32vw, 160px)",
                   borderRadius: "50%",
                   background: `${BLUE}40`,
                   display: "flex",
@@ -251,7 +249,7 @@ export default function Slide7() {
                   WebkitLineClamp: 3,
                   WebkitBoxOrient: "vertical",
                   overflow: "hidden",
-                  minHeight: `calc(18px * 1.45 * 3)`,
+                  minHeight: isMobile ? undefined : `calc(18px * 1.45 * 3)`,
                 }}
               >
                 {m.background}
@@ -269,7 +267,10 @@ export default function Slide7() {
                   }}
                 >
                   {m.logos.map((logo, idx) => {
-                    const h = logo.height ?? 48;
+                    const baseH = logo.height ?? 48;
+                    // Cap logo heights tightly on mobile so big logos (e.g. BMDW @128px)
+                    // don't visually dominate the narrow card.
+                    const h = isMobile ? Math.min(baseH, 36) : baseH;
                     const img = (
                       <img
                         src={logo.src}
@@ -277,7 +278,7 @@ export default function Slide7() {
                         style={{
                           height: `${h}px`,
                           width: "auto",
-                          maxWidth: "220px",
+                          maxWidth: isMobile ? "120px" : "220px",
                           objectFit: "contain",
                           opacity: logo.invert || logo.mono ? 0.9 : 1,
                           filter: logo.mono
@@ -337,7 +338,7 @@ export default function Slide7() {
         </motion.div>
 
         {/* Spacer above bottom anchor — explicit, not auto */}
-        <div style={{ height: "80px", flexShrink: 0 }} />
+        <div style={{ height: isMobile ? "24px" : "80px", flexShrink: 0 }} />
 
         {/* BOTTOM ANCHOR */}
         <motion.div

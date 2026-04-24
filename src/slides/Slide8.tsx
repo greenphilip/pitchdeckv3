@@ -88,7 +88,7 @@ export default function Slide8() {
               gridTemplateColumns: isMobile ? "1fr" : "auto auto auto",
               alignItems: "end",
               justifyItems: "center",
-              gap: isMobile ? "clamp(12px, 2vh, 20px)" : "clamp(24px, 3.5vw, 56px)",
+              gap: isMobile ? "4px" : "clamp(24px, 3.5vw, 56px)",
               width: "100%",
             }}
           >
@@ -106,7 +106,7 @@ export default function Slide8() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: EXPO_OUT, delay: 0.15 }}
                 style={{
-                  fontSize: "clamp(56px, 7.5vw, 112px)",
+                  fontSize: isMobile ? "clamp(40px, 13vw, 72px)" : "clamp(56px, 7.5vw, 112px)",
                   fontWeight: 700,
                   letterSpacing: "-0.025em",
                   color: MINT,
@@ -160,8 +160,8 @@ export default function Slide8() {
               </span>
               <ArrowRight
                 style={{
-                  width: "clamp(32px, 3.4vw, 56px)",
-                  height: "clamp(32px, 3.4vw, 56px)",
+                  width: isMobile ? "24px" : "clamp(32px, 3.4vw, 56px)",
+                  height: isMobile ? "24px" : "clamp(32px, 3.4vw, 56px)",
                   color: `${MINT}99`,
                   transform: isMobile ? "rotate(90deg)" : undefined,
                 }}
@@ -187,7 +187,7 @@ export default function Slide8() {
                   scale: { duration: 0.7, times: [0, 0.6, 1], ease: EXPO_OUT, delay: 0.4 },
                 }}
                 style={{
-                  fontSize: "clamp(72px, 10vw, 144px)",
+                  fontSize: isMobile ? "clamp(56px, 18vw, 96px)" : "clamp(72px, 10vw, 144px)",
                   fontWeight: 700,
                   letterSpacing: "-0.03em",
                   color: MINT,
@@ -251,54 +251,75 @@ export default function Slide8() {
         </div>
 
         {/* USE OF FUNDS → MILESTONES */}
-        <div
-          style={{
-            width: "100%",
-            maxWidth: "min(1300px, 100%)",
-            display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "1fr 56px 1fr",
-            columnGap: "clamp(20px, 2vw, 32px)",
-            rowGap: "clamp(14px, 2vh, 22px)",
-            alignItems: "start",
-          }}
-        >
-          {/* Row 1: column headers */}
-          <motion.div
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.95 }}
+        {isMobile ? (
+          <div
             style={{
+              width: "100%",
+              maxWidth: "min(1300px, 100%)",
               display: "flex",
               flexDirection: "column",
-              gap: "clamp(6px, 0.8vh, 10px)",
+              gap: "clamp(20px, 3vh, 32px)",
             }}
           >
-            <div
+            <MobileColumn
+              header="USE OF FUNDS"
+              items={useOfFunds.map((text) => ({ text, kind: "diamond" as const }))}
+              baseDelay={0.95}
+            />
+            <MobileColumn
+              header="BY DEC 2026"
+              items={milestones.map((text) => ({ text, kind: "check" as const }))}
+              baseDelay={1.15}
+            />
+          </div>
+        ) : (
+          <div
+            style={{
+              width: "100%",
+              maxWidth: "min(1300px, 100%)",
+              display: "grid",
+              gridTemplateColumns: "1fr 56px 1fr",
+              columnGap: "clamp(20px, 2vw, 32px)",
+              rowGap: "clamp(14px, 2vh, 22px)",
+              alignItems: "start",
+            }}
+          >
+            {/* Row 1: column headers */}
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.95 }}
               style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(15px, 1.3vw, 22px)",
-                color: MINT,
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.16em",
+                display: "flex",
+                flexDirection: "column",
+                gap: "clamp(6px, 0.8vh, 10px)",
               }}
             >
-              USE OF FUNDS
-            </div>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.05 }}
-              style={{
-                width: "80%",
-                height: "1px",
-                background: `${MINT}4D`,
-                transformOrigin: "left",
-              }}
-            />
-          </motion.div>
+              <div
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: "clamp(15px, 1.3vw, 22px)",
+                  color: MINT,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.16em",
+                }}
+              >
+                USE OF FUNDS
+              </div>
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.05 }}
+                style={{
+                  width: "80%",
+                  height: "1px",
+                  background: `${MINT}4D`,
+                  transformOrigin: "left",
+                }}
+              />
+            </motion.div>
 
-          {!isMobile && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -315,54 +336,53 @@ export default function Slide8() {
                 strokeWidth={1.75}
               />
             </motion.div>
-          )}
 
-          <motion.div
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.95 }}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "clamp(6px, 0.8vh, 10px)",
-            }}
-          >
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.95 }}
               style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "clamp(15px, 1.3vw, 22px)",
-                color: MINT,
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.16em",
+                display: "flex",
+                flexDirection: "column",
+                gap: "clamp(6px, 0.8vh, 10px)",
               }}
             >
-              BY DEC 2026
-            </div>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.05 }}
-              style={{
-                width: "80%",
-                height: "1px",
-                background: `${MINT}4D`,
-                transformOrigin: "left",
-              }}
-            />
-          </motion.div>
+              <div
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: "clamp(15px, 1.3vw, 22px)",
+                  color: MINT,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.16em",
+                }}
+              >
+                BY DEC 2026
+              </div>
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.05 }}
+                style={{
+                  width: "80%",
+                  height: "1px",
+                  background: `${MINT}4D`,
+                  transformOrigin: "left",
+                }}
+              />
+            </motion.div>
 
-          {/* Three row pairs */}
-          {[0, 1, 2].map((i) => (
-            <RowPair
-              key={i}
-              left={useOfFunds[i]}
-              right={milestones[i]}
-              delay={1.05 + i * 0.08}
-              isMobile={isMobile}
-            />
-          ))}
-        </div>
+            {/* Three row pairs */}
+            {[0, 1, 2].map((i) => (
+              <RowPair
+                key={i}
+                left={useOfFunds[i]}
+                right={milestones[i]}
+                delay={1.05 + i * 0.08}
+              />
+            ))}
+          </div>
+        )}
 
         {/* BOTTOM DIVIDER */}
         <div style={{ width: "100%", maxWidth: "min(1300px, 100%)" }}>
@@ -385,11 +405,12 @@ export default function Slide8() {
             transition={{ duration: 0.4, ease: EXPO_OUT, delay: 1.4 }}
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(11px, 0.85vw, 14px)",
+              fontSize: "clamp(12px, 0.9vw, 14px)",
               color: `${MINT}CC`,
               fontStyle: "italic",
               letterSpacing: "0.08em",
               textAlign: "center",
+              padding: "0 8px",
             }}
           >
             * €450k AWS "double equity loan" tranche
@@ -405,11 +426,21 @@ export default function Slide8() {
               color: `${LIGHT}8C`,
               fontWeight: 500,
               textTransform: "uppercase",
-              letterSpacing: "0.14em",
+              letterSpacing: isMobile ? "0.08em" : "0.14em",
               textAlign: "center",
+              lineHeight: 1.5,
+              padding: "0 8px",
             }}
           >
-            2 Existing Investors Participating · Names on Request
+            {isMobile ? (
+              <>
+                2 Existing Investors Participating
+                <br />
+                Names on Request
+              </>
+            ) : (
+              "2 Existing Investors Participating · Names on Request"
+            )}
           </motion.div>
         </div>
 
@@ -423,12 +454,10 @@ function RowPair({
   left,
   right,
   delay,
-  isMobile,
 }: {
   left: string;
   right: string;
   delay: number;
-  isMobile: boolean;
 }) {
   return (
     <>
@@ -464,24 +493,22 @@ function RowPair({
         </span>
       </motion.div>
 
-      {!isMobile && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: delay + 0.04 }}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "flex-start",
-            paddingTop: "0.55em",
-          }}
-        >
-          <ArrowRight
-            style={{ width: "18px", height: "18px", color: `${MINT}4D` }}
-            strokeWidth={1.5}
-          />
-        </motion.div>
-      )}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3, delay: delay + 0.04 }}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "flex-start",
+          paddingTop: "0.55em",
+        }}
+      >
+        <ArrowRight
+          style={{ width: "18px", height: "18px", color: `${MINT}4D` }}
+          strokeWidth={1.5}
+        />
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 8 }}
@@ -515,5 +542,103 @@ function RowPair({
         </span>
       </motion.div>
     </>
+  );
+}
+
+interface MobileItem {
+  text: string;
+  kind: "diamond" | "check";
+}
+
+function MobileColumn({
+  header,
+  items,
+  baseDelay,
+}: {
+  header: string;
+  items: MobileItem[];
+  baseDelay: number;
+}) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "clamp(10px, 1.4vh, 16px)" }}>
+      <motion.div
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, ease: EXPO_OUT, delay: baseDelay }}
+        style={{ display: "flex", flexDirection: "column", gap: "8px" }}
+      >
+        <div
+          style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: "14px",
+            color: MINT,
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: "0.16em",
+          }}
+        >
+          {header}
+        </div>
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.5, ease: EXPO_OUT, delay: baseDelay + 0.1 }}
+          style={{
+            width: "60%",
+            height: "1px",
+            background: `${MINT}4D`,
+            transformOrigin: "left",
+          }}
+        />
+      </motion.div>
+
+      {items.map((item, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, ease: EXPO_OUT, delay: baseDelay + 0.1 + i * 0.06 }}
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            gap: "14px",
+          }}
+        >
+          {item.kind === "diamond" ? (
+            <span
+              style={{
+                width: "9px",
+                height: "9px",
+                background: MINT,
+                transform: "rotate(45deg)",
+                flexShrink: 0,
+                marginTop: "0.55em",
+              }}
+            />
+          ) : (
+            <CheckCircle
+              style={{
+                width: "20px",
+                height: "20px",
+                color: MINT,
+                flexShrink: 0,
+                marginTop: "0.2em",
+              }}
+              strokeWidth={1.75}
+            />
+          )}
+          <span
+            style={{
+              fontSize: "16px",
+              color: LIGHT,
+              fontWeight: 500,
+              lineHeight: 1.4,
+            }}
+          >
+            {item.text}
+          </span>
+        </motion.div>
+      ))}
+    </div>
   );
 }
