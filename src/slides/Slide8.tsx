@@ -98,7 +98,7 @@ export default function Slide8() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: "clamp(6px, 0.9vh, 12px)",
+                gap: "clamp(8px, 1.1vh, 14px)",
               }}
             >
               <motion.div
@@ -106,9 +106,9 @@ export default function Slide8() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: EXPO_OUT, delay: 0.15 }}
                 style={{
-                  fontSize: "clamp(48px, 6vw, 88px)",
+                  fontSize: "clamp(56px, 7.5vw, 112px)",
                   fontWeight: 700,
-                  letterSpacing: "-0.02em",
+                  letterSpacing: "-0.025em",
                   color: MINT,
                   lineHeight: 0.95,
                 }}
@@ -121,52 +121,38 @@ export default function Slide8() {
                 transition={{ duration: 0.4, delay: 0.55 }}
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "clamp(11px, 0.95vw, 15px)",
-                  color: `${LIGHT}99`,
-                  fontWeight: 500,
+                  fontSize: "clamp(12px, 1vw, 16px)",
+                  color: `${MINT}B3`,
+                  fontWeight: 600,
                   textTransform: "uppercase",
-                  letterSpacing: "0.14em",
+                  letterSpacing: "0.16em",
                 }}
               >
                 EQUITY
               </motion.div>
             </div>
 
-            {/* unlocks */}
+            {/* arrow connector — mirrors the column-pair arrow */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.28 }}
+              initial={{ opacity: 0, x: -8 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.32, ease: EXPO_OUT }}
               style={{
                 display: "flex",
-                flexDirection: "column",
                 alignItems: "center",
-                gap: "clamp(6px, 0.9vh, 12px)",
-                paddingBottom: isMobile ? 0 : "clamp(8px, 1.2vh, 18px)",
+                justifyContent: "center",
+                paddingBottom: isMobile ? 0 : "clamp(20px, 3vh, 40px)",
+                transform: isMobile ? "rotate(90deg)" : undefined,
               }}
             >
-              <span
+              <ArrowRight
                 style={{
-                  fontSize: "clamp(20px, 2.2vw, 36px)",
-                  color: `${LIGHT}80`,
-                  fontWeight: 400,
-                  letterSpacing: "-0.01em",
-                  fontStyle: "italic",
+                  width: "clamp(32px, 3.4vw, 56px)",
+                  height: "clamp(32px, 3.4vw, 56px)",
+                  color: `${MINT}99`,
                 }}
-              >
-                {isMobile ? "↓ unlocks ↓" : "unlocks"}
-              </span>
-              <span
-                style={{
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "clamp(11px, 0.95vw, 15px)",
-                  color: "transparent",
-                  letterSpacing: "0.14em",
-                }}
-              >
-                {/* spacer to baseline-align with side captions */}
-                ·
-              </span>
+                strokeWidth={1.5}
+              />
             </motion.div>
 
             {/* €425k — dominant */}
@@ -175,7 +161,7 @@ export default function Slide8() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: "clamp(6px, 0.9vh, 12px)",
+                gap: "clamp(8px, 1.1vh, 14px)",
               }}
             >
               <motion.div
@@ -187,7 +173,7 @@ export default function Slide8() {
                   scale: { duration: 0.7, times: [0, 0.6, 1], ease: EXPO_OUT, delay: 0.4 },
                 }}
                 style={{
-                  fontSize: "clamp(64px, 9vw, 136px)",
+                  fontSize: "clamp(72px, 10vw, 144px)",
                   fontWeight: 700,
                   letterSpacing: "-0.03em",
                   color: MINT,
@@ -203,11 +189,11 @@ export default function Slide8() {
                 transition={{ duration: 0.4, delay: 0.6 }}
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "clamp(11px, 0.95vw, 15px)",
+                  fontSize: "clamp(12px, 1vw, 16px)",
                   color: `${MINT}B3`,
                   fontWeight: 600,
                   textTransform: "uppercase",
-                  letterSpacing: "0.14em",
+                  letterSpacing: "0.16em",
                 }}
               >
                 IN NEW CAPITAL
@@ -221,11 +207,11 @@ export default function Slide8() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: EXPO_OUT, delay: 0.7 }}
             style={{
-              fontSize: "clamp(20px, 2.6vw, 40px)",
+              fontSize: "clamp(18px, 2vw, 30px)",
               fontWeight: 500,
-              letterSpacing: "-0.02em",
+              letterSpacing: "-0.015em",
               color: LIGHT,
-              lineHeight: 1.15,
+              lineHeight: 1.2,
               textAlign: "center",
               marginTop: "clamp(8px, 1.5vh, 16px)",
             }}
@@ -258,15 +244,34 @@ export default function Slide8() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.95 }}
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(13px, 1.1vw, 18px)",
-              color: `${LIGHT}B3`,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
+              display: "flex",
+              flexDirection: "column",
+              gap: "clamp(6px, 0.8vh, 10px)",
             }}
           >
-            USE OF FUNDS
+            <div
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: "clamp(15px, 1.3vw, 22px)",
+                color: MINT,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.16em",
+              }}
+            >
+              USE OF FUNDS
+            </div>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.05 }}
+              style={{
+                width: "80%",
+                height: "1px",
+                background: `${MINT}4D`,
+                transformOrigin: "left",
+              }}
+            />
           </motion.div>
 
           {!isMobile && (
@@ -278,6 +283,7 @@ export default function Slide8() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                paddingTop: "clamp(2px, 0.4vh, 6px)",
               }}
             >
               <ArrowRight
@@ -292,15 +298,34 @@ export default function Slide8() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.95 }}
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "clamp(13px, 1.1vw, 18px)",
-              color: `${LIGHT}B3`,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
+              display: "flex",
+              flexDirection: "column",
+              gap: "clamp(6px, 0.8vh, 10px)",
             }}
           >
-            BY DEC 2026
+            <div
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: "clamp(15px, 1.3vw, 22px)",
+                color: MINT,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.16em",
+              }}
+            >
+              BY DEC 2026
+            </div>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.05 }}
+              style={{
+                width: "80%",
+                height: "1px",
+                background: `${MINT}4D`,
+                transformOrigin: "left",
+              }}
+            />
           </motion.div>
 
           {/* Three row pairs */}
