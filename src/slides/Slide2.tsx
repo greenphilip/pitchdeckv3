@@ -35,7 +35,7 @@ export default function Slide2() {
   const isMobile = useIsMobile();
 
   const itemTextStyle: React.CSSProperties = {
-    fontSize: "22px",
+    fontSize: "clamp(15px, 3.6vw, 22px)",
     fontWeight: 500,
     color: LIGHT,
     lineHeight: 1.3,
@@ -101,7 +101,7 @@ export default function Slide2() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: EXPO_OUT }}
           style={{
-            fontSize: "64px",
+            fontSize: "clamp(26px, 6.5vw, 64px)",
             fontWeight: 700,
             letterSpacing: "-0.02em",
             lineHeight: 1.15,
@@ -257,8 +257,8 @@ export default function Slide2() {
             <div
               style={{
                 position: "relative",
-                width: "120px",
-                height: "120px",
+                width: "clamp(72px, 18vw, 120px)",
+                height: "clamp(72px, 18vw, 120px)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -431,7 +431,7 @@ export default function Slide2() {
           <div
             style={{
               fontFamily: "'Fraunces', Georgia, serif",
-              fontSize: "36px",
+              fontSize: "clamp(18px, 3.5vw, 36px)",
               fontWeight: 400,
               fontStyle: "italic",
               color: LIGHT,
