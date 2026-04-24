@@ -442,7 +442,7 @@ export default function Slide2() {
               whiteSpace: "pre-line",
             }}
           >
-            {"\nESG has become a compliance cost, not a source of strategic advantage\n- we aim to change that."}
+            {"\nESG has become a compliance cost, not a source of strategic advantage\n\n"}
           </div>
         </motion.div>
       </div>
