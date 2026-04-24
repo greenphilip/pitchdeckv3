@@ -54,8 +54,8 @@ export default function Slide1() {
             style={{
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: "16px",
-              color: LIGHT,
-              opacity: 0.55,
+              color: MINT,
+              opacity: 0.85,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
             }}
