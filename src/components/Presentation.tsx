@@ -95,20 +95,17 @@ export function Presentation() {
 
   return (
     <div style={{ position: "relative", width: "100vw", height: "100vh", overflow: "hidden" }}>
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={current}
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          style={{ position: "absolute", inset: 0 }}
-        >
-          <ScaledSlide>
-            <ActiveSlide />
-          </ScaledSlide>
-        </motion.div>
-      </AnimatePresence>
+      <motion.div
+        key={current}
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        style={{ position: "absolute", inset: 0 }}
+      >
+        <ScaledSlide>
+          <ActiveSlide />
+        </ScaledSlide>
+      </motion.div>
 
       {/* Chevrons */}
       <button
