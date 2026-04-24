@@ -432,7 +432,7 @@ export default function Slide4() {
               }}
             >
               <ArrowDown
-                size={40}
+                size={32}
                 color={MINT}
                 strokeWidth={2}
                 style={{ opacity: 0.8 }}
