@@ -19,7 +19,7 @@ import wuerthLogo from "@/assets/logos/wuerth.svg";
 import deutscheTelekomLogo from "@/assets/logos/deutsche-telekom.svg";
 import fraportLogo from "@/assets/logos/fraport.svg";
 import andritzLogo from "@/assets/logos/andritz.svg";
-import ottoGroupLogo from "@/assets/logos/otto-group.svg";
+import evnLogo from "@/assets/logos/evn.svg";
 import knaufLogo from "@/assets/logos/knauf.svg";
 import rlbOoeLogo from "@/assets/logos/rlb-ooe.svg";
 
@@ -49,7 +49,7 @@ const stats: Stat[] = [
 
 const logos = [
   { src: deutscheTelekomLogo, alt: "Deutsche Telekom" },
-  { src: ottoGroupLogo, alt: "Otto Group" },
+  { src: evnLogo, alt: "EVN" },
   { src: stihlLogo, alt: "STIHL" },
   { src: wuerthLogo, alt: "Würth" },
   { src: fraportLogo, alt: "Fraport" },
