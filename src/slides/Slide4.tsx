@@ -214,7 +214,9 @@ export default function Slide4() {
   const isMobile = useIsMobile();
 
   // Animation timing
-  const tBox1 = 0.24;
+  const tBoxQ = 0.18;
+  const tArrowQ = tBoxQ + 0.4;
+  const tBox1 = tArrowQ + 0.2;
   const tArrow1 = tBox1 + 0.4;
   const tBox2 = tArrow1 + 0.3;
   const tArrow2 = tBox2 + 0.4;
