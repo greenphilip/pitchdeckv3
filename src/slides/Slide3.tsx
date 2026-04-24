@@ -136,8 +136,8 @@ export default function Slide3() {
               whiteSpace: "pre-line",
             }}
           >
-            Three forces pushing the market.{"\n"}
-            Three tools{" "}
+            3 forces pushing the market-{"\n"}
+            3 alternatives{" "}
             <span style={{ color: MINT }}>failing to meet it.</span>
           </motion.h1>
         </div>
