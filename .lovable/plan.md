@@ -1,54 +1,40 @@
-## Slide 4 — replace the screenshot block with a 4th workflow box hanging below "Glacier AI"
+## Replace Otto Group logo with EVN on the "Trusted by" wall (Slide 6)
 
-### Goal
+### Background
 
-Remove the dashboard screenshot + "EVIDENCE TRACE VIEW" caption block. Replace it with a fourth `WorkflowBox` (visually identical to the three top-row boxes) positioned **below the middle "Glacier AI" box**, connected by a downward arrow. Content of the new box:
+Slide 6 (file `src/slides/Slide7.tsx` — file numbering doesn't match display numbering) renders a 2-column logo wall under "TRUSTED BY". One of the entries is Otto Group, which the user says is wrong and should be EVN (Energieversorgung Niederösterreich AG, Austrian utility, evn.at).
 
-- **Number**: 04
-- **Headline**: Client Knowledge Profile
-- **Body**: A compounding knowledge base to accelerate each future reporting questionnaire. Provides defensible moat and increases accuracy at scale.
+I already downloaded the official EVN wordmark SVG from Wikimedia Commons (`Logo_EVN.svg`) and placed it at `src/assets/logos/evn.svg`. The file is 1.7 KB, vector, and includes EVN's red-and-black brand colors — which is fine because the slide applies `filter: brightness(0) invert(1)` to every logo, normalizing them all to monochrome white at 0.75 opacity.
 
-### Visual layout after change
+### Change
 
-```text
-┌─────────────┐  →  ┌─────────────┐  →  ┌─────────────┐
-│ 01          │     │ 02          │     │ 03          │
-│ Documents   │     │ Glacier AI  │     │ Report/Gap  │
-└─────────────┘     └──────┬──────┘     └─────────────┘
-                           │
-                           ▼   (mint downward arrow)
-                    ┌─────────────┐
-                    │ 04          │
-                    │ Client      │
-                    │ Knowledge   │
-                    │ Profile     │
-                    └─────────────┘
-```
+In `src/slides/Slide7.tsx`:
 
-The new box sits in the **middle column** of the existing 3-column grid. Left and right columns of the second row stay empty so the new box is visually anchored under "Glacier AI". On mobile (single column), it just stacks at the end of the workflow with a vertical arrow above it, same as the existing boxes do.
+1. **Line 22** — replace the import:
+   ```tsx
+   // before
+   import ottoGroupLogo from "@/assets/logos/otto-group.svg";
+   // after
+   import evnLogo from "@/assets/logos/evn.svg";
+   ```
 
-### Implementation in `src/slides/Slide4.tsx`
+2. **Line 52** — replace the entry in the `logos` array:
+   ```tsx
+   // before
+   { src: ottoGroupLogo, alt: "Otto Group" },
+   // after
+   { src: evnLogo, alt: "EVN" },
+   ```
 
-1. **Remove**:
-   - The `useState` for `imgFailed` and the `dashboardScreenshot` import
-   - The `SCREENSHOT_SRC` const
-   - `ScreenshotPlaceholder` helper component (no longer used)
-   - The entire "SCREENSHOT + CAPTION" `<div>` block (~lines 254–336) including the "EVIDENCE TRACE VIEW" caption
-   - One of the GAP spacers (40px) that surrounded that block
-
-2. **Add** below the existing 3-box workflow grid: a second grid row (or a separate flex block) containing:
-   - A small mint downward `<ArrowDown>` arrow centered on the middle column, animated in
-   - A new `<WorkflowBox number="04" Icon={Sparkles or Database} headline="Client Knowledge Profile" body="..." delay={tBox4} />` constrained to the same width as the middle column (use a 3-column grid: `1fr | 1fr | 1fr` with the box in column 2, arrow above it)
-
-3. **Icon choice for box 04**: use `Database` from lucide-react (semantically: a knowledge base) — fits the existing icon tone (UploadCloud, Link2, ShieldCheck).
-
-4. **Animation timing**: insert `tArrow3 = tBox3 + 0.4` and `tBox4 = tArrow3 + 0.3` into the existing timing chain. Push `tStrip` to `tBox4 + 0.4 + 0.1` so the bottom "Deterministic · Auditable · Multi-framework" strip still appears last.
-
-5. **Vertical budget**: removing the screenshot block (~340px tall + caption + 40+48px gaps ≈ 450px) frees plenty of room for the new box (~220px tall + arrow ~32px + small gap). Net reduction in slide height, so no risk of clipping.
-
-6. **Keep unchanged**: header ("THE PRODUCT" / "Meet Glacier." / subhead), the three top-row WorkflowBoxes and arrows, the bottom "Deterministic · Auditable · Multi-framework" strip.
+That's it — no layout, sizing, ordering, or styling changes. EVN takes the same slot Otto Group occupied (second entry, top row right column).
 
 ### Files touched
 
-- `src/slides/Slide4.tsx` — only this file. No changes to `WorkflowBox` or `ArrowCell` components themselves; the new box reuses `WorkflowBox` exactly.
-- The `glacier-csrd-dashboard.png` asset stays on disk (no longer imported); harmless.
+- `src/assets/logos/evn.svg` — already on disk (downloaded).
+- `src/slides/Slide7.tsx` — two single-line edits.
+- `src/assets/logos/otto-group.svg` — left on disk, no longer imported. Harmless.
+
+### Notes
+
+- The same monochrome treatment as the other 9 logos applies, so visual consistency is preserved.
+- The logo is sized via `maxHeight: 56px / maxWidth: 100%` with `objectFit: contain` — no risk of distortion.
