@@ -1,334 +1,268 @@
 import { motion } from "framer-motion";
-import { User } from "lucide-react";
+import { Code, TrendingUp, Server, CheckCircle, type LucideIcon } from "lucide-react";
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import rainhardPhoto from "@/assets/team/rainhard-fuchs.png";
-import philipPhoto from "@/assets/team/philip.png";
-import davidPhoto from "@/assets/team/david-anders.png";
-import kishanPhoto from "@/assets/team/kishan.png";
-import ninaPhoto from "@/assets/team/nina.png";
-import pioneersLogo from "@/assets/logos/pioneers.png";
-import wbcsdLogo from "@/assets/logos/wbcsd.jpg";
-import inseadLogo from "@/assets/logos/insead-white.svg";
-import osceLogo from "@/assets/logos/osce.svg";
-import pwcLogo from "@/assets/logos/pwc.svg";
-import oeamtcLogo from "@/assets/logos/oeamtc.svg";
-import smartCounselLogo from "@/assets/logos/smart-counsel.png";
-import bitpandaLogo from "@/assets/logos/bitpanda.svg";
-import shpockLogo from "@/assets/logos/shpock.svg";
 
 const MINT = "#6DD4AD";
-const BLUE = "#539ADB";
 const LIGHT = "#F1F1F1";
-const NAVY = "#143560";
 const EXPO_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-interface Member {
-  name: string;
-  title: string;
-  background: string;
-  photo?: string;
-  logos?: { src: string; invert?: boolean }[];
+interface Row {
+  Icon: LucideIcon;
+  text: string;
 }
 
-const team: Member[] = [
-  {
-    name: "Rainhard Fuchs",
-    title: "CEO & Founder",
-    background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
-    photo: rainhardPhoto,
-    logos: [{ src: pioneersLogo, invert: true }],
-  },
-  {
-    name: "Philip Reuchlin",
-    title: "VP of AI & ESG",
-    background: "20+ years sustainability and strategy: OSCE, WBCSD, INSEAD MBA",
-    photo: philipPhoto,
-    logos: [
-      { src: osceLogo },
-      { src: wbcsdLogo },
-      { src: inseadLogo },
-    ],
-  },
-  {
-    name: "David Anders",
-    title: "Head of ESG Delivery",
-    background: "Previously PWC; Head of ESG at Burgenland Energie; ÖAMTC.",
-    photo: davidPhoto,
-    logos: [
-      { src: pwcLogo },
-      { src: oeamtcLogo },
-    ],
-  },
-  {
-    name: "Kishan Chimminiyan",
-    title: "Head of Engineering",
-    background: "full-stack, 10+years building with applied LLM products (GPT-3 era onward) ",
-    photo: kishanPhoto,
-    logos: [{ src: smartCounselLogo }],
-  },
-  {
-    name: "Nina Aichinger",
-    title: "Head of People",
-    background: "Previously Head of HR at Bitpanda and Shpock.",
-    photo: ninaPhoto,
-    logos: [
-      { src: bitpandaLogo, invert: true },
-      { src: shpockLogo, invert: true },
-    ],
-  },
+const useOfFunds: Row[] = [
+  { Icon: Code, text: "Ship the Client Knowledge Profile" },
+  { Icon: TrendingUp, text: "Expand into Benelux + Scandinavia" },
+  { Icon: Server, text: "Tech scalability" },
 ];
 
-export default function Slide8() {
+const milestones: Row[] = [
+  { Icon: CheckCircle, text: "€2.4M ARR (€200k MRR)" },
+  { Icon: CheckCircle, text: "CKP shipped with cross-framework time compression proven" },
+  { Icon: CheckCircle, text: "Live in two new geographies" },
+];
+
+function Column({
+  label,
+  rows,
+  baseDelay,
+  iconColor,
+}: {
+  label: string;
+  rows: Row[];
+  baseDelay: number;
+  iconColor: string;
+}) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, ease: EXPO_OUT, delay: baseDelay }}
+        style={{
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: "20px",
+          color: MINT,
+          fontWeight: 600,
+          textTransform: "uppercase",
+          letterSpacing: "0.1em",
+        }}
+      >
+        {label}
+      </motion.div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        {rows.map((r, i) => (
+          <motion.div
+            key={r.text}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.3,
+              ease: EXPO_OUT,
+              delay: baseDelay + 0.08 + i * 0.08,
+            }}
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              gap: "14px",
+            }}
+          >
+            <r.Icon
+              style={{
+                width: "28px",
+                height: "28px",
+                color: iconColor,
+                flexShrink: 0,
+                marginTop: "0.2em",
+              }}
+              strokeWidth={1.75}
+            />
+            <span
+              style={{
+                fontSize: "24px",
+                color: LIGHT,
+                fontWeight: 500,
+                lineHeight: 1.4,
+              }}
+            >
+              {r.text}
+            </span>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function Slide9() {
   const isMobile = useIsMobile();
 
   return (
-    <SlideFrame variant="minimal" slideNumber={8} totalSlides={9}>
+    <SlideFrame variant="minimal" slideNumber={9} totalSlides={9}>
       <div
         style={{
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "flex-start",
+          justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          gap: "32px",
+          gap: "36px",
+          overflowY: isMobile ? "auto" : undefined,
         }}
       >
-        {/* HEADER */}
-        <div
+        {/* TOP ANCHOR — EYEBROW */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
           style={{
-            width: "100%",
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: "20px",
+            color: MINT,
+            fontWeight: 600,
+            textTransform: "uppercase",
+            letterSpacing: "0.12em",
             textAlign: "center",
-            marginTop: "48px",
           }}
         >
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: EXPO_OUT, delay: 0.1 }}
-            style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "20px",
-              color: MINT,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-            }}
-          >
-            TEAM
-          </motion.div>
+          BRIDGE ROUND: THE ASK
+        </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: EXPO_OUT, delay: 0.18 }}
-            style={{
-              margin: 0,
-              marginTop: "20px",
-              fontSize: "64px",
-              fontWeight: 600,
-              color: LIGHT,
-              letterSpacing: "-0.01em",
-              lineHeight: 1.15,
-              textAlign: "center",
-            }}
-          >
-            <span style={{ color: BLUE }}>Regulatory depth.</span>{" "}
-            <span style={{ color: LIGHT }}>Experience in scaling SaaS.</span>{" "}
-            <span style={{ color: MINT, fontWeight: 700 }}>Applied AI.</span>
-          </motion.h1>
-        </div>
-
-        {/* TEAM GRID */}
+        {/* HEADLINE */}
         <div
           style={{
             width: "100%",
             maxWidth: "min(1400px, 100%)",
             margin: "0 auto",
-            marginTop: "56px",
-            display: "grid",
-            gridTemplateColumns: isMobile
-              ? "repeat(2, minmax(0, 1fr))"
-              : "repeat(5, minmax(0, 1fr))",
-            gap: isMobile ? "32px" : "40px",
-            maxHeight: isMobile ? "55vh" : undefined,
-            overflowY: isMobile ? "auto" : undefined,
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            gap: "14px",
           }}
         >
-          {team.map((m, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.35 + i * 0.08 }}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                textAlign: "center",
-                gap: "24px",
-              }}
-            >
-              {/* Avatar */}
-              <div
-                style={{
-                  width: "160px",
-                  height: "160px",
-                  borderRadius: "50%",
-                  background: `${BLUE}40`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                  overflow: "hidden",
-                }}
-              >
-                {m.photo ? (
-                  <img
-                    src={m.photo}
-                    alt={m.name}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: "center top",
-                    }}
-                  />
-                ) : (
-                  <User
-                    style={{
-                      width: "50%",
-                      height: "50%",
-                      color: `${LIGHT}99`,
-                    }}
-                    strokeWidth={1.5}
-                  />
-                )}
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "10px",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "22px",
-                    color: LIGHT,
-                    fontWeight: 600,
-                    lineHeight: 1.2,
-                  }}
-                >
-                  {m.name}
-                </div>
-                <div
-                  style={{
-                    fontSize: "17px",
-                    color: MINT,
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {m.title}
-                </div>
-              </div>
-
-              <div
-                style={{
-                  fontSize: "18px",
-                  color: `${LIGHT}B3`,
-                  lineHeight: 1.45,
-                  display: "-webkit-box",
-                  WebkitLineClamp: 3,
-                  WebkitBoxOrient: "vertical",
-                  overflow: "hidden",
-                  minHeight: `calc(18px * 1.45 * 3)`,
-                }}
-              >
-                {m.background}
-              </div>
-
-              {m.logos && m.logos.length > 0 && (
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: "18px",
-                    marginTop: "-4px",
-                  }}
-                >
-                  {m.logos.map((logo, idx) => (
-                    <img
-                      key={idx}
-                      src={logo.src}
-                      alt=""
-                      style={{
-                        height: "48px",
-                        width: "auto",
-                        maxWidth: "200px",
-                        objectFit: "contain",
-                        opacity: logo.invert ? 0.9 : 1,
-                        filter: logo.invert ? "invert(1) brightness(1.1)" : undefined,
-                        display: "block",
-                      }}
-                    />
-                  ))}
-                </div>
-              )}
-            </motion.div>
-          ))}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EXPO_OUT, delay: 0.2 }}
+            style={{
+              fontSize: "clamp(34px, 5.2vw, 88px)",
+              fontWeight: 700,
+              letterSpacing: "-0.02em",
+              color: LIGHT,
+              lineHeight: 1.1,
+            }}
+          >
+            <span style={{ color: MINT, fontWeight: 700 }}>€250k</span> unlocks{" "}
+            <span style={{ color: MINT, fontWeight: 700 }}>€425k</span>.
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EXPO_OUT, delay: 0.35 }}
+            style={{
+              fontSize: "clamp(22px, 3vw, 48px)",
+              fontWeight: 500,
+              letterSpacing: "-0.02em",
+              color: LIGHT,
+              lineHeight: 1.1,
+            }}
+          >
+            Twelve months to a Series A on{" "}
+            <span style={{ color: MINT, fontWeight: 700 }}>€2.4M ARR</span>.
+          </motion.div>
         </div>
 
-        {/* THESIS LINE */}
+        {/* TWO-COLUMN BLOCK */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.35 + team.length * 0.08 + 0.2 }}
+          transition={{ duration: 0.4, delay: 0.7 }}
           style={{
             width: "100%",
-            maxWidth: "min(1000px, 100%)",
+            maxWidth: "min(1300px, 100%)",
             margin: "0 auto",
-            marginTop: "56px",
-            fontSize: "26px",
+            marginTop: "clamp(24px, 4vh, 56px)",
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(2, minmax(0, 1fr))",
+            gap: isMobile ? "40px" : "80px",
+          }}
+        >
+          <Column label="USE OF FUNDS" rows={useOfFunds} baseDelay={0.78} iconColor={MINT} />
+          <Column
+            label="MILESTONES — DEC 2026"
+            rows={milestones}
+            baseDelay={0.86}
+            iconColor={`${LIGHT}B3`}
+          />
+        </motion.div>
+
+        {/* EXISTING INVESTORS ROW */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: EXPO_OUT, delay: 1.15 }}
+          style={{
+            width: "100%",
+            maxWidth: "min(1100px, 100%)",
+            margin: "0 auto",
+            marginTop: "clamp(20px, 3vh, 40px)",
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: "20px",
+              fontWeight: 600,
+              color: MINT,
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+            }}
+          >
+            EXISTING INVESTORS PARTICIPATING
+          </div>
+          <div
+            style={{
+              fontSize: "clamp(14px, 1.5vw, 20px)",
+              fontWeight: 500,
+              color: LIGHT,
+              marginTop: "10px",
+            }}
+          >
+            2 existing investors — names on request
+          </div>
+        </motion.div>
+
+        {/* ITALIC CLOSE */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.45 }}
+          style={{
+            width: "100%",
+            maxWidth: "min(1200px, 100%)",
+            margin: "0 auto",
+            marginTop: "clamp(20px, 3vh, 40px)",
+            fontSize: "28px",
             fontWeight: 400,
             fontStyle: "italic",
-            color: `${LIGHT}CC`,
+            color: LIGHT,
             textAlign: "center",
             lineHeight: 1.4,
           }}
         >
-          {" "}
+          Join us as we rapidly expand our offering, scale up and position ourselves for Series A.
         </motion.div>
 
-        {/* Spacer above bottom anchor — explicit, not auto */}
-        <div style={{ height: "80px", flexShrink: 0 }} />
-
-        {/* BOTTOM ANCHOR */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.35 + team.length * 0.08 + 0.4 }}
-          style={{
-            width: "100%",
-            textAlign: "center",
-            fontSize: "20px",
-            color: `${LIGHT}B3`,
-            paddingTop: "16px",
-          }}
-        >
-          Headcount: <span style={{ color: MINT, fontWeight: 700 }}>15</span> today. Hiring{" "}
-          <span style={{ color: MINT, fontWeight: 700 }}>4-5</span> with this round.
-        </motion.div>
+        {/* Bottom spacer */}
+        <div style={{ height: "clamp(16px, 2vh, 32px)", flexShrink: 0 }} />
       </div>
     </SlideFrame>
   );
