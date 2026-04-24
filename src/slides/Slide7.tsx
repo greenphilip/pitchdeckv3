@@ -29,7 +29,7 @@ interface Member {
   title: string;
   background: string;
   photo?: string;
-  logos?: { src: string; invert?: boolean }[];
+  logos?: { src: string; invert?: boolean; boxed?: boolean; height?: number }[];
 }
 
 const team: Member[] = [
@@ -38,7 +38,7 @@ const team: Member[] = [
     title: "CEO & Founder",
     background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
     photo: rainhardPhoto,
-    logos: [{ src: pioneersLogo, invert: true }, { src: bmdwLogo, invert: true }],
+    logos: [{ src: pioneersLogo, invert: true }, { src: bmdwLogo, boxed: true, height: 72 }],
   },
   {
     name: "Philip Reuchlin",
@@ -268,22 +268,42 @@ export default function Slide7() {
                     marginTop: "-4px",
                   }}
                 >
-                  {m.logos.map((logo, idx) => (
-                    <img
-                      key={idx}
-                      src={logo.src}
-                      alt=""
-                      style={{
-                        height: "48px",
-                        width: "auto",
-                        maxWidth: "200px",
-                        objectFit: "contain",
-                        opacity: logo.invert ? 0.9 : 1,
-                        filter: logo.invert ? "invert(1) brightness(1.1)" : undefined,
-                        display: "block",
-                      }}
-                    />
-                  ))}
+                  {m.logos.map((logo, idx) => {
+                    const h = logo.height ?? 48;
+                    const img = (
+                      <img
+                        src={logo.src}
+                        alt=""
+                        style={{
+                          height: `${h}px`,
+                          width: "auto",
+                          maxWidth: "220px",
+                          objectFit: "contain",
+                          opacity: logo.invert ? 0.9 : 1,
+                          filter: logo.invert ? "invert(1) brightness(1.1)" : undefined,
+                          display: "block",
+                        }}
+                      />
+                    );
+                    if (logo.boxed) {
+                      return (
+                        <div
+                          key={idx}
+                          style={{
+                            background: "#FFFFFF",
+                            padding: "8px 12px",
+                            borderRadius: "4px",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {img}
+                        </div>
+                      );
+                    }
+                    return <div key={idx}>{img}</div>;
+                  })}
                 </div>
               )}
             </motion.div>
