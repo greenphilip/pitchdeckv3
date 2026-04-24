@@ -16,6 +16,7 @@ import oeamtcLogo from "@/assets/logos/oeamtc.svg";
 import smartCounselLogo from "@/assets/logos/smart-counsel.png";
 import bitpandaLogo from "@/assets/logos/bitpanda.svg";
 import shpockLogo from "@/assets/logos/shpock.svg";
+import bmdwLogo from "@/assets/logos/bmdw.jpg";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
@@ -37,7 +38,7 @@ const team: Member[] = [
     title: "CEO & Founder",
     background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
     photo: rainhardPhoto,
-    logos: [{ src: pioneersLogo, invert: true }],
+    logos: [{ src: pioneersLogo, invert: true }, { src: bmdwLogo, invert: true }],
   },
   {
     name: "Philip Reuchlin",
