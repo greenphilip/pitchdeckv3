@@ -28,14 +28,14 @@ const categories: Category[] = [
     header: "GENERAL AI",
     Icon: Sparkles,
     shortHeadline: "Fast, but can't be trusted at audit.",
-    body: "Generic LLMs hallucinate on regulatory detail. No source traceability. No specialist knowledge. An auditor will reject outputs nobody can defend.",
+    body: "\n\nGeneric LLMs hallucinate\nNo source traceability\nNo specialist knowledge\n\n",
     tag: "GAP: quality and traceability",
   },
   {
     header: "CONSULTANCIES",
     Icon: Briefcase,
     shortHeadline: "Expert, but expensive and slow.",
-    body: "Deep expertise, billed by the hour. The job gets done, but the knowledge leaves with them. Every year starts over. (Some of our best partners are in this category — different problem, different fit.)",
+    body: "\n\nDeep expertise, billed by the hour. \nEvery year starts over. (Some of our best partners are in this category — different problem, different fit.)",
     tag: "GAP: leverage and retention",
   },
 ];
@@ -196,6 +196,7 @@ export default function Slide3() {
                     color: LIGHT,
                     opacity: 0.8,
                     lineHeight: 1.5,
+                    whiteSpace: "pre-line",
                   }}
                 >
                   {cat.body}
