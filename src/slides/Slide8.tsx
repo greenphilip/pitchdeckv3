@@ -174,6 +174,20 @@ export default function Slide8() {
             Twelve months to a Series A on{" "}
             <span style={{ color: MINT, fontWeight: 700 }}>€2.4M ARR</span>.
           </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: EXPO_OUT, delay: 0.5 }}
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: "clamp(12px, 1vw, 16px)",
+              color: `${LIGHT}99`,
+              letterSpacing: "0.04em",
+              marginTop: "clamp(4px, 0.8vh, 10px)",
+            }}
+          >
+            €250k new + €175k from existing investors
+          </motion.div>
         </div>
 
         {/* TWO-COLUMN BLOCK */}
@@ -219,11 +233,11 @@ export default function Slide8() {
           <div
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "20px",
-              fontWeight: 600,
-              color: MINT,
+              fontSize: "14px",
+              fontWeight: 500,
+              color: `${LIGHT}80`,
               textTransform: "uppercase",
-              letterSpacing: "0.1em",
+              letterSpacing: "0.12em",
             }}
           >
             EXISTING INVESTORS PARTICIPATING
@@ -240,25 +254,25 @@ export default function Slide8() {
           </div>
         </motion.div>
 
-        {/* ITALIC CLOSE */}
+        {/* CLOSING LINE */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, ease: EXPO_OUT, delay: 1.45 }}
+          transition={{ duration: 0.5, ease: EXPO_OUT, delay: 0.9 }}
           style={{
             width: "100%",
             maxWidth: "min(1200px, 100%)",
             margin: "0 auto",
             marginTop: "clamp(20px, 3vh, 40px)",
-            fontSize: "28px",
-            fontWeight: 400,
-            fontStyle: "italic",
+            fontSize: "clamp(18px, 1.6vw, 26px)",
+            fontWeight: 500,
             color: LIGHT,
             textAlign: "center",
             lineHeight: 1.4,
           }}
         >
-          Join us as we rapidly expand our offering, scale up and position ourselves for Series A.
+          Closing target: June 2026.{" "}
+          <span style={{ color: MINT, fontWeight: 700 }}>Lead check welcome.</span>
         </motion.div>
 
         {/* Bottom spacer */}
