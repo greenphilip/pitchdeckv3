@@ -172,9 +172,9 @@ function WorkflowBox({ number, Icon, headline, body, delay }: BoxProps) {
       </div>
       <div
         style={{
-          fontSize: "15px",
+          fontSize: "14px",
           color: `${LIGHT_GRAY}CC`,
-          lineHeight: 1.45,
+          lineHeight: 1.4,
           whiteSpace: "pre-line",
         }}
       >
