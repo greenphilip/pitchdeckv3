@@ -140,7 +140,7 @@ export default function Slide4() {
   const tStrip = tCaption + 0.3 + 0.1;
 
   return (
-    <SlideFrame variant="technical" slideNumber={4} totalSlides={11}>
+    <SlideFrame variant="technical" slideNumber={4} totalSlides={10}>
       <div
         style={{
           display: "flex",
