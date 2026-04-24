@@ -234,7 +234,7 @@ export default function Slide3() {
           </div>
         </div>
 
-        {/* DIVIDER */}
+        {/* DIVIDER — extra breathing room between the two halves */}
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
           animate={{ opacity: 1, scaleX: 1 }}
@@ -245,6 +245,8 @@ export default function Slide3() {
             height: "1px",
             background: `${BLUE}40`,
             transformOrigin: "left",
+            marginTop: "clamp(20px, 3.5vh, 56px)",
+            marginBottom: "clamp(20px, 3.5vh, 56px)",
           }}
         />
 
