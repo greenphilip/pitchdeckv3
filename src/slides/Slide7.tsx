@@ -79,11 +79,11 @@ const team: Member[] = [
   },
 ];
 
-export default function Slide8() {
+export default function Slide7() {
   const isMobile = useIsMobile();
 
   return (
-    <SlideFrame variant="minimal" slideNumber={8} totalSlides={9}>
+    <SlideFrame variant="minimal" slideNumber={7} totalSlides={8}>
       <div
         style={{
           flex: 1,

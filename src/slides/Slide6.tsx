@@ -60,11 +60,11 @@ const phases: Phase[] = [
   },
 ];
 
-export default function Slide7() {
+export default function Slide6() {
   const isMobile = useIsMobile();
 
   return (
-    <SlideFrame variant="technical" slideNumber={7} totalSlides={9}>
+    <SlideFrame variant="technical" slideNumber={6} totalSlides={8}>
       <div
         style={{
           flex: 1,

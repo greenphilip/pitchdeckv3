@@ -97,11 +97,11 @@ function Column({
   );
 }
 
-export default function Slide9() {
+export default function Slide8() {
   const isMobile = useIsMobile();
 
   return (
-    <SlideFrame variant="minimal" slideNumber={9} totalSlides={9}>
+    <SlideFrame variant="minimal" slideNumber={8} totalSlides={8}>
       <div
         style={{
           flex: 1,
