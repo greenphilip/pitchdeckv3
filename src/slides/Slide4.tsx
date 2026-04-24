@@ -274,7 +274,7 @@ export default function Slide4() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.08, ease: "easeOut" }}
             style={{
-              fontSize: "64px",
+              fontSize: "clamp(28px, 7vw, 64px)",
               fontWeight: 700,
               letterSpacing: "-0.02em",
               color: LIGHT_GRAY,
