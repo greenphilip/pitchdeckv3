@@ -90,7 +90,7 @@ export default function Slide1() {
               whiteSpace: "pre-line",
             }}
           >
-            {"Glacier helps companies\nget ESG reporting done\n— faster\n, with quality they can defend."}
+            {"Glacier helps companies\nget ESG reporting done\n— faster, with quality they can defend."}
           </motion.h1>
         </div>
 
