@@ -38,7 +38,7 @@ const team: Member[] = [
     title: "CEO & Founder",
     background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
     photo: rainhardPhoto,
-    logos: [{ src: pioneersLogo, invert: true }, { src: bmdwLogo, invert: true }],
+    logos: [{ src: pioneersLogo, invert: true }, { src: bmdwLogo, boxed: true, height: 72 }],
   },
   {
     name: "Philip Reuchlin",
