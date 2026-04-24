@@ -272,7 +272,7 @@ export default function Slide3() {
               textAlign: "center",
             }}
           >
-            3 alternatives <span style={{ color: MINT }}>failing to meet it.</span>
+            3 tools <span style={{ color: MINT }}>failing to meet it.</span>
           </motion.h1>
 
           <div
