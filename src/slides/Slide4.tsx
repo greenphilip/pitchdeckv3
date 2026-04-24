@@ -452,7 +452,7 @@ export default function Slide4() {
             maxWidth: "min(1400px, 100%)",
             width: "100%",
             margin: "0 auto",
-            marginTop: isMobile ? "20px" : "8px",
+            marginTop: isMobile ? "20px" : "4px",
             alignItems: "stretch",
           }}
         >
