@@ -221,7 +221,8 @@ export default function Slide4() {
   const tBox3 = tArrow2 + 0.3;
   const tArrow3 = tBox3 + 0.4;
   const tBox4 = tArrow3 + 0.3;
-  const tStrip = tBox4 + 0.4 + 0.1;
+  const tChart = tBox4 + 0.2;
+  const tStrip = tChart + 0.6;
 
   return (
     <SlideFrame variant="technical" slideNumber={4} totalSlides={10}>
@@ -394,7 +395,23 @@ export default function Slide4() {
             delay={tBox4}
           />
           {!isMobile && <div />}
-          {!isMobile && <div />}
+          {!isMobile && (
+            <div
+              style={{
+                alignSelf: "center",
+                width: "100%",
+                maxWidth: "360px",
+                paddingLeft: "8px",
+              }}
+            >
+              <CompoundingChart baseDelay={tChart} />
+            </div>
+          )}
+          {isMobile && (
+            <div style={{ marginTop: "20px" }}>
+              <CompoundingChart baseDelay={tChart} />
+            </div>
+          )}
         </div>
 
         {/* GAP */}
