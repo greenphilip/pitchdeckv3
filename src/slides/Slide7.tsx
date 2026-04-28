@@ -18,7 +18,7 @@ import smartCounselLogo from "@/assets/logos/smart-counsel.png";
 import bitpandaLogo from "@/assets/logos/bitpanda.svg";
 import shpockLogo from "@/assets/logos/shpock.svg";
 import bmdwLogo from "@/assets/logos/bmdw.png";
-import jaAustriaLogo from "@/assets/logos/ja-austria.avif";
+import jaAustriaLogo from "@/assets/logos/ja-austria.png";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
