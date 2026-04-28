@@ -40,14 +40,14 @@ const team: Member[] = [
     title: "CEO & Founder",
     background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
     photo: rainhardPhoto,
-    logos: [{ src: pioneersLogo, invert: true }, { src: bmdwLogo, mono: true, height: 128 }],
+    logos: [{ src: pioneersLogo, invert: true }, { src: bmdwLogo, mono: true }],
   },
   {
     name: "Alissa Kovarik",
     title: "Head of Product",
     background: "Former President JA Austria. 5+ years building sustainability products.",
     photo: alissaPhoto,
-    logos: [{ src: jaAustriaLogo, mono: true, height: 56 }],
+    logos: [{ src: jaAustriaLogo, mono: true }],
   },
   {
     name: "Philip Reuchlin",
@@ -55,8 +55,8 @@ const team: Member[] = [
     background: "20+ years sustainability, already scaled ESG startup to Series A, INSEAD MBA",
     photo: philipPhoto,
     logos: [
-      { src: osceLogo },
-      { src: wbcsdLogo, mono: true, height: 64 },
+      { src: osceLogo, mono: true },
+      { src: wbcsdLogo, mono: true },
       { src: inseadLogo },
     ],
   },
