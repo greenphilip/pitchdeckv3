@@ -176,12 +176,11 @@ export default function Slide7() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.35 + i * 0.08 }}
               style={{
-                display: "grid",
-                gridTemplateRows: "auto auto 1fr auto",
-                justifyItems: "center",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
                 textAlign: "center",
-                rowGap: "24px",
-                height: "100%",
+                gap: "24px",
               }}
             >
               {/* Avatar */}
@@ -252,70 +251,76 @@ export default function Slide7() {
 
               <div
                 style={{
-                  fontSize: "clamp(15px, 1.05vw, 19px)",
+                  fontSize: "18px",
                   color: `${LIGHT}B3`,
-                  lineHeight: 1.5,
-                  alignSelf: "start",
+                  lineHeight: 1.45,
+                  display: "-webkit-box",
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  minHeight: isMobile ? undefined : `calc(18px * 1.45 * 3)`,
                 }}
               >
                 {m.background}
               </div>
 
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  alignItems: "center",
-                  gap: "18px",
-                  minHeight: "clamp(80px, 10vh, 120px)",
-                  alignSelf: "end",
-                  width: "100%",
-                }}
-              >
-                {m.logos?.map((logo, idx) => {
-                  const baseH = logo.height ?? 48;
-                  const h = isMobile ? Math.min(baseH, 36) : baseH;
-                  const img = (
-                    <img
-                      src={logo.src}
-                      alt=""
-                      style={{
-                        height: `${h}px`,
-                        width: "auto",
-                        maxWidth: isMobile ? "120px" : "220px",
-                        objectFit: "contain",
-                        opacity: logo.invert || logo.mono ? 0.9 : 1,
-                        filter: logo.mono
-                          ? "grayscale(1) invert(1) brightness(1.1)"
-                          : logo.invert
-                          ? "invert(1) brightness(1.1)"
-                          : undefined,
-                        mixBlendMode: logo.mono ? "screen" : undefined,
-                        display: "block",
-                      }}
-                    />
-                  );
-                  if (logo.boxed) {
-                    return (
-                      <div
-                        key={idx}
+              {m.logos && m.logos.length > 0 && (
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "18px",
+                    marginTop: "-4px",
+                  }}
+                >
+                  {m.logos.map((logo, idx) => {
+                    const baseH = logo.height ?? 48;
+                    // Cap logo heights tightly on mobile so big logos (e.g. BMDW @128px)
+                    // don't visually dominate the narrow card.
+                    const h = isMobile ? Math.min(baseH, 36) : baseH;
+                    const img = (
+                      <img
+                        src={logo.src}
+                        alt=""
                         style={{
-                          background: "#FFFFFF",
-                          padding: "8px 12px",
-                          borderRadius: "4px",
-                          display: "inline-flex",
-                          alignItems: "center",
-                          justifyContent: "center",
+                          height: `${h}px`,
+                          width: "auto",
+                          maxWidth: isMobile ? "120px" : "220px",
+                          objectFit: "contain",
+                          opacity: logo.invert || logo.mono ? 0.9 : 1,
+                          filter: logo.mono
+                            ? "grayscale(1) invert(1) brightness(1.1)"
+                            : logo.invert
+                            ? "invert(1) brightness(1.1)"
+                            : undefined,
+                          mixBlendMode: logo.mono ? "screen" : undefined,
+                          display: "block",
                         }}
-                      >
-                        {img}
-                      </div>
+                      />
                     );
-                  }
-                  return <div key={idx}>{img}</div>;
-                })}
-              </div>
+                    if (logo.boxed) {
+                      return (
+                        <div
+                          key={idx}
+                          style={{
+                            background: "#FFFFFF",
+                            padding: "8px 12px",
+                            borderRadius: "4px",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {img}
+                        </div>
+                      );
+                    }
+                    return <div key={idx}>{img}</div>;
+                  })}
+                </div>
+              )}
             </motion.div>
           ))}
         </div>

@@ -1,45 +1,39 @@
-## Goal
+## Add Alissa Kovarik to Slide 7
 
-On Slide 7 (Team), make the bio descriptions more legible and ensure every card's logo row sits on the same horizontal baseline across the grid.
+Insert a new team member card between Rainhard Fuchs and Philip Reuchlin on Slide 7, matching the existing card style.
 
-## Changes to `src/slides/Slide7.tsx`
+### Person details
+- **Name:** Alissa Kovarik
+- **Title:** Head of Product
+- **Background:** Former President JA Austria, 5+ years building sustainability products
+- **Photo:** Provided headshot (casual navy shirt, gray background)
+- **Logo:** JA Austria lockup (provided .avif)
 
-### 1. Larger, non-truncated description text
+### Asset handling
+1. Copy the headshot → `src/assets/team/alissa-kovarik.png` (convert/rename from the uploaded JPG).
+2. Copy the JA Austria logo → `src/assets/logos/ja-austria.png` (convert from .avif to .png so it works reliably in `<img>`; .avif is fine in modern browsers but we'll standardize on .png to match other team logos like `pioneers.png`, `bmdw.png`).
 
-Current: fixed `18px`, clamped to 3 lines, can cut off bios.
+### Code changes (`src/slides/Slide7.tsx`)
+1. Add two imports: `alissaPhoto` and `jaAustriaLogo`.
+2. Insert a new entry into the `team` array at index 1 (between Rainhard and Philip):
+   ```ts
+   {
+     name: "Alissa Kovarik",
+     title: "Head of Product",
+     background: "Former President JA Austria. 5+ years building sustainability products.",
+     photo: alissaPhoto,
+     logos: [{ src: jaAustriaLogo, invert: true }],
+   }
+   ```
+3. The JA Austria lockup appears to be dark on light — apply `invert: true` so it reads cleanly on the Dark Blue background, consistent with other dark-on-light logos (e.g., Pioneers, Bitpanda).
 
-New:
-- `fontSize: clamp(15px, 1.05vw, 19px)` (slightly larger ceiling, fluid)
-- Remove `WebkitLineClamp` / `-webkit-box` truncation so full bio always shows
-- Keep `lineHeight: 1.5` for readability
-- Drop the `minHeight` hack (replaced by the alignment strategy below)
+### Layout impact
+- Team grows from 5 → 6 members.
+- Desktop grid is currently `repeat(5, 1fr)` → change to `repeat(6, 1fr)` so all members stay on one row (matches the current single-row visual rhythm).
+- Mobile grid stays `repeat(2, 1fr)` → 6 members render as a clean 3-row × 2-col layout (was 3 rows with a half-empty last row, now perfectly balanced).
+- Bottom anchor headcount stays "15 today / Hiring 4-5" — no change requested.
 
-### 2. Logos aligned across all cards (shared baseline)
-
-Current: card is a simple `flex column` — logos float right after the bio, so different bio lengths push logos to different vertical positions.
-
-New: turn each card into a 4-row CSS grid with fixed track roles, so the same row index lines up across all 6 cards:
-
-```
-gridTemplateRows: "auto auto 1fr auto"
-   row 1: avatar
-   row 2: name + title block
-   row 3: description (1fr — absorbs slack, top-aligned)
-   row 4: logos (always pinned to bottom of card → aligned across row)
-```
-
-The grid container itself uses `alignItems: stretch` and `gridAutoRows` is not needed since rows are explicit. The parent grid (the team grid) already lays cards in `repeat(6, 1fr)` with stretch by default — so all cards will match the tallest card's height, and row 4 (logos) lands at the same Y on every card.
-
-### 3. Logo block — consistent internal alignment
-
-- Wrap logos in a container with `minHeight: clamp(80px, 10vh, 120px)` and `justifyContent: "flex-start"` (top of the logo zone) so single-logo cards (Alissa, Kishan) don't visually float mid-zone while multi-logo cards (Rainhard, Philip, Nina) stack downward.
-- Keep current per-logo height caps; no logo-size changes.
-
-### 4. Mobile
-
-On mobile (2-column grid), the same row-track approach still works — cards in the same row align to each other. No structural change needed beyond what's above.
-
-## Out of scope
-
-- No copy changes, no photo swaps, no layout column-count changes.
-- No changes to header, thesis line, or footer anchor.
+### QA
+- Verify on desktop (1920×1080) that 6 cards fit comfortably in the row without crowding logos or bios.
+- Verify on mobile (390 wide) that the new 2×3 grid stays readable and avatar floor (120px) still works.
+- Confirm Alissa's photo crops well with `objectPosition: "center top"` (face is centered in the source).
