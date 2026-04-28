@@ -165,8 +165,8 @@ export default function Slide7() {
             display: "grid",
             gridTemplateColumns: isMobile
               ? "repeat(2, minmax(0, 1fr))"
-              : "repeat(5, minmax(0, 1fr))",
-            gap: isMobile ? "32px" : "40px",
+              : "repeat(6, minmax(0, 1fr))",
+            gap: isMobile ? "32px" : "32px",
           }}
         >
           {team.map((m, i) => (
