@@ -179,10 +179,10 @@ export default function Slide7() {
               transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.35 + i * 0.08 }}
               style={{
                 display: "grid",
-                gridTemplateRows: "auto auto 1fr auto",
+                gridTemplateRows: "auto auto auto 1fr auto",
                 justifyItems: "center",
                 textAlign: "center",
-                rowGap: "24px",
+                rowGap: "16px",
                 height: "100%",
               }}
             >
@@ -223,35 +223,32 @@ export default function Slide7() {
                 )}
               </div>
 
+              {/* NAME slot — reserved for up to 2 lines so titles align across cards */}
               <div
                 style={{
+                  fontSize: "22px",
+                  color: LIGHT,
+                  fontWeight: 600,
+                  lineHeight: 1.2,
+                  minHeight: "calc(22px * 1.2 * 2)",
                   display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "flex-start",
-                  gap: "10px",
-                  minHeight: "clamp(72px, 7vh, 96px)",
+                  alignItems: "flex-start",
+                  justifyContent: "center",
+                  width: "100%",
+                  marginTop: "8px",
                 }}
               >
-                <div
-                  style={{
-                    fontSize: "22px",
-                    color: LIGHT,
-                    fontWeight: 600,
-                    lineHeight: 1.2,
-                  }}
-                >
-                  {m.name}
-                </div>
-                <div
-                  style={{
-                    fontSize: "17px",
-                    color: MINT,
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {m.title}
-                </div>
+                {m.name}
+              </div>
+              {/* TITLE slot — shared baseline across all cards */}
+              <div
+                style={{
+                  fontSize: "17px",
+                  color: MINT,
+                  lineHeight: 1.3,
+                }}
+              >
+                {m.title}
               </div>
 
               <div
