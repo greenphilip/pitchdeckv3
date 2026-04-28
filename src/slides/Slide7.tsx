@@ -265,27 +265,31 @@ export default function Slide7() {
 
               <div
                 style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
+                  display: "grid",
+                  gridTemplateRows: `repeat(${MAX_LOGOS}, 1fr)`,
+                  rowGap: "16px",
+                  justifyItems: "center",
                   alignItems: "center",
-                  gap: "18px",
-                  minHeight: "clamp(80px, 10vh, 120px)",
                   alignSelf: "end",
                   width: "100%",
+                  minHeight: isMobile ? "120px" : "180px",
                 }}
               >
-                {m.logos?.map((logo, idx) => {
-                  const baseH = logo.height ?? 48;
-                  const h = isMobile ? Math.min(baseH, 36) : baseH;
-                  const img = (
+                {Array.from({ length: MAX_LOGOS }).map((_, idx) => {
+                  const logo = m.logos?.[idx];
+                  if (!logo) {
+                    return <div key={idx} aria-hidden style={{ width: "100%" }} />;
+                  }
+                  const h = isMobile ? 32 : 44;
+                  return (
                     <img
+                      key={idx}
                       src={logo.src}
                       alt=""
                       style={{
                         height: `${h}px`,
                         width: "auto",
-                        maxWidth: isMobile ? "120px" : "220px",
+                        maxWidth: isMobile ? "110px" : "140px",
                         objectFit: "contain",
                         opacity: logo.invert || logo.mono ? 0.9 : 1,
                         filter: logo.mono
@@ -298,24 +302,6 @@ export default function Slide7() {
                       }}
                     />
                   );
-                  if (logo.boxed) {
-                    return (
-                      <div
-                        key={idx}
-                        style={{
-                          background: "#FFFFFF",
-                          padding: "8px 12px",
-                          borderRadius: "4px",
-                          display: "inline-flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        {img}
-                      </div>
-                    );
-                  }
-                  return <div key={idx}>{img}</div>;
                 })}
               </div>
             </motion.div>
