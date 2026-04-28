@@ -3,7 +3,7 @@ import { User } from "lucide-react";
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import rainhardPhoto from "@/assets/team/rainhard-fuchs.png";
-import alissaPhoto from "@/assets/team/alissa-kovarik.png";
+import alissaPhoto from "@/assets/team/alissa-kovarik.jpg";
 import philipPhoto from "@/assets/team/philip.png";
 import davidPhoto from "@/assets/team/david-anders.png";
 import kishanPhoto from "@/assets/team/kishan.png";
@@ -51,7 +51,7 @@ const team: Member[] = [
   },
   {
     name: "Philip Reuchlin",
-    title: "Senior Advisor, AI & ESG",
+    title: "VP of AI & ESG",
     background: "20+ years sustainability, already scaled ESG startup to Series A, INSEAD MBA",
     photo: philipPhoto,
     logos: [
