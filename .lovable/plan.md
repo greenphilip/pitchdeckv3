@@ -1,22 +1,12 @@
-## Fix: Align name/title block heights across team cards
+Plan to fix Slide 7 title alignment:
 
-**Problem:** On Slide 7, Kishan Chimminiyan's name wraps to two lines, which pushes his bio down compared to neighbors. Because the card grid uses `auto` rows for the name/title block, each card's bio starts at a different Y position.
+1. Change each team card’s internal row structure so the name and title are separate grid rows instead of one flexible block.
+2. Give the name row a reserved two-line height, top-aligned, so one-line and two-line names occupy the same vertical slot.
+3. Put the title in the next row with a shared baseline across all six cards.
+4. Keep the existing photo, description, and logo alignment behavior unchanged.
 
-**Fix:** Reserve a fixed vertical slot for the name+title block so every bio starts at the same baseline, regardless of name wrap.
-
-### Changes (single file: `src/slides/Slide7.tsx`)
-
-1. **Pin the name+title block to a fixed minimum height** sized for two lines of name + one line of title:
-   - Add `minHeight: clamp(72px, 7vh, 96px)` and `justifyContent: "flex-start"` to the name/title flex container.
-   - This way single-line names (everyone else) still align their bio at the same Y as Kishan's two-line name.
-
-2. **Anchor the block to the top** so when the name is short, the empty space sits below the title (not above it):
-   - Already handled via `justifyItems: "center"` on the grid + `justifyContent: "flex-start"` on the inner column.
-
-3. **No changes** to avatar size, bio typography, or logo grid — those already share baselines correctly.
-
-### Result
-- Avatar row: shared baseline (already correct, `auto` row + identical avatar size).
-- Name/title row: shared baseline (new fixed min-height absorbs the 2-line wrap).
-- Bio row: shared start baseline across all 6 cards.
-- Logo row: shared bottom baseline (already correct via `1fr` + `alignSelf: end`).
+Technical details:
+- In `src/slides/Slide7.tsx`, replace the combined name/title wrapper with separate name and title elements.
+- Update the card grid rows from `auto auto 1fr auto` to a structure like `auto [name-slot] [title-slot] 1fr auto`.
+- Use a clamp-based `minHeight` for the name slot, e.g. two lines at the current name font size, rather than relying on content height.
+- Preserve existing responsive behavior and brand styling.
