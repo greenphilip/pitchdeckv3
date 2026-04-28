@@ -74,7 +74,7 @@ const team: Member[] = [
     background: "10+ years at fast scaling startups, previously Head of HR at Bitpanda and Shpock.",
     photo: ninaPhoto,
     logos: [
-      { src: bitpandaLogo, invert: true },
+      { src: bitpandaLogo, mono: true, height: 28 },
       { src: shpockLogo, invert: true },
     ],
   },
