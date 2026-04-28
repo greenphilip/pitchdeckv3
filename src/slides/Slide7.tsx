@@ -3,7 +3,6 @@ import { User } from "lucide-react";
 import { SlideFrame } from "@/components/SlideFrame";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import rainhardPhoto from "@/assets/team/rainhard-fuchs.png";
-import alissaPhoto from "@/assets/team/alissa-kovarik.jpg";
 import philipPhoto from "@/assets/team/philip.png";
 import davidPhoto from "@/assets/team/david-anders.png";
 import kishanPhoto from "@/assets/team/kishan.png";
@@ -18,7 +17,6 @@ import smartCounselLogo from "@/assets/logos/smart-counsel.png";
 import bitpandaLogo from "@/assets/logos/bitpanda.svg";
 import shpockLogo from "@/assets/logos/shpock.svg";
 import bmdwLogo from "@/assets/logos/bmdw.png";
-import jaAustriaLogo from "@/assets/logos/ja-austria.png";
 
 const MINT = "#6DD4AD";
 const BLUE = "#539ADB";
@@ -41,13 +39,6 @@ const team: Member[] = [
     background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
     photo: rainhardPhoto,
     logos: [{ src: pioneersLogo, invert: true }, { src: bmdwLogo, mono: true, height: 128 }],
-  },
-  {
-    name: "Alissa Kovarik",
-    title: "Head of Product",
-    background: "Former President JA Austria. 5+ years building sustainability products.",
-    photo: alissaPhoto,
-    logos: [{ src: jaAustriaLogo, mono: true, height: 56 }],
   },
   {
     name: "Philip Reuchlin",
@@ -165,7 +156,7 @@ export default function Slide7() {
             display: "grid",
             gridTemplateColumns: isMobile
               ? "repeat(2, minmax(0, 1fr))"
-              : "repeat(6, minmax(0, 1fr))",
+              : "repeat(5, minmax(0, 1fr))",
             gap: isMobile ? "32px" : "40px",
           }}
         >
