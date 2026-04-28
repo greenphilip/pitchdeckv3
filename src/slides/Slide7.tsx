@@ -228,7 +228,9 @@ export default function Slide7() {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
+                  justifyContent: "flex-start",
                   gap: "10px",
+                  minHeight: "clamp(72px, 7vh, 96px)",
                 }}
               >
                 <div
