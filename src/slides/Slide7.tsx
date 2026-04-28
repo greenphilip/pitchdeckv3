@@ -51,7 +51,7 @@ const team: Member[] = [
   },
   {
     name: "Philip Reuchlin",
-    title: "VP of AI & ESG",
+    title: "Senior Advisor, AI & ESG",
     background: "20+ years sustainability, already scaled ESG startup to Series A, INSEAD MBA",
     photo: philipPhoto,
     logos: [
