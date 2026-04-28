@@ -279,7 +279,7 @@ export default function Slide7() {
                   if (!logo) {
                     return <div key={idx} aria-hidden style={{ width: "100%" }} />;
                   }
-                  const h = isMobile ? 32 : 44;
+                  const h = isMobile ? 36 : 52;
                   return (
                     <img
                       key={idx}
@@ -288,15 +288,13 @@ export default function Slide7() {
                       style={{
                         height: `${h}px`,
                         width: "auto",
-                        maxWidth: isMobile ? "110px" : "140px",
+                        maxWidth: isMobile ? "150px" : "200px",
                         objectFit: "contain",
-                        opacity: logo.invert || logo.mono ? 0.9 : 1,
-                        filter: logo.mono
-                          ? "grayscale(1) invert(1) brightness(1.1)"
-                          : logo.invert
-                          ? "invert(1) brightness(1.1)"
-                          : undefined,
-                        mixBlendMode: logo.mono ? "screen" : undefined,
+                        opacity: logo.invert || logo.mono ? 0.95 : 1,
+                        filter:
+                          logo.mono || logo.invert
+                            ? "invert(1) brightness(1.15) contrast(1.05)"
+                            : undefined,
                         display: "block",
                       }}
                     />
