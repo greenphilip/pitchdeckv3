@@ -1,43 +1,18 @@
-## Add Alissa Kvarik to Slide 7
+## Fix Kishan's name wrap on Slide 7
 
-**Position**: Insert as the 2nd team member, between Rainhard Fuchs (1st) and Philip Reuchlin (now 3rd).
+**Problem**: "Kishan Chimminiyan" wraps to two lines in the now 6-col grid, making his card taller than the others and pushing the row's bio/logo blocks out of vertical alignment.
 
-**Person details**:
-- Name: Alissa Kvarik
-- Title: Head of Product
-- Background: "former President JA Austria and 6+ years building sustainability products."
-- Photo: `user-uploads://Alissa_Kovarik_-_Casual-removebg-preview-2.png`
-- Logo: `user-uploads://JA_Austria_lockups_JA-b_edited-2.avif` (JA Austria)
+**Root cause**: Card width shrank when grid went from 5 → 6 columns, but `m.name` has no shrink/wrap control. The surname is the only one long enough to break.
 
-### Steps
+### Fix
 
-1. **Copy assets into the project**
-   - `src/assets/team/alissa-kvarik.png` (her portrait)
-   - `src/assets/logos/ja-austria.avif` (JA Austria lockup) — note: AVIF works fine in Vite/modern browsers; if rendering issues appear we'll convert to PNG.
+In `src/slides/Slide7.tsx`, on the name `<div>` (around line 231–240):
+- Reserve a fixed 2-line vertical slot for every name so cards align even when one wraps:
+  - Add `minHeight: "calc(22px * 1.2 * 2)"` (≈ 53px — two lines at current 22px / lh 1.2).
+  - Add `display: "flex"`, `alignItems: "center"`, `justifyContent: "center"` so single-line names sit centered in the slot.
+- Add `hyphens: "auto"` and `wordBreak: "normal"` so wrapping is graceful.
 
-2. **Edit `src/slides/Slide7.tsx`**
-   - Add two imports: `alissaPhoto` and `jaAustriaLogo`.
-   - Insert a new entry in the `team` array at index 1 (between Rainhard and Philip):
-     ```ts
-     {
-       name: "Alissa Kvarik",
-       title: "Head of Product",
-       background: "former President JA Austria and 6+ years building sustainability products.",
-       photo: alissaPhoto,
-       logos: [{ src: jaAustriaLogo }],
-     }
-     ```
-   - The grid already uses `repeat(5, minmax(0, 1fr))` on desktop and `repeat(2, 1fr)` on mobile. With 6 members:
-     - **Desktop**: bump grid to `repeat(6, minmax(0, 1fr))` so all six fit one row, keeping Rainhard left and Nina right (preserves intended order without re-flowing other logos awkwardly).
-     - **Mobile**: stays `repeat(2, 1fr)` → 3 rows of 2, naturally reflows.
-   - Reduce the `gap` slightly on desktop only (`32px` instead of `40px`) so 6 cards fit comfortably within `maxWidth: 1400px` without shrinking text boxes or logos.
-   - No changes to font sizes, bio `WebkitLineClamp`, logo heights, or other members' configurations.
+This keeps Kishan's two-line name from pushing his card's title/bio/logo down relative to neighbours. No font-size shrink, no name change, no other slides touched.
 
-3. **Verify**
-   - Read updated file back, confirm order: Rainhard → Alissa → Philip → David → Kishan → Nina.
-   - TypeScript check (auto by harness).
-
-### Notes
-- Alignment: existing card template (centered avatar, name, title, bio with `WebkitLineClamp: 3`, logo column) handles the new entry uniformly — no per-card overrides needed.
-- The JA Austria logo will inherit the default treatment (no `invert`, no `mono`, height 48px). If it reads dark-on-dark once rendered, we can add `invert: true` in a follow-up — flagging now so you can call it out after seeing it.
-- No other slides touched.
+### Verify
+Read the file back and visually audit Slide 7 at desktop width to confirm all six cards' titles, bios, and logos line up on the same baselines.

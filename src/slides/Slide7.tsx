@@ -234,6 +234,13 @@ export default function Slide7() {
                     color: LIGHT,
                     fontWeight: 600,
                     lineHeight: 1.2,
+                    minHeight: "calc(22px * 1.2 * 2)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    hyphens: "auto",
+                    wordBreak: "normal",
                   }}
                 >
                   {m.name}
