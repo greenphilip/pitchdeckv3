@@ -40,14 +40,14 @@ const team: Member[] = [
     title: "CEO & Founder",
     background: "Ex-Head of Public Sector, Pioneers.io. 10+ years corporate and government sales.",
     photo: rainhardPhoto,
-    logos: [{ src: pioneersLogo, invert: true }, { src: bmdwLogo, mono: true }],
+    logos: [{ src: pioneersLogo, invert: true }, { src: bmdwLogo, mono: true, height: 128 }],
   },
   {
     name: "Alissa Kovarik",
     title: "Head of Product",
     background: "Former President JA Austria. 5+ years building sustainability products.",
     photo: alissaPhoto,
-    logos: [{ src: jaAustriaLogo, mono: true }],
+    logos: [{ src: jaAustriaLogo, mono: true, height: 56 }],
   },
   {
     name: "Philip Reuchlin",
@@ -55,8 +55,8 @@ const team: Member[] = [
     background: "20+ years sustainability, already scaled ESG startup to Series A, INSEAD MBA",
     photo: philipPhoto,
     logos: [
-      { src: osceLogo, mono: true },
-      { src: wbcsdLogo, mono: true },
+      { src: osceLogo },
+      { src: wbcsdLogo, mono: true, height: 64 },
       { src: inseadLogo },
     ],
   },
@@ -83,13 +83,11 @@ const team: Member[] = [
     background: "10+ years at fast scaling startups, previously Head of HR at Bitpanda and Shpock.",
     photo: ninaPhoto,
     logos: [
-      { src: bitpandaLogo, mono: true },
+      { src: bitpandaLogo, invert: true },
       { src: shpockLogo, invert: true },
     ],
   },
 ];
-
-const MAX_LOGOS = Math.max(...team.map((m) => m.logos?.length ?? 0));
 
 export default function Slide7() {
   const isMobile = useIsMobile();
@@ -179,10 +177,10 @@ export default function Slide7() {
               transition={{ duration: 0.3, ease: EXPO_OUT, delay: 0.35 + i * 0.08 }}
               style={{
                 display: "grid",
-                gridTemplateRows: "auto auto auto 1fr auto",
+                gridTemplateRows: "auto auto 1fr auto",
                 justifyItems: "center",
                 textAlign: "center",
-                rowGap: "16px",
+                rowGap: "24px",
                 height: "100%",
               }}
             >
@@ -223,32 +221,33 @@ export default function Slide7() {
                 )}
               </div>
 
-              {/* NAME slot — reserved for up to 2 lines so titles align across cards */}
               <div
                 style={{
-                  fontSize: "22px",
-                  color: LIGHT,
-                  fontWeight: 600,
-                  lineHeight: 1.2,
-                  minHeight: "calc(22px * 1.2 * 2)",
                   display: "flex",
-                  alignItems: "flex-start",
-                  justifyContent: "center",
-                  width: "100%",
-                  marginTop: "8px",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "10px",
                 }}
               >
-                {m.name}
-              </div>
-              {/* TITLE slot — shared baseline across all cards */}
-              <div
-                style={{
-                  fontSize: "17px",
-                  color: MINT,
-                  lineHeight: 1.3,
-                }}
-              >
-                {m.title}
+                <div
+                  style={{
+                    fontSize: "22px",
+                    color: LIGHT,
+                    fontWeight: 600,
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {m.name}
+                </div>
+                <div
+                  style={{
+                    fontSize: "17px",
+                    color: MINT,
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {m.title}
+                </div>
               </div>
 
               <div
@@ -264,41 +263,57 @@ export default function Slide7() {
 
               <div
                 style={{
-                  display: "grid",
-                  gridTemplateRows: `repeat(${MAX_LOGOS}, 1fr)`,
-                  rowGap: "16px",
-                  justifyItems: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start",
                   alignItems: "center",
+                  gap: "18px",
+                  minHeight: "clamp(80px, 10vh, 120px)",
                   alignSelf: "end",
                   width: "100%",
-                  minHeight: isMobile ? "120px" : "180px",
                 }}
               >
-                {Array.from({ length: MAX_LOGOS }).map((_, idx) => {
-                  const logo = m.logos?.[idx];
-                  if (!logo) {
-                    return <div key={idx} aria-hidden style={{ width: "100%" }} />;
-                  }
-                  const h = isMobile ? 36 : 52;
-                  return (
+                {m.logos?.map((logo, idx) => {
+                  const baseH = logo.height ?? 48;
+                  const h = isMobile ? Math.min(baseH, 36) : baseH;
+                  const img = (
                     <img
-                      key={idx}
                       src={logo.src}
                       alt=""
                       style={{
                         height: `${h}px`,
                         width: "auto",
-                        maxWidth: isMobile ? "150px" : "200px",
+                        maxWidth: isMobile ? "120px" : "220px",
                         objectFit: "contain",
-                        opacity: logo.invert || logo.mono ? 0.95 : 1,
-                        filter:
-                          logo.mono || logo.invert
-                            ? "invert(1) brightness(1.15) contrast(1.05)"
-                            : undefined,
+                        opacity: logo.invert || logo.mono ? 0.9 : 1,
+                        filter: logo.mono
+                          ? "grayscale(1) invert(1) brightness(1.1)"
+                          : logo.invert
+                          ? "invert(1) brightness(1.1)"
+                          : undefined,
+                        mixBlendMode: logo.mono ? "screen" : undefined,
                         display: "block",
                       }}
                     />
                   );
+                  if (logo.boxed) {
+                    return (
+                      <div
+                        key={idx}
+                        style={{
+                          background: "#FFFFFF",
+                          padding: "8px 12px",
+                          borderRadius: "4px",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {img}
+                      </div>
+                    );
+                  }
+                  return <div key={idx}>{img}</div>;
                 })}
               </div>
             </motion.div>
