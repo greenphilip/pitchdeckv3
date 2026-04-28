@@ -43,7 +43,7 @@ const team: Member[] = [
     logos: [{ src: pioneersLogo, invert: true }, { src: bmdwLogo, mono: true, height: 128 }],
   },
   {
-    name: "Alissa Kvarik",
+    name: "Alissa Kovarik",
     title: "Head of Product",
     background: "former President JA Austria and 6+ years building sustainability products.",
     photo: alissaPhoto,
