@@ -2,6 +2,7 @@ import { useState, useRef, FormEvent } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Lock } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import glacierLogo from "@/assets/glacier-logo.svg";
 
 const PASSWORD = "GLACIER_2026";
 const STORAGE_KEY = "glacier.unlocked";
@@ -84,19 +85,19 @@ const PasswordGate = ({ onUnlock }: PasswordGateProps) => {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="relative z-10 w-full max-w-md mx-auto px-8"
       >
-        <div className="flex items-center gap-3 mb-12">
-          <motion.div
-            className="rounded-full"
-            style={{ width: 10, height: 10, backgroundColor: "#6DD4AD" }}
-            animate={{ opacity: [0.4, 1, 0.4] }}
-            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+        <div
+          className="flex justify-center"
+          style={{ marginBottom: "clamp(32px, 5vh, 56px)" }}
+        >
+          <img
+            src={glacierLogo}
+            alt="Glacier"
+            style={{
+              width: "clamp(180px, 22vw, 280px)",
+              height: "auto",
+              display: "block",
+            }}
           />
-          <span
-            className="text-lg font-semibold tracking-tight"
-            style={{ color: "#F1F1F1", fontFamily: "Inter, sans-serif" }}
-          >
-            Glacier
-          </span>
         </div>
 
         <motion.div
