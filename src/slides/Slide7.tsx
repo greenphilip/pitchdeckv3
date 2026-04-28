@@ -278,7 +278,7 @@ export default function Slide7() {
                         style={{
                           height: `${h}px`,
                           width: "auto",
-                          maxWidth: isMobile ? "120px" : "220px",
+                          maxWidth: isMobile ? (logo.mono ? "160px" : "120px") : "220px",
                           objectFit: "contain",
                           opacity: logo.invert || logo.mono ? 0.9 : 1,
                           filter: logo.mono
