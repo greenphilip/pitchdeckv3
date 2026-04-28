@@ -47,7 +47,7 @@ const team: Member[] = [
     title: "Head of Product",
     background: "former President JA Austria and 6+ years building sustainability products.",
     photo: alissaPhoto,
-    logos: [{ src: jaAustriaLogo, height: 64 }],
+    logos: [{ src: jaAustriaLogo, height: 64, mono: true }],
   },
   {
     name: "Philip Reuchlin",
