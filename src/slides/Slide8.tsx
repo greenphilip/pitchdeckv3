@@ -434,12 +434,12 @@ export default function Slide8() {
           >
             {isMobile ? (
               <>
-                2 Existing Investors Participating
+                SEVERAL EXISTING INVESTORS PARTICIPATING
                 <br />
-                Names on Request
+                NAMES ON REQUEST
               </>
             ) : (
-              "2 Existing Investors Participating · Names on Request"
+              "SEVERAL EXISTING INVESTORS PARTICIPATING · NAMES ON REQUEST"
             )}
           </motion.div>
         </div>
