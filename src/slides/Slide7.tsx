@@ -89,6 +89,8 @@ const team: Member[] = [
   },
 ];
 
+const MAX_LOGOS = Math.max(...team.map((m) => m.logos?.length ?? 0));
+
 export default function Slide7() {
   const isMobile = useIsMobile();
 
