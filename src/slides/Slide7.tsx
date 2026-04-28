@@ -262,10 +262,10 @@ export default function Slide7() {
                   color: `${LIGHT}B3`,
                   lineHeight: 1.45,
                   display: "-webkit-box",
-                  WebkitLineClamp: 3,
+                  WebkitLineClamp: 4,
                   WebkitBoxOrient: "vertical",
                   overflow: "hidden",
-                  minHeight: isMobile ? undefined : `calc(18px * 1.45 * 3)`,
+                  minHeight: isMobile ? undefined : `calc(18px * 1.45 * 4)`,
                 }}
               >
                 {m.background}
