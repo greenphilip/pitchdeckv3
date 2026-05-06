@@ -1,17 +1,21 @@
-## Add Glacier logo prominently to password gate
 
-Place the existing `src/assets/glacier-logo.svg` mark front-and-center on the `PasswordGate` screen, above the unlock card.
+## Export Slide Deck as PDF
 
-### Changes (single file: `src/components/PasswordGate.tsx`)
+### Approach
+Use Puppeteer to open the presentation at 1920×1080, bypass the password gate, navigate through all 8 slides, capture each as a full-page screenshot, and combine them into a single landscape PDF.
 
-1. Replace the small text-only "Glacier" wordmark row at the top with a larger, centered logo presentation:
-   - Import the SVG: `import glacierLogo from "@/assets/glacier-logo.svg";`
-   - Render an `<img>` with the logo, sized responsively (`width: clamp(180px, 22vw, 280px)`, auto height), centered above the card.
-   - Keep the small mint pulse dot as a subtle accent below or remove it in favor of the logo as the sole brand mark.
-2. Adjust spacing so the logo + card still vertically center comfortably at common laptop heights (use `clamp()` margins, not fixed px).
-3. Keep all existing functionality identical: passcode field, error shake, unlock flow, ambient gradients, footer line.
-4. Add `alt="Glacier"` for accessibility; the existing "Glacier" text label becomes redundant and is removed.
+### Steps
 
-### Notes
-- The SVG is white-filled and works directly on the `#143560` background — no recoloring needed.
-- No new dependencies, no logic changes, no other files touched.
+1. **Write a Node.js script** (`/tmp/export-pdf.js`) that:
+   - Launches headless Chromium at 1920×1080
+   - Navigates to the preview URL
+   - Unlocks the password gate (sets localStorage or enters the password)
+   - Screenshots each slide sequentially (arrow-key navigation)
+   - Combines all 8 screenshots into a single PDF at 1920×1080 landscape
+
+2. **Run the script** and save the output to `/mnt/documents/glacier-deck.pdf`
+
+3. **QA** — convert pages to images, inspect each for rendering issues
+
+### Output
+A single `glacier-deck.pdf` with 8 landscape pages, one per slide.
