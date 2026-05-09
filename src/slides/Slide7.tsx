@@ -211,7 +211,10 @@ export default function Slide7() {
                       height: "100%",
                       objectFit: "cover",
                       objectPosition: m.photoPosition ?? "center top",
-                      transform: m.photoScale ? `scale(${m.photoScale})` : undefined,
+                      transform: [
+                        m.photoScale ? `scale(${m.photoScale})` : null,
+                        m.photoOffsetY ? `translateY(${m.photoOffsetY})` : null,
+                      ].filter(Boolean).join(" ") || undefined,
                       transformOrigin: "center top",
                     }}
                   />
