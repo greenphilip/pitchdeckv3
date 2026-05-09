@@ -207,7 +207,7 @@ export default function Slide7() {
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
-                      objectPosition: "center top",
+                      objectPosition: m.photoPosition ?? "center top",
                     }}
                   />
                 ) : (
