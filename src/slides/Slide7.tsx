@@ -208,6 +208,8 @@ export default function Slide7() {
                       height: "100%",
                       objectFit: "cover",
                       objectPosition: m.photoPosition ?? "center top",
+                      transform: m.photoScale ? `scale(${m.photoScale})` : undefined,
+                      transformOrigin: "center top",
                     }}
                   />
                 ) : (
