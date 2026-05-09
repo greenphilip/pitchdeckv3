@@ -57,9 +57,6 @@ const team: Member[] = [
     title: "Senior Advisor, AI & ESG",
     background: "20+ years sustainability, already scaled ESG startup to Series A, INSEAD MBA",
     photo: philipPhoto,
-    photoPosition: "center top",
-    photoScale: 1.55,
-    photoOffsetY: "-25%",
     logos: [
       { src: osceLogo },
       { src: wbcsdLogo, mono: true, height: 64 },
