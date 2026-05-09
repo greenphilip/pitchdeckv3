@@ -31,6 +31,7 @@ interface Member {
   title: string;
   background: string;
   photo?: string;
+  photoPosition?: string;
   logos?: { src: string; invert?: boolean; boxed?: boolean; mono?: boolean; height?: number }[];
 }
 
@@ -54,6 +55,7 @@ const team: Member[] = [
     title: "Senior Advisor, AI & ESG",
     background: "20+ years sustainability, already scaled ESG startup to Series A, INSEAD MBA",
     photo: philipPhoto,
+    photoPosition: "center 0%",
     logos: [
       { src: osceLogo },
       { src: wbcsdLogo, mono: true, height: 64 },
@@ -205,7 +207,7 @@ export default function Slide7() {
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
-                      objectPosition: "center top",
+                      objectPosition: m.photoPosition ?? "center top",
                     }}
                   />
                 ) : (
