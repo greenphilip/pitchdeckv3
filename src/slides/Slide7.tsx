@@ -33,6 +33,7 @@ interface Member {
   photo?: string;
   photoPosition?: string;
   photoScale?: number;
+  photoOffsetY?: string;
   logos?: { src: string; invert?: boolean; boxed?: boolean; mono?: boolean; height?: number }[];
 }
 
