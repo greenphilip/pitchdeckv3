@@ -33,6 +33,7 @@ interface Member {
   photo?: string;
   photoPosition?: string;
   photoScale?: number;
+  photoOffsetY?: string;
   logos?: { src: string; invert?: boolean; boxed?: boolean; mono?: boolean; height?: number }[];
 }
 
@@ -58,6 +59,7 @@ const team: Member[] = [
     photo: philipPhoto,
     photoPosition: "center top",
     photoScale: 1.55,
+    photoOffsetY: "-12%",
     logos: [
       { src: osceLogo },
       { src: wbcsdLogo, mono: true, height: 64 },
@@ -210,7 +212,10 @@ export default function Slide7() {
                       height: "100%",
                       objectFit: "cover",
                       objectPosition: m.photoPosition ?? "center top",
-                      transform: m.photoScale ? `scale(${m.photoScale})` : undefined,
+                      transform: [
+                        m.photoScale ? `scale(${m.photoScale})` : null,
+                        m.photoOffsetY ? `translateY(${m.photoOffsetY})` : null,
+                      ].filter(Boolean).join(" ") || undefined,
                       transformOrigin: "center top",
                     }}
                   />
