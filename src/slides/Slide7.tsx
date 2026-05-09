@@ -59,6 +59,7 @@ const team: Member[] = [
     photo: philipPhoto,
     photoPosition: "center top",
     photoScale: 1.55,
+    photoOffsetY: "-12%",
     logos: [
       { src: osceLogo },
       { src: wbcsdLogo, mono: true, height: 64 },
