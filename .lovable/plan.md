@@ -1,10 +1,13 @@
-## Fix Philip's photo alignment on Slide 7
+## Match Philip's photo framing to the rest of the team
 
-### Steps
-1. **Revert the padded `philip.png`** back to the original (no transparent extent) so the head fills the frame at the same zoom as the others.
-2. **Per-member `objectPosition` override**: add an optional `photoPosition` field to the team member type. Default stays `"center top"`. Set Philip's to something like `"center 20%"` (or `"center -10%"`) so his head sits higher in the circle, aligning with the rest of the row.
-3. Visually verify by screenshot at the current viewport — adjust the offset if heads still aren't aligned.
+### Problem
+The other team photos are 612×408 landscape headshots tightly framed on the head & shoulders. Philip's source is a 408×612 full upper-body shot with lots of empty space above and around — that's why scale/offset overrides keep being needed.
+
+### Plan
+1. **Crop Philip's source PNG** to a tight square around his head & shoulders (roughly the top ~45% of the image, centered horizontally). Save back to `src/assets/team/philip.png`.
+2. **Remove the per-photo overrides** (`photoPosition`, `photoScale`, `photoOffsetY`) for Philip in `src/slides/Slide7.tsx` so it uses the same default `objectFit: cover; object-position: center top` as everyone else.
+3. Visually compare — if the head still sits lower/higher than the row, fine-tune the crop box (not the React code).
 
 ### Technical detail
-- `src/slides/Slide7.tsx`: extend the member object with `photoPosition?: string`, pass it into the `<img>` `style.objectPosition` (fallback `"center top"`).
-- Image file restored from the pre-padding version (re-copy from the user's original upload).
+- Use ImageMagick: `convert philip.png -gravity north -crop 408x408+0+40 +repage philip.png` (numbers tuned after inspecting the actual image).
+- Keep the file path the same so no import changes are needed.
