@@ -1,13 +1,16 @@
-## Match Philip's photo framing to the rest of the team
+## Plan: Re-export full deck to PDF
 
-### Problem
-The other team photos are 612×408 landscape headshots tightly framed on the head & shoulders. Philip's source is a 408×612 full upper-body shot with lots of empty space above and around — that's why scale/offset overrides keep being needed.
+The current `glacier-deck.pdf` has 8 pages, matching all 8 slides in `src/slides/` (Slide1–Slide8). Note: the project brief mentions 10 slides, but only 8 exist in the codebase today — I'll export all 8 that exist. If you intended for there to be 10, let me know which two are missing and I'll flag it.
 
-### Plan
-1. **Crop Philip's source PNG** to a tight square around his head & shoulders (roughly the top ~45% of the image, centered horizontally). Save back to `src/assets/team/philip.png`.
-2. **Remove the per-photo overrides** (`photoPosition`, `photoScale`, `photoOffsetY`) for Philip in `src/slides/Slide7.tsx` so it uses the same default `objectFit: cover; object-position: center top` as everyone else.
-3. Visually compare — if the head still sits lower/higher than the row, fine-tune the crop box (not the React code).
+### Steps
 
-### Technical detail
-- Use ImageMagick: `convert philip.png -gravity north -crop 408x408+0+40 +repage philip.png` (numbers tuned after inspecting the actual image).
-- Keep the file path the same so no import changes are needed.
+1. Re-run the Puppeteer export script (`/tmp/export-pdf.js`) against the published URL, capturing slides 1–8 at 1920×1080 (2× device scale).
+2. Wait for each slide's entrance animations to settle (~700ms) before screenshot, so no fade-in artifacts.
+3. Stitch the 8 PNGs into `/mnt/documents/glacier-deck.pdf` (overwriting the existing file) via PIL.
+4. **QA pass**: render each PDF page back to JPEG with `pdftoppm` and inspect every page for clipping, missing content, or blank slides. Report findings.
+5. Deliver the PDF artifact link.
+
+No code in the app changes — this is purely a re-export of the existing deck.  
+make sure all boxes, texts and logos are included in the pdf
+
+&nbsp;
